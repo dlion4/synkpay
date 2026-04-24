@@ -1,0 +1,52 @@
+<div id="kt_header" class="header align-items-stretch shadow-sm" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
+        
+        <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap mt-n5 mt-lg-0 me-lg-2 pb-2 pb-lg-0">
+            <h1 class="text-dark fw-bolder my-0 fs-3">Dashboard</h1>
+            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-1">
+                <li class="breadcrumb-item text-muted"><a routerLink="/" class="text-muted text-hover-warning">Home</a></li>
+                <li class="breadcrumb-item"><span class="bullet bg-gray-300 w-5px h-2px"></span></li>
+                <li class="breadcrumb-item text-muted">Dashboards</li>
+                <li class="breadcrumb-item"><span class="bullet bg-gray-300 w-5px h-2px"></span></li>
+                <li class="breadcrumb-item text-dark fw-bold">Overview</li>
+            </ul>
+        </div>
+
+        <div class="d-flex d-lg-none align-items-center ms-n4 me-2">
+            <div class="btn btn-icon btn-active-icon-warning" id="kt_aside_mobile_toggle">
+                <i class="ki-duotone ki-abstract-14 fs-1"><span class="path1"></span><span class="path2"></span></i>
+            </div>
+            <a routerLink="/">
+                <img alt="Logo" src="assets/media/logos/demo7.svg" class="h-30px">
+            </a>
+        </div>
+
+        <div class="d-flex flex-shrink-0">
+            <div class="d-flex ms-3">
+                <a href="#" class="btn btn-flex flex-center btn-light border btn-color-gray-600 btn-active-warning w-40px w-md-auto h-40px px-0 px-md-6 rounded-pill shadow-sm" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
+                    <i class="ki-duotone ki-plus fs-2 me-0 me-md-2"></i> <span class="d-none d-md-inline fw-bold">New Member</span>
+                </a>
+            </div>
+            
+            <div class="d-flex align-items-center ms-3">
+                <a href="#" class="btn btn-icon flex-center bg-light border btn-color-gray-600 btn-active-color-warning h-40px w-40px rounded-circle shadow-sm" data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+                    <i class="ki-duotone ki-night-day theme-light-show fs-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></i>
+                    <i class="ki-duotone ki-moon theme-dark-show fs-2"><span class="path1"></span><span class="path2"></span></i>
+                </a>
+                </div>
+
+            <div class="d-flex align-items-center ms-3">
+                <div class="btn btn-icon btn-light border btn-active-color-warning btn-color-gray-600 h-40px w-40px rounded-circle shadow-sm position-relative" data-kt-menu-trigger="click" data-kt-menu-placement="top-start">
+                    <i class="ki-duotone ki-element-11 fs-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow-sm" style="font-size: 0.6rem; padding: 0.3rem 0.4rem;">24</span>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center ms-5" id="kt_header_user_menu_toggle">
+                <div class="cursor-pointer symbol symbol-40px symbol-circle shadow-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                    <img src="assets/media/avatars/300-1.jpg" alt="User Image" class="border border-2 border-white">
+                </div>
+                </div>
+        </div>
+    </div>
+</div>
