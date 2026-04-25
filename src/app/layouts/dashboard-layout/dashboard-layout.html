@@ -3,11 +3,11 @@
         
         <app-sidebar></app-sidebar>
         
-        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper" [class.collapsed-sidebar]="sidebarService.isCollapsed()">
             
             <app-header></app-header>
             
-            <div class="content d-flex flex-column flex-column-fluid" id="kt_content" [class.collapsed-sidebar]="isCollapsed">
+            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
                 <router-outlet></router-outlet>
             </div>
             

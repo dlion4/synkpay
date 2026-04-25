@@ -104,3 +104,24 @@ body {
     }
 }
 
+
+/* --- Master Layout Shift --- */
+#kt_wrapper {
+    /* Base state: 100px (Primary Sidebar) + 325px (Secondary Sidebar) = 425px */
+    padding-left: 425px; 
+    width: 100%;
+    transition: padding-left 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#kt_wrapper.collapsed-sidebar {
+    /* Collapsed state: Only the 100px Primary sidebar remains */
+    padding-left: 100px; 
+}
+
+/* Mobile responsiveness: Sidebars are usually hidden or overlaid on mobile */
+@media (max-width: 991.98px) {
+    #kt_wrapper,
+    #kt_wrapper.collapsed-sidebar {
+        padding-left: 0;
+    }
+}
