@@ -1,51 +1,69 @@
 import { Routes } from '@angular/router';
+import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout';
+import { KycPageComponent } from './pages/compliance/kyc-page/kyc-page';
+import { KybPageComponent } from './pages/compliance/kyb-page/kyb-page';
+// ... other imports aaapa
 
 export const routes: Routes = [
     {
         path: '',
-        loadComponent:()=> 
-        import('./layouts/base-layout/base-layout').then(m => m.BaseLayout)
+        loadComponent: () =>
+            import('./layouts/base-layout/base-layout').then(m => m.BaseLayout)
         ,
         children: [
             {
                 path: '',
-                loadComponent:()=> 
-                import('./pages/home-page-component/home-page-component').then(m => m.HomePageComponent)
+                loadComponent: () =>
+                    import('./pages/home-page-component/home-page-component').then(m => m.HomePageComponent)
             },
             {
                 path: 'about',
-                loadComponent:()=> 
-                import('./pages/about-page-component/about-page-component').then(m => m.AboutPageComponent)
+                loadComponent: () =>
+                    import('./pages/about-page-component/about-page-component').then(m => m.AboutPageComponent)
             }
         ]
-        
+
     },
     {
         path: 'dashboard',
-        loadComponent:()=> 
-        import('./layouts/dashboard-layout/dashboard-layout').then(m => m.DashboardLayoutComponent),
+        loadComponent: () =>
+            import('./layouts/dashboard-layout/dashboard-layout').then(m => m.DashboardLayoutComponent),
         children: [
             {
                 path: '',
-                loadComponent:()=> 
-                import('./pages/dashboard/dashboard-page-component/dashboard-page-component').then(m => m.DashboardPageComponent)
+                loadComponent: () =>
+                    import('./pages/dashboard/dashboard-page-component/dashboard-page-component').then(m => m.DashboardPageComponent)
             },
             {
                 path: 'wallet',
-                loadComponent:()=> 
-                import('./pages/dashboard/wallet-page-component/wallet-page-component').then(m => m.WalletPageComponent),
+                loadComponent: () =>
+                    import('./pages/dashboard/wallet-page-component/wallet-page-component').then(m => m.WalletPageComponent),
                 children: [
                     {
 
                         path: 'soloaccount',
-                        loadComponent:()=> 
-                        import('./pages/dashboard/wallet/wallet-soloaccount-page-component/wallet-soloaccount-page-component').then(m => m.WalletSoloaccountPageComponent)
+                        loadComponent: () =>
+                            import('./pages/dashboard/wallet/wallet-soloaccount-page-component/wallet-soloaccount-page-component').then(m => m.WalletSoloaccountPageComponent)
                     }
                 ]
             }
         ]
 
 
-    }
+    },
+    {
+        path: '',
+        component: DashboardLayoutComponent,
+        children: [
+            // ... your other dashboard routes
+            { path: 'compliance/kyc', component: KycPageComponent },
+            { path: 'compliance/kyb', component: KybPageComponent },
+        ]
+    },
 
 ];
+
+
+
+
+

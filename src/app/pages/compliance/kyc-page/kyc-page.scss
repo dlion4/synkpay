@@ -1,0 +1,269 @@
+/* ==================================================================== */
+/* PREMIUM KYC WIZARD STYLES                                            */
+/* ==================================================================== */
+
+:host {
+    --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F9F1D0 50%, #AA8A2E 100%);
+    --gold-solid: #D4AF37;
+    --gold-soft: rgba(212, 175, 55, 0.1);
+    --plat-bg: #F5F7FA;
+    --plat-sidebar: #FFFFFF;
+    --plat-border: #E0E4E8;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(80, 205, 137, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(80, 205, 137, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(80, 205, 137, 0); }
+}
+.pulse-ring { animation: pulse 2s infinite; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+/* Full Screen Modal Constraints */
+#kycModal .modal-dialog-fullscreen {
+    margin: 0;
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+}
+
+.kyc-content {
+    background: var(--plat-bg);
+    border: none;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .modal-body {
+        flex: 1 1 auto;
+        overflow-y: auto;
+        padding: 0;
+    }
+}
+
+/* Sidebar Layout */
+.kyc-sidebar {
+    background: var(--plat-sidebar);
+    border-right: 1px solid var(--plat-border);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.02);
+    overflow-y: auto;
+    height: 100%;
+}
+
+/* Step Indicators */
+.step-link {
+    padding: 16px 25px;
+    display: flex;
+    align-items: center;
+    color: #A0AEC0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-right: 4px solid transparent;
+    cursor: pointer;
+
+    &.active {
+        color: #2D3436;
+        background: var(--plat-bg);
+        border-right: 4px solid var(--gold-solid);
+        font-weight: 600;
+    }
+
+    .step-num {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #EDF2F7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-size: 0.75rem;
+        transition: 0.4s;
+    }
+
+    &.active .step-num {
+        background: var(--gold-gradient);
+        color: white;
+        box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+    }
+}
+
+/* Gold Interaction Cards */
+.gold-card {
+    background: #FFFFFF;
+    border: 1px solid var(--plat-border);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: var(--gold-gradient);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: -1;
+    }
+
+    &:hover {
+        transform: translateY(-5px);
+        border-color: transparent;
+        color: white !important;
+        box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+
+        &::before { opacity: 1; }
+        .text-muted, i, h5, h6 { color: white !important; }
+    }
+}
+
+/* Radio/Checkbox Checked States */
+.kyc-radio:checked + .gold-card, 
+.kyc-radio-logic:checked + .gold-card,
+.kyc-check:checked + .gold-card {
+    border-color: var(--gold-solid) !important;
+    background: var(--gold-gradient) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2) !important;
+
+    * { color: white !important; }
+    .icon-circle {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: transparent !important;
+    }
+}
+
+/* Icon Circles */
+.icon-circle {
+    width: 60px; height: 60px;
+    background: var(--plat-bg);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold-solid);
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.gold-icon-circle {
+    width: 60px; height: 60px;
+    background: var(--gold-soft);
+    color: var(--gold-solid);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.3s;
+}
+
+/* Upload Boxes */
+.upload-box, .sof-upload-zone, .tax-upload-box {
+    background: #ffffff;
+    border: 2px dashed var(--plat-border);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border-radius: 16px;
+
+    &:hover, &.scanning {
+        border-color: var(--gold-solid);
+        background: rgba(212, 175, 55, 0.02);
+    }
+    
+    &.success {
+        border-color: #28a745;
+        background: rgba(40, 167, 69, 0.05);
+    }
+}
+
+/* Inputs */
+.premium-input, .form-control, .form-select {
+    background-color: #ffffff;
+    border: 1px solid var(--plat-border);
+    padding: 14px 16px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    color: #2D3436;
+
+    &:focus {
+        background-color: #fff;
+        border-color: var(--gold-solid);
+        box-shadow: 0 0 0 4px var(--gold-soft);
+        outline: none;
+    }
+}
+
+/* Progress Bar */
+.progress-container {
+    height: 4px;
+    background: #E2E8F0;
+    width: 100%;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--gold-gradient);
+    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Buttons */
+.btn-fintech {
+    background: var(--gold-gradient);
+    color: white;
+    font-weight: 700;
+    padding: 14px 35px;
+    border-radius: 12px;
+    border: none;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 25px rgba(212, 175, 55, 0.3);
+        color: white;
+    }
+    &:disabled {
+        opacity: 0.7;
+        transform: none;
+    }
+}
+
+/* Scanner Animation */
+.scanner-bar {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: var(--gold-gradient);
+    box-shadow: 0 0 15px var(--gold-solid);
+    z-index: 10;
+    animation: scanMove 2.5s infinite ease-in-out;
+}
+
+@keyframes scanMove {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.agreement-card {
+    background: #ffffff;
+    border: 1px solid var(--plat-border);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background: #f8fafc;
+        border-color: var(--gold-solid) !important;
+    }
+}
+
+.custom-check-gold {
+    accent-color: var(--gold-solid);
+    width: 18px; height: 18px;
+    cursor: pointer;
+}

@@ -1,0 +1,583 @@
+<div class="container-fluid px-xl-10 py-10" id="kt_content_container">
+    
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-10 bg-white p-8 rounded-4 shadow-sm border border-gray-200">
+        <div class="d-flex align-items-center mb-4 mb-md-0">
+            <div class="symbol symbol-60px me-5">
+                <div class="w-60px h-60px bg-light-primary rounded-circle d-flex align-items-center justify-content-center border border-primary border-dashed">
+                    <i class="fas fa-shield-check text-primary fs-1"></i>
+                </div>
+            </div>
+            <div>
+                <h1 class="text-gray-900 fw-bolder fs-2 mb-1">Identity & Compliance Center</h1>
+                <div class="text-muted fw-semibold fs-7">Manage your KYC, verification documents, and account limits.</div>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-dark fw-bold px-6 py-3 shadow-sm hover-elevate-up" data-bs-toggle="modal" data-bs-target="#kycModal">
+                <i class="fas fa-file-signature me-2"></i> Begin KYC Compliance
+            </button>
+        </div>
+    </div>
+
+    <div class="row g-5 mb-8">
+        <div class="col-xl-6">
+            <div class="card border-0 h-100 rounded-4 shadow-sm hover-elevate-up overflow-hidden" style="background: linear-gradient(135deg, #1e1e2d 0%, #2b2b40 100%);">
+                <div class="card-body p-8 d-flex flex-column justify-content-between position-relative">
+                    <i class="fas fa-certificate position-absolute text-white opacity-5" style="font-size: 12rem; right: -2rem; bottom: -2rem;"></i>
+                    <div class="position-relative z-index-1">
+                        <div class="d-flex justify-content-between align-items-start mb-6">
+                            <div class="d-flex align-items-center">
+                                <div class="symbol symbol-50px me-4">
+                                    <span class="symbol-label bg-white bg-opacity-10 text-white border border-white border-opacity-25">
+                                        <i class="fas fa-user-shield fs-3"></i>
+                                    </span>
+                                </div>
+                                <div>
+                                    <h3 class="text-white fw-bolder m-0">Level 3 Verified</h3>
+                                    <span class="text-white opacity-75 fs-8 text-uppercase tracking-wider">Enterprise Grade</span>
+                                </div>
+                            </div>
+                            <span class="badge bg-success fw-bold px-4 py-2 shadow-sm fs-8 pulse-ring">ACTIVE</span>
+                        </div>
+                        <div class="d-flex align-items-center p-4 rounded-4" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                            <i class="fas fa-check-circle text-success me-3 fs-2"></i>
+                            <span class="text-white opacity-90 fs-7">Your identity has been fully verified against national registries. Maximum transaction limits are unlocked.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card bg-white border-0 h-100 rounded-4 shadow-sm p-8">
+                <div class="d-flex justify-content-between align-items-center mb-6">
+                    <h4 class="text-dark fw-bolder m-0 fs-4">Secure Document Vault</h4>
+                    <span class="badge bg-light text-muted border border-gray-300 px-3 py-2"><i class="fas fa-lock me-1"></i> AES-256 Encrypted</span>
+                </div>
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <div class="border border-dashed border-success bg-light-success rounded-4 p-5 text-center h-100 hover-elevate-up cursor-pointer">
+                            <i class="fas fa-id-card fs-2x text-success mb-3"></i>
+                            <span class="d-block fw-bolder text-dark fs-6 mb-1">National ID</span>
+                            <span class="badge bg-success text-white fw-bold fs-9"><i class="fas fa-check me-1"></i>Verified</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="border border-dashed border-success bg-light-success rounded-4 p-5 text-center h-100 hover-elevate-up cursor-pointer">
+                            <i class="fas fa-file-invoice fs-2x text-success mb-3"></i>
+                            <span class="d-block fw-bolder text-dark fs-6 mb-1">Proof of Address</span>
+                            <span class="badge bg-success text-white fw-bold fs-9"><i class="fas fa-check me-1"></i>Verified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-5 mb-8">
+        <div class="col-xl-5">
+            <div class="card bg-white border-0 h-100 rounded-4 shadow-sm p-8">
+                <h4 class="text-dark fw-bolder mb-8 fs-4">Verification Journey</h4>
+                <div class="position-relative ms-2">
+                    <div class="position-absolute top-0 bottom-0 border-start border-2 border-gray-200" style="left: 11px; transform: translateY(15px); height: calc(100% - 30px);"></div>
+                    
+                    <div class="d-flex position-relative mb-7">
+                        <div class="bg-success rounded-circle border border-white border-4 shadow-sm z-index-1 d-flex align-items-center justify-content-center" style="width: 26px; height: 26px; flex-shrink: 0;">
+                            <i class="fas fa-check text-white" style="font-size: 0.6rem;"></i>
+                        </div>
+                        <div class="ms-4">
+                            <h6 class="fw-bolder text-dark mb-1 fs-6">Basic Profile Created</h6>
+                            <span class="text-muted fs-7">Email and phone number verified via OTP.</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex position-relative mb-7">
+                        <div class="bg-success rounded-circle border border-white border-4 shadow-sm z-index-1 d-flex align-items-center justify-content-center" style="width: 26px; height: 26px; flex-shrink: 0;">
+                            <i class="fas fa-check text-white" style="font-size: 0.6rem;"></i>
+                        </div>
+                        <div class="ms-4">
+                            <h6 class="fw-bolder text-dark mb-1 fs-6">Identity Document Uploaded</h6>
+                            <span class="text-muted fs-7">National ID successfully parsed by AI.</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex position-relative mb-7">
+                        <div class="bg-success rounded-circle border border-white border-4 shadow-sm z-index-1 d-flex align-items-center justify-content-center" style="width: 26px; height: 26px; flex-shrink: 0;">
+                            <i class="fas fa-check text-white" style="font-size: 0.6rem;"></i>
+                        </div>
+                        <div class="ms-4">
+                            <h6 class="fw-bolder text-dark mb-1 fs-6">Biometric Liveness Match</h6>
+                            <span class="text-muted fs-7">3D face scan matched to ID photo.</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex position-relative">
+                        <div class="bg-light-primary border-primary border border-2 rounded-circle border-white shadow-sm z-index-1 d-flex align-items-center justify-content-center" style="width: 26px; height: 26px; flex-shrink: 0;">
+                            <div class="bg-primary rounded-circle" style="width: 8px; height: 8px;"></div>
+                        </div>
+                        <div class="ms-4">
+                            <div class="d-flex align-items-center mb-1">
+                                <h6 class="fw-bolder text-primary m-0 fs-6 me-3">Source of Funds Verification</h6>
+                                <span class="badge bg-light-primary text-primary fw-bold fs-9">In Review</span>
+                            </div>
+                            <p class="text-muted fs-7 m-0">Bank statement is currently being analyzed by the compliance team.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-7">
+            <div class="card bg-white border-0 h-100 rounded-4 shadow-sm p-8">
+                <h4 class="text-dark fw-bolder mb-2 fs-4">Official Contact Channels</h4>
+                <p class="text-muted fs-7 mb-8">Manage the primary channels used for OTPs, security alerts, and system notifications.</p>
+                <div class="d-flex flex-column gap-4 mb-auto">
+                    
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center p-5 bg-light rounded-4 border border-dashed border-gray-300 hover-elevate-up">
+                        <div class="d-flex align-items-center mb-3 mb-sm-0">
+                            <div class="symbol symbol-45px me-4">
+                                <span class="symbol-label bg-white shadow-sm border border-gray-100">
+                                    <i class="fas fa-envelope-open-text text-primary fs-4"></i>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="text-dark fw-bolder fs-6 d-block">Official Email</span>
+                                <span class="text-muted fw-semibold fs-8">dan.milimo&#64;pkenya.com</span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-light-success text-success fw-bold px-3 py-2 me-3"><i class="fas fa-check-circle me-1"></i> Active</span>
+                            <button class="btn btn-sm btn-light border fw-bold text-muted px-4 bg-white shadow-sm">Manage</button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center p-5 bg-light rounded-4 border border-dashed border-gray-300 hover-elevate-up">
+                        <div class="d-flex align-items-center mb-3 mb-sm-0">
+                            <div class="symbol symbol-45px me-4">
+                                <span class="symbol-label bg-white shadow-sm border border-gray-100">
+                                    <i class="fas fa-phone-alt text-success fs-4"></i>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="text-dark fw-bolder fs-6 d-block">Official Phone Number</span>
+                                <span class="text-muted fw-semibold fs-8">+254 712 *** 678</span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-light-success text-success fw-bold px-3 py-2 me-3"><i class="fas fa-check-circle me-1"></i> Active</span>
+                            <button class="btn btn-sm btn-light border fw-bold text-muted px-4 bg-white shadow-sm">Manage</button>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center p-5 bg-light-warning rounded-4 border border-warning border-dashed hover-elevate-up">
+                        <div class="d-flex align-items-center mb-3 mb-sm-0">
+                            <div class="symbol symbol-45px me-4">
+                                <span class="symbol-label bg-white shadow-sm border border-gray-100">
+                                    <i class="fab fa-whatsapp text-warning fs-3"></i>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="text-dark fw-bolder fs-6 d-block">WhatsApp Alerts</span>
+                                <span class="text-warning fw-semibold fs-8">Activation Required</span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-dark fw-bold px-5 shadow-sm" (click)="showMiniToast('Redirecting to WhatsApp Verification...')">Activate Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert bg-light-info border border-info border-dashed p-4 d-flex align-items-center mt-8 mb-0 rounded-4">
+                    <i class="fas fa-user-shield text-info me-4 fs-2x"></i>
+                    <div>
+                        <h6 class="fw-bolder text-dark mb-1">Security & Privacy First</h6>
+                        <span class="text-muted fw-semibold fs-8">These channels are strictly used for verifying high-risk transactions, 2FA security codes, and critical account updates.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-5">
+        <div class="col-xl-7">
+            <div class="card bg-white border-0 h-100 rounded-4 shadow-sm p-8">
+                <h4 class="text-dark fw-bolder mb-6 fs-4">Network Profiles</h4>
+                <h6 class="text-muted text-uppercase fw-bold fs-8 ls-1 mb-4 border-bottom pb-2">Primary Users</h6>
+                
+                <div class="card border border-dashed border-gray-300 bg-light mb-6 hover-elevate-up shadow-none rounded-4">
+                    <div class="card-body p-5">
+                        <div class="d-flex align-items-center">
+                            <div class="symbol symbol-50px me-4">
+                                <img src="assets/media/avatars/300-1.jpg" alt="User" class="rounded-3 shadow-sm"/>
+                            </div>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <span class="text-gray-900 fw-bolder fs-5">Daniel Milimo Nalianya</span>
+                                <div class="d-flex align-items-center mt-1">
+                                    <span class="text-muted fw-bold fs-7">Account Owner</span>
+                                    <span class="bullet bullet-dot bg-success mx-3 h-5px w-5px"></span>
+                                    <span class="badge bg-light-success text-success fw-bold px-2 py-1"><i class="fas fa-check-circle me-1"></i>KYC Cleared</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-white border shadow-sm fw-bold text-dark px-4">Manage</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-4 mt-8 border-bottom pb-2">
+                    <h6 class="text-muted text-uppercase fw-bold fs-8 ls-1 m-0">Verified Beneficiaries (Next of Kin)</h6>
+                    <button class="btn btn-sm btn-light-primary fw-bold px-3 py-1"><i class="fas fa-plus me-1"></i> Add</button>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card border border-dashed border-gray-300 bg-white hover-elevate-up rounded-4 h-100">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="symbol symbol-40px me-3">
+                                        <span class="symbol-label bg-light-info text-info fw-bolder fs-5 rounded-3">SN</span>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <span class="text-gray-900 fw-bolder fs-6">Sarah Nanyama</span>
+                                        <span class="text-muted fw-bold fs-8">Spouse</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between bg-light rounded px-3 py-2">
+                                    <span class="text-success fw-bold fs-8"><i class="fas fa-shield-check me-1"></i>KYC Cleared</span>
+                                    <i class="fas fa-chevron-right text-gray-400 fs-8"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border border-dashed border-gray-300 bg-white hover-elevate-up rounded-4 h-100">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="symbol symbol-40px me-3">
+                                        <span class="symbol-label bg-light-warning text-warning fw-bolder fs-5 rounded-3">JN</span>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <span class="text-gray-900 fw-bolder fs-6">John Nalianya</span>
+                                        <span class="text-muted fw-bold fs-8">Dependent</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between bg-light rounded px-3 py-2 border border-warning border-dashed">
+                                    <span class="text-warning fw-bold fs-8"><i class="fas fa-clock me-1"></i>Pending ID</span>
+                                    <button class="btn btn-sm btn-light-warning px-2 py-0 fs-9 fw-bolder">Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-5">
+            <div class="card bg-white border-0 h-100 rounded-4 shadow-sm p-8">
+                <div class="d-flex justify-content-between align-items-center mb-6">
+                    <h4 class="text-dark fw-bolder m-0 fs-4">Security Logs</h4>
+                    <button class="btn btn-sm btn-light fw-bold text-muted border">View All</button>
+                </div>
+                
+                <div class="d-flex flex-column gap-5">
+                    <div class="d-flex align-items-center p-4 bg-light rounded-4 border border-dashed">
+                        <div class="symbol symbol-45px me-4">
+                            <span class="symbol-label bg-white shadow-sm"><i class="fas fa-fingerprint text-success fs-3"></i></span>
+                        </div>
+                        <div class="d-flex flex-column flex-grow-1">
+                            <span class="text-dark fw-bolder fs-6 mb-1">Biometric Login Approved</span>
+                            <span class="text-muted fs-8">Nairobi, KE (IP: 197.156.xx.xx)</span>
+                        </div>
+                        <span class="badge bg-light text-muted fw-bold border">Today, 09:12 AM</span>
+                    </div>
+
+                    <div class="d-flex align-items-center p-4 bg-light rounded-4 border border-dashed">
+                        <div class="symbol symbol-45px me-4">
+                            <span class="symbol-label bg-white shadow-sm"><i class="fas fa-file-contract text-primary fs-3"></i></span>
+                        </div>
+                        <div class="d-flex flex-column flex-grow-1">
+                            <span class="text-dark fw-bolder fs-6 mb-1">Terms of Service Accepted</span>
+                            <span class="text-muted fs-8">V2.4 Policy Update</span>
+                        </div>
+                        <span class="badge bg-light text-muted fw-bold border">Oct 12, 14:30 PM</span>
+                    </div>
+
+                    <div class="d-flex align-items-center p-4 bg-light-danger border-danger border-dashed rounded-4">
+                        <div class="symbol symbol-45px me-4">
+                            <span class="symbol-label bg-white shadow-sm"><i class="fas fa-shield-alt text-danger fs-3"></i></span>
+                        </div>
+                        <div class="d-flex flex-column flex-grow-1">
+                            <span class="text-danger fw-bolder fs-6 mb-1">Failed OTP Attempt</span>
+                            <span class="text-muted fs-8">Unknown Device Detected</span>
+                        </div>
+                        <span class="badge bg-danger text-white fw-bold shadow-sm">Oct 10, 11:05 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="kycModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content kyc-content">
+
+            <div class="progress-container">
+                <div class="progress-bar-fill" [style.width.%]="progressPercentage"></div>
+            </div>
+
+            <div class="d-flex h-100">
+                
+                <div class="kyc-sidebar d-none d-lg-block" style="width: 320px;">
+                    <div class="p-4 border-bottom">
+                        <h6 class="text-uppercase fw-bold ls-1 mb-1" style="color: var(--gold-solid)">Step Verification</h6>
+                        <small class="text-muted">Security Level: Grade-A</small>
+                    </div>
+                    <div class="py-2">
+                        <a class="step-link" [class.active]="currentStep === 1" (click)="setStep(1)"><div class="step-num">1</div> Business Status</a>
+                        <a class="step-link" [class.active]="currentStep === 2" (click)="setStep(2)"><div class="step-num">2</div> Personal Profile</a>
+                        <a class="step-link" [class.active]="currentStep === 3" (click)="setStep(3)"><div class="step-num">3</div> Contact & Verification</a>
+                        <a class="step-link" [class.active]="currentStep === 4" (click)="setStep(4)"><div class="step-num">4</div> Residential Address</a>
+                        <a class="step-link" [class.active]="currentStep === 5" (click)="setStep(5)"><div class="step-num">5</div> Identity Document</a>
+                        <a class="step-link" [class.active]="currentStep === 6" (click)="setStep(6)"><div class="step-num">6</div> Biometric Liveness</a>
+                        <a class="step-link" [class.active]="currentStep === 7" (click)="setStep(7)"><div class="step-num">7</div> Source of Funds</a>
+                        <a class="step-link" [class.active]="currentStep === 8" (click)="setStep(8)"><div class="step-num">8</div> Tax Compliance</a>
+                        <a class="step-link" [class.active]="currentStep === 9" (click)="setStep(9)"><div class="step-num">9</div> Financial Behavior</a>
+                        <a class="step-link" [class.active]="currentStep === 10" (click)="setStep(10)"><div class="step-num">10</div> Banking Setup</a>
+                        <a class="step-link" [class.active]="currentStep === 11" (click)="setStep(11)"><div class="step-num">11</div> Final Agreements</a>
+                    </div>
+                </div>
+
+                <div class="flex-grow-1 p-5 overflow-auto">
+                    <div class="container" style="max-width: 850px;">
+
+                        <div class="d-flex justify-content-between align-items-center mb-5">
+                            <span class="fw-bold" style="color: var(--gold-solid)">KYC PROGRESS: {{ currentStep }}/11</span>
+                           <button type="button" class="btn btn-fintech fw-bold px-6 shadow-sm" data-bs-dismiss="modal" (click)="saveYourData()">
+    <i class="fas fa-save me-2"></i> Save & Close
+</button>
+                        </div>
+
+                        <div class="animate-fade-in" *ngIf="currentStep === 1">
+                            <div class="mb-5">
+                                <h2 class="fw-bold mb-2">Choose Account Type</h2>
+                                <p class="text-muted">If you need more info, please check out the Help Page.</p>
+                            </div>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="w-100 h-100" style="cursor: pointer;">
+                                        <input type="radio" name="accountType" value="unregistered" class="d-none kyc-radio" checked>
+                                        <div class="gold-card p-4 h-100 shadow-sm border d-flex align-items-center">
+                                            <div class="icon-box me-4">
+                                                <div class="icon-circle shadow-sm" style="border: 1px solid var(--plat-border);">
+                                                    <i class="fas fa-user-gear fs-3" style="color: #3B82F6;"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h5 class="fw-bold mb-1">Unregistered Business Account</h5>
+                                                <p class="small text-muted mb-0">Access payment gateways and business analytics.</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="w-100 h-100" style="cursor: pointer;">
+                                        <input type="radio" name="accountType" value="nonprofit" class="d-none kyc-radio">
+                                        <div class="gold-card p-4 h-100 shadow-sm border d-flex align-items-center">
+                                            <div class="icon-box me-4">
+                                                <div class="icon-circle shadow-sm" style="border: 1px solid var(--plat-border);">
+                                                    <i class="fas fa-briefcase fs-3 text-muted"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h5 class="fw-bold mb-1">Non-profits Account</h5>
+                                                <p class="small text-muted mb-0">For informal groups or organizations operating non-commercially.</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="animate-fade-in" *ngIf="currentStep === 4">
+                            <div class="mb-4">
+                                <h2 class="fw-bold mb-1">Residence & Business Location</h2>
+                                <p class="text-muted">Enter your verified physical address.</p>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-4 border shadow-sm mb-5">
+                                <h6 class="fw-bold mb-4" style="color: var(--gold-solid)"><i class="fas fa-home me-2"></i>Personal Residence</h6>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <input type="text" class="form-control premium-input" placeholder="Address Line 1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control premium-input" placeholder="City">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control premium-input" placeholder="Postal Code">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select class="form-select form-control premium-input">
+                                            <option>Kenya</option>
+                                            <option>United Kingdom</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="fw-bold mb-3">Business Information</h4>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="w-100 h-100 mb-0" style="cursor: pointer;">
+                                            <input type="radio" name="businessLogic" value="same" class="d-none kyc-radio-logic" checked (click)="toggleManualAddress(false)">
+                                            <div class="gold-card p-4 h-100 border rounded-4 shadow-sm d-flex align-items-start">
+                                                <div class="icon-circle me-3 bg-light p-3 rounded-3"><i class="fas fa-sync-alt text-primary fs-4"></i></div>
+                                                <div>
+                                                    <div class="fw-bold">Business Address same as Residential</div>
+                                                    <p class="small text-muted mt-1 mb-0">Use the same verified location.</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="w-100 h-100 mb-0" style="cursor: pointer;">
+                                            <input type="radio" name="businessLogic" value="digital" class="d-none kyc-radio-logic" (click)="toggleManualAddress(true)">
+                                            <div class="gold-card p-4 h-100 border rounded-4 shadow-sm d-flex align-items-start">
+                                                <div class="icon-circle me-3 bg-light p-3 rounded-3"><i class="fas fa-globe text-muted fs-4"></i></div>
+                                                <div>
+                                                    <div class="fw-bold">Business is online/digital</div>
+                                                    <p class="small text-muted mt-1 mb-0">We will verify via digital presence.</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="isDigitalAddress" class="bg-white p-4 rounded-4 border shadow-sm animate-fade-in">
+                                <h6 class="fw-bold mb-4 text-primary">Manual Business Address Entry</h6>
+                                <input type="text" class="form-control premium-input mb-3" placeholder="Company headquarters">
+                                <div class="row g-3">
+                                    <div class="col-md-4"><input type="text" class="form-control premium-input" placeholder="City"></div>
+                                    <div class="col-md-4"><input type="text" class="form-control premium-input" placeholder="Postal Code"></div>
+                                    <div class="col-md-4"><input type="text" class="form-control premium-input" placeholder="Country"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="animate-fade-in" *ngIf="currentStep === 5">
+                            <div class="mb-4">
+                                <h2 class="fw-bold mb-1">Personal Verification Documents</h2>
+                                <p class="text-muted">Ensure your ID is clearly visible for instant AI approval.</p>
+                            </div>
+
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="small fw-bold text-muted mb-2 text-uppercase">Front side of ID <span class="text-danger">*</span></label>
+                                    <div class="upload-container position-relative overflow-hidden" (click)="simulateUpload('front')">
+                                        <div class="upload-box d-flex flex-column align-items-center justify-content-center p-5 rounded-4 shadow-sm border-dashed"
+                                             [ngClass]="{'scanning': uploadStatus['front'] === 'scanning', 'success': uploadStatus['front'] === 'success'}">
+                                            
+                                            <ng-container *ngIf="uploadStatus['front'] === 'idle'">
+                                                <div class="icon-circle mb-3 shadow-sm"><i class="fas fa-address-card fs-1" style="color: var(--gold-solid)"></i></div>
+                                                <h6 class="fw-bold mb-1">Click to upload Front ID</h6>
+                                                <div class="mt-3 badge bg-light text-muted border">JPG, PNG, PDF</div>
+                                            </ng-container>
+
+                                            <ng-container *ngIf="uploadStatus['front'] === 'scanning'">
+                                                <div class="scanner-bar"></div>
+                                                <div class="spinner-border text-warning mb-3"></div>
+                                                <h6 class="fw-bold">AI Analyzing Document...</h6>
+                                            </ng-container>
+
+                                            <ng-container *ngIf="uploadStatus['front'] === 'success'">
+                                                <i class="fas fa-check-circle fs-1 text-success mb-3"></i>
+                                                <h6 class="fw-bold text-success">File Verified</h6>
+                                                <p class="small text-muted mb-0">FRONT_ID_CONFIRMED.PNG</p>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="small fw-bold text-muted mb-2 text-uppercase">Back side of ID <span class="text-danger">*</span></label>
+                                    <div class="upload-container position-relative overflow-hidden" (click)="simulateUpload('back')">
+                                        <div class="upload-box d-flex flex-column align-items-center justify-content-center p-5 rounded-4 shadow-sm border-dashed"
+                                             [ngClass]="{'scanning': uploadStatus['back'] === 'scanning', 'success': uploadStatus['back'] === 'success'}">
+                                            
+                                            <ng-container *ngIf="uploadStatus['back'] === 'idle'">
+                                                <div class="icon-circle mb-3 shadow-sm"><i class="fas fa-id-card-clip fs-1" style="color: var(--gold-solid)"></i></div>
+                                                <h6 class="fw-bold mb-1">Click to upload Back ID</h6>
+                                                <div class="mt-3 badge bg-light text-muted border">JPG, PNG, PDF</div>
+                                            </ng-container>
+
+                                            <ng-container *ngIf="uploadStatus['back'] === 'scanning'">
+                                                <div class="scanner-bar"></div>
+                                                <div class="spinner-border text-warning mb-3"></div>
+                                                <h6 class="fw-bold">AI Analyzing Document...</h6>
+                                            </ng-container>
+
+                                            <ng-container *ngIf="uploadStatus['back'] === 'success'">
+                                                <i class="fas fa-check-circle fs-1 text-success mb-3"></i>
+                                                <h6 class="fw-bold text-success">File Verified</h6>
+                                                <p class="small text-muted mb-0">BACK_ID_CONFIRMED.PNG</p>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="animate-fade-in" *ngIf="currentStep === 11">
+                            <div class="mb-4 text-center">
+                                <h2 class="fw-bold mb-1">Final Agreements & Submission</h2>
+                                <p class="text-muted">Consent, T&Cs, and Final Submission.</p>
+                            </div>
+
+                            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                                <div class="card-body p-4 p-md-5">
+                                    <div class="agreement-list d-flex flex-column gap-3 mb-4">
+                                        <label class="agreement-card p-3 border rounded-3 d-flex align-items-center cursor-pointer">
+                                            <input type="checkbox" class="form-check-input me-3 custom-check-gold">
+                                            <span class="small fw-medium">I consent to the Terms and Conditions.</span>
+                                        </label>
+                                        <label class="agreement-card p-3 border rounded-3 d-flex align-items-center cursor-pointer">
+                                            <input type="checkbox" class="form-check-input me-3 custom-check-gold">
+                                            <span class="small fw-medium">I confirm all provided information is true.</span>
+                                        </label>
+                                        <label class="agreement-card p-3 border rounded-3 d-flex align-items-center cursor-pointer">
+                                            <input type="checkbox" class="form-check-input me-3 custom-check-gold">
+                                            <span class="small fw-medium">I accept the Anti-Money Laundering (AML) Terms.</span>
+                                        </label>
+                                    </div>
+
+                                    <button class="btn btn-primary btn-lg w-100 py-3 rounded-pill fw-bold shadow-sm" 
+                                            [disabled]="isSubmitting" (click)="finalSubmit()">
+                                        <span *ngIf="!isSubmitting">SUBMIT KYC APPLICATION <i class="fas fa-paper-plane ms-2"></i></span>
+                                        <span *ngIf="isSubmitting"><i class="fas fa-circle-notch fa-spin me-2"></i>Processing Application...</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="animate-fade-in text-center p-5 border border-dashed rounded-4 mt-5 bg-light" 
+                             *ngIf="currentStep !== 1 && currentStep !== 4 && currentStep !== 5 && currentStep !== 11">
+                            <i class="fas fa-tools fs-1 text-muted mb-3"></i>
+                            <h4 class="fw-bolder">Step {{ currentStep }} Placeholder</h4>
+                            <p class="text-muted">Drop your HTML form content for step {{ currentStep }} right here!</p>
+                        </div>
+
+                        <div class="mt-5 pt-4 d-flex justify-content-between border-top">
+                            <button class="btn btn-light border px-4 py-2 fw-bold" [disabled]="currentStep === 1" (click)="prevStep()">Previous</button>
+                            <button class="btn-fintech" *ngIf="currentStep < totalSteps" (click)="nextStep()">
+                                Continue Step <i class="fas fa-chevron-right ms-2"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

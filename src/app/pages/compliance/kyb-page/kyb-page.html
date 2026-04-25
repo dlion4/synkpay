@@ -1,0 +1,537 @@
+<div class="container-fluid px-xl-10 py-10" id="kt_content_container">
+
+    <div class="row g-5 mb-8">
+        <div class="col-xl-6">
+            <div class="card border-0 h-100 rounded-4 shadow-sm hover-elevate-up overflow-hidden" style="background: linear-gradient(135deg, #1e1e2d 0%, #2b2b40 100%);">
+                <div class="card-body p-8 d-flex flex-column justify-content-between position-relative">
+                    <i class="fas fa-building position-absolute text-white opacity-5" style="font-size: 14rem; right: -2rem; bottom: -2rem; z-index: 0;"></i>
+                    <div class="position-relative z-index-1">
+                        <div class="text-white mb-6 pt-2">
+                            <span class="fs-6 fw-bold me-2 d-block lh-1 pb-2 text-warning text-uppercase ls-1" style="color: #e6b829 !important;">Best for KYB</span>
+                            <span class="fs-1 fw-bolder">Registered Businesses</span>
+                        </div>
+                        <span class="fw-semibold text-white fs-7 mb-8 d-block opacity-75" style="max-width: 95%;">
+                            Entities with formal legal existence (Corporate Registry, Tax Authority). Requires comprehensive documentation for compliance, unlocking maximum B2B transaction limits and API features.
+                        </span>
+                        <div class="row g-3 mb-8">
+                            <div class="col-6 d-flex align-items-center">
+                                <div class="symbol symbol-35px symbol-circle me-3 border border-white border-opacity-25 shadow-sm">
+                                    <span class="symbol-label bg-white bg-opacity-10 text-white"><i class="fas fa-landmark fs-7"></i></span>
+                                </div>
+                                <div class="text-white"><span class="fw-bold fs-7">Public (PLC)</span></div>
+                            </div>
+                            <div class="col-6 d-flex align-items-center">
+                                <div class="symbol symbol-35px symbol-circle me-3 border border-white border-opacity-25 shadow-sm">
+                                    <span class="symbol-label bg-white bg-opacity-10 text-white"><i class="fas fa-building fs-7"></i></span>
+                                </div>
+                                <div class="text-white"><span class="fw-bold fs-7">Private (LTD)</span></div>
+                            </div>
+                            <div class="col-6 d-flex align-items-center">
+                                <div class="symbol symbol-35px symbol-circle me-3 border border-white border-opacity-25 shadow-sm">
+                                    <span class="symbol-label bg-white bg-opacity-10 text-white"><i class="fas fa-handshake fs-7"></i></span>
+                                </div>
+                                <div class="text-white"><span class="fw-bold fs-7">Partnerships</span></div>
+                            </div>
+                            <div class="col-6 d-flex align-items-center">
+                                <div class="symbol symbol-35px symbol-circle me-3 border border-white border-opacity-25 shadow-sm">
+                                    <span class="symbol-label bg-white bg-opacity-10 text-white"><i class="fas fa-globe-africa fs-7"></i></span>
+                                </div>
+                                <div class="text-white"><span class="fw-bold fs-7">NGOs / Trusts</span></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column flex-sm-row gap-3 mt-auto">
+                            <button class="btn flex-shrink-0 shadow-sm fw-bolder px-6 text-white border-0" data-bs-toggle="modal" data-bs-target="#wizardModal" style="background: linear-gradient(90deg, #e6b829, #c99c35);">
+                                <i class="fas fa-rocket me-2"></i> Start KYB
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card bg-white border-0 h-100 rounded-4 shadow-sm p-8">
+                <div class="d-flex justify-content-between align-items-center mb-6">
+                    <h4 class="text-dark fw-bolder m-0 fs-4">Entity Verification Status</h4>
+                    <span class="badge bg-light-success text-success border border-success border-dashed px-3 py-2 fw-bold">ACTIVE - TIER 3</span>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="d-flex align-items-center p-4 bg-light rounded-4 border border-dashed hover-elevate-up transition-300">
+                            <div class="symbol symbol-45px me-4"><span class="symbol-label bg-white shadow-sm border"><i class="fas fa-users text-primary fs-4"></i></span></div>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <span class="text-dark fw-bolder fs-6">Ultimate Beneficial Owners (UBO)</span>
+                                <span class="text-muted fw-semibold fs-8">All owners >10% identified</span>
+                            </div>
+                            <span class="badge bg-success text-white fw-bold px-3 py-1"><i class="fas fa-check me-1"></i>Cleared</span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex align-items-center p-4 bg-light rounded-4 border border-dashed hover-elevate-up transition-300">
+                            <div class="symbol symbol-45px me-4"><span class="symbol-label bg-white shadow-sm border"><i class="fas fa-user-tie text-info fs-4"></i></span></div>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <span class="text-dark fw-bolder fs-6">Board of Directors KYC</span>
+                                <span class="text-muted fw-semibold fs-8">Identity & Biometrics mapped</span>
+                            </div>
+                            <span class="badge bg-success text-white fw-bold px-3 py-1"><i class="fas fa-check me-1"></i>Cleared</span>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex align-items-center p-4 bg-light-warning rounded-4 border border-warning border-dashed hover-elevate-up transition-300">
+                            <div class="symbol symbol-45px me-4"><span class="symbol-label bg-white shadow-sm border"><i class="fas fa-file-invoice-dollar text-warning-dark fs-4"></i></span></div>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <span class="text-dark fw-bolder fs-6">Corporate Tax Compliance</span>
+                                <span class="text-muted fw-semibold fs-8">KRA PIN & Compliance Certificate</span>
+                            </div>
+                            <button class="btn btn-sm btn-dark fw-bold px-4 shadow-sm">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="wizardModal" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content border-0 kyc-content">
+
+            <div class="modal-header bg-white border-bottom px-4">
+                <div class="d-flex align-items-center">
+                    <div class="me-3 p-2 rounded bg-light"><i class="fas fa-shield-halved text-primary"></i></div>
+                    <h5 class="fw-bold mb-0">Registered Business Onboarding</h5>
+                </div>
+                <div class="d-flex align-items-center gap-4">
+                    
+                    <button type="button" class="btn btn-fintech fw-bold px-6 shadow-sm" data-bs-dismiss="modal" (click)="saveYourData()">
+    <i class="fas fa-save me-2"></i> Save & Close
+</button>
+                </div>
+            </div>
+
+            <div class="progress rounded-0" style="height: 4px;">
+                <div class="progress-bar-fill" [style.width.%]="progressPercentage"></div>
+            </div>
+
+            <div class="modal-body p-0">
+                <div class="d-flex h-100">
+
+                    <div class="kyc-sidebar bg-light border-end d-none d-lg-block p-4" style="width: 320px;">
+                        <div class="sidebar-step" [class.active]="currentStep === 1" (click)="setStep(1)"><div class="step-num">1</div> Business Status</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 2" (click)="setStep(2)"><div class="step-num">2</div> Profile information</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 3" (click)="setStep(3)"><div class="step-num">3</div> Contact Channels</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 4" (click)="setStep(4)"><div class="step-num">4</div> Physical Address</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 5" (click)="setStep(5)"><div class="step-num">5</div> Identity Documents</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 6" (click)="setStep(6)"><div class="step-num">6</div> Biometric Scan</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 7" (click)="setStep(7)"><div class="step-num">7</div> Source of Funds</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 8" (click)="setStep(8)"><div class="step-num">8</div> Tax Compliance</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 9" (click)="setStep(9)"><div class="step-num">9</div> Financial Behavior</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 10" (click)="setStep(10)"><div class="step-num">10</div> Security</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 11" (click)="setStep(11)"><div class="step-num">11</div> Payout Setup</div>
+                        <div class="sidebar-step" [class.active]="currentStep === 12" (click)="setStep(12)"><div class="step-num">12</div> Final Agreements</div>
+                    </div>
+
+                    <div class="flex-grow-1 p-4 p-md-5 overflow-auto bg-white">
+                        <div class="container" style="max-width: 800px;">
+
+                            <div class="animate-fade-in" *ngIf="currentStep === 1">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <div>
+                                        <h2 class="fw-bold mb-1 text-dark">Business Status (KYB)</h2>
+                                        <p class="text-muted small">Select the legal structure of your registered entity to proceed.</p>
+                                    </div>
+                                </div>
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <input type="radio" class="btn-check" name="businessType" id="type_ltd" autocomplete="off" checked>
+                                        <label class="glass-card w-100 p-4" for="type_ltd">
+                                            <div class="d-flex align-items-center">
+                                                <div class="icon-circle me-3"><i class="fas fa-building"></i></div>
+                                                <div>
+                                                    <h6 class="fw-bold mb-1">Private Limited Company</h6>
+                                                    <p class="small mb-0 opacity-75">Formal legal existence with a government agency.</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="radio" class="btn-check" name="businessType" id="type_plc" autocomplete="off">
+                                        <label class="glass-card w-100 p-4" for="type_plc">
+                                            <div class="d-flex align-items-center">
+                                                <div class="icon-circle me-3"><i class="fas fa-landmark"></i></div>
+                                                <div>
+                                                    <h6 class="fw-bold mb-1">Public Limited Company</h6>
+                                                    <p class="small mb-0 opacity-75">Large corporations often listed on stock exchanges.</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="radio" class="btn-check" name="businessType" id="type_partner" autocomplete="off">
+                                        <label class="glass-card w-100 p-4" for="type_partner">
+                                            <div class="d-flex align-items-center">
+                                                <div class="icon-circle me-3"><i class="fas fa-handshake"></i></div>
+                                                <div>
+                                                    <h6 class="fw-bold mb-1">Partnership</h6>
+                                                    <p class="small mb-0 opacity-75">Entities with shared ownership.</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="radio" class="btn-check" name="businessType" id="type_ngo" autocomplete="off">
+                                        <label class="glass-card w-100 p-4" for="type_ngo">
+                                            <div class="d-flex align-items-center">
+                                                <div class="icon-circle me-3"><i class="fas fa-heart"></i></div>
+                                                <div>
+                                                    <h6 class="fw-bold mb-1">Non-Profit Organizations</h6>
+                                                    <p class="small mb-0 opacity-75">Charitable or cultural entities.</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="animate-fade-in" *ngIf="currentStep === 2">
+                                <div class="mb-4">
+                                    <h2 class="fw-bold mb-1 text-dark">Business Profile</h2>
+                                    <p class="text-muted small">Provide comprehensive details regarding your company structure.</p>
+                                </div>
+
+                                <ul class="nav nav-pills mb-4 p-1 glass-nav rounded-pill shadow-sm" id="businessTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active rounded-pill px-4" data-bs-toggle="pill" data-bs-target="#tab-general" type="button">General Info</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link rounded-pill px-4" data-bs-toggle="pill" data-bs-target="#tab-directors" type="button">Board of Directors</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link rounded-pill px-4" data-bs-toggle="pill" data-bs-target="#tab-shareholders" type="button">Shareholders & Capital</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content border-0">
+                                    <div class="tab-pane fade show active" id="tab-general" role="tabpanel">
+                                        <div class="glass-card p-4">
+                                            <div class="row g-3">
+                                                <div class="col-md-12">
+                                                    <label class="small fw-bold text-muted mb-2">Legal Registered Name <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control premium-input glass-input" placeholder="e.g., Keenthemes Inc.">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="small fw-bold text-muted mb-2">Registration Number <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control premium-input glass-input" placeholder="PVT-2024-X891">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="small fw-bold text-muted mb-2">Date of Incorporation <span class="text-danger">*</span></label>
+                                                    <input type="date" class="form-control premium-input glass-input">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label class="small fw-bold text-muted mb-2">Business Description</label>
+                                                    <textarea class="form-control premium-input glass-input" rows="3" placeholder="Briefly describe your business activities..."></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab-directors" role="tabpanel">
+                                        <div class="glass-card p-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <h6 class="fw-bold mb-0">Directors / Managing Partners</h6>
+                                                <button type="button" class="btn btn-sm btn-outline-primary rounded-pill px-3">+ Add Director</button>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless align-middle">
+                                                    <thead class="text-muted small">
+                                                        <tr>
+                                                            <th>Full Name</th>
+                                                            <th>Designation</th>
+                                                            <th>Nationality</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="small">
+                                                        <tr class="border-bottom">
+                                                            <td><input type="text" class="form-control form-control-sm glass-input" placeholder="John Doe"></td>
+                                                            <td><input type="text" class="form-control form-control-sm glass-input" placeholder="Managing Director"></td>
+                                                            <td><input type="text" class="form-control form-control-sm glass-input" placeholder="Kenyan"></td>
+                                                            <td><button class="btn btn-sm text-danger"><i class="fas fa-trash"></i></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab-shareholders" role="tabpanel">
+                                        <div class="glass-card p-4">
+                                            <h6 class="fw-bold mb-3 text-dark">Shareholding Distribution</h6>
+                                            <div class="row g-3 mb-4">
+                                                <div class="col-md-6">
+                                                    <label class="small fw-bold text-muted mb-2">Total Authorized Shares</label>
+                                                    <input type="number" class="form-control premium-input glass-input" placeholder="100,000">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="small fw-bold text-muted mb-2">Par Value Per Share (USD)</label>
+                                                    <input type="text" class="form-control premium-input glass-input" placeholder="1.00">
+                                                </div>
+                                            </div>
+                                            <label class="small fw-bold text-muted mb-2">Principal Shareholders (>10% holding)</label>
+                                            <div class="shareholder-entry glass-inner-box p-3 rounded-3 mb-2 d-flex align-items-center gap-3">
+                                                <div class="flex-grow-1">
+                                                    <input type="text" class="form-control form-control-sm glass-input" placeholder="Shareholder Name">
+                                                </div>
+                                                <div style="width: 120px;">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="number" class="form-control glass-input" placeholder="51">
+                                                        <span class="input-group-text glass-input">%</span>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-sm btn-light rounded-circle"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="animate-fade-in" *ngIf="currentStep === 4">
+                                <div class="mb-4">
+                                    <h2 class="fw-bold mb-1 text-dark">Location Details</h2>
+                                    <p class="text-muted small">Enter the physical operating location of the business.</p>
+                                </div>
+                                <div class="glass-card p-4 mb-4">
+                                    <h6 class="fw-bold mb-3 text-uppercase small text-muted"><i class="fas fa-map-marker-alt me-2"></i>Registered Office Address</h6>
+                                    <div class="row g-3">
+                                        <div class="col-md-12">
+                                            <label class="small fw-bold text-muted mb-2">Country / Region <span class="text-danger">*</span></label>
+                                            <select class="form-select premium-input glass-input">
+                                                <option selected disabled>Select Country...</option>
+                                                <option value="KE">Kenya</option>
+                                                <option value="US">United States</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label class="small fw-bold text-muted mb-2">Building Name / Street <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control premium-input glass-input" placeholder="e.g., Mirage Towers, Waiyaki Way">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="small fw-bold text-muted mb-2">Unit / Floor / Suite</label>
+                                            <input type="text" class="form-control premium-input glass-input" placeholder="e.g., 5th Floor, Suite B2">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="small fw-bold text-muted mb-2">City / Town <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control premium-input glass-input" placeholder="e.g., Westlands, Nairobi">
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 pt-3 border-top border-light">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="sameAddressCheck" checked>
+                                            <label class="form-check-label text-dark fw-bold small" for="sameAddressCheck">Postal Address is same as Physical Address</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="glass-card p-4">
+                                    <h6 class="fw-bold mb-3 text-uppercase small text-muted"><i class="fas fa-file-invoice me-2"></i>Address Verification</h6>
+                                    <div class="glass-inner-box p-4 rounded-3 text-center">
+                                        <i class="fas fa-cloud-upload-alt fa-2x mb-3" style="color: var(--gold-solid);"></i>
+                                        <h6 class="fw-bold text-dark">Upload Proof of Address</h6>
+                                        <p class="text-muted small mb-3">Recent Utility Bill (Water/Electricity) or Lease Agreement.</p>
+                                        <input type="file" class="form-control premium-input glass-input mx-auto" style="max-width: 400px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="animate-fade-in" *ngIf="currentStep === 5">
+                                <div class="mb-4">
+                                    <h2 class="fw-bold mb-1 text-dark">Document Depository</h2>
+                                    <p class="text-muted small">Upload statutory documents based on your entity type. Ensure scans are clear.</p>
+                                </div>
+                                <div class="glass-card p-4 mb-4">
+                                    <h6 class="fw-bold mb-3 text-uppercase small text-muted"><i class="fas fa-user-shield me-2"></i>Authorized Signatories (KYC)</h6>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="small fw-bold text-muted mb-2">Primary Director ID / Passport <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <input type="file" class="form-control premium-input glass-input">
+                                                <span class="input-group-text glass-input"><i class="fas fa-id-card text-muted"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="small fw-bold text-muted mb-2">Passport Photo <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <input type="file" class="form-control premium-input glass-input">
+                                                <span class="input-group-text glass-input"><i class="fas fa-camera text-muted"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 d-flex align-items-center justify-content-between">
+                                    <h6 class="fw-bold text-dark mb-0">Business Entity Documents</h6>
+                                </div>
+                                
+                                <ul class="nav nav-pills glass-nav rounded-pill shadow-sm flex-nowrap mb-4 overflow-auto" id="docTabs" role="tablist">
+                                    <li class="nav-item"><button class="nav-link active rounded-pill px-3 text-nowrap" data-bs-toggle="pill" data-bs-target="#docs-ltd" type="button"><i class="fas fa-briefcase me-2"></i>Private Ltd</button></li>
+                                    <li class="nav-item"><button class="nav-link rounded-pill px-3 text-nowrap" data-bs-toggle="pill" data-bs-target="#docs-finance" type="button">Tax & Finance</button></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="docs-ltd" role="tabpanel">
+                                        <div class="glass-card p-4">
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label class="small fw-bold text-muted">Certificate of Incorporation <span class="text-danger">*</span></label>
+                                                    <input type="file" class="form-control premium-input glass-input mt-1">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="small fw-bold text-muted">Memorandum & Articles (MOA/AOA) <span class="text-danger">*</span></label>
+                                                    <input type="file" class="form-control premium-input glass-input mt-1">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="small fw-bold text-muted">CR12 (Official Search) <span class="text-danger">*</span></label>
+                                                    <input type="file" class="form-control premium-input glass-input mt-1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="docs-finance" role="tabpanel">
+                                        <div class="glass-card p-4">
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label class="small fw-bold text-muted">Company KRA PIN Certificate <span class="text-danger">*</span></label>
+                                                    <input type="file" class="form-control premium-input glass-input mt-1">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="small fw-bold text-muted">Tax Compliance Certificate (Valid) <span class="text-danger">*</span></label>
+                                                    <input type="file" class="form-control premium-input glass-input mt-1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="animate-fade-in" *ngIf="currentStep === 6">
+                                <div class="text-center mb-5">
+                                    <div class="d-inline-block p-3 rounded-circle bg-light mb-3">
+                                        <i class="fas fa-face-viewfinder fa-3x text-primary"></i>
+                                    </div>
+                                    <h2 class="fw-bold mb-1 text-dark">Biometric Verification</h2>
+                                    <p class="text-muted mx-auto" style="max-width: 500px;">Please ensure you are in a well-lit area.</p>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8">
+                                        <div class="glass-card p-0 overflow-hidden border-0 shadow-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-5 bg-dark p-4 text-white d-flex flex-column justify-content-center">
+                                                    <h6 class="fw-bold text-uppercase small mb-4 text-warning">Scanning Guidelines</h6>
+                                                    <ul class="list-unstyled mb-0">
+                                                        <li class="mb-3 d-flex align-items-start"><i class="fas fa-check-circle text-success mt-1 me-2"></i><span class="small">Remove glasses or hats.</span></li>
+                                                        <li class="mb-3 d-flex align-items-start"><i class="fas fa-check-circle text-success mt-1 me-2"></i><span class="small">Keep your face within frame.</span></li>
+                                                        <li class="d-flex align-items-start"><i class="fas fa-lightbulb text-warning mt-1 me-2"></i><span class="small">Avoid bright backlighting.</span></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-7 p-5 bg-white position-relative text-center">
+                                                    <div class="biometric-container mb-4 mx-auto position-relative">
+                                                        <div class="face-overlay"></div>
+                                                        <div class="video-placeholder d-flex align-items-center justify-content-center bg-light rounded-pill shadow-inner" style="height: 300px; width: 220px; border: 2px dashed #dee2e6 !important; margin: 0 auto;">
+                                                            <div class="text-center p-3">
+                                                                <i class="fas fa-camera-retro fa-2x text-muted mb-2"></i>
+                                                                <p class="small text-muted mb-0">Camera Preview</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <label class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm w-100" for="face_capture">
+                                                        <i class="fas fa-video me-2"></i> Start Facial Scan
+                                                    </label>
+                                                    <input type="file" accept="image/*" capture="user" id="face_capture" class="d-none">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="animate-fade-in" *ngIf="currentStep === 12">
+                                <div class="text-center mb-5">
+                                    <div class="d-inline-block p-3 rounded-circle bg-soft-success mb-3">
+                                        <i class="fas fa-file-signature fa-3x text-success"></i>
+                                    </div>
+                                    <h2 class="fw-bold mb-1 text-dark">Final Attestation</h2>
+                                    <p class="text-muted mx-auto" style="max-width: 550px;">
+                                        By checking the boxes below, you are legally binding your entity to our platform's operating standards.
+                                    </p>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-10">
+                                        <div class="glass-card p-4 mb-4">
+                                            <h6 class="fw-bold mb-4 text-uppercase small text-muted border-bottom pb-2">Mandatory Agreements</h6>
+                                            <div class="list-group list-group-flush">
+                                                <div class="list-group-item bg-transparent px-0 py-3 border-bottom">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="form-check fs-5"><input class="form-check-input me-3" type="checkbox"></div>
+                                                        <div>
+                                                            <label class="fw-bold text-dark d-block mb-1">Terms of Service & User Agreement</label>
+                                                            <p class="small text-muted mb-0">I accept the general operating terms, fee structures, and service limitations.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="list-group-item bg-transparent px-0 py-3 border-bottom">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="form-check fs-5"><input class="form-check-input me-3" type="checkbox"></div>
+                                                        <div>
+                                                            <label class="fw-bold text-dark d-block mb-1">Anti-Money Laundering (AML) & CFT Policy</label>
+                                                            <p class="small text-muted mb-0">I certify that the funds processed through this account are not derived from illicit activities.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row g-4">
+                                            <div class="col-md-7">
+                                                <div class="glass-card p-4 h-100 bg-dark text-white border-0 shadow-lg">
+                                                    <h6 class="fw-bold mb-3 text-warning small text-uppercase">Authorized Representative</h6>
+                                                    <div class="mb-3">
+                                                        <label class="small opacity-75 mb-1">Full Legal Name (Electronic Signature)</label>
+                                                        <input type="text" class="form-control bg-transparent text-white border-secondary fw-bold" placeholder="Type your full name" style="border-style: none none solid none; border-radius: 0;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="glass-card p-4 h-100 text-center d-flex flex-column justify-content-center border-2 border-primary" style="border-style: dashed !important;">
+                                                    <p class="text-muted small mb-4">Click below to submit your application for review.</p>
+                                                    <button class="btn btn-primary rounded-pill py-3 px-5 fw-bold shadow-lg mb-2" [disabled]="isSubmitting" (click)="finalSubmit()">
+                                                        <span *ngIf="!isSubmitting"><i class="fas fa-rocket me-2"></i> OPEN ACCOUNT</span>
+                                                        <span *ngIf="isSubmitting"><i class="fas fa-circle-notch fa-spin me-2"></i> Submitting...</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="animate-fade-in text-center p-5 border border-dashed rounded-4 mt-5 bg-light" 
+                                 *ngIf="currentStep === 3 || (currentStep > 6 && currentStep < 12)">
+                                <i class="fas fa-tools fs-1 text-muted mb-3"></i>
+                                <h4 class="fw-bolder">Step {{ currentStep }} Placeholder</h4>
+                                <p class="text-muted">Form content for step {{ currentStep }} goes here!</p>
+                            </div>
+
+                            <div class="mt-5 pt-4 d-flex justify-content-between border-top">
+                                <button class="btn btn-light px-4 border fw-bold" [disabled]="currentStep === 1" (click)="prevStep()">Back</button>
+                                <button class="btn-launch px-5" *ngIf="currentStep < totalSteps" (click)="nextStep()">
+                                    Continue Step <i class="fas fa-chevron-right ms-2"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
