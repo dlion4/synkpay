@@ -1,183 +1,497 @@
-<div id="kt_aside" class="aside aside-extended shadow-sm" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="auto" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_mobile_toggle" style="background: linear-gradient(180deg, #111827 0%, #1f2937 100%); border-right: 1px solid rgba(212, 175, 55, 0.2);">
-    
-    <div class="aside-primary d-flex flex-column align-items-lg-center flex-row-auto">
-        <div class="aside-logo d-none d-lg-flex flex-column align-items-center flex-column-auto py-10" id="kt_aside_logo">
+<div id="kt_aside" class="aside aside-extended shadow-lg d-flex h-100" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="auto" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_mobile_toggle" style="position: fixed; top: 0; left: 0; z-index: 100; height: 100vh;">
+
+    <div class="aside-primary d-flex flex-column align-items-center flex-row-auto" style="width: 100px; background: linear-gradient(180deg, #0d1117 0%, #1f2937 100%); border-right: 1px solid rgba(212, 175, 55, 0.2); z-index: 2;">
+        
+        <div class="aside-logo d-flex flex-column align-items-center flex-column-auto py-8" id="kt_aside_logo">
             <a routerLink="/">
-                <img alt="SendMo Logo" src="assets/media/logos/demo7.svg" class="h-35px">
+                <div class="symbol symbol-40px bg-white bg-opacity-10 rounded-circle border border-white border-opacity-25 d-flex align-items-center justify-content-center shadow-sm">
+                    <i class="fas fa-paper-plane text-gold" style="color: #D4AF37;"></i>
+                </div>
             </a>
         </div>
-        
-        <div class="aside-nav d-flex flex-column align-items-center flex-column-fluid w-100 pt-5 pt-lg-0" id="kt_aside_nav">
-            <div class="hover-scroll-overlay-y mb-5 scroll-ms px-5" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-offset="0px">
-                <ul class="nav flex-column w-100" id="kt_aside_nav_tabs">
-                    <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
-                        <a class="nav-link btn btn-icon btn-color-gray-500 btn-active-color-warning btn-active-light active" data-bs-toggle="tab" href="#kt_aside_nav_tab_dashboard">
-                            <i class="ki-duotone ki-element-11 fs-2x"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Compliance">
-                        <a class="nav-link btn btn-icon btn-color-gray-500 btn-active-color-warning btn-active-light" data-bs-toggle="tab" href="#kt_aside_nav_tab_compliance">
-                            <i class="ki-duotone ki-shield-tick fs-2x"><span class="path1"></span><span class="path2"></span></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Performance">
-                        <a class="nav-link btn btn-icon btn-color-gray-500 btn-active-color-warning btn-active-light" data-bs-toggle="tab" href="#kt_aside_nav_tab_perfomance">
-                            <i class="ki-duotone ki-chart-line-up fs-2x"><span class="path1"></span><span class="path2"></span></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Wallet">
-                        <a class="nav-link btn btn-icon btn-color-gray-500 btn-active-color-warning btn-active-light" data-bs-toggle="tab" href="#kt_aside_nav_tab_wallet">
-                            <i class="ki-duotone ki-wallet fs-2x"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Payments">
-                        <a class="nav-link btn btn-icon btn-color-gray-500 btn-active-color-warning btn-active-light" data-bs-toggle="tab" href="#kt_aside_nav_tab_payments">
-                            <i class="ki-duotone ki-send fs-2x"><span class="path1"></span><span class="path2"></span></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Channels">
-                        <a class="nav-link btn btn-icon btn-color-gray-500 btn-active-color-warning btn-active-light" data-bs-toggle="tab" href="#kt_aside_nav_tab_channels">
-                            <i class="ki-duotone ki-abstract-26 fs-2x"><span class="path1"></span><span class="path2"></span></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Cards">
-                        <a class="nav-link btn btn-icon btn-color-gray-500 btn-active-color-warning btn-active-light" data-bs-toggle="tab" href="#kt_aside_nav_tab_cards">
-                            <i class="ki-duotone ki-credit-cart fs-2x"><span class="path1"></span><span class="path2"></span></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Legacy & Continuity">
-                        <a class="nav-link btn btn-icon btn-color-gray-500 btn-active-color-warning btn-active-light" data-bs-toggle="tab" href="#kt_aside_nav_tab_dod">
-                            <i class="ki-duotone ki-safe-home fs-2x"><span class="path1"></span><span class="path2"></span></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Tools">
-                        <a class="nav-link btn btn-icon btn-color-gray-500 btn-active-color-warning btn-active-light" data-bs-toggle="tab" href="#kt_aside_nav_tab_tools">
-                            <i class="ki-duotone ki-setting-2 fs-2x"><span class="path1"></span><span class="path2"></span></i>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Support">
-                        <a class="nav-link btn btn-icon btn-color-gray-500 btn-active-color-warning btn-active-light" data-bs-toggle="tab" href="#kt_aside_nav_tab_support">
-                            <i class="ki-duotone ki-message-question fs-2x"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
+        <div class="aside-nav d-flex flex-column align-items-center flex-column-fluid w-100 py-5 scroll-y" style="scrollbar-width: none;">
+            <ul class="nav flex-column w-100 align-items-center gap-4" id="kt_aside_nav_tabs" role="tablist">
+                
+                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
+                    <a class="nav-link btn btn-icon btn-custom btn-active-color-warning active" data-bs-toggle="tab" href="#tab_dashboard" role="tab">
+                        <i class="ki-duotone ki-element-11 fs-2x"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Compliance & KYC">
+                    <a class="nav-link btn btn-icon btn-custom btn-active-color-warning" data-bs-toggle="tab" href="#tab_compliance" role="tab">
+                        <i class="ki-duotone ki-shield-tick fs-2x"><span class="path1"></span><span class="path2"></span></i>
+                    </a>
+                </li>
+                
+                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Performance">
+                    <a class="nav-link btn btn-icon btn-custom btn-active-color-warning" data-bs-toggle="tab" href="#tab_performance" role="tab">
+                        <i class="ki-duotone ki-chart-line-up fs-2x"><span class="path1"></span><span class="path2"></span></i>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Wallet">
+                    <a class="nav-link btn btn-icon btn-custom btn-active-color-warning" data-bs-toggle="tab" href="#tab_wallet" role="tab">
+                        <i class="ki-duotone ki-wallet fs-2x"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Payments">
+                    <a class="nav-link btn btn-icon btn-custom btn-active-color-warning" data-bs-toggle="tab" href="#tab_payments" role="tab">
+                        <i class="ki-duotone ki-send fs-2x"><span class="path1"></span><span class="path2"></span></i>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Channels">
+                    <a class="nav-link btn btn-icon btn-custom btn-active-color-warning" data-bs-toggle="tab" href="#tab_channels" role="tab">
+                        <i class="ki-duotone ki-abstract-26 fs-2x"><span class="path1"></span><span class="path2"></span></i>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Cards">
+                    <a class="nav-link btn btn-icon btn-custom btn-active-color-warning" data-bs-toggle="tab" href="#tab_cards" role="tab">
+                        <i class="ki-duotone ki-credit-cart fs-2x"><span class="path1"></span><span class="path2"></span></i>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Legacy & Continuity">
+                    <a class="nav-link btn btn-icon btn-custom btn-active-color-warning" data-bs-toggle="tab" href="#tab_dod" role="tab">
+                        <i class="ki-duotone ki-safe-home fs-2x"><span class="path1"></span><span class="path2"></span></i>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Tools">
+                    <a class="nav-link btn btn-icon btn-custom btn-active-color-warning" data-bs-toggle="tab" href="#tab_tools" role="tab">
+                        <i class="ki-duotone ki-setting-2 fs-2x"><span class="path1"></span><span class="path2"></span></i>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Support">
+                    <a class="nav-link btn btn-icon btn-custom btn-active-color-warning" data-bs-toggle="tab" href="#tab_support" role="tab">
+                        <i class="ki-duotone ki-message-question fs-2x"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                    </a>
+                </li>
+            </ul>
         </div>
 
-        <div class="aside-footer d-flex flex-column align-items-center flex-column-auto pb-5" id="kt_aside_footer">
-            <div class="d-flex align-items-center">
-                <div class="btn btn-icon btn-color-gray-500 btn-active-color-warning" data-kt-menu-trigger="click" data-kt-menu-placement="top-start" title="Quick links">
-                    <i class="ki-duotone ki-educare fs-2x"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
-                </div>
-                </div>
+        <div class="aside-footer d-flex flex-column align-items-center py-6">
+            <div class="btn btn-icon btn-custom btn-active-color-warning">
+                <i class="ki-duotone ki-educare fs-2x"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+            </div>
         </div>
     </div>
 
-    <div class="aside-secondary d-flex flex-row-fluid bg-white shadow-sm" style="border-right: 1px solid rgba(0,0,0,0.05);">
-        <div class="aside-workspace my-5 p-3 w-100" id="kt_aside_wordspace">
-            <div class="d-flex h-100 flex-column">
-                <div class="flex-column-fluid hover-scroll-y" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_secondary_footer" data-kt-scroll-offset="0px">
+    <div class="aside-secondary d-flex flex-column bg-white shadow-sm" [class.collapsed-sidebar]="isCollapsed" style="width: 325px; min-width: 325px; border-right: 1px solid rgba(0,0,0,0.05); z-index: 1;">
+        
+        <div class="aside-workspace w-100 h-100 overflow-auto scroll-y pt-6 pb-10" style="scrollbar-width: thin;">
+            <div class="tab-content px-6">
+
+                <div class="tab-pane fade active show" id="tab_dashboard" role="tabpanel">
+                    <h2 class="text-dark fw-bolder mb-8 fs-3">Businesses</h2>
                     
-                    <div class="tab-content">
-                        
-                        <div class="tab-pane fade active show" id="kt_aside_nav_tab_dashboard" role="tabpanel">
-                            <div class="m-0 pb-10">
-                                
-                                <div class="mb-10">
-                                    <h3 class="text-gray-800 fw-bolder mb-5 mx-5 fs-4">Personal Identity</h3>
-                                    <div class="mx-5">
-                                        <div class="card border border-dashed border-primary bg-light-primary mb-4 hover-elevate-up overflow-hidden">
-                                            <div class="card-body p-4">
-                                                <div class="d-flex align-items-center mb-4">
-                                                    <div class="symbol symbol-45px me-3">
-                                                        <div class="w-45px h-45px bg-white rounded-circle d-flex align-items-center justify-content-center shadow-sm">
-                                                            <i class="fas fa-user-shield text-primary fs-4"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <span class="text-dark fw-bolder fs-6">Daniel Milimo</span>
-                                                        <span class="badge bg-success text-white fw-bold px-2 py-1 fs-9 mt-1">Level 3 Verified</span>
-                                                    </div>
-                                                </div>
-                                                <a routerLink="/personal-dashboard" class="btn btn-sm btn-primary w-100 fw-bold shadow-sm">View Dashboard</a>
-                                            </div>
-                                        </div>
+                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Personal Identity</h5>
+                    <div class="card border border-dashed border-primary bg-light-primary mb-8 hover-elevate-up transition-300">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="symbol symbol-45px me-3">
+                                    <span class="symbol-label bg-white shadow-sm border border-primary border-dashed"><i class="fas fa-user-shield text-primary fs-3"></i></span>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <span class="text-dark fw-bolder fs-6">Daniel Milimo</span>
+                                    <div class="d-flex align-items-center mt-1">
+                                        <i class="fas fa-map-marker-alt text-danger fs-9 me-1"></i> <span class="text-muted fw-bold fs-8 me-2">Kenya</span>
+                                        <span class="badge bg-success text-white fw-bold px-2 py-1 fs-9">Verified</span>
                                     </div>
                                 </div>
-
-                                <div class="mb-10">
-                                    <h3 class="text-gray-800 fw-bolder mb-5 mx-5 fs-4">Corporate Entities</h3>
-                                    <div class="mx-5">
-                                        <div class="card border border-dashed border-success bg-light-success mb-4 hover-elevate-up">
-                                            <div class="card-body p-4">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <div class="symbol symbol-45px me-3">
-                                                        <div class="w-45px h-45px bg-white rounded-circle d-flex align-items-center justify-content-center shadow-sm">
-                                                            <i class="fas fa-building text-success fs-4"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <span class="text-dark fw-bolder fs-6">Pkenya LTD</span>
-                                                        <span class="badge bg-light-success text-success fw-bold px-2 py-1 fs-9 mt-1">Active</span>
-                                                    </div>
-                                                </div>
-                                                <a routerLink="/business/pkenya" class="btn btn-sm btn-success w-100 fw-bold shadow-sm text-white">Manage Business</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="card border border-dashed border-danger bg-light-danger mb-4 hover-elevate-up">
-                                            <div class="card-body p-4">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <div class="symbol symbol-45px me-3">
-                                                        <div class="w-45px h-45px bg-white rounded-circle d-flex align-items-center justify-content-center shadow-sm">
-                                                            <i class="fas fa-heart text-danger fs-4"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <span class="text-dark fw-bolder fs-6">ASEN Org</span>
-                                                        <span class="badge bg-light-danger text-danger fw-bold px-2 py-1 fs-9 mt-1">Pending KYB</span>
-                                                    </div>
-                                                </div>
-                                                <a routerLink="/compliance/kyb" class="btn btn-sm btn-danger w-100 fw-bold shadow-sm text-white">Fix Compliance</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mx-5 mt-5 border-top border-dashed pt-5">
-                                    <button class="btn w-100 py-3 fw-bolder text-white shadow-sm hover-elevate-up" style="background: linear-gradient(135deg, #D4AF37 0%, #996515 100%);">
-                                        <i class="ki-duotone ki-plus fs-2 me-2 text-white"></i> Register New Entity
-                                    </button>
-                                </div>
-
                             </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="kt_aside_nav_tab_perfomance" role="tabpanel">
-                            <h1 class="text-gray-800 fw-semibold mb-6 mx-5 fs-4">Analytics</h1>
-                            <div class="mx-5">
-                                <a routerLink="/performance/sales" class="card border border-dashed border-primary bg-light-primary mb-4 hover-elevate-up text-decoration-none p-4">
-                                    <div class="d-flex align-items-center">
-                                        <i class="ki-duotone ki-chart-line-up text-primary fs-2x me-3"><span class="path1"></span><span class="path2"></span></i>
-                                        <div class="d-flex flex-column"><span class="text-gray-900 fw-bold fs-6">Sales Report</span><span class="text-primary fs-8 fw-semibold">View Growth</span></div>
-                                    </div>
-                                </a>
-                                <a routerLink="/performance/valuation" class="card border border-dashed border-warning bg-light-warning mb-4 hover-elevate-up text-decoration-none p-4">
-                                    <div class="d-flex align-items-center">
-                                        <i class="ki-duotone ki-finance-2 text-warning-dark fs-2x me-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
-                                        <div class="d-flex flex-column"><span class="text-gray-900 fw-bold fs-6">Valuation Engine</span><span class="text-warning-dark fs-8 fw-semibold">Asset Value</span></div>
-                                    </div>
-                                </a>
+                            <div class="d-flex justify-content-between align-items-center bg-white p-2 rounded border border-dashed mb-3">
+                                <span class="text-muted fs-9 fw-bold ms-2">ID: <span class="text-primary font-monospace fw-bolder">#SMP-123454</span></span>
+                                <button class="btn btn-icon btn-sm btn-light"><i class="fas fa-copy text-muted fs-8"></i></button>
                             </div>
+                            <button class="btn btn-primary btn-sm w-100 fw-bold shadow-sm" routerLink="/dashboard">Personal Dashboard <i class="fas fa-arrow-right ms-1 fs-9"></i></button>
                         </div>
+                    </div>
 
+                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Corporate Entities</h5>
+                    
+                    <div class="card border border-dashed border-success bg-light-success mb-4 hover-elevate-up transition-300">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="symbol symbol-40px me-3">
+                                        <span class="symbol-label bg-white shadow-sm"><i class="fas fa-building text-success fs-3"></i></span>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <span class="text-dark fw-bolder fs-6">Pkenya LTD</span>
+                                        <span class="text-muted fw-bold fs-8"><i class="fas fa-microchip me-1 text-info"></i>Tech Services</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center bg-white p-2 rounded border border-dashed mb-3">
+                                <span class="text-muted fs-9 fw-bold ms-2">Pay ID: <span class="text-success font-monospace fw-bolder">#SMB-882</span></span>
+                                <button class="btn btn-icon btn-sm btn-light"><i class="fas fa-copy text-muted fs-8"></i></button>
+                            </div>
+                            <button class="btn btn-success btn-sm w-100 fw-bold shadow-sm text-white" routerLink="/business/pkenya">Manage Business</button>
+                        </div>
+                    </div>
+
+                    <div class="card border border-dashed border-danger bg-light-danger mb-6 hover-elevate-up transition-300">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="symbol symbol-40px me-3">
+                                        <span class="symbol-label bg-white shadow-sm"><i class="fas fa-heart text-danger fs-3"></i></span>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <span class="text-dark fw-bolder fs-6">ASEN Org</span>
+                                        <span class="text-muted fw-bold fs-8">NGO / Social</span>
+                                    </div>
+                                </div>
+                                <span class="badge bg-light-danger text-danger fw-bold border border-danger border-dashed fs-9">Pending KYB</span>
+                            </div>
+                            <button class="btn btn-danger btn-sm w-100 fw-bold shadow-sm text-white" routerLink="/compliance/kyb">Upload Documents <i class="fas fa-exclamation-circle ms-1 fs-9"></i></button>
+                        </div>
+                    </div>
+
+                    <button class="btn w-100 py-3 fw-bolder text-white shadow-sm hover-elevate-up mb-6" style="background: linear-gradient(135deg, #D4AF37 0%, #996515 100%);">
+                        <i class="fas fa-plus-circle me-2"></i> Register New Entity
+                    </button>
+
+                    <div class="card border-0 bg-dark p-5 rounded-4 position-relative overflow-hidden hover-elevate-up" style="background: linear-gradient(135deg, #111827 0%, #1f2937 100%);">
+                        <i class="fas fa-code position-absolute text-white opacity-5" style="font-size: 5rem; right: -1rem; bottom: -1rem;"></i>
+                        <h5 class="text-white fw-bolder mb-1">Developer Platform</h5>
+                        <p class="text-white opacity-50 fs-8 mb-4">Enable API access & webhooks.</p>
+                        <button class="btn btn-sm btn-light border-0 fw-bold w-100" data-bs-toggle="modal" data-bs-target="#developerActivationModal">
+                            <i class="fas fa-terminal me-1 text-dark"></i> API Settings
+                        </button>
                     </div>
                 </div>
+
+                <div class="tab-pane fade" id="tab_compliance" role="tabpanel">
+                    <h2 class="text-dark fw-bolder mb-8 fs-3">Compliance & KYC</h2>
+                    
+                    <a routerLink="/compliance/kyc" class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="symbol symbol-40px me-3"><img src="assets/media/avatars/300-1.jpg" class="rounded" alt="User"></div>
+                                <div class="d-flex flex-column flex-grow-1">
+                                    <span class="text-dark fw-bolder fs-6">Dan Delion</span>
+                                    <span class="badge bg-success text-white fw-bold px-2 py-1 fs-9 w-75px mt-1">Verified</span>
+                                </div>
+                            </div>
+                            <span class="btn btn-sm btn-light-primary w-100 fw-bold border">View Identity Details</span>
+                        </div>
+                    </a>
+
+                    <a routerLink="/compliance/kyb" class="card border border-dashed border-danger bg-light-danger mb-4 text-decoration-none hover-elevate-up">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="symbol symbol-40px me-3"><span class="symbol-label bg-white"><i class="fas fa-university text-danger fs-3"></i></span></div>
+                                <div class="d-flex flex-column flex-grow-1">
+                                    <span class="text-dark fw-bolder fs-6">ASEN Org</span>
+                                    <span class="badge bg-light-danger text-danger fw-bold px-2 py-1 fs-9 mt-1 border border-danger border-dashed">Unverified KYB</span>
+                                </div>
+                            </div>
+                            <span class="btn btn-sm btn-danger w-100 fw-bold shadow-sm">Resolve Compliance Issue</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="tab-pane fade" id="tab_performance" role="tabpanel">
+                    <h2 class="text-dark fw-bolder mb-8 fs-3">Performance</h2>
+                    
+                    <a routerLink="/performance/sales" class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex align-items-center">
+                            <div class="symbol symbol-45px me-4"><span class="symbol-label bg-white shadow-sm"><i class="ki-duotone ki-chart-line-up text-primary fs-2x"><span class="path1"></span><span class="path2"></span></i></span></div>
+                            <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-5">Sales Report</span><span class="text-muted fw-bold fs-8">Revenue & Growth</span></div>
+                        </div>
+                    </a>
+
+                    <a routerLink="/performance/settlement" class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex align-items-center">
+                            <div class="symbol symbol-45px me-4"><span class="symbol-label bg-white shadow-sm"><i class="fas fa-wallet text-success fs-3"></i></span></div>
+                            <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-5">Settlements</span><span class="text-muted fw-bold fs-8">Payout tracking</span></div>
+                        </div>
+                    </a>
+
+                    <a routerLink="/performance/valuation" class="card border border-dashed border-gray-400 bg-light mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex align-items-center">
+                            <div class="symbol symbol-45px me-4"><span class="symbol-label bg-white shadow-sm"><i class="fas fa-chart-pie text-gray-700 fs-3"></i></span></div>
+                            <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-5">Valuation Engine</span><span class="text-muted fw-bold fs-8">Asset & Entity Value</span></div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="tab-pane fade" id="tab_wallet" role="tabpanel">
+                    <h2 class="text-dark fw-bolder mb-8 fs-3">Wallet Accounts</h2>
+                    
+                    <a routerLink="/wallet/accounts" class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-university text-success fs-2x me-3"></i>
+                                <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Solo Account</span><span class="text-muted fs-8 fw-bold">KES / USD / EUR</span></div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-success border-opacity-25">
+                            <span class="fw-bolder text-dark fs-5">500,980 KES</span>
+                            <span class="badge bg-success text-white fw-bold">Active</span>
+                        </div>
+                    </a>
+
+                    <a routerLink="/wallet/sharedaccount" class="card border border-dashed border-warning bg-light-warning mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-users text-warning fs-2x me-3"></i>
+                                <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Shared Account</span><span class="text-muted fs-8 fw-bold">Group Balances</span></div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-warning border-opacity-25">
+                            <span class="fw-bolder text-dark fs-5">550.00 USD</span>
+                            <span class="badge bg-warning text-dark fw-bold">Shared</span>
+                        </div>
+                    </a>
+
+                    <a routerLink="/wallet/crypto" class="card border border-dashed border-info bg-light-info mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fab fa-bitcoin text-info fs-2x me-3"></i>
+                                <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Crypto Assets</span><span class="text-muted fs-8 fw-bold">BTC / USDT</span></div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-info border-opacity-25">
+                            <span class="fw-bolder text-dark fs-5">0.00 USDT</span>
+                            <span class="badge bg-info text-white fw-bold">Swap</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="tab-pane fade" id="tab_payments" role="tabpanel">
+                    <h2 class="text-dark fw-bolder mb-8 fs-3">Payment Hub</h2>
+                    
+                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Money Movement</h5>
+                    <a routerLink="/payments/sendmoney" class="card border border-dashed border-primary bg-light-primary mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-paper-plane text-primary fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Send Money</span><span class="text-muted fs-8 fw-bold">Instant transfers</span></div>
+                    </a>
+                    <a routerLink="/payments/requestmoney" class="card border border-dashed border-success bg-light-success mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-hand-holding-usd text-success fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Request Money</span><span class="text-muted fs-8 fw-bold">Send payment links</span></div>
+                    </a>
+                    <a routerLink="/payments/transfers" class="card border border-dashed border-info bg-light-info mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-exchange-alt text-info fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Internal Transfers</span><span class="text-muted fs-8 fw-bold">Between wallets</span></div>
+                    </a>
+
+                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Services</h5>
+                    <a routerLink="/payments/utilities" class="card border border-dashed border-gray-400 bg-light mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-bolt text-warning-dark fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Pay Utilities</span><span class="text-muted fs-8 fw-bold">Bills & Water</span></div>
+                    </a>
+                    <a routerLink="/payments/airtime" class="card border border-dashed border-gray-400 bg-light mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-mobile-alt text-danger fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Airtime & Data</span><span class="text-muted fs-8 fw-bold">Instant Top-ups</span></div>
+                    </a>
+                </div>
+
+                <div class="tab-pane fade" id="tab_channels" role="tabpanel">
+                    <h2 class="text-dark fw-bolder mb-8 fs-3">Active Channels</h2>
+                    
+                    <a routerLink="/channels/POS" class="card border border-dashed border-gray-400 bg-light mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center"><i class="fas fa-calculator text-dark fs-3 me-3"></i><span class="text-dark fw-bolder fs-6">POS Terminal</span></div>
+                            <span class="badge bg-success text-white fw-bold">Connected</span>
+                        </div>
+                        <p class="text-muted fs-8 mb-0 fw-bold mt-2">Manage physical terminal integrations.</p>
+                    </a>
+
+                    <a routerLink="/channels/api-push" class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center"><i class="fas fa-cloud text-primary fs-3 me-3"></i><span class="text-dark fw-bolder fs-6">API Push (PCS)</span></div>
+                            <span class="badge bg-primary text-white fw-bold">Active</span>
+                        </div>
+                        <p class="text-muted fs-8 mb-0 fw-bold mt-2">Automated system alerts & webhooks.</p>
+                    </a>
+
+                    <a routerLink="/channels/stk-push" class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center"><i class="fas fa-mobile text-success fs-3 me-3"></i><span class="text-dark fw-bolder fs-6">STK Mobile Push</span></div>
+                            <span class="badge bg-success text-white fw-bold">Automated</span>
+                        </div>
+                        <p class="text-muted fs-8 mb-0 fw-bold mt-2">M-Pesa express checkout prompts.</p>
+                    </a>
+
+                    <a routerLink="/channels/e-social" class="card border border-dashed border-info bg-light-info mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center"><i class="fas fa-hashtag text-info fs-3 me-3"></i><span class="text-dark fw-bolder fs-6">e-Social Links</span></div>
+                            <span class="badge bg-info text-white fw-bold">Active</span>
+                        </div>
+                        <p class="text-muted fs-8 mb-0 fw-bold mt-2">Social media payment links (IG/WhatsApp).</p>
+                    </a>
+
+                    <a routerLink="/channels/subscriptions" class="card border border-dashed border-warning bg-light-warning mb-4 text-decoration-none hover-elevate-up p-4 d-block">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center"><i class="fas fa-sync text-warning-dark fs-3 me-3"></i><span class="text-dark fw-bolder fs-6">Subscriptions</span></div>
+                            <span class="badge bg-warning text-dark fw-bold border border-warning">Recurring</span>
+                        </div>
+                        <p class="text-muted fs-8 mb-0 fw-bold mt-2">Manage automated billing and memberships.</p>
+                    </a>
+                </div>
+
+                <div class="tab-pane fade" id="tab_cards" role="tabpanel">
+                    <h2 class="text-dark fw-bolder mb-8 fs-3">My Cards</h2>
+                    
+                    <a routerLink="/cards/details" class="card border-0 mb-6 shadow-lg hover-elevate-up text-decoration-none d-block position-relative overflow-hidden rounded-4" style="background: linear-gradient(135deg, #111827 0%, #374151 100%);">
+                        <i class="fas fa-wifi position-absolute text-white opacity-25" style="font-size: 8rem; right: -1rem; top: -1rem;"></i>
+                        <div class="card-body p-6 position-relative z-index-1">
+                            <div class="d-flex justify-content-between align-items-start mb-8">
+                                <div class="d-flex flex-column">
+                                    <span class="text-white fw-bolder fs-4" style="letter-spacing: 1px;">SendMO Card</span>
+                                    <span class="text-gold fw-bold fs-8 text-uppercase" style="color: #D4AF37;">Premium</span>
+                                </div>
+                                <i class="fas fa-sim-card text-gold fs-2x" style="color: #D4AF37;"></i>
+                            </div>
+                            <div class="mb-4">
+                                <span class="text-white fs-5 fw-bolder font-monospace" style="letter-spacing: 2px;">**** **** **** 8892</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-end">
+                                <span class="text-white opacity-75 fs-8 text-uppercase fw-bold">ASEN Network</span>
+                                <i class="fab fa-cc-mastercard text-white fs-2x"></i>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="alert bg-light-primary border border-dashed border-primary p-4 mb-6 rounded-4">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-info-circle fs-3 text-primary me-3 mt-1"></i>
+                            <span class="text-dark fs-8 fw-bold">Our <strong class="text-primary">SendMO Card</strong> is an all-in-one solution allowing you to manage both <span class="badge bg-white border text-dark fs-9 px-2">Credit</span> and <span class="badge bg-white border text-dark fs-9 px-2">Debit</span> balances instantly.</span>
+                        </div>
+                    </div>
+
+                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Standard Banking</h5>
+                    <a routerLink="/cards/debit" class="card border border-dashed border-gray-300 mb-3 text-decoration-none hover-elevate-up bg-light p-4 d-block">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center"><i class="fas fa-credit-card text-warning-dark fs-3 me-3"></i><span class="text-dark fw-bolder fs-6">ATM Debit Card</span></div>
+                            <span class="badge bg-success text-white fw-bold">Active</span>
+                        </div>
+                        <p class="text-muted fs-8 mb-0 fw-bold">Linked to fiat wallet for global ATM withdrawals.</p>
+                    </a>
+                </div>
+
+                <div class="tab-pane fade" id="tab_dod" role="tabpanel">
+                    <h2 class="text-dark fw-bolder mb-8 fs-3">Legacy & Continuity</h2>
+                    
+                    <a routerLink="/dod/beneficiary" class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up p-5 d-block">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="symbol symbol-45px me-3"><span class="symbol-label bg-white shadow-sm"><i class="fas fa-users text-primary fs-4"></i></span></div>
+                            <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-5">Beneficiaries</span><span class="text-muted fw-bold fs-8">Family & Successors</span></div>
+                        </div>
+                        <p class="text-muted fs-8 mb-4 fw-bold">Designated individuals authorized to manage or inherit assets.</p>
+                        <span class="text-primary fw-bolder fs-8">Manage Nominees <i class="fas fa-arrow-right ms-1"></i></span>
+                    </a>
+
+                    <a routerLink="/dod/continuity-savings" class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-5 d-block">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="symbol symbol-45px me-3"><span class="symbol-label bg-white shadow-sm"><i class="fas fa-shield-alt text-success fs-4"></i></span></div>
+                            <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-5">Continuity Savings</span><span class="text-muted fw-bold fs-8">Inactivity Safety Net</span></div>
+                        </div>
+                        <p class="text-muted fs-8 mb-4 fw-bold">Smart funds that trigger payouts after prolonged inactivity.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted fw-bolder fs-8">Auto-Save Status</span>
+                            <span class="text-success fw-bolder fs-8">Enabled</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="tab-pane fade" id="tab_tools" role="tabpanel">
+                    <h2 class="text-dark fw-bolder mb-8 fs-3">Integrations & Tools</h2>
+                    
+                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Financial Control</h5>
+                    <a routerLink="/tools/budgeting" class="card border border-dashed border-primary bg-light-primary mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-chart-pie text-primary fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Budgeting Tools</span><span class="text-muted fs-8 fw-bold">Expense tracking</span></div>
+                    </a>
+                    <a routerLink="/tools/taxation" class="card border border-dashed border-danger bg-light-danger mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-percentage text-danger fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Taxation Suite</span><span class="text-muted fs-8 fw-bold">KRA compliance</span></div>
+                    </a>
+                    <a routerLink="/tools/credit" class="card border border-dashed border-success bg-light-success mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-university text-success fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Credit Scoring</span><span class="text-muted fs-8 fw-bold">Check eligibility</span></div>
+                    </a>
+
+                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Advanced Tech</h5>
+                    <a routerLink="/tools/daas" class="card border border-dashed border-gray-400 bg-light mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-cloud-download-alt text-dark fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">DAAS Tools</span><span class="text-muted fs-8 fw-bold">Data as a Service</span></div>
+                    </a>
+                </div>
+
+                <div class="tab-pane fade" id="tab_support" role="tabpanel">
+                    <h2 class="text-dark fw-bolder mb-8 fs-3">Support Center</h2>
+                    
+                    <a routerLink="/support/help" class="card border border-dashed border-primary bg-light-primary mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-book text-primary fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Knowledge Base</span><span class="text-muted fs-8 fw-bold">FAQs & Guides</span></div>
+                    </a>
+                    <a routerLink="/support/tickets" class="card border border-dashed border-success bg-light-success mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"><i class="fas fa-ticket-alt text-success fs-4"></i></div>
+                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Support Tickets</span><span class="text-muted fs-8 fw-bold">Open a request</span></div>
+                    </a>
+
+                    <div class="card bg-light-danger border border-dashed border-danger mt-8 p-6 text-center rounded-4">
+                        <div class="symbol symbol-50px bg-white rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center mb-3 border border-danger border-opacity-25">
+                            <i class="fas fa-phone-alt text-danger fs-3"></i>
+                        </div>
+                        <h5 class="text-gray-900 fw-bolder mb-1">Emergency Hotline</h5>
+                        <p class="text-danger fw-bolder fs-4 mb-0 mono-num">0758 489 861</p>
+                    </div>
+                </div>
+
             </div>
         </div>
-        
-        <button id="kt_aside_toggle" class="aside-toggle btn btn-sm btn-icon bg-body btn-color-gray-700 btn-active-warning position-absolute translate-middle start-100 end-0 bottom-0 shadow-sm d-none d-lg-flex mb-5" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
-            <i class="ki-duotone ki-arrow-left fs-2 rotate-180"><span class="path1"></span><span class="path2"></span></i> 
-        </button>
     </div>
+
+
+
+<button id="kt_aside_toggle" 
+        class="aside-toggle btn btn-sm btn-icon bg-body btn-color-gray-700 btn-active-warning position-absolute shadow-sm d-none d-lg-flex" 
+        style="bottom: 2rem; left: 85px; z-index: 105; border: 1px solid rgba(212, 175, 55, 0.3);"
+        (click)="toggleSidebar()">
+    <i class="fas fa-chevron-left fs-3 transition-icon text-dark" [class.rotate-180]="isCollapsed"></i> 
+</button>
 </div>
+
+<style>
+    /* Styling adjustments to guarantee the Secondary Aside stays constrained */
+    .aside-secondary {
+        /* Prevents the sidebar from blowing out standard widths */
+        max-width: 325px; 
+    }
+    .btn-custom {
+        /* Smooth transitions for the left icon nav */
+        transition: all 0.2s ease-in-out;
+        border-radius: 12px;
+        padding: 12px;
+    }
+    .btn-custom:hover {
+        background-color: rgba(255,255,255,0.05);
+    }
+    .btn-custom.active {
+        background-color: rgba(212, 175, 55, 0.15) !important; /* Gold subtle bg */
+        color: #D4AF37 !important; /* Gold primary */
+        border-right: 3px solid #D4AF37;
+        border-radius: 12px 0 0 12px;
+    }
+    .hover-elevate-up {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hover-elevate-up:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .mono-num {
+        font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+        letter-spacing: -0.5px;
+    }
+</style>

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'synckpay-header',
-  imports: [],
-  templateUrl: './header.html',
-  styleUrl: './header.scss',
+  selector: 'app-header',
+  standalone: true,
+  imports: [RouterLink],
+  templateUrl: './header.html'
 })
-export class Header {}
+export class HeaderComponent {}

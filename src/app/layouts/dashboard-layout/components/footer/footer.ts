@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'synckpay-footer',
+  selector: 'app-footer',
+  standalone: true,
   imports: [],
-  templateUrl: './footer.html',
-  styleUrl: './footer.scss',
+  templateUrl: './footer.html'
 })
-export class Footer {}
+export class FooterComponent {}

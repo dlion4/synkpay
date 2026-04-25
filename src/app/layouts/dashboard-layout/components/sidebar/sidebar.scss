@@ -1,0 +1,28 @@
+/* Smooth transition for the sidebar wrapper */
+.transition-sidebar {
+  transition: width 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              opacity 0.25s ease-in-out,
+              min-width 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 325px;
+  min-width: 325px;
+  opacity: 1;
+  overflow-x: hidden; /* Crucial: Prevents text from wrapping weirdly while shrinking */
+}
+
+/* The collapsed state */
+.collapsed-sidebar {
+  width: 0 !important;
+  min-width: 0 !important;
+  opacity: 0;
+  pointer-events: none; /* Prevents invisible buttons from being clicked */
+}
+
+/* Icon rotation animation */
+.transition-icon {
+  transition: transform 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
