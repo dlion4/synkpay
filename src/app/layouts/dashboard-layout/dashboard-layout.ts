@@ -27,3 +27,17 @@ export class DashboardLayoutComponent implements OnInit {
     this.renderer.setAttribute(document.documentElement, 'data-bs-theme', themeMode);
   }
 }
+
+import { Injectable, signal } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SidebarService {
+  // Using Angular 17 Signals for easy reactivity
+  isCollapsed = signal<boolean>(false);
+
+  toggle() {
+    this.isCollapsed.update(val => !val);
+  }
+}

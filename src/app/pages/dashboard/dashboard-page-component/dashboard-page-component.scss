@@ -1,0 +1,81 @@
+/* --- PREMIUM UI UTILITIES --- */
+.hover-elevate-up { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.hover-elevate-up:hover { transform: translateY(-5px); box-shadow: 0 1rem 3rem rgba(0,0,0,0.1) !important; z-index: 1; }
+
+.pulse-ring { animation: pulse-ring 2s infinite; }
+@keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(0, 158, 247, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 158, 247, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 158, 247, 0); }
+}
+
+.bg-gradient-dark { background: linear-gradient(135deg, #1e1e2d 0%, #3f4254 100%); }
+.btn-gold { background: linear-gradient(90deg, #e6b829, #c99c35); color: #fff; font-weight: 700; border: none; transition: 0.3s; }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201, 169, 63, 0.4); color: #fff; }
+
+/* --- CUSTOM TABS --- */
+.nav-pills-custom .nav-link { color: #a1a5b7; font-weight: 600; border-radius: 0.5rem; padding: 0.75rem 1.5rem; transition: all 0.3s; cursor: pointer; }
+.nav-pills-custom .nav-link.active { background-color: #009ef7; color: #fff; box-shadow: 0 4px 9px rgba(0, 158, 247, 0.25); }
+.nav-line-tabs .nav-link { color: #a1a5b7; border-bottom: 2px solid transparent; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; }
+.nav-line-tabs .nav-link.active { color: #009ef7; border-bottom: 2px solid #009ef7; }
+
+/* --- BALANCE CARD --- */
+.balance-card {
+    background: linear-gradient(135deg, #1e1e2d 0%, #3f4254 100%);
+    border-radius: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.balance-card::before {
+    content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* --- WIZARD & MODAL UI --- */
+.animate-fade { animation: fadeIn 0.4s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.wizard-stepper { display: flex; justify-content: space-between; position: relative; margin-bottom: 2rem; padding: 0 1rem; }
+.wizard-stepper::before { content: ''; position: absolute; top: 18px; left: 10%; width: 80%; height: 3px; background: #eff2f5; z-index: 0; }
+.wizard-step { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
+.wizard-step .step-circle { width: 40px; height: 40px; border-radius: 50%; background: #ffffff; border: 3px solid #eff2f5; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #7E8299; transition: all 0.3s; }
+.wizard-step .step-label { font-size: 0.75rem; font-weight: 700; color: #7E8299; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.wizard-step.active .step-circle { border-color: #c99c35; background: #c99c35; color: #fff; box-shadow: 0 0 15px rgba(201, 169, 63, 0.4); }
+.wizard-step.active .step-label { color: #181C32; }
+.wizard-step.completed .step-circle { border-color: #50cd89; background: #50cd89; color: #fff; }
+
+.method-card { border: 2px solid #eff2f5; border-radius: 1rem; cursor: pointer; transition: all 0.2s; background: #fff;}
+.method-card:hover, .method-card.selected { border-color: #009ef7; background-color: #f1faff; }
+
+.recipient-card { border: 1px solid #eff2f5; border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px; cursor: pointer; transition: all 0.2s ease; background: #fff; margin-bottom: 10px; }
+.recipient-card:hover { border-color: #c99c35; background: rgba(201, 169, 63, 0.03); transform: translateY(-2px); }
+.recipient-card.selected { border-color: #c99c35; background: rgba(201, 169, 63, 0.08); box-shadow: 0 4px 12px rgba(201, 169, 63, 0.15); }
+
+.otp-grid { display: flex; justify-content: center; gap: 10px; margin: 2rem 0; }
+.otp-input { width: 50px; height: 60px; text-align: center; font-size: 1.5rem; font-weight: 800; border: 2px solid #eff2f5; border-radius: 12px; background: #f5f8fa; color: #181C32; transition: 0.2s; }
+.otp-input:focus { border-color: #c99c35; outline: none; box-shadow: 0 0 0 4px rgba(201, 169, 63, 0.1); background: #fff; }
+
+.summary-box { background: #f5f8fa; border: 1px dashed #eff2f5; border-radius: 16px; padding: 20px; }
+.summary-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 0.95rem; }
+.summary-row:last-child { margin-bottom: 0; padding-top: 12px; border-top: 1px solid #eff2f5; }
+
+/* KYB Stepper */
+.stepper-column .stepper-item { display: flex; align-items: flex-start; margin-bottom: 2rem; position: relative; }
+.stepper-column .stepper-item::after { content: ''; position: absolute; left: 1.25rem; top: 3rem; bottom: -1.5rem; width: 2px; background-color: #e4e6ef; z-index: 0; }
+.stepper-column .stepper-item:last-child::after { display: none; }
+.stepper-icon { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; background-color: #eff2f5; color: #7e8299; z-index: 1; position: relative; margin-right: 1.5rem; transition: all 0.3s; }
+.stepper-item.completed .stepper-icon { background-color: #50cd89; color: white; }
+.stepper-item.current .stepper-icon { background-color: #f1416c; color: white; box-shadow: 0 0 0 4px rgba(241, 65, 108, 0.2); }
+
+/* Radar Animation */
+.radar-pulse { width: 120px; height: 120px; border-radius: 50%; background: rgba(201, 169, 63, 0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto; position: relative; }
+.radar-pulse::before, .radar-pulse::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; background: rgba(201, 169, 63, 0.3); animation: radar 2s linear infinite; }
+.radar-pulse::after { animation-delay: 1s; }
+@keyframes radar { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
+
+/* Custom Mini Toast overlay */
+.custom-toast { position: fixed; bottom: 20px; right: 20px; z-index: 1060; background: rgba(30, 30, 45, 0.95); backdrop-filter: blur(10px); border-radius: 15px; padding: 15px 25px; color: white; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: all 0.3s ease; transform: translateY(100px); opacity: 0; }
+.custom-toast.show { transform: translateY(0); opacity: 1; }

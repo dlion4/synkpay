@@ -7,7 +7,7 @@
             
             <app-header></app-header>
             
-            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <div class="content d-flex flex-column flex-column-fluid" id="kt_content" [class.collapsed-sidebar]="isCollapsed">
                 <router-outlet></router-outlet>
             </div>
             

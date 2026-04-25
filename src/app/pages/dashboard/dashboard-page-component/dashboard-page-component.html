@@ -1,1 +1,382 @@
-<p>dashboard-page-component works!</p>
+<div class="container-fluid px-xl-10 py-10" [class.collapsed-sidebar]="isCollapsed">
+    
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-10 bg-white p-6 rounded shadow-sm border border-gray-200">
+        <div class="d-flex align-items-center mb-4 mb-md-0">
+            <div class="symbol symbol-50px me-5">
+                <div class="w-50px h-50px bg-light-primary rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="fa fa-user-circle text-primary fs-2x"></i>
+                </div>
+            </div>
+            <div>
+                <h1 class="text-gray-900 fw-bolder fs-3 mb-1">Welcome back, Martin Kiprop</h1>
+                <div class="text-gray-500 fw-semibold fs-7">Manage your SendMO ecosystem.</div>
+            </div>
+        </div>
+        
+        <div class="bg-light p-1 rounded-3">
+            <ul class="nav nav-pills nav-pills-custom m-0">
+                <li class="nav-item m-0">
+                    <a class="nav-link px-6" [class.active]="activeMainTab === 'personal'" (click)="activeMainTab = 'personal'">
+                        <i class="fa fa-user me-2"></i>Personal Profile
+                    </a>
+                </li>
+                <li class="nav-item m-0">
+                    <a class="nav-link px-6" [class.active]="activeMainTab === 'business'" (click)="activeMainTab = 'business'">
+                        <i class="fa fa-briefcase me-2"></i>Business (Pkenya LTD)
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div *ngIf="activeMainTab === 'personal'" class="animate-fade">
+        <div class="row g-5 mb-8">
+            
+            <div class="col-xl-4">
+                <div class="card balance-card shadow-sm h-100 border-0 overflow-hidden" style="min-height: 250px;">
+                    <div class="card-body p-8 d-flex flex-column justify-content-between position-relative z-index-1">
+                        <div class="text-white">
+                            <div class="d-flex align-items-center mb-4">
+                                <span class="fs-6 fw-semibold opacity-75">Available Balance</span>
+                            </div>
+                            <div class="d-flex align-items-baseline mb-4">
+                                <span class="fs-2 fw-bold opacity-50 me-2">KES</span>
+                                <span class="fs-1 fw-bolder" style="font-size: 2.5rem !important;">1,245,600.<small class="fs-4 opacity-75">50</small></span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-success bg-opacity-20 text-success px-3 py-2 fs-9 fw-bold"><i class="fa fa-arrow-up me-1"></i> +12.5%</span>
+                            </div>
+                        </div>
+                        <div class="row g-2 mt-6">
+                            <div class="col-6">
+                                <button class="btn btn-primary w-100 py-3 fw-bold fs-7" data-bs-toggle="modal" data-bs-target="#sendMoneyModal"><i class="fa fa-plus-circle me-1"></i> Send</button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-light w-100 py-3 fw-bold fs-7" data-bs-toggle="modal" data-bs-target="#receiveMoneyModal"><i class="fa fa-arrow-down me-1"></i> Receive</button>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-white bg-opacity-10 border-0 text-white w-100 py-2 fw-bold fs-8 mt-1" data-bs-toggle="modal" data-bs-target="#transferMoneyModal"><i class="fa fa-exchange-alt me-2"></i> Transfer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="card-elevated border-0 h-100">
+                    <div class="card-body p-8">
+                        <h3 class="fw-bolder text-gray-800 mb-6">Quick Links</h3>
+                        <div class="row g-4 h-100">
+                            <div class="col-6"><a routerLink="/solo-account" class="text-decoration-none border border-dashed border-gray-300 rounded-4 p-4 text-center hover-elevate-up bg-light h-100 d-flex flex-column justify-content-center"><i class="fas fa-user text-primary fs-3 mb-3"></i><span class="text-gray-800 fw-bold fs-7">Solo Account</span></a></div>
+                            <div class="col-6"><a routerLink="/shared-account" class="text-decoration-none border border-dashed border-gray-300 rounded-4 p-4 text-center hover-elevate-up bg-light h-100 d-flex flex-column justify-content-center"><i class="fas fa-users text-success fs-3 mb-3"></i><span class="text-gray-800 fw-bold fs-7">Shared Account</span></a></div>
+                            <div class="col-6"><a routerLink="/pay-bills" class="text-decoration-none border border-dashed border-gray-300 rounded-4 p-4 text-center hover-elevate-up bg-light h-100 d-flex flex-column justify-content-center"><i class="fas fa-bolt text-warning fs-3 mb-3"></i><span class="text-gray-800 fw-bold fs-7">Pay Bills</span></a></div>
+                            <div class="col-6"><a routerLink="/buy-airtime" class="text-decoration-none border border-dashed border-gray-300 rounded-4 p-4 text-center hover-elevate-up bg-light h-100 d-flex flex-column justify-content-center"><i class="fas fa-mobile-alt text-danger fs-3 mb-3"></i><span class="text-gray-800 fw-bold fs-7">Airtime</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="card-elevated border-0 h-100 d-flex flex-column hover-elevate-up">
+                    <div class="card-header border-0 pt-7 px-8 d-flex justify-content-between align-items-center">
+                        <h3 class="card-title fw-bolder text-dark m-0">My Savings</h3>
+                        <button class="btn btn-icon btn-sm btn-light-primary rounded-circle shadow-sm" data-bs-toggle="modal" data-bs-target="#autoSaveModal"><i class="fas fa-heart-circle-check"></i></button>
+                    </div>
+                    <div class="card-body p-8 flex-grow-1">
+                        <div class="mb-6">
+                            <div class="d-flex justify-content-between align-items-center mb-2"><span class="text-muted fw-bold fs-7"><i class="fas fa-sync-alt text-success me-2"></i>Auto Savings</span><span class="text-dark fw-bolder fs-7">KES 45,000</span></div>
+                            <div class="progress h-8px bg-light-success rounded mb-2"><div class="progress-bar bg-success" style="width: 100%"></div></div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="d-flex justify-content-between align-items-center mb-2"><span class="text-muted fw-bold fs-7"><i class="fas fa-home text-primary me-2"></i>House Construction</span><span class="text-dark fw-bolder fs-7">KES 1.2M</span></div>
+                            <div class="progress h-8px bg-light-primary rounded mb-2"><div class="progress-bar bg-primary" style="width: 48%"></div></div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between align-items-center mb-2"><span class="text-muted fw-bold fs-7"><i class="fas fa-car text-info me-2"></i>New Car Savings</span><span class="text-dark fw-bolder fs-7">KES 300,000</span></div>
+                            <div class="progress h-8px bg-light-info rounded mb-2"><div class="progress-bar bg-info" style="width: 37%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 hover-elevate-up mb-8">
+            <div class="card-header border-0 pt-6">
+                <h3 class="card-title fw-bolder text-gray-800">Recent Spending</h3>
+            </div>
+            <div class="card-body pt-4">
+                <div class="table-responsive">
+                    <table class="table align-middle table-row-dashed fs-6 gy-4">
+                        <thead><tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0"><th>Transaction ID</th><th>Details</th><th>Amount</th><th>Status</th></tr></thead>
+                        <tbody class="text-gray-600 fw-semibold">
+                            <tr>
+                                <td><span class="text-gray-800 fs-7 fw-bold">#TRX-99402</span></td>
+                                <td>Naivas Supermarket</td>
+                                <td class="text-gray-900 fw-bold">- KES 4,500.00</td>
+                                <td><span class="badge badge-light-success fs-8 fw-bold">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="activeMainTab === 'business'" class="animate-fade">
+        <div class="d-flex justify-content-between align-items-center mb-6">
+            <ul class="nav nav-line-tabs mb-0 fs-5">
+                <li class="nav-item"><a class="nav-link" [class.active]="activeBizTab === 'overview'" (click)="activeBizTab = 'overview'">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" [class.active]="activeBizTab === 'compliance'" (click)="activeBizTab = 'compliance'">KYB / Compliance</a></li>
+                <li class="nav-item"><a class="nav-link" [class.active]="activeBizTab === 'developer'" (click)="activeBizTab = 'developer'">Developer Access</a></li>
+            </ul>
+        </div>
+
+        <div *ngIf="activeBizTab === 'overview'" class="animate-fade">
+            <div class="row g-5 mb-8">
+                <div class="col-xl-4">
+                    <div class="card shadow-sm border-0 h-100 hover-elevate-up p-8 text-center bg-dark text-white" style="border-radius: 1.5rem;">
+                        <h3 class="text-white opacity-75 mb-6 fs-4 fw-semibold">Total Operating Capital</h3>
+                        <div class="fs-2hx fw-bolder mb-8 text-white">KES 12,450,000</div>
+                        <div class="d-flex gap-3">
+                            <button class="btn btn-primary w-100 fw-bold py-3" data-bs-toggle="modal" data-bs-target="#depositModal"><i class="fa fa-plus-circle me-2"></i>Deposit</button>
+                            <button class="btn btn-light w-100 fw-bold py-3" data-bs-toggle="modal" data-bs-target="#transferMoneyModal"><i class="fa fa-exchange-alt me-2 text-primary"></i>Transact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-8">
+                    <div class="card-elevated border-0 h-100 p-8">
+                        <div class="d-flex justify-content-between align-items-center mb-6 border-bottom pb-4">
+                            <h4 class="text-gray-900 fw-bolder m-0">Global Virtual Accounts</h4>
+                        </div>
+                        <div class="row g-5">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="border border-dashed border-gray-300 rounded-4 p-5 d-flex flex-column hover-elevate-up bg-white h-100">
+                                    <div class="d-flex justify-content-between align-items-start mb-4">
+                                        <img src="https://flagcdn.com/w40/us.png" class="w-40px rounded shadow-sm border">
+                                        <span class="badge bg-light-success text-success fw-bold px-2 py-1">Active</span>
+                                    </div>
+                                    <div class="mb-1"><span class="d-block fw-bolder text-dark fs-2">$15,400.00</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-5 mb-10">
+                <div class="col-xl-4">
+                    <div class="card-elevated border-0 p-0 overflow-hidden d-flex flex-column hover-elevate-up">
+                        <div class="p-6 bg-dark text-white"><h3 class="fw-bolder m-0">Cash Flow</h3></div>
+                        <div class="card-body p-6 bg-white flex-grow-1">
+                            <div class="row g-4">
+                                <div class="col-6"><div class="p-4 bg-light rounded-4 border border-dashed text-center"><span class="text-success fs-3 fw-bolder"><i class="fas fa-arrow-down fs-7 me-1"></i>$650</span></div></div>
+                                <div class="col-6"><div class="p-4 bg-light rounded-4 border border-dashed text-center"><span class="text-danger fs-3 fw-bolder"><i class="fas fa-arrow-up fs-7 me-1"></i>$29,500</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <div class="card-elevated border-0 h-100 p-8">
+                        <h4 class="text-dark fw-bolder mb-1">Sales Volume</h4>
+                        <div class="d-flex align-items-center mb-6 p-4 bg-light rounded-4 border border-dashed">
+                            <span class="text-muted fw-bold fs-4 me-2">KES</span><span class="text-dark fw-bolder flex-grow-1 fs-1">29,034,523</span>
+                        </div>
+                        <button class="btn btn-dark w-100 py-3 fw-bold shadow-sm hover-elevate-up mt-auto" (click)="triggerToast('Facility Request Submitted!')">Request Facility Increase <i class="fas fa-arrow-right ms-2"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeBizTab === 'compliance'" class="animate-fade">
+            <div class="card shadow border-0 hover-elevate-up my-5">
+                <div class="card-header border-bottom bg-light py-5"><h2 class="card-title fw-bolder text-gray-900 m-0">Corporate Compliance (KYB)</h2></div>
+                <div class="card-body p-10">
+                    <div class="row">
+                        <div class="col-md-4 border-end border-gray-200">
+                            <div class="stepper-column">
+                                <div class="stepper-item completed"><div class="stepper-icon"><i class="fa fa-check"></i></div><div class="stepper-label mt-2"><h4 class="fw-bold fs-5">Company Info</h4></div></div>
+                                <div class="stepper-item completed"><div class="stepper-icon"><i class="fa fa-check"></i></div><div class="stepper-label mt-2"><h4 class="fw-bold fs-5">Directors KYC</h4></div></div>
+                                <div class="stepper-item current"><div class="stepper-icon bg-danger text-white">3</div><div class="stepper-label mt-2"><h4 class="fw-bold fs-5">Company Document</h4></div></div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 ps-md-10 d-flex flex-column pt-5">
+                            <h1 class="fw-bolder text-gray-900 mb-2 fs-2x">Company documents</h1>
+                            <div class="alert bg-light-danger border border-danger border-dashed d-flex align-items-center p-5 mb-8">
+                                <i class="fa fa-exclamation-triangle fs-2hx text-danger me-4"></i>
+                                <div><h4 class="mb-1 text-danger">Fetch Error</h4><span class="text-gray-800">Please upload your CR12 manually.</span></div>
+                            </div>
+                            <button class="btn btn-danger text-white fw-bold px-8 pulse-ring w-200px">Upload Manually</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeBizTab === 'developer'" class="animate-fade">
+            <div class="card shadow-sm border-0 h-100 hover-elevate-up border-top border-4 border-primary mt-5">
+                <div class="card-header border-0 pt-7">
+                    <h3 class="card-title align-items-start flex-column"><span class="card-label fw-bold text-gray-900 fs-3">API Environment</span></h3>
+                    <div class="card-toolbar">
+                        <ul class="nav nav-group nav-group-outline border-primary p-1 rounded-3">
+                            <li class="nav-item"><button class="btn btn-sm btn-color-muted px-4 py-2" [class.active]="apiEnv === 'sandbox'" (click)="apiEnv = 'sandbox'">Sandbox</button></li>
+                            <li class="nav-item"><button class="btn btn-sm btn-color-muted px-4 py-2" [class.active]="apiEnv === 'live'" (click)="apiEnv = 'live'">Live Mode</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body p-9">
+                    <div *ngIf="apiEnv === 'sandbox'" class="animate-fade">
+                        <div class="mb-10">
+                            <label class="form-label fw-bold text-gray-700 fs-8 mb-0">SANDBOX PUBLIC KEY</label>
+                            <input type="text" class="form-control fw-bold bg-light" value="pk_test_12345" readonly />
+                        </div>
+                        <div class="mb-10">
+                            <label class="form-label fw-bold text-danger fs-8 mb-0">SANDBOX SECRET KEY</label>
+                            <input type="password" class="form-control fw-bold bg-light" value="sk_test_12345" readonly />
+                        </div>
+                    </div>
+                    <div *ngIf="apiEnv === 'live'" class="animate-fade">
+                        <div class="border border-gray-300 border-dashed rounded py-3 px-4 bg-light-success border-start border-5 border-start-success mb-6">
+                            <div class="fs-8 fw-bold text-success text-uppercase">System Status</div>
+                            <div class="fs-5 fw-bolder text-gray-900 mt-1">Operational</div>
+                        </div>
+                        <label class="form-label fw-bold text-gray-800 fs-7 mb-3">PRODUCTION LIVE TOKEN</label>
+                        <code class="d-block bg-light p-3 rounded text-success fw-bold fs-7">live_auth_token_9x22_p0s9v_2026_prod</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="depositModal" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pt-4 px-5">
+                <h3 class="fw-bolder mb-0"><i class="fas fa-arrow-down text-success me-3"></i> Deposit Funds</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="resetWizard('deposit')"></button>
+            </div>
+            <div class="modal-body p-5">
+                
+                <div class="wizard-stepper">
+                    <div class="wizard-step" [class.active]="depositState.step === 1" [class.completed]="depositState.step > 1"><div class="step-circle">1</div><div class="step-label">Method</div></div>
+                    <div class="wizard-step" [class.active]="depositState.step === 2" [class.completed]="depositState.step > 2"><div class="step-circle">2</div><div class="step-label">Source</div></div>
+                    <div class="wizard-step" [class.active]="depositState.step === 3" [class.completed]="depositState.step > 3"><div class="step-circle">3</div><div class="step-label">Amount</div></div>
+                    <div class="wizard-step" [class.active]="depositState.step === 4" [class.completed]="depositState.step > 4"><div class="step-circle">4</div><div class="step-label">Verify</div></div>
+                    <div class="wizard-step" [class.active]="depositState.step === 5"><div class="step-circle"><i class="fas fa-check"></i></div><div class="step-label">Done</div></div>
+                </div>
+
+                <div *ngIf="depositState.step === 1" class="animate-fade">
+                    <h5 class="text-center mb-4">Choose Funding Source</h5>
+                    <label class="method-card p-4 d-flex align-items-center mb-3" [class.selected]="depositState.method === 'mpesa'" (click)="setDepositMethod('mpesa')">
+                        <input type="radio" class="d-none">
+                        <div><span class="fw-bolder d-block">Mobile Money (M-Pesa)</span><span class="text-muted fs-8">Instant • KES 0 Fee</span></div>
+                        <i class="fas fa-mobile-alt ms-auto fs-2 text-success"></i>
+                    </label>
+                    <label class="method-card p-4 d-flex align-items-center" [class.selected]="depositState.method === 'card'" (click)="setDepositMethod('card')">
+                        <input type="radio" class="d-none">
+                        <div><span class="fw-bolder d-block">Credit / Debit Card</span><span class="text-muted fs-8">Instant • 2.5% Fee</span></div>
+                        <i class="fas fa-credit-card ms-auto fs-2 text-primary"></i>
+                    </label>
+                </div>
+
+                <div *ngIf="depositState.step === 2" class="animate-fade">
+                    <div *ngIf="depositState.method === 'mpesa'">
+                        <input type="tel" [(ngModel)]="depositState.phone" class="form-control form-control-lg bg-light border-0 fw-bolder fs-4" placeholder="0712345678">
+                    </div>
+                    <div *ngIf="depositState.method === 'card'">
+                        <input type="text" class="form-control bg-light mb-3" placeholder="Card Number">
+                        <div class="d-flex gap-2"><input type="text" class="form-control bg-light" placeholder="MM/YY"><input type="text" class="form-control bg-light" placeholder="CVV"></div>
+                    </div>
+                </div>
+
+                <div *ngIf="depositState.step === 3" class="animate-fade text-center">
+                    <input type="number" [(ngModel)]="depositState.amount" class="form-control form-control-lg bg-light fs-1 py-5 text-center mb-4" placeholder="0.00">
+                </div>
+
+                <div *ngIf="depositState.step === 4" class="animate-fade text-center py-5">
+                    <div class="spinner-border text-primary w-80px h-80px mb-4"></div>
+                    <h3 class="fw-bolder">Processing with Provider...</h3>
+                </div>
+
+                <div *ngIf="depositState.step === 5" class="animate-fade text-center py-5">
+                    <i class="fas fa-check-circle text-success" style="font-size: 5rem;"></i>
+                    <h2 class="fw-bolder mt-4">Deposit Successful!</h2>
+                    <h3 class="text-success">KES {{depositState.amount}}</h3>
+                </div>
+            </div>
+            
+            <div class="modal-footer border-0 p-4 bg-light d-flex justify-content-between" *ngIf="depositState.step < 5">
+                <button class="btn btn-light fw-bold px-5" [disabled]="depositState.step === 1" (click)="prevStep('deposit')">Back</button>
+                <button class="btn btn-gold px-6" [disabled]="isProcessing" (click)="nextStep('deposit')">
+                    <span *ngIf="!isProcessing">Continue <i class="fas fa-arrow-right ms-2"></i></span>
+                    <span *ngIf="isProcessing"><i class="fas fa-circle-notch fa-spin"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="sendMoneyModal" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pt-4 px-5">
+                <h3 class="fw-bolder mb-0"><i class="fas fa-paper-plane text-primary me-3"></i> Send Money</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="resetWizard('send')"></button>
+            </div>
+            <div class="modal-body p-5">
+                <div class="wizard-stepper">
+                    <div class="wizard-step" [class.active]="sendState.step === 1" [class.completed]="sendState.step > 1"><div class="step-circle">1</div></div>
+                    <div class="wizard-step" [class.active]="sendState.step === 2" [class.completed]="sendState.step > 2"><div class="step-circle">2</div></div>
+                    <div class="wizard-step" [class.active]="sendState.step === 3" [class.completed]="sendState.step > 3"><div class="step-circle">3</div></div>
+                    <div class="wizard-step" [class.active]="sendState.step === 4"><div class="step-circle"><i class="fas fa-check"></i></div></div>
+                </div>
+
+                <div *ngIf="sendState.step === 1" class="animate-fade">
+                    <input type="number" [(ngModel)]="sendState.amount" class="form-control form-control-lg bg-light border-0 fw-bolder fs-2 text-primary mb-4" placeholder="Amount (KES)">
+                    <h6 class="fw-bold text-dark fs-7 text-uppercase mb-3">Select Recipient</h6>
+                    <div class="list-group">
+                        <label *ngFor="let rec of recipients" class="recipient-card" [class.selected]="sendState.recipient === rec" (click)="selectRecipient(rec)">
+                            <div class="symbol symbol-40px bg-light-{{rec.color}} text-{{rec.color}} rounded-circle d-flex align-items-center justify-content-center fw-bolder">{{rec.initials}}</div>
+                            <div class="flex-grow-1"><h6 class="fw-bold mb-0">{{rec.name}}</h6><span class="text-muted fs-8">{{rec.email}}</span></div>
+                            <i *ngIf="sendState.recipient === rec" class="fas fa-check-circle text-gold fs-5"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <div *ngIf="sendState.step === 2" class="animate-fade">
+                    <div class="summary-box mb-4">
+                        <div class="summary-row"><span class="text-muted fw-bold">Recipient</span><span class="fw-bolder">{{sendState.recipient?.name}}</span></div>
+                        <div class="summary-row mt-4"><span class="text-muted fw-bold">Amount</span><span class="fw-bolder">KES {{sendState.amount}}</span></div>
+                        <div class="summary-row pt-3 mt-2 border-top"><span class="text-dark fw-bolder text-uppercase">Total</span><span class="fw-bolder text-primary fs-4">KES {{sendState.amount + 45}}</span></div>
+                    </div>
+                </div>
+
+                <div *ngIf="sendState.step === 3" class="animate-fade text-center">
+                    <h4 class="fw-bolder text-dark">Enter PIN</h4>
+                    <div class="otp-grid">
+                        <input type="password" class="otp-input" maxlength="1" (keyup)="autoNextNode($event)">
+                        <input type="password" class="otp-input" maxlength="1" (keyup)="autoNextNode($event)">
+                        <input type="password" class="otp-input" maxlength="1" (keyup)="autoNextNode($event)">
+                        <input type="password" class="otp-input" maxlength="1">
+                    </div>
+                </div>
+
+                <div *ngIf="sendState.step === 4" class="animate-fade text-center py-5">
+                    <i class="fas fa-check-circle text-success" style="font-size: 5rem;"></i>
+                    <h2 class="fw-bolder mt-4">Sent Successfully!</h2>
+                </div>
+            </div>
+            <div class="modal-footer border-0 p-4 bg-light d-flex justify-content-between" *ngIf="sendState.step < 4">
+                <button class="btn btn-light fw-bold px-5" [disabled]="sendState.step === 1" (click)="prevStep('send')">Back</button>
+                <button class="btn btn-gold px-6" [disabled]="isProcessing" (click)="nextStep('send')">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="custom-toast" [class.show]="showToast">
+    <i class="fas fa-check-circle text-success fs-3"></i>
+    <span class="fw-bold">{{ toastMessage }}</span>
+</div>

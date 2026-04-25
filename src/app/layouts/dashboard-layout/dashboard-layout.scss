@@ -65,3 +65,42 @@ body {
 .step-dot { width: 32px; height: 32px; background: white; border: 2px solid #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1; font-weight: 700; color: #64748b; transition: all 0.4s ease; }
 .step-dot.active { border-color: var(--gold-primary); background: var(--gold-primary); color: white; box-shadow: 0 0 0 4px var(--gold-subtle); }
 .step-dot.completed { background: #10b981; border-color: #10b981; color: white; }
+
+
+/* 1. Animate the Secondary Sidebar */
+.aside-secondary {
+    width: 325px;
+    min-width: 325px;
+    /* overflow-x: hidden is CRITICAL so content doesn't bleed out when shrinking */
+    overflow-x: hidden !important; 
+    transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out, opacity 0.2s ease;
+}
+
+.aside-secondary.collapsed-sidebar {
+    width: 0 !important;
+    min-width: 0 !important;
+    opacity: 0;
+    border-right: none !important;
+}
+
+/* 2. Animate the Main Content Wrapper */
+.main-content-wrapper {
+    /* Base state: 100px (Primary) + 325px (Secondary) = 425px */
+    padding-left: 425px; 
+    width: 100%;
+    transition: padding-left 0.3s ease-in-out;
+}
+
+.main-content-wrapper.collapsed-sidebar {
+    /* Collapsed state: Only the 100px Primary sidebar is visible */
+    padding-left: 100px; 
+}
+
+/* 3. Mobile responsiveness (hides sidebar logic on small screens) */
+@media (max-width: 991.98px) {
+    .main-content-wrapper,
+    .main-content-wrapper.collapsed-sidebar {
+        padding-left: 0;
+    }
+}
+

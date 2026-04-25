@@ -26,3 +26,43 @@
 .rotate-180 {
   transform: rotate(180deg);
 }
+/* --- Sidebar Collapse Animations --- */
+
+.aside-secondary {
+    /* Base expanded state */
+    width: 325px; 
+    min-width: 325px;
+    overflow: hidden; /* Crucial: stops text from spilling out while animating */
+    transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out;
+}
+
+.aside-secondary.collapsed-sidebar {
+    /* Collapsed state */
+    width: 0 !important;
+    min-width: 0 !important;
+    border-right: none !important; /* Hides the border line when closed */
+}
+
+/* --- Main Content Collapse Animations --- */
+
+/* Note: Ensure this targets your specific container-fluid. 
+   You might want to wrap it in a custom class like .main-content-wrapper if it affects other containers */
+.container-fluid {
+    /* 100px (Primary) + 325px (Secondary) */
+    margin-left: 425px; 
+    width: auto;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.container-fluid.collapsed-sidebar {
+    /* 100px (Primary only) */
+    margin-left: 100px; 
+}
+
+/* Optional: Media query for mobile/tablet where the sidebar might be hidden by default */
+@media (max-width: 991.98px) {
+    .container-fluid,
+    .container-fluid.collapsed-sidebar {
+        margin-left: 0;
+    }
+}
