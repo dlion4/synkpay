@@ -66,3 +66,61 @@
         margin-left: 0;
     }
 }
+
+/* --- Sidebar Collapse Animations --- */
+.aside-secondary {
+    width: 325px; 
+    min-width: 325px;
+    overflow-x: hidden !important; 
+    transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out;
+}
+
+.aside-secondary.collapsed-sidebar {
+    width: 0 !important;
+    min-width: 0 !important;
+    border-right: none !important; 
+}
+
+/* --- Light Mode Primary Navigation Buttons --- */
+.btn-custom {
+    transition: all 0.25s ease-in-out;
+    border-radius: 12px;
+    padding: 14px;
+    color: #94a3b8 !important; /* Soft gray for inactive state */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 3px solid transparent;
+}
+
+.btn-custom:hover {
+    background-color: #f8fafc; /* Very light gray hover */
+    color: #D4AF37 !important; /* Theme Gold */
+    transform: translateY(-2px);
+}
+
+.btn-custom.active {
+    background-color: rgba(212, 175, 55, 0.08) !important; /* Subtle gold tint */
+    color: #D4AF37 !important; 
+    border-right: 3px solid #D4AF37; /* Flat gold border connecting to secondary sidebar */
+    border-radius: 12px 0 0 12px;
+}
+
+/* --- Reusable Utility Classes --- */
+.hover-elevate-up {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hover-elevate-up:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+.mono-num {
+    font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+    letter-spacing: -0.5px;
+}
+.transition-icon {
+    transition: transform 0.3s ease-in-out;
+}
+.rotate-180 {
+    transform: rotate(180deg);
+}
