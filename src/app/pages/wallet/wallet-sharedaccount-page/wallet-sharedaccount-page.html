@@ -1,0 +1,363 @@
+<div class="container-xxl py-10" id="kt_content_container">
+
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-8 fade-in-up">
+        <div>
+            <h1 class="fw-bolder text-dark mb-1 fs-2">MO Shared Accounts</h1>
+            <span class="text-muted fw-bold fs-6">Manage pooled funds and mobile-money distributions</span>
+        </div>
+        <div class="mt-4 mt-md-0 d-flex gap-3">
+            <button class="btn btn-purple fw-bolder px-6 py-3" data-bs-toggle="modal" data-bs-target="#kt_modal_create_shared_wallet">
+                <i class="bi bi-plus-lg me-2 text-white"></i> Create Shared Wallet
+            </button>
+            
+        </div>
+    </div>
+
+    <div class="card fade-in-up delay-1" style="box-shadow: 0px 0px 20px 0px rgba(76, 87, 125, 0.03); border-radius: 1rem; border: none; background-color: #ffffff;">
+        
+        <div class="card-header border-0 pt-6 px-8" style="border-bottom: 1px solid #eff2f5 !important;">
+            <ul class="nav nav-tabs fs-5" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="activeTab === 'mo_overview'" (click)="setTab('mo_overview')">Overview & Spending</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="activeTab === 'mo_transactions'" (click)="setTab('mo_transactions')">Wallet Transactions</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="card-body p-8">
+            <div class="tab-content">
+                
+                <div class="animate__animated animate__fadeIn" *ngIf="activeTab === 'mo_overview'">
+                    <div class="row g-8">
+                        <div class="col-lg-5">
+                            <div class="card p-7 h-100 hover-elevate-up" style="border: 1px dashed #7239ea; background-color: #f3eefd; border-radius: 0.75rem;">
+                                <div class="d-flex flex-stack mb-6">
+                                    <div class="d-flex align-items-center">
+                                        <div class="me-3" style="width: 45px; height: 45px; border-radius: 50%; background-color: #ffffff; color: #7239ea; display: flex; align-items: center; justify-content: center; box-shadow: 0px 4px 6px rgba(0,0,0,0.02);">
+                                            <i class="bi bi-wallet2 fs-3"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="fw-bolder mb-1 text-dark" style="letter-spacing: -0.3px;">MO Shared Account - Farm</h4>
+                                            <span class="text-muted fs-7 fw-bold">Active until Dec 31, 2026</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-success text-white px-3 py-2 rounded-pill fw-bold">Active</span>
+                                </div>
+                                <div class="mb-6">
+                                    <span class="text-muted fw-bold d-block mb-2">Available Balance</span>
+                                    <span class="fs-1 fw-bolder text-dark" style="letter-spacing: -1px;">$2,450.00 <span class="fs-5 text-muted fw-normal">USD</span></span>
+                                </div>
+                                <div>
+                                    <div class="d-flex flex-stack mb-3 text-dark fw-bold fs-7">
+                                        <span>Total Limit: $3,000.00</span>
+                                        <span>18% Spent</span>
+                                    </div>
+                                    <div class="progress w-100" style="height: 8px; border-radius: 4px; background-color: #ffffff;">
+                                        <div class="progress-bar" style="width: 18%; background-color: #7239ea; border-radius: 4px;"></div>
+                                    </div>
+                                </div>
+                                <div class="mt-8 d-flex gap-3">
+                                    <button class="btn w-100 fw-bolder" style="background-color: #e4e6ef; color: #7239ea; border: none; border-radius: 0.5rem;">Top Up</button>
+                                    <button class="btn w-100 fw-bolder" style="background-color: #ffffff; color: #3f4254; border: 1px solid #e4e6ef; border-radius: 0.5rem;">Settings</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-7">
+                            <h5 class="fw-bolder text-dark mb-6">Linked Beneficiaries (Mobile Money)</h5>
+                            <div class="table-responsive">
+                                <table class="table align-middle gs-0 gy-4">
+                                    <thead>
+                                        <tr class="fw-bolder text-muted bg-light fs-8 text-uppercase ls-1">
+                                            <th class="ps-4 rounded-start min-w-150px py-3">User</th>
+                                            <th class="min-w-120px py-3">Phone Number</th>
+                                            <th class="min-w-100px py-3">Allocation</th>
+                                            <th class="min-w-100px text-end rounded-end pe-4 py-3">Spent</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="border-top: none;">
+                                        <tr style="border-bottom: 1px dashed #eff2f5;">
+                                            <td class="ps-4 py-4">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="me-3" style="width: 35px; height: 35px; border-radius: 50%; background-color: #f3eefd; color: #7239ea; display: flex; align-items: center; justify-content: center; font-weight: bold;">R</div>
+                                                    <span class="text-dark fw-bolder fs-6">Rebecca Nalyanya</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge" style="background-color: #f3eefd; color: #7239ea; padding: 0.4rem 0.6rem; border-radius: 0.4rem; font-weight: 600;">+254 712 *** 890</span></td>
+                                            <td class="text-dark fw-bold">40% ($1,200)</td>
+                                            <td class="text-end pe-4 fw-bolder text-success">$350.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="ps-4 py-4">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="me-3" style="width: 35px; height: 35px; border-radius: 50%; background-color: #f3eefd; color: #7239ea; display: flex; align-items: center; justify-content: center; font-weight: bold;">M</div>
+                                                    <span class="text-dark fw-bolder fs-6">Mother</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge" style="background-color: #f3eefd; color: #7239ea; padding: 0.4rem 0.6rem; border-radius: 0.4rem; font-weight: 600;">+254 722 *** 123</span></td>
+                                            <td class="text-dark fw-bold">60% ($1,800)</td>
+                                            <td class="text-end pe-4 fw-bolder text-success">$200.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate__animated animate__fadeIn" *ngIf="activeTab === 'mo_transactions'">
+                    <div class="d-flex flex-stack mb-8">
+                        <h4 class="text-dark fw-bolder m-0">Recent Spending Records</h4>
+                        <div class="position-relative">
+                            <i class="bi bi-search position-absolute top-50 translate-middle-y ms-4 text-muted"></i>
+                            <input type="text" class="form-control ps-12 w-250px" style="background-color: #f5f8fa; border: 1px solid #f5f8fa; border-radius: 0.5rem; color: #3f4254; font-weight: 500; padding: 0.65rem 1rem;" placeholder="Search transactions...">
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table align-middle fs-6 gy-5">
+                            <thead class="bg-light">
+                                <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+                                    <th class="ps-4 min-w-100px py-3 rounded-start">Date</th>
+                                    <th class="min-w-150px py-3">Beneficiary</th>
+                                    <th class="min-w-200px py-3">Description</th>
+                                    <th class="min-w-100px py-3">Method</th>
+                                    <th class="text-end min-w-100px pe-4 py-3 rounded-end">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-600 fw-bold">
+                                <tr style="border-bottom: 1px dashed #eff2f5;">
+                                    <td class="ps-4 py-4">Mar 28, 2026</td>
+                                    <td class="d-flex align-items-center py-4">
+                                        <div class="me-2" style="width: 30px; height: 30px; border-radius: 50%; background-color: #f3eefd; color: #7239ea; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem;">R</div>
+                                        <span class="text-dark fw-bold">Rebecca Nalyanya</span>
+                                    </td>
+                                    <td class="py-4">Farm Input Supplies (Kimilili)</td>
+                                    <td class="py-4"><span class="badge" style="background-color: #e8fff3; color: #50cd89; padding: 0.4rem 0.6rem; border-radius: 0.3rem;">M-Pesa Paybill</span></td>
+                                    <td class="text-end pe-4 fw-bolder py-4 text-danger">-$120.00</td>
+                                </tr>
+                                <tr style="border-bottom: 1px dashed #eff2f5;">
+                                    <td class="ps-4 py-4">Mar 26, 2026</td>
+                                    <td class="d-flex align-items-center py-4">
+                                        <div class="me-2" style="width: 30px; height: 30px; border-radius: 50%; background-color: #f3eefd; color: #7239ea; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem;">M</div>
+                                        <span class="text-dark fw-bold">Mother</span>
+                                    </td>
+                                    <td class="py-4">Groceries & Home upkeep</td>
+                                    <td class="py-4"><span class="badge" style="background-color: #e8fff3; color: #50cd89; padding: 0.4rem 0.6rem; border-radius: 0.3rem;">M-Pesa Send</span></td>
+                                    <td class="text-end pe-4 fw-bolder py-4 text-danger">-$85.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="ps-4 py-4">Mar 20, 2026</td>
+                                    <td class="d-flex align-items-center py-4">
+                                        <div class="me-2" style="width: 30px; height: 30px; border-radius: 50%; background-color: #e4e6ef; color: #3f4254; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem;"><i class="bi bi-bank"></i></div>
+                                        <span class="text-dark fw-bold">System Deposit</span>
+                                    </td>
+                                    <td class="py-4">Initial Wallet Funding</td>
+                                    <td class="py-4"><span class="badge" style="background-color: #f3eefd; color: #7239ea; padding: 0.4rem 0.6rem; border-radius: 0.3rem;">Card Transfer</span></td>
+                                    <td class="text-end pe-4 fw-bolder py-4 text-success">+$3,000.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="kt_modal_create_shared_wallet" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered mw-900px">
+        <div class="modal-content" style="border-radius: 1.5rem; border: none; box-shadow: 0 15px 50px rgba(0,0,0,0.2);">
+            <div class="modal-header pb-0 border-0 justify-content-end">
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-lg fs-2"></i>
+                </div>
+            </div>
+            
+            <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
+                <div class="mb-10 text-center">
+                    <h1 class="mb-3 fw-bolder text-dark">Configure MO Shared Wallet</h1>
+                    <div class="text-muted fw-bold fs-6">Automated splitting & mobile money distribution</div>
+                </div>
+
+                <div class="row g-9 mb-8">
+                    <div class="col-md-5">
+                        <label class="fs-6 fw-bold mb-2">Funding Source</label>
+                        <select class="form-select border-0" style="background-color: #f5f8fa; font-weight: 500; border-radius: 0.65rem;">
+                            <option>Main Wallet (Ksh 1,240,500)</option>
+                            <option>Business Account</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="fs-6 fw-bold mb-2">Wallet Currency</label>
+                        <div class="nav-group d-inline-flex p-1" style="background-color: #f5f8fa; border-radius: 0.75rem; width: 100%;">
+                            <input type="radio" class="btn-check" name="currency" value="KSH" id="curr_ksh" [(ngModel)]="walletCurrency" (ngModelChange)="calculateShares()"/>
+                            <label class="btn btn-sm btn-active-white fw-bolder px-4 py-2 flex-grow-1" for="curr_ksh" style="border-radius: 0.6rem;">KSH</label>
+                            
+                            <input type="radio" class="btn-check" name="currency" value="USD" id="curr_usd" [(ngModel)]="walletCurrency" (ngModelChange)="calculateShares()"/>
+                            <label class="btn btn-sm btn-active-white fw-bolder px-4 py-2 flex-grow-1" for="curr_usd" style="border-radius: 0.6rem;">USD</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="fs-6 fw-bold mb-2">Wallet Name</label>
+                        <input type="text" class="form-control border-0" style="background-color: #f5f8fa; border-radius: 0.65rem;" placeholder="e.g. Farm Labor" />
+                    </div>
+                </div>
+
+                <div class="row g-9 mb-10">
+                    <div class="col-md-4">
+                        <label class="fs-6 fw-bold mb-2">Total Amount</label>
+                        <input type="number" class="form-control border-0" style="background-color: #f5f8fa; font-weight: 700; border-radius: 0.65rem;" [(ngModel)]="totalAmount" (ngModelChange)="calculateShares()" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="fs-6 fw-bold mb-2">Valid From</label>
+                        <input type="date" class="form-control border-0" style="background-color: #f5f8fa; border-radius: 0.65rem;" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="fs-6 fw-bold mb-2">Valid Until</label>
+                        <input type="date" class="form-control border-0" style="background-color: #f5f8fa; border-radius: 0.65rem;" />
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <div class="d-flex flex-stack mb-5">
+                        <h3 class="fw-bolder text-dark m-0">Link Mobile Money Users</h3>
+                        <button type="button" (click)="addBeneficiary()" class="btn btn-sm fw-bolder" style="background-color: #f3eefd; color: #7239ea; border-radius: 0.5rem;">
+                            <i class="bi bi-person-plus-fill me-1"></i> Add Member
+                        </button>
+                    </div>
+
+                    <div class="mb-4 p-5 animate__animated animate__fadeIn" *ngIf="includeMe" style="background-color: #f1faff; border-radius: 0.85rem; border: 1px solid #c0eaff; border-left: 5px solid #009ef7;">
+                        <div class="row g-5 align-items-center">
+                            <div class="col-md-4">
+                                <span class="badge mb-2" style="background-color: #009ef7; color: #fff;">Pinned: Me (Admin)</span>
+                                <div class="fw-bolder fs-6">Current User Account</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="fs-7 text-muted">Share</div>
+                                <input type="text" class="form-control bg-white fw-bold border-0" readonly [value]="meSharePerc + '%'" />
+                            </div>
+                            <div class="col-md-5">
+                                <div class="fs-7 text-muted">Estimated Amount</div>
+                                <div class="fw-bolder fs-5 text-primary">
+                                    <span>{{ walletCurrency }}</span> <span>{{ meAmount | number:'1.2-2' }}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 text-end">
+                                <button type="button" (click)="includeMe = false; calculateShares()" class="btn btn-icon btn-sm text-danger"><i class="bi bi-dash-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngFor="let b of beneficiaries; let i = index" class="mb-4 p-5 animate__animated animate__fadeIn" style="background-color: #ffffff; border-radius: 1rem; border: 1px solid #eff2f5;">
+                        <div class="row g-5 align-items-end">
+                            <div class="col-md-3">
+                                <label class="fs-9 fw-bolder text-uppercase text-muted mb-1">Full Name</label>
+                                <input type="text" class="form-control form-control-solid border-0 bg-light" placeholder="John Doe" [(ngModel)]="b.name" />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="fs-9 fw-bolder text-uppercase text-muted mb-1">Mobile Number</label>
+                                <input type="text" class="form-control form-control-solid border-0 bg-light" placeholder="+254 7XX..." [(ngModel)]="b.phone" />
+                            </div>
+                            <div class="col-md-2">
+                                <label class="fs-9 fw-bolder text-uppercase text-muted mb-1">Share (%)</label>
+                                <input type="text" class="form-control fw-bolder text-primary border-0" style="background-color: #f3eefd;" [value]="b.sharePerc + '%'" readonly />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="fs-9 fw-bolder text-uppercase text-muted mb-1">Perspective Amount</label>
+                                <div class="d-flex align-items-center h-40px px-3" style="background-color: #f1faff; border: 1px dashed #009ef7; border-radius: 0.5rem;">
+                                    <span class="text-primary fw-bold fs-7 me-1">{{ walletCurrency }}</span>
+                                    <span class="text-primary fw-bolder fs-6">{{ b.amount | number:'1.2-2' }}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 text-end">
+                                <button type="button" (click)="removeBeneficiary(i)" class="btn btn-icon btn-sm" style="background-color: #fff5f8; color: #f1416c;"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-6" style="background-color: #f9f9f9; border-radius: 1rem; border: 1px solid #f1f1f1;">
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <div class="form-check form-check-custom">
+                                    <input class="form-check-input" type="checkbox" id="include_me_check" [(ngModel)]="includeMe" (change)="toggleMe()" />
+                                    <label class="form-check-label fw-bold ms-3" for="include_me_check">Include Me in this shared wallet</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check form-check-custom">
+                                    <input class="form-check-input" type="checkbox" id="auto_split" [(ngModel)]="autoSplit" (change)="calculateShares()" />
+                                    <label class="form-check-label fw-bold ms-3" for="auto_split">Auto-Split Shares Equally</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center pt-5 border-top border-dashed">
+                    <button type="button" class="btn btn-light me-3 fw-bolder px-8 py-3" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-purple fw-bolder px-10 py-3" data-bs-toggle="modal" data-bs-target="#moSuccessModal" (click)="completeSharedWallet()">
+                        Complete Process <i class="bi bi-check-circle ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="moSuccessModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mw-600px">
+        <div class="modal-content" style="border-radius: 1.25rem; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div class="modal-header border-0 pb-0 justify-content-end">
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-0 pb-10 px-10">
+                <div class="text-center mb-8">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #e8fff3; color: #50cd89; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <i class="bi bi-check-lg" style="font-size: 3rem; font-weight: bolder;"></i>
+                    </div>
+                    <h2 class="fw-bolder text-dark mb-2">Wallet Created Successfully!</h2>
+                    <p class="text-muted fs-6">The "MO Shared Account" is now active and ready for distribution.</p>
+                </div>
+
+                <div class="p-5 mb-8" style="background-color: #f9f9f9; border-radius: 0.75rem; border: 1px solid #eff2f5;">
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <span class="text-muted fw-bolder d-block mb-1 fs-8 text-uppercase ls-1">Total Limit</span>
+                            <span class="text-dark fs-5 fw-bolder">{{ walletCurrency }} {{ totalAmount | number:'1.2-2' }}</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="text-muted fw-bolder d-block mb-1 fs-8 text-uppercase ls-1">Duration</span>
+                            <span class="text-dark fs-6 fw-bold">Mar '26 - Dec '26</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label fw-bolder text-dark fs-6">Reference Code</label>
+                    <div class="d-flex">
+                        <input type="text" class="form-control me-2 fw-bold text-primary mono-num bg-light" value="MO-SHRD-9938-X8A" readonly>
+                        <button class="btn btn-light-primary border"><i class="bi bi-files"></i></button>
+                    </div>
+                </div>
+
+                <div class="mb-10">
+                    <label class="form-label fw-bolder text-dark fs-6 mb-1">Direct Share URL</label>
+                    <p class="text-muted mb-3 fs-8">Share this link with beneficiaries to accept funds.</p>
+                    <div class="d-flex">
+                        <input type="text" class="form-control me-2 bg-light fs-8" value="https://sendmo.com/shared/accept/9938-X8A" readonly>
+                        <button class="btn btn-purple fw-bolder text-nowrap px-4">Copy Link</button>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" class="btn btn-light fw-bolder px-8 py-3 border shadow-sm" data-bs-dismiss="modal">Close Window</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

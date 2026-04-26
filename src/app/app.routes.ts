@@ -2,7 +2,16 @@ import { Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout';
 import { KycPageComponent } from './pages/compliance/kyc-page/kyc-page';
 import { KybPageComponent } from './pages/compliance/kyb-page/kyb-page';
-// ... other imports aaapa
+// ... other imports aaap
+// a
+import { SalesPageComponent } from './pages/performance/sales-page/sales-page';
+import { StatementsPageComponent } from './pages/performance/statements-page/statements-page';
+import { ValuationPageComponent } from './pages/performance/valuation-page/valuation-page';
+
+import { WalletSoloaccountPageComponent } from './pages/wallet/wallet-soloaccount-page/wallet-soloaccount-page';
+import { WalletSharedaccountPageComponent } from './pages/wallet/wallet-sharedaccount-page/wallet-sharedaccount-page';
+import { WalletTokensPageComponent } from './pages/wallet/wallet-tokens-page/wallet-tokens-page';
+import { WalletReferralsPageComponent } from './pages/wallet/wallet-referrals-page/wallet-referrals-page';
 
 export const routes: Routes = [
     {
@@ -55,15 +64,20 @@ export const routes: Routes = [
         path: '',
         component: DashboardLayoutComponent,
         children: [
-            // ... your other dashboard routes
+            // ... theeee other dashboard routes
             { path: 'compliance/kyc', component: KycPageComponent },
             { path: 'compliance/kyb', component: KybPageComponent },
+            { path: 'performance/sales', component: SalesPageComponent },
+            { path: 'performance/statements', component: StatementsPageComponent },
+            { path: 'performance/valuation', component: ValuationPageComponent },
+            { path: 'wallet/accounts', component: WalletSoloaccountPageComponent },
+            { path: 'wallet/sharedaccount', component: WalletSharedaccountPageComponent },
+            { path: 'wallet/tokens', component: WalletTokensPageComponent },
+            { path: 'wallet/referrals', component: WalletReferralsPageComponent },
         ]
     },
 
 ];
-
-
 
 
 

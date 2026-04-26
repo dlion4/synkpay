@@ -1,0 +1,212 @@
+<div class="container-xxl py-10" id="kt_content_container">
+    
+    <div class="row g-5 g-xl-10 mb-8 fade-in-up">
+        
+        <div class="col-xl-5">
+            <div class="card shadow-sm border-0 h-100 bg-primary" style="background-image: linear-gradient(45deg, #009ef7 0%, #0095e8 100%);">
+                <div class="card-body p-9 d-flex flex-column justify-content-between">
+                    <div class="mb-7">
+                        <h2 class="text-white fw-bolder fs-1 mb-2">Grow the Network</h2>
+                        <p class="text-white opacity-75 fw-semibold fs-6">Earn 50 USD for every merchant you bring to SendMO. Your friends get a 25 USD welcome bonus too!</p>
+                    </div>
+
+                    <div class="bg-white bg-opacity-10 rounded p-5 border border-white border-opacity-25 mb-2 hover-elevate-up">
+                        <label class="text-white fs-8 fw-bold mb-2 text-uppercase">Your Unique Referral Link</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-transparent border-0 text-white fw-bold fs-7 ps-0" [value]="referralLink" readonly />
+                            <button class="btn btn-white btn-color-primary btn-sm fw-bold px-4" (click)="copyToClipboard()">
+                                <i class="fas fa-copy me-1"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-white opacity-50 fs-9 fst-italic">*Rewards are minted after their first KES 10k transaction.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-7 fade-in-up delay-1">
+            <div class="row g-5 h-100">
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 h-100 p-8 bg-white hover-elevate-up">
+                        <div class="d-flex flex-stack mb-5">
+                            <div class="symbol symbol-45px">
+                                <div class="symbol-label bg-light-primary"><i class="fas fa-users text-primary fs-2x"></i></div>
+                            </div>
+                            <div class="text-end">
+                                <span class="text-gray-900 fw-bolder fs-2 d-block">48</span>
+                                <span class="text-muted fw-bold fs-8">Total Invites</span>
+                            </div>
+                        </div>
+                        <div class="separator separator-dashed my-4"></div>
+                        <div class="d-flex flex-stack">
+                            <div class="d-flex flex-column">
+                                <span class="text-gray-800 fw-bolder fs-3">12</span>
+                                <span class="text-muted fw-bold fs-8 text-uppercase">Active Merchants</span>
+                            </div>
+                            <div class="d-flex flex-column text-end">
+                                <span class="text-warning fw-bolder fs-3">36</span>
+                                <span class="text-muted fw-bold fs-8 text-uppercase">Pending Volume</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 h-100 p-8 bg-white hover-elevate-up">
+                        <div class="d-flex flex-stack mb-5">
+                            <div class="symbol symbol-45px">
+                                <div class="symbol-label bg-light-success"><i class="fas fa-leaf text-success fs-2x"></i></div>
+                            </div>
+                            <div class="text-end">
+                                <span class="text-gray-400 fw-bold fs-8 d-block">Total Lifetime Earned</span>
+                                <span class="text-gray-900 fw-bolder fs-2">1,250 USD</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-light-success rounded p-4 mb-5 border border-success border-dashed">
+                            <div class="d-flex flex-stack">
+                                <div class="d-flex flex-column">
+                                    <span class="text-success fw-bolder fs-4">600 USD</span>
+                                    <span class="text-gray-600 fw-bold fs-8">Redeemable Balance</span>
+                                </div>
+                                <button class="btn btn-success btn-sm fw-bolder shadow-sm" data-bs-toggle="modal" data-bs-target="#kt_modal_redeem_smo">
+                                    Redeem Now
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="progress h-6px w-100 bg-light-success">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-5 g-xl-10 fade-in-up delay-2">
+        <div class="col-xl-12">
+            <div class="card shadow-sm border-0 bg-white">
+                <div class="card-header border-0 pt-6">
+                    <h3 class="card-title align-items-start flex-column">
+                        <span class="card-label fw-bold fs-3 mb-1">Network Invitations</span>
+                        <span class="text-muted mt-1 fw-semibold fs-7">Track who has joined and your pending Referral rewards</span>
+                    </h3>
+                </div>
+                <div class="card-body py-4">
+                    <div class="table-responsive">
+                        <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
+                            <thead>
+                                <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+                                    <th class="min-w-200px">Merchant / Business</th>
+                                    <th class="min-w-150px">Joined Date</th>
+                                    <th class="min-w-150px">Volume Status</th>
+                                    <th class="min-w-100px text-end">Reward</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-600 fw-bold">
+                                <tr *ngFor="let invite of invitations">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="symbol symbol-35px symbol-circle me-3">
+                                                <span class="symbol-label fw-bold {{ invite.avatarClass }}">{{ invite.initial }}</span>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <a href="javascript:;" class="text-gray-800 text-hover-primary fw-bolder">{{ invite.name }}</a>
+                                                <span class="text-muted fs-8">{{ invite.category }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{ invite.date }}</td>
+                                    <td>
+                                        <span class="fw-bold" [ngClass]="invite.progress === 100 ? 'text-success' : 'text-gray-500'">{{ invite.volumeText }}</span>
+                                        <div class="progress h-4px w-100px mt-1" [ngClass]="invite.progress === 100 ? 'bg-light-success' : 'bg-light-primary'">
+                                            <div class="progress-bar" [ngClass]="invite.progress === 100 ? 'bg-success' : 'bg-primary'" [style.width.%]="invite.progress"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-end">
+                                        <span class="badge fw-bold" [ngClass]="invite.statusClass">{{ invite.reward }}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="kt_modal_redeem_smo" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mw-500px">
+        <div class="modal-content glass-card border-0">
+            <div class="modal-header pb-0 border-0 justify-content-end">
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="fas fa-times fs-4"></i>
+                </div>
+            </div>
+
+            <div class="modal-body scroll-y mx-5 mx-xl-10 pt-0 pb-10">
+                <div class="text-center mb-10">
+                    <h1 class="mb-3 text-dark fw-bolder">Redeem Referral Bonus</h1>
+                    <div class="text-muted fw-semibold fs-5">
+                        Choose where to channel your <span class="text-gray-900 fw-bolder">600 USD</span>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column gap-4">
+                    
+                    <label class="d-flex flex-stack cursor-pointer p-4 rounded bg-light redeem-option" [class.active]="selectedRedeemDestination === 'primary'" (click)="setRedeemDestination('primary')">
+                        <div class="d-flex align-items-center me-2">
+                            <div class="symbol symbol-40px me-4">
+                                <span class="symbol-label bg-light-primary"><i class="fas fa-wallet text-primary fs-3"></i></span>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="fw-bolder text-gray-800 fs-6">Primary Wallet Balance</span>
+                                <span class="text-muted fw-bold fs-7">Instant liquidity for transactions</span>
+                            </div>
+                        </div>
+                        <div class="form-check form-check-custom form-check-solid">
+                            <input class="form-check-input" type="radio" name="channel_destination" value="primary" [checked]="selectedRedeemDestination === 'primary'" />
+                        </div>
+                    </label>
+
+                    <label class="d-flex flex-stack cursor-pointer p-4 rounded bg-light redeem-option" [class.active]="selectedRedeemDestination === 'savings'" (click)="setRedeemDestination('savings')">
+                        <div class="d-flex align-items-center me-2">
+                            <div class="symbol symbol-40px me-4">
+                                <span class="symbol-label bg-light-warning"><i class="fas fa-vault text-warning fs-3"></i></span>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="fw-bolder text-gray-800 fs-6">Savings Vault</span>
+                                <span class="text-muted fw-bold fs-7">Deposit to your savings</span>
+                            </div>
+                        </div>
+                        <div class="form-check form-check-custom form-check-solid">
+                            <input class="form-check-input" type="radio" name="channel_destination" value="savings" [checked]="selectedRedeemDestination === 'savings'" />
+                        </div>
+                    </label>
+
+                    <label class="d-flex flex-stack cursor-pointer p-4 rounded bg-light redeem-option" [class.active]="selectedRedeemDestination === 'cashout'" (click)="setRedeemDestination('cashout')">
+                        <div class="d-flex align-items-center me-2">
+                            <div class="symbol symbol-40px me-4">
+                                <span class="symbol-label bg-light-info"><i class="fas fa-money-bill-transfer text-info fs-3"></i></span>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="fw-bolder text-gray-800 fs-6">Cash Out</span>
+                                <span class="text-muted fw-bold fs-7">Channel to external account instantly</span>
+                            </div>
+                        </div>
+                        <div class="form-check form-check-custom form-check-solid">
+                            <input class="form-check-input" type="radio" name="channel_destination" value="cashout" [checked]="selectedRedeemDestination === 'cashout'" />
+                        </div>
+                    </label>
+                </div>
+
+                <div class="text-center mt-10">
+                    <button type="button" class="btn btn-light me-3 fw-bold" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary px-10 fw-bolder shadow-sm" (click)="confirmRedemption()" data-bs-dismiss="modal">Confirm Redemption</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

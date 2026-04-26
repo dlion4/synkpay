@@ -1,0 +1,162 @@
+:host {
+    display: block;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+
+    --gold-primary: #D4AF37;
+    --gold-light: #F4E5B1;
+    --gold-dark: #996515;
+    --gold-soft: rgba(212, 175, 55, 0.1);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade { 
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
+    opacity: 0; 
+}
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+@keyframes aiPulse {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+.ai-pulse-ring { animation: aiPulse 2s infinite; }
+
+/* Base Components */
+.hover-elevate-up {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+}
+
+.transition-300 { transition: all 0.3s ease; }
+.cursor-pointer { cursor: pointer; }
+
+.glass-card {
+    background: #ffffff;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(212, 175, 55, 0.1);
+        border-color: var(--gold-primary);
+    }
+}
+
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+    color: white !important;
+    font-weight: 700;
+    border: none;
+    transition: 0.3s;
+    &:hover { filter: brightness(1.1); transform: translateY(-2px); }
+}
+
+.valuation-display {
+    background: linear-gradient(135deg, #ffffff 0%, #fffbf0 100%);
+    border: 2px solid var(--gold-primary);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
+}
+
+/* Nav Tabs */
+.nav-pills-gold .nav-link { 
+    color: #666; 
+    font-weight: 600; 
+    border-radius: 12px; 
+    padding: 10px 20px; 
+    transition: 0.3s; 
+    cursor: pointer;
+    &.active { 
+        background: var(--gold-primary); 
+        color: white; 
+        box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3); 
+    }
+}
+
+.nav-mini .nav-link { 
+    font-size: 0.75rem; 
+    text-transform: uppercase; 
+    font-weight: 800; 
+    color: #999; 
+    padding: 5px 12px; 
+    border-radius: 8px; 
+    cursor: pointer;
+    &.active { 
+        background: var(--gold-soft); 
+        color: var(--gold-dark); 
+    }
+}
+
+/* Table Styles */
+.table-custom {
+    thead th { 
+        border-bottom: 2px solid var(--gold-light); 
+        color: var(--gold-dark); 
+        font-size: 0.75rem; 
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+        padding-bottom: 15px; 
+    }
+    tbody td { 
+        padding: 15px 10px; 
+        vertical-align: middle; 
+        border-bottom: 1px dashed #e4e6ef; 
+    }
+}
+
+/* AI Modal Styles */
+#recalcModal {
+    .ai-glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        &:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px);
+        }
+    }
+    .ai-input {
+        background: rgba(0, 0, 0, 0.2) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+        border-radius: 12px;
+        &:focus {
+            border-color: #D4AF37 !important;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
+            outline: none;
+        }
+    }
+    .prompt-pill {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #a1a5b7;
+        cursor: pointer;
+        transition: 0.2s;
+        &:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #D4AF37;
+            border-color: #D4AF37;
+        }
+    }
+    .ai-glow-text {
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    }
+}
