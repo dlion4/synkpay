@@ -1,0 +1,201 @@
+:host {
+    display: block;
+    background-color: #f1f5f9;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: #334155;
+
+    --primary-gold: #d4af37;
+    --primary-gold-hover: #b5952f;
+    --light-gold: #fbf8f1;
+    --slate-dark: #1e293b;
+    --slate-light: #f8fafc;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* Utilities */
+.font-monospace { font-family: 'JetBrains Mono', monospace !important; }
+.text-primary-gold { color: var(--primary-gold) !important; }
+.bg-primary-gold { background-color: var(--primary-gold) !important; }
+.bg-light-gold { background-color: var(--light-gold) !important; }
+.text-slate-dark { color: var(--slate-dark) !important; }
+.tracking-widest { letter-spacing: 0.25em; }
+.tracking-wider { letter-spacing: 0.1em; }
+.ls-5 { letter-spacing: 0.5rem; }
+.transition { transition: all 0.3s ease; }
+.cursor-pointer { cursor: pointer; }
+
+/* Buttons */
+.btn-gold {
+    background-color: var(--primary-gold);
+    border-color: var(--primary-gold);
+    color: white;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(180, 83, 9, 0.2);
+    &:hover {
+        background-color: #a04d08;
+        border-color: #a04d08;
+        color: white;
+        box-shadow: 0 6px 10px rgba(180, 83, 9, 0.3);
+    }
+}
+
+.btn-animated {
+    transition: all 0.1s;
+    &:active { transform: scale(0.98); }
+}
+
+/* Nav Tabs */
+.main-tab-active {
+    border-bottom: 3px solid var(--primary-gold) !important;
+    color: var(--primary-gold) !important;
+    font-weight: 600;
+}
+
+/* Base Cards */
+.card-clarity {
+    border-radius: 1.5rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 10px 30px rgba(160, 82, 45, 0.1);
+    transition: all 0.3s;
+    background-color: white;
+}
+
+.card-glow {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 25px rgba(180, 83, 9, 0.2), 0 6px 10px rgba(180, 83, 9, 0.15);
+        border-color: var(--primary-gold);
+        z-index: 10;
+        &::before { transform: translateX(200%) skewX(-20deg); }
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease-in-out;
+        transform: skewX(-20deg);
+    }
+}
+
+.hover-elevate-up:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Bank Cards (Physical & Virtual) */
+.bank-card {
+    width: 100%;
+    max-width: 400px;
+    height: 240px;
+    border-radius: 1.5rem;
+    padding: 1.75rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    &.active-card {
+        border-color: var(--primary-gold);
+        transform: scale(1.02);
+        box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%;
+        width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+        transform: rotate(30deg);
+        pointer-events: none;
+    }
+
+    &.paused { filter: grayscale(100%) opacity(0.8); }
+}
+
+.theme-visa { background: linear-gradient(135deg, #0f172a 0%, #334155 100%); }
+.theme-mastercard { background: linear-gradient(135deg, #111827 0%, #1f2937 100%); }
+.theme-virtual { background: linear-gradient(135deg, #047857 0%, #0d9488 100%); }
+.theme-burner { background: linear-gradient(135deg, #4f46e5 0%, #312e81 100%); }
+
+/* Drawers */
+.drawer {
+    position: fixed;
+    top: 0; right: -450px;
+    width: 100%; max-width: 450px;
+    height: 100%;
+    background: #fff;
+    z-index: 1055;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+    &.active { right: 0; }
+}
+
+.drawer-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1054;
+    display: none;
+    backdrop-filter: blur(2px);
+    &.active { display: block; }
+}
+
+.bg-light-panel { background-color: #f9f9f9; }
+
+/* Custom Inputs & Forms */
+.form-control-custom, .form-control-solid {
+    background-color: #f5f8fa;
+    border-color: #f5f8fa;
+    color: #5e6278;
+    transition: all 0.2s ease;
+    &:focus {
+        background-color: #eef3f7;
+        border-color: var(--primary-gold);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        outline: none;
+    }
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-gold);
+    border-color: var(--primary-gold);
+}
+
+.custom-range::-webkit-slider-thumb { background: var(--primary-gold); }
+.custom-range::-moz-range-thumb { background: var(--primary-gold); }
+
+/* Selection Cards (Add Card) */
+.custom-type-card {
+    input[type="radio"] { display: none; }
+    .btn { transition: all 0.2s; border: 1px solid #e0e0e0; }
+    input:checked + .btn {
+        background-color: #EEF6FF !important;
+        color: #0095E8 !important;
+        border-color: #0095E8 !important;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { animation: fadeIn 0.5s ease-out forwards; }

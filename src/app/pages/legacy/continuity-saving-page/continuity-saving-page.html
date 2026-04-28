@@ -1,0 +1,344 @@
+<div class="container-xxl py-10" id="kt_content_container">
+    
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-8">
+        <div>
+            <div class="d-flex align-items-center mb-2">
+                <i class="bi bi-shield-lock-fill fs-2x text-gold me-3"></i>
+                <h1 class="fw-bolder fs-2 m-0 text-slate-dark">Continuity Savings & Inactivity Net</h1>
+            </div>
+            <p class="text-muted m-0 fs-6 ms-10">Smart funds that trigger automated safety protocols after prolonged account inactivity.</p>
+        </div>
+        <div class="mt-4 mt-md-0 d-flex align-items-center bg-white p-3 rounded-4 shadow-sm border">
+            <div class="me-4 text-end">
+                <h6 class="fw-bolder m-0" [ngClass]="isProtectionActive ? 'text-success' : 'text-muted'">{{ isProtectionActive ? 'System Active' : 'System Dormant' }}</h6>
+                <span class="fs-8 text-muted">Master Override</span>
+            </div>
+            <div class="form-check form-switch form-check-custom m-0 fs-2">
+                <input class="form-check-input cursor-pointer" type="checkbox" [checked]="isProtectionActive" (change)="toggleProtection()">
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-6">
+        <div class="col-lg-8">
+            
+            <div class="card-glass p-6 p-md-8 mb-6">
+                <div class="d-flex align-items-center mb-6">
+                    <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-4">
+                        <i class="bi bi-hourglass-split text-primary fs-3"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bolder text-dark m-0 fs-4"> Define Inactivity Threshold</h3>
+                        <p class="text-muted m-0 fs-7">How long should the system wait without a login or transaction before triggering?</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-3 col-6">
+                        <label class="w-100 radio-card">
+                            <input type="radio" name="inactivity" value="3" [(ngModel)]="inactivityPeriod">
+                            <div class="card-body p-4 text-center">
+                                <i class="bi bi-calendar3 icon-box fs-2x mb-2 d-block"></i>
+                                <span class="fw-bold fs-6">3 Months</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <label class="w-100 radio-card">
+                            <input type="radio" name="inactivity" value="6" [(ngModel)]="inactivityPeriod">
+                            <div class="card-body p-4 text-center">
+                                <i class="bi bi-calendar3 icon-box fs-2x mb-2 d-block"></i>
+                                <span class="fw-bold fs-6">6 Months</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <label class="w-100 radio-card">
+                            <input type="radio" name="inactivity" value="12" [(ngModel)]="inactivityPeriod">
+                            <div class="card-body p-4 text-center">
+                                <i class="bi bi-calendar3 icon-box fs-2x mb-2 d-block"></i>
+                                <span class="fw-bold fs-6">12 Months</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <label class="w-100 radio-card">
+                            <input type="radio" name="inactivity" value="24" [(ngModel)]="inactivityPeriod">
+                            <div class="card-body p-4 text-center">
+                                <i class="bi bi-calendar3 icon-box fs-2x mb-2 d-block"></i>
+                                <span class="fw-bold fs-6">24+ Months</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-glass p-6 p-md-8 mb-6">
+                <div class="d-flex align-items-center mb-6">
+                    <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4">
+                        <i class="bi bi-signpost-split text-success fs-3"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bolder text-dark m-0 fs-4"> Fund Routing Strategy</h3>
+                        <p class="text-muted m-0 fs-7">Where should your unallocated balances be swept upon trigger?</p>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <label class="w-100 radio-card h-100">
+                            <input type="radio" name="destType" value="internal" [(ngModel)]="destinationType">
+                            <div class="card-body p-5 d-flex align-items-center">
+                                <i class="bi bi-safe icon-box fs-2x me-4"></i>
+                                <div>
+                                    <span class="fw-bolder fs-5 d-block text-dark">Secure Internal Vault</span>
+                                    <span class="text-muted fs-8">Funds locked in SendMO Savings</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="w-100 radio-card h-100">
+                            <input type="radio" name="destType" value="external" [(ngModel)]="destinationType">
+                            <div class="card-body p-5 d-flex align-items-center">
+                                <i class="bi bi-bank icon-box fs-2x me-4"></i>
+                                <div>
+                                    <span class="fw-bolder fs-5 d-block text-dark">External Bank Account</span>
+                                    <span class="text-muted fs-8">Swept to verified local bank</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-light p-4 rounded-4 border animate__animated animate__fadeIn" *ngIf="destinationType === 'internal'">
+                    <label class="form-label fw-bold fs-8 text-uppercase">Select Target Vault</label>
+                    <select class="form-select fw-bold" [(ngModel)]="selectedInternalVault">
+                        <option value="Vault-A">High-Yield Savings (**** 8810)</option>
+                        <option value="Vault-B">Emergency Reserve Fund</option>
+                        <option value="Vault-C">Family Trust Vault</option>
+                    </select>
+                </div>
+
+                <div class="bg-light p-4 rounded-4 border animate__animated animate__fadeIn" *ngIf="destinationType === 'external'">
+                    <label class="form-label fw-bold fs-8 text-uppercase">Select Verified Bank Account</label>
+                    <select class="form-select fw-bold" [(ngModel)]="selectedExternalBank">
+                        <option value="Bank-KCB">KCB Bank Kenya (**** 9921)</option>
+                        <option value="Bank-Equity">Equity Bank (**** 4432)</option>
+                        <option value="Bank-Chase">Chase Bank USD (**** 1120)</option>
+                    </select>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card-glass bg-light-gold p-6 border-warning mb-6">
+                <h5 class="fw-bolder text-dark mb-2"><i class="bi bi-shield-lock-fill me-2 text-gold"></i> Required Verification</h5>
+                <p class="text-muted fs-8 mb-5">To prevent accidental triggers, define how SendMo verifies your inactivity status before execution.</p>
+                
+                <ul class="list-group list-group-flush bg-white rounded-3 shadow-sm">
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3 border-0">
+                        <span class="fs-7 fw-bold">Send SMS OTP Ping</span>
+                        <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input h-20px w-35px" type="checkbox" [(ngModel)]="requireOtp"></div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3 border-0 border-top">
+                        <span class="fs-7 fw-bold">Request Master PIN</span>
+                        <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input h-20px w-35px" type="checkbox" [(ngModel)]="requirePin"></div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3 border-0 border-top">
+                        <span class="fs-7 fw-bold">App Biometric Prompt</span>
+                        <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input h-20px w-35px" type="checkbox" [(ngModel)]="requireBiometric"></div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3 border-0 border-top">
+                        <span class="fs-7 fw-bold">Call Trusted Contact</span>
+                        <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input h-20px w-35px" type="checkbox" [(ngModel)]="trustedContactPing"></div>
+                    </li>
+                </ul>
+                <div class="mt-4 fs-9 text-muted fst-italic">If verified alive, the inactivity timer resets to 0.</div>
+            </div>
+
+            <div class="card-glass p-6 text-center bg-slate-dark text-white">
+                <i class="bi bi-file-earmark-lock2 fs-3x text-gold mb-3 d-block"></i>
+                <h4 class="fw-bolder text-white">Save Continuity Plan</h4>
+                <p class="fs-8 text-gray-400 mb-6">By saving, you legally authorize SendMo to execute the selected matrix if the inactivity threshold is met and verification fails.</p>
+                
+                <button class="btn btn-gold w-100 py-3 fs-5" (click)="openConfirmModal()">
+                    Authorize & Save Plan <i class="bi bi-arrow-right ms-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card-glass p-6 p-md-8">
+                <div class="d-flex align-items-center mb-6">
+                    <div class="bg-danger bg-opacity-10 p-3 rounded-circle me-4">
+                        <i class="bi bi-cpu-fill text-danger fs-3"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bolder text-dark m-0 fs-4"> Post-Trigger Automation Matrix</h3>
+                        <p class="text-muted m-0 fs-7">Select the security and business logic protocols to execute automatically.</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12"><h6 class="fw-bolder text-gold border-bottom pb-2 mt-2">Account & Card Security</h6></div>
+                    
+                    <div class="col-md-6">
+                        <div class="action-grid-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold d-block fs-6">Render Account Dormant</span>
+                                <span class="text-muted fs-9">Locks login. Requires KYC to unlock.</span>
+                            </div>
+                            <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input" type="checkbox" [(ngModel)]="actions.renderDormant"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="action-grid-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold d-block fs-6">Freeze Physical Cards</span>
+                                <span class="text-muted fs-9">Blocks all ATM and POS transactions.</span>
+                            </div>
+                            <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input" type="checkbox" [(ngModel)]="actions.freezePhysicalCards"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="action-grid-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold d-block fs-6">Terminate Virtual Cards</span>
+                                <span class="text-muted fs-9">Deletes all active VCCs instantly.</span>
+                            </div>
+                            <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input" type="checkbox" [(ngModel)]="actions.freezeVirtualCards"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="action-grid-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold d-block fs-6">Lock Crypto Trading</span>
+                                <span class="text-muted fs-9">Prevents buying/selling digital assets.</span>
+                            </div>
+                            <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input" type="checkbox" [(ngModel)]="actions.lockCryptoTrading"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-12"><h6 class="fw-bolder text-gold border-bottom pb-2 mt-4">Business & Financial Flows</h6></div>
+
+                    <div class="col-md-6">
+                        <div class="action-grid-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold d-block fs-6">Deactivate API Keys</span>
+                                <span class="text-muted fs-9">Revokes access for external integrations.</span>
+                            </div>
+                            <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input" type="checkbox" [(ngModel)]="actions.deactivateApiKeys"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="action-grid-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold d-block fs-6">Suspend Webhooks</span>
+                                <span class="text-muted fs-9">Stops sending data to external servers.</span>
+                            </div>
+                            <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input" type="checkbox" [(ngModel)]="actions.suspendWebhooks"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="action-grid-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold d-block fs-6">Cancel Auto-Subscriptions</span>
+                                <span class="text-muted fs-9">Blocks scheduled outgoing bill payments.</span>
+                            </div>
+                            <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input" type="checkbox" [(ngModel)]="actions.cancelAutoSubscriptions"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="action-grid-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold d-block fs-6">Pause B2B Payouts</span>
+                                <span class="text-muted fs-9">Halts automated payroll and vendor routing.</span>
+                            </div>
+                            <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input" type="checkbox" [(ngModel)]="actions.suspendB2bPayouts"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-12"><h6 class="fw-bolder text-gold border-bottom pb-2 mt-4">Estate & Communication</h6></div>
+
+                    <div class="col-md-6">
+                        <div class="action-grid-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold d-block fs-6">Notify Trusted Contacts</span>
+                                <span class="text-muted fs-9">Dispatches SMS/Email to Emergency reps.</span>
+                            </div>
+                            <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input" type="checkbox" [(ngModel)]="actions.notifyTrustedContacts"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="action-grid-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold d-block fs-6">Generate Tax Statements</span>
+                                <span class="text-muted fs-9">Compiles end-of-year data for probate.</span>
+                            </div>
+                            <div class="form-check form-switch form-check-custom m-0"><input class="form-check-input" type="checkbox" [(ngModel)]="actions.generateTaxStatements"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div class="modal fade show d-block" tabindex="-1" *ngIf="isConfirmModalOpen">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg border-0 card-glass animate__animated animate__zoomIn">
+            <div class="modal-header border-0 bg-light rounded-top-4 pb-3 pt-5 px-6">
+                <h4 class="modal-title fw-bolder text-dark w-100 text-center"><i class="bi bi-shield-exclamation text-warning me-2"></i> Security Authorization</h4>
+            </div>
+            <div class="modal-body p-6 text-center">
+                
+                <div class="alert alert-warning border-0 text-start rounded-3 p-4 mb-5 mx-auto" style="max-width: 400px;" *ngIf="!isSaving">
+                    <p class="m-0 fs-7 fw-bold"><i class="bi bi-info-circle-fill me-2"></i> You are modifying highly sensitive account automation settings.</p>
+                </div>
+
+                <p class="text-muted mb-4 fs-6">Please enter your 4-digit Master Security PIN to confirm these changes.</p>
+                
+                <input type="password" class="form-control form-control-solid bg-light text-center fs-1 py-3 mb-5 mx-auto" placeholder="••••" maxlength="4" style="width: 150px; letter-spacing: 0.5rem;" [disabled]="isSaving || countdown > 0">
+
+                <div class="d-flex flex-column gap-3 mx-auto" style="max-width: 300px;">
+                    <button class="btn btn-gold py-3 fw-bold w-100" (click)="confirmAndSave()" [disabled]="countdown > 0 || isSaving">
+                        <span *ngIf="countdown > 0">Wait {{ countdown }}s...</span>
+                        <span *ngIf="countdown <= 0 && !isSaving">Confirm Signature</span>
+                        <span *ngIf="isSaving"><i class="spinner-border spinner-border-sm me-2"></i> Securing Ledger...</span>
+                    </button>
+                    <button class="btn btn-light py-3 fw-bold w-100" (click)="closeConfirmModal()" [disabled]="isSaving">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade show modal-backdrop-blur" *ngIf="isConfirmModalOpen"></div>
+
+<div class="modal fade show d-block" tabindex="-1" *ngIf="isSuccessModalOpen">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg card-glass text-center animate__animated animate__zoomIn">
+            <div class="modal-body p-8">
+                <div class="mb-4 d-inline-flex align-items-center justify-content-center bg-success bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                    <i class="bi bi-check-lg text-success" style="font-size: 3rem;"></i>
+                </div>
+                <h3 class="fw-bolder text-dark mb-2">Protocol Secured</h3>
+                <p class="text-muted fs-7 mb-6">Your Inactivity Safety Net logic has been encrypted and saved to the ledger.</p>
+                <button class="btn btn-dark w-100 py-3 fw-bold rounded-3" (click)="closeSuccessModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade show modal-backdrop-blur" *ngIf="isSuccessModalOpen"></div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-4">
+    <div class="toast show toast-animate align-items-center text-white bg-dark border-0 shadow-lg rounded-3" role="alert" *ngIf="showToast">
+        <div class="d-flex p-2">
+            <div class="toast-body fw-bold fs-6">
+                <i class="bi bi-info-circle-fill text-gold me-2"></i> {{ toastMessage }}
+            </div>
+        </div>
+    </div>
+</div>

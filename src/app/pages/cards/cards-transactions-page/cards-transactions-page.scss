@@ -1,0 +1,68 @@
+:host {
+    display: block;
+    background-color: #f1f5f9;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+
+    --primary-gold: #d4af37;
+    --slate-dark: #0f172a;
+    --glass-white: rgba(255, 255, 255, 0.9);
+}
+
+.card-clarity {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.merchant-logo {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #f8fafc;
+}
+
+.tx-row {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    &:hover {
+        background-color: #f8fafc !important;
+        transform: scale(1.002);
+    }
+}
+
+.status-pill {
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    &.completed { background: #dcfce7; color: #166534; }
+    &.recurring { background: #e0f2fe; color: #0369a1; }
+    &.failed { background: #fee2e2; color: #991b1b; }
+}
+
+.amount-display {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    &.negative { color: var(--slate-dark); }
+    &.positive { color: #10b981; }
+}
+
+/* Modal Styling */
+.modal-backdrop-blur {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+}
+
+.analytic-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.bi-custom {
+    color: var(--primary-gold);
+}

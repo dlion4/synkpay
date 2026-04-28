@@ -684,7 +684,8 @@
                 <div class="tab-pane fade" id="tab_cards" role="tabpanel">
                     <h2 class="text-dark fw-bolder mb-8 fs-3">My Cards</h2>
 
-                    <a routerLink="/cards/details"
+                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Active Cards</h5>
+                    <a routerLink="/cards/my-cards"
                         class="card border-0 mb-6 shadow-lg hover-elevate-up text-decoration-none d-block position-relative overflow-hidden rounded-4"
                         style="background: linear-gradient(135deg, #111827 0%, #374151 100%);">
                         <i class="fas fa-wifi position-absolute text-white opacity-25"
@@ -712,7 +713,7 @@
 
                     <div class="alert bg-light-primary border border-dashed border-primary p-4 mb-6 rounded-4">
                         <div class="d-flex align-items-start">
-                            <i class="fas fa-info-circle fs-3 text-primary me-3 mt-1"></i>
+                            <i class="bi bi-info-circle-fill fs-3 text-primary me-3 mt-1"></i>
                             <span class="text-dark fs-8 fw-bold">Our <strong class="text-primary">SendMO Card</strong>
                                 is an all-in-one solution allowing you to manage both <span
                                     class="badge bg-white border text-dark fs-9 px-2">Credit</span> and <span
@@ -721,23 +722,72 @@
                         </div>
                     </div>
 
+                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Card Control Center</h5>
+
+                    <a routerLink="/cards/limits-security"
+                        class="card border border-gray-300 mb-3 text-decoration-none hover-elevate-up bg-white p-4 d-flex flex-row align-items-center transition">
+                        <div
+                            class="symbol symbol-40px bg-light-warning rounded-3 me-4 d-flex justify-content-center align-items-center border border-warning border-opacity-25">
+                            <i class="bi bi-shield-lock-fill text-warning fs-3"></i>
+                        </div>
+                        <div class="d-flex flex-column flex-grow-1">
+                            <span class="text-dark fw-bolder fs-6">Limits & Security</span>
+                            <span class="text-muted fs-8 fw-bold">Manage spend limits & fraud protection</span>
+                        </div>
+                        <i class="bi bi-chevron-right text-gray-400"></i>
+                    </a>
+
+                    <a routerLink="/cards/transactions"
+                        class="card border border-gray-300 mb-6 text-decoration-none hover-elevate-up bg-white p-4 d-flex flex-row align-items-center transition">
+                        <div
+                            class="symbol symbol-40px bg-light-info rounded-3 me-4 d-flex justify-content-center align-items-center border border-info border-opacity-25">
+                            <i class="bi bi-receipt-cutoff text-info fs-3"></i>
+                        </div>
+                        <div class="d-flex flex-column flex-grow-1">
+                            <span class="text-dark fw-bolder fs-6">Card Transactions</span>
+                            <span class="text-muted fs-8 fw-bold">View history specific to your physical card</span>
+                        </div>
+                        <i class="bi bi-chevron-right text-gray-400"></i>
+                    </a>
+
                     <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Standard Banking</h5>
                     <a routerLink="/cards/debit"
                         class="card border border-dashed border-gray-300 mb-3 text-decoration-none hover-elevate-up bg-light p-4 d-block">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div class="d-flex align-items-center"><i
-                                    class="fas fa-credit-card text-warning-dark fs-3 me-3"></i><span
-                                    class="text-dark fw-bolder fs-6">ATM Debit Card</span></div>
-                            <span class="badge bg-success text-white fw-bold">Active</span>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-credit-card-2-back-fill text-dark fs-3 me-3"></i>
+                                <span class="text-dark fw-bolder fs-6">ATM Debit Card</span>
+                            </div>
+                            <span
+                                class="badge badge-light-success text-success fw-bold border border-success border-opacity-25">Active</span>
                         </div>
                         <p class="text-muted fs-8 mb-0 fw-bold">Linked to fiat wallet for global ATM withdrawals.</p>
                     </a>
                 </div>
 
+                <style>
+                    .hover-elevate-up {
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+
+                    .hover-elevate-up:hover {
+                        transform: translateY(-4px);
+                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+                    }
+
+                    .bg-light-warning {
+                        background-color: #fff8dd !important;
+                    }
+
+                    .bg-light-info {
+                        background-color: #f8f5ff !important;
+                    }
+                </style>
+
                 <div class="tab-pane fade" id="tab_dod" role="tabpanel">
                     <h2 class="text-dark fw-bolder mb-8 fs-3">Legacy & Continuity</h2>
 
-                    <a routerLink="/dod/beneficiary"
+                    <a routerLink="legacy/beneficiary"
                         class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up p-5 d-block">
                         <div class="d-flex align-items-center mb-3">
                             <div class="symbol symbol-45px me-3"><span class="symbol-label bg-white shadow-sm"><i
@@ -752,7 +802,7 @@
                                 class="fas fa-arrow-right ms-1"></i></span>
                     </a>
 
-                    <a routerLink="/dod/continuity-savings"
+                    <a routerLink="legacy/continuity-saving"
                         class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-5 d-block">
                         <div class="d-flex align-items-center mb-3">
                             <div class="symbol symbol-45px me-3"><span class="symbol-label bg-white shadow-sm"><i

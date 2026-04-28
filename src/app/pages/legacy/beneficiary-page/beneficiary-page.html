@@ -1,0 +1,668 @@
+<div class="toast-container position-fixed bottom-0 end-0 p-4">
+    <div *ngFor="let toast of toasts" class="toast show toast-animate align-items-center text-white border-0 mb-2"
+        [ngClass]="{'bg-success': toast.type === 'success', 'bg-danger': toast.type === 'danger', 'bg-dark': toast.type === 'info', 'bg-warning text-dark': toast.type === 'warning'}"
+        role="alert">
+        <div class="d-flex">
+            <div class="toast-body fw-bold fs-6">
+                <i class="fas"
+                    [ngClass]="{'fa-check-circle': toast.type === 'success', 'fa-exclamation-triangle': toast.type === 'danger' || toast.type === 'warning', 'fa-info-circle': toast.type === 'info'}"></i>
+                {{ toast.message }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-xxl py-8" id="kt_content_container">
+
+    <header class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-6 fade-in">
+        <div class="brand">
+            <div class="brand-title">
+                <i class="fas fa-shield-alt me-2 text-vibrant"></i>Legacy & Assurance Manager
+            </div>
+            <div class="brand-sub">Secure your financial future through designated beneficiaries and pledges.</div>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <div
+                class="small-muted d-none d-md-flex align-items-center bg-white px-3 py-2 rounded-pill border shadow-sm">
+                <i class="fas fa-clock me-2"></i> Last Updated: <strong class="ms-2 text-dark">{{ lastUpdated }}</strong>
+            </div>
+            <button class="btn btn-outline-secondary bg-white shadow-sm" (click)="checkStatus()" title="Check Status">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            <button class="btn-gold shadow-sm" (click)="openWizard()">
+                <i class="fas fa-user-plus me-2"></i> Add Beneficiary
+            </button>
+        </div>
+    </header>
+
+    <main class="page-card fade-in">
+
+        <section class="kpi-row">
+            <div class="kpi">
+                <div class="label">Total Funds Allocated</div>
+                <div class="value text-vibrant">95%</div>
+                <div class="small-muted mt-2">Percentage of total account balance covered.</div>
+            </div>
+            <div class="kpi">
+                <div class="label">Total Beneficiaries</div>
+                <div class="value">4 Individuals</div>
+                <div class="small-muted mt-2">3 Contingency, 1 Emergency.</div>
+            </div>
+            <div class="kpi">
+                <div class="label">Pledged to Charity</div>
+                <div class="value">$5,000</div>
+                <div class="small-muted mt-2">Fixed amount from the total account balances.</div>
+            </div>
+            <div class="kpi">
+                <div class="label">Charity Allocation</div>
+                <div class="value text-success">5%</div>
+                <div class="small-muted mt-2">Percentage from total savings.</div>
+            </div>
+        </section>
+
+        <ul class="nav nav-tabs mt-6 mb-5">
+            <li class="nav-item">
+                <button class="nav-link" [class.active]="activeMainTab === 'beneficiaries'"
+                    (click)="setMainTab('beneficiaries')">
+                    <i class="fas fa-users me-2"></i> Designated Beneficiaries
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" [class.active]="activeMainTab === 'pledges'" (click)="setMainTab('pledges')">
+                    <i class="fas fa-hand-holding-heart me-2"></i> Fund Pledging & Charity
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" [class.active]="activeMainTab === 'legal'" (click)="setMainTab('legal')">
+                    <i class="fas fa-file-contract me-2"></i> Legal & Documentation
+                </button>
+            </li>
+        </ul>
+
+        <div *ngIf="activeMainTab === 'beneficiaries'" class="animate__animated animate__fadeIn">
+            <div class="glass-alert mb-4">
+                <i class="fas fa-info-circle me-2"></i> <strong>Total Allocation Check:</strong> The sum of percentages
+                across all beneficiaries must equal 100% of the covered funds.
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <h6 class="text-vibrant fs-5 border-bottom pb-3 mb-3">
+                            <i class="fas fa-hospital user-md me-2"></i> Emergency / Alive Payouts
+                        </h6>
+                        <div class="small-muted mb-4">
+                            Funds automatically released upon confirmed urgent need (e.g., hospitalization, critical
+                            illness).
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6 border-end">
+                                <label class="form-label small-muted mb-1">Total Funds Reserved</label>
+                                <strong class="h4 d-block text-success m-0">10%</strong>
+                            </div>
+                            <div class="col-6 ps-3">
+                                <label class="form-label small-muted mb-1">Primary Emergency Contact</label>
+                                <strong class="h6 d-block m-0 text-dark">Sarah Lowmake (Spouse)</strong>
+                            </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-secondary w-100 mt-4 fw-bold">
+                            <i class="fas fa-cog me-1"></i> Configure Emergency Rules
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <h6 class="text-vibrant fs-5 border-bottom pb-3 mb-3">
+                            <i class="fas fa-dove me-2"></i> Contingency / Death Payouts
+                        </h6>
+                        <div class="small-muted mb-4">
+                            Funds channeled upon certified incapacitation or death. This list includes the main
+                            recipients.
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6 border-end">
+                                <label class="form-label small-muted mb-1">Total Allocation Set</label>
+                                <strong class="h4 d-block text-success m-0">90%</strong>
+                            </div>
+                            <div class="col-6 ps-3">
+                                <label class="form-label small-muted mb-1">Default Payout Method</label>
+                                <strong class="h6 d-block m-0 text-dark">SendMo Wallet</strong>
+                            </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-primary w-100 mt-4 fw-bold" (click)="openWizard()">
+                            <i class="fas fa-plus me-1"></i> Add Death Beneficiary
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h5 class="text-vibrant mb-4 border-bottom pb-3">All Designated Individuals</h5>
+                <div class="table-responsive">
+                    <table class="table align-middle table-hover">
+                        <thead class="bg-light text-muted small text-uppercase">
+                            <tr>
+                                <th class="ps-3 py-3">Name</th>
+                                <th>Relationship</th>
+                                <th>Country</th>
+                                <th>Trigger</th>
+                                <th>Allocation %</th>
+                                <th>Payout Method</th>
+                                <th class="text-end pe-3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="border-top-0">
+                            <tr *ngFor="let bene of beneficiaries">
+                                <td class="ps-3 fw-bold text-dark">{{ bene.name }}</td>
+                                <td class="text-muted">{{ bene.relation }}</td>
+                                <td>{{ bene.country }}</td>
+                                <td><span class="badge bg-light-primary text-primary border">{{ bene.trigger }}</span>
+                                </td>
+                                <td class="fw-bolder" [ngClass]="bene.allocation > 20 ? 'text-success' : 'text-dark'">{{
+                                    bene.allocation }}%</td>
+                                <td class="text-muted fs-7">{{ bene.method }}</td>
+                                <td class="text-end pe-3">
+                                    <button class="btn btn-sm btn-light border text-secondary hover-elevate-up"><i
+                                            class="fas fa-pen"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeMainTab === 'pledges'" class="animate__animated animate__fadeIn">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5">
+                <h4 class="mb-0 text-dark fw-bold">Pledge Remaining Funds to Charity or Foundation</h4>
+                <button class="btn-gold mt-3 mt-md-0" (click)="openCharityModal()">
+                    <i class="fas fa-gift me-2"></i> Create New Pledge
+                </button>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <h6 class="text-vibrant border-bottom pb-3 mb-3 fs-5">
+                            <i class="fas fa-globe-americas me-2"></i> Active Charity Donation Pledge
+                        </h6>
+                        <div class="small-muted mb-4">
+                            The remaining unallocated percentage (or a fixed amount) is directed here upon contingency
+                            event.
+                        </div>
+                        <div class="bg-light-success p-3 rounded border border-success border-opacity-25 mb-4">
+                            <strong class="d-block h4 text-success m-0">10% Remaining Allocation</strong>
+                            <div class="small text-dark mt-1">Currently directed to: <strong>Global Education
+                                    Fund</strong></div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-primary w-100 fw-bold" (click)="openCharityModal()">
+                            <i class="fas fa-pencil-alt me-1"></i> Modify Pledge
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <h6 class="text-vibrant border-bottom pb-3 mb-3 fs-5">
+                            <i class="fas fa-building me-2"></i> SendMo Foundation Sponsorship
+                        </h6>
+                        <div class="small-muted mb-4">
+                            You can elect to donate a portion of your funds to the SendMo financial literacy foundation.
+                        </div>
+                        <div class="bg-light-danger p-3 rounded border border-danger border-opacity-25 mb-4">
+                            <strong class="d-block h5 text-danger m-0">No Active Pledge</strong>
+                            <div class="small text-dark mt-1">You have not pledged any funds to the Foundation.</div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-secondary w-100 fw-bold" (click)="openCharityModal(true)">
+                            <i class="fas fa-plus me-1"></i> Pledge to SendMo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h5 class="text-vibrant mb-4 border-bottom pb-3">Pledge History</h5>
+                <div class="table-responsive">
+                    <table class="table align-middle table-hover">
+                        <thead class="bg-light text-muted small text-uppercase">
+                            <tr>
+                                <th class="ps-3 py-3">Pledge Target</th>
+                                <th>Type</th>
+                                <th>Value</th>
+                                <th>Trigger</th>
+                                <th>Status</th>
+                                <th class="text-end pe-3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="border-top-0">
+                            <tr *ngFor="let p of pledges">
+                                <td class="ps-3 fw-bold text-dark">{{ p.target }}</td>
+                                <td class="text-muted">{{ p.type }}</td>
+                                <td class="fw-bolder">{{ p.value }}</td>
+                                <td><span class="badge bg-light-primary text-primary border">{{ p.trigger }}</span></td>
+                                <td>
+                                    <span class="badge"
+                                        [ngClass]="p.status === 'Active' ? 'bg-success' : 'bg-secondary'">{{ p.status
+                                        }}</span>
+                                </td>
+                                <td class="text-end pe-3">
+                                    <button class="btn btn-sm btn-outline-danger" *ngIf="p.status === 'Active'"
+                                        (click)="removePledge(p.target)">Remove</button>
+                                    <button class="btn btn-sm btn-light border text-muted" *ngIf="p.status !== 'Active'"
+                                        disabled>View</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeMainTab === 'legal'" class="animate__animated animate__fadeIn">
+            <div class="row align-items-center mb-6 bg-white p-5 rounded-4 shadow-sm border">
+                <div class="col-md-8 text-center text-md-start">
+                    <h2 class="fw-bold text-dark m-0 mb-1">Pledge Status Verification</h2>
+                    <p class="text-muted m-0 fs-7">Submit your information to check if you are a designated pledge
+                        receiver.</p>
+                </div>
+                <div class="col-md-4 text-center text-md-end mt-3 mt-md-0">
+                    <button class="btn-gold w-100" (click)="refreshStatus()" [disabled]="inquiryState === 'loading'">
+                        <i class="fas fa-sync-alt me-2" [ngClass]="{'fa-spin': inquiryState === 'loading'}"></i>
+                        {{ inquiryState === 'loading' ? 'Checking...' : 'Refresh Status Check' }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="glass-alert mb-5">
+                <i class="fas fa-file-contract me-2"></i>
+                <strong>Inquiry Note:</strong> We require documentation (e.g., ID, relationship proof) to verify your
+                identity and potential connection to any active pledge.
+            </div>
+
+            <div class="row g-5">
+
+                <div class="col-lg-6">
+                     <div class="content-card mt-5">
+                        <h6 class="text-vibrant fs-5 border-bottom pb-3 mb-4">
+                            <i class="fas fa-id-badge me-2"></i> Your Profile Information
+                        </h6>
+                        <p class="small text-muted mb-4">Provide your details to initiate a record search against
+                            existing pledges.</p>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold fs-8">Full Name (Required)</label>
+                                <input type="text" class="form-control" placeholder="e.g., Sarah Johnson"
+                                    [(ngModel)]="inquiryForm.name">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold fs-8">Preferred Contact</label>
+                                <select class="form-select" [(ngModel)]="inquiryForm.contactMethod">
+                                    <option>Email (Primary)</option>
+                                    <option>Phone Number</option>
+                                    <option>WhatsApp</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold fs-8">Contact Details</label>
+                                <input type="text" class="form-control" placeholder="Email or Phone"
+                                    [(ngModel)]="inquiryForm.contactDetails">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold fs-8">Country</label>
+                                <select class="form-select" [(ngModel)]="inquiryForm.country">
+                                    <option value="" disabled selected>Select Country</option>
+                                    <option *ngFor="let c of countries" [value]="c">{{c}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <h6 class="text-dark fs-5 border-bottom pb-3 mb-4 fw-bolder">Required Verification Documents
+                        </h6>
+
+                        <div class="d-flex flex-column gap-4">
+                            <div>
+                                <label class="form-label fw-bold text-dark fs-7">Government ID <span
+                                        class="text-danger">*</span></label>
+                                <p class="text-muted fs-8 mb-2">Upload any relevant image/document confirming your
+                                    national identity.</p>
+                                <input type="file" class="form-control bg-light">
+                            </div>
+                            <div>
+                                <label class="form-label fw-bold text-dark fs-7">KYC Human holding ID <span
+                                        class="text-danger">*</span></label>
+                                <p class="text-muted fs-8 mb-2">Upload an image of you holding the ID upright near your
+                                    face.</p>
+                                <input type="file" class="form-control bg-light">
+                            </div>
+                            <div>
+                                <label class="form-label fw-bold text-dark fs-7">Proof of Residence <span
+                                        class="text-danger">*</span></label>
+                                <p class="text-muted fs-8 mb-2">Utility bill or bank statement showing your address.</p>
+                                <input type="file" class="form-control bg-light">
+                            </div>
+                            <div>
+                                <label class="form-label fw-bold text-dark fs-7">Proof of Work / Study <span
+                                        class="text-danger">*</span></label>
+                                <p class="text-muted fs-8 mb-2">Document confirming your current occupation or student
+                                    status.</p>
+                                <input type="file" class="form-control bg-light">
+                            </div>
+                            <div>
+                                <label class="form-label fw-bold text-dark fs-7">Proof of Pledger <span
+                                        class="text-muted fw-normal">(If deceased)</span></label>
+                                <p class="text-muted fs-8 mb-2">Upload document confirming the pledger’s situation (e.g.
+                                    Death Certificate).</p>
+                                <input type="file" class="form-control bg-light">
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-5 border-top">
+                            <h6 class="text-vibrant fs-6 mb-3"><i class="fas fa-search me-2"></i> Submit for Status
+                                Inquiry</h6>
+                            <p class="small text-muted mb-4">By clicking 'Verify My Status', you authorize a search of
+                                our records based on the provided information. Inquiry is for status check only.</p>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input cursor-pointer" type="checkbox" id="claimAcknowledge"
+                                    [(ngModel)]="inquiryForm.acknowledged">
+                                <label class="form-check-label fs-8 text-dark fw-medium cursor-pointer"
+                                    for="claimAcknowledge">
+                                    I confirm the information and documents are accurate and authorize the identity
+                                    verification process.
+                                </label>
+                            </div>
+
+                            <button class="btn btn-gold w-100 py-3 fs-6" (click)="submitInquiry()"
+                                [disabled]="inquiryState === 'loading'">
+                                <i class="fas fa-check-circle me-2" *ngIf="inquiryState !== 'loading'"></i>
+                                <i class="fas fa-circle-notch fa-spin me-2" *ngIf="inquiryState === 'loading'"></i>
+                                {{ inquiryState === 'loading' ? 'Verifying...' : 'Verify My Status & Eligibility' }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 mt-6">
+                    <div class="content-card border-warning border-opacity-50" *ngIf="inquiryState !== 'verified'">
+                        <h6 class="text-vibrant fs-5 border-bottom pb-3 mb-4">
+                            <i class="fas fa-question-circle me-2"></i> Pledge Details Status
+                        </h6>
+                        <div class="row g-4 text-sm">
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Pledge ID:</span>
+                                <strong class="d-block text-dark fs-6">Pending Verification</strong>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Payout Amount:</span>
+                                <strong class="d-block text-dark fs-6">TBD / Unknown</strong>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Recipient Match:</span>
+                                <strong class="d-block text-warning fs-6">Potential Match</strong>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Trigger Event:</span>
+                                <strong class="d-block text-dark fs-6">Unknown Status</strong>
+                            </div>
+                        </div>
+                        <div class="small text-muted mt-4 pt-3 border-top fst-italic">
+                            *All details are provisional until your inquiry is successfully processed against official
+                            records.
+                        </div>
+                    </div>
+
+                    <div class="content-card border-success border-opacity-50 bg-light-success animate__animated animate__zoomIn"
+                        *ngIf="inquiryState === 'verified'">
+                        <h6 class="text-success fs-5 border-bottom border-success border-opacity-25 pb-3 mb-4">
+                            <i class="fas fa-check-circle me-2"></i> VERIFIED: Active Pledge Found
+                        </h6>
+                        <div class="row g-4 text-sm">
+                            <div class="col-12">
+                                <span class="text-muted d-block mb-1">Pledge ID:</span>
+                                <strong class="d-block text-success fs-4 font-monospace">ASSET-B38-7X</strong>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Pledgor / Initiator:</span>
+                                <strong class="d-block text-dark fs-6">J. D. (Trust Account)</strong>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Date Initiated:</span>
+                                <strong class="d-block text-dark fs-6">2023-11-15</strong>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Pledge Value (Est):</span>
+                                <strong class="d-block text-success fs-5">$450,000 USD</strong>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Recipient Designation:</span>
+                                <strong class="d-block text-dark fs-6">Primary (100% Share)</strong>
+                            </div>
+                        </div>
+                        <div class="small text-success mt-4 pt-3 border-top border-success border-opacity-25 fw-bold">
+                            <i class="fas fa-info-circle me-1"></i> You are confirmed as a designated receiver.
+                        </div>
+                    </div>
+
+                  
+                </div>
+
+                
+                
+            </div>
+        </div>
+    </main>
+
+    <div class="custom-modal-overlay animate__animated animate__fadeIn " *ngIf="isWizardOpen ">
+        <div class="modal-wizard animate__animated animate__zoomIn p-5">
+
+            <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-4">
+                <div class="d-flex align-items-center gap-4">
+                    <div class="step-bullet shadow-sm">{{ wizardStep > 5 ? 5 : wizardStep }}</div>
+                    <div>
+                        <h4 class="fw-bolder text-dark m-0 fs-4">Add New Individual Beneficiary</h4>
+                        <span class="text-muted fs-8 fw-bold text-uppercase ls-1">Step {{ wizardStep > 5 ? 5 : wizardStep }} of 5</span>
+                    </div>
+                </div>
+                <button class="btn btn-light rounded-circle" (click)="closeWizard()"><i
+                        class="fas fa-times"></i></button>
+            </div>
+
+            <div class="py-2">
+
+                <div *ngIf="wizardStep === 1" class="animate__animated animate__fadeIn">
+                    <p class="text-muted mb-5">Provide the beneficiary's basic identification and relationship to
+                        you.</p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark fs-8">Full Legal Name</label>
+                            <input type="text" class="form-control bg-light" placeholder="Jane N. Doe"
+                                [(ngModel)]="newBene.name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark fs-8">Date of Birth</label>
+                            <input type="date" class="form-control bg-light" [(ngModel)]="newBene.dob">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark fs-8">Relationship</label>
+                            <select class="form-select bg-light" [(ngModel)]="newBene.relation">
+                                <option>Spouse</option>
+                                <option>Child</option>
+                                <option>Sibling</option>
+                                <option>Parent</option>
+                                <option>Other/Friend</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark fs-8">Country</label>
+                            <select class="form-select bg-light" [(ngModel)]="newBene.country">
+                                <option *ngFor="let c of countries" [value]="c">{{c}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="wizardStep === 2" class="animate__animated animate__fadeIn">
+                    <p class="text-muted mb-5">Define allocation percentage and the payout condition.</p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark fs-8">Allocation (%)</label>
+                            <input type="number" class="form-control bg-light fs-4 fw-bolder text-success" min="1"
+                                max="100" [(ngModel)]="newBene.allocation">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark fs-8">Payout Trigger</label>
+                            <select class="form-select bg-light" [(ngModel)]="newBene.trigger">
+                                <option>Contingency (Death / Incapacitation)</option>
+                                <option>Emergency (Hospitalization)</option>
+                                <option>Both Contingency & Emergency</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold text-dark fs-8">Special Instructions (Optional)</label>
+                            <textarea class="form-control bg-light" rows="3"
+                                placeholder="e.g., funds released to a trust managed by legal counsel..."
+                                [(ngModel)]="newBene.instructions"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="wizardStep === 3" class="animate__animated animate__fadeIn">
+                    <p class="text-muted mb-5">Upload relevant documents for the beneficiary to ensure smooth
+                        identity verification.</p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark fs-8">Upload Government ID</label>
+                            <input type="file" class="form-control bg-light p-3">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark fs-8">Upload Clear Photo</label>
+                            <input type="file" class="form-control bg-light p-3">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold text-dark fs-8">Other Supporting Documents</label>
+                            <input type="file" class="form-control bg-light p-3" multiple>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="wizardStep === 4" class="animate__animated animate__fadeIn">
+                    <p class="text-muted mb-4">Review the details and sign to authorize this legacy configuration.
+                    </p>
+
+                    <div class="bg-light p-4 rounded-3 border mb-4">
+                        <div class="row g-3 fs-7">
+                            <div class="col-6"><span class="text-muted d-block">Name:</span> <strong
+                                    class="text-dark">{{ newBene.name }}</strong></div>
+                            <div class="col-6"><span class="text-muted d-block">Relation:</span> <strong
+                                    class="text-dark">{{ newBene.relation }}</strong></div>
+                            <div class="col-6"><span class="text-muted d-block">Allocation:</span> <strong
+                                    class="text-success fs-5">{{ newBene.allocation }}%</strong></div>
+                            <div class="col-6"><span class="text-muted d-block">Trigger:</span> <strong
+                                    class="text-dark">{{ newBene.trigger }}</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-gold border border-warning border-opacity-25 mb-4 p-3 rounded-3">
+                        <i class="fas fa-pen-nib me-2"></i> I hereby confirm my submission to SendMo Ltd regarding
+                        the addition of this beneficiary.
+                    </div>
+
+                    <div class="border rounded-3 bg-light d-flex align-items-center justify-content-center text-muted"
+                        style="height: 120px;">
+                        <em>[ Digital Signature Canvas Area ]</em>
+                    </div>
+                </div>
+
+                <div *ngIf="wizardStep === 5" class="animate__animated animate__fadeIn text-center py-4">
+                    <div class="mb-4 d-inline-flex align-items-center justify-content-center bg-warning bg-opacity-10 rounded-circle"
+                        style="width: 70px; height: 70px;">
+                        <i class="fas fa-lock text-warning fs-1"></i>
+                    </div>
+                    <h4 class="fw-bolder text-dark mb-2">Security Authorization</h4>
+                    <p class="text-muted fs-7 px-4 mb-5">Adding a beneficiary is a highly sensitive action. Please
+                        enter your 4-digit security PIN or the OTP sent to your registered device to confirm.</p>
+
+                    <input type="password"
+                        class="form-control form-control-solid bg-light text-center fs-2 ls-5 mx-auto w-50 py-3 mb-4 border"
+                        placeholder="••••" maxlength="4" [(ngModel)]="newBene.otp">
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-between mt-6 pt-4 border-top">
+                <button class="btn btn-light fw-bold px-5" (click)="prevWizardStep()"
+                    [disabled]="wizardStep === 1 || isSubmittingWizard">
+                    <i class="fas fa-arrow-left me-2"></i> Back
+                </button>
+                <button class="btn btn-gold px-6" (click)="wizardStep === 5 ? submitWizard() : nextWizardStep()"
+                    [disabled]="isSubmittingWizard">
+                    <span *ngIf="!isSubmittingWizard">{{ wizardStep === 5 ? 'Confirm & Save' : 'Next Step' }} <i
+                            class="fas"
+                            [ngClass]="wizardStep === 5 ? 'fa-check-circle' : 'fa-arrow-right'"></i></span>
+                    <span *ngIf="isSubmittingWizard"><i class="fas fa-circle-notch fa-spin me-2"></i>
+                        Securing...</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isCharityModalOpen">
+        <div class="modal-wizard animate__animated animate__zoomIn p-5" style="max-width: 500px;">
+            <div class="modal-header border-0 pb-3 pt-2 d-flex justify-content-between align-items-center">
+                <h4 class="fw-bolder text-dark m-0 fs-4"><i class="fas fa-gift text-vibrant me-2"></i> Create Fund
+                    Pledge</h4>
+                <button class="btn btn-light rounded-circle btn-sm" (click)="closeCharityModal()"><i
+                        class="fas fa-times"></i></button>
+            </div>
+
+            <div class="modal-body py-2">
+                <p class="text-muted fs-7 mb-5">Pledge a portion of your funds to a verified cause or foundation.
+                </p>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold text-dark fs-8">Pledge Target</label>
+                    <select class="form-select bg-light py-3" [(ngModel)]="pledgeTarget">
+                        <option>Global Education Fund</option>
+                        <option>SendMo Foundation (Financial Literacy)</option>
+                        <option>Custom Organization (Requires Verification)</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold text-dark fs-8">Pledge Value</label>
+                    <div class="input-group">
+                        <select class="form-select bg-light py-3 border-end-0" style="max-width:160px;"
+                            [(ngModel)]="pledgeType">
+                            <option value="percent">Percentage (%)</option>
+                            <option value="fixed">Fixed Amount ($)</option>
+                        </select>
+                        <input type="number" class="form-control bg-light py-3 fw-bold fs-5 text-success"
+                            [(ngModel)]="pledgeValue">
+                    </div>
+                    <div class="small text-muted mt-2 fst-italic"><i class="fas fa-info-circle me-1"></i> Pledging
+                        {{ pledgeValue }}{{ pledgeType === 'percent' ? '%' : '$' }} of unallocated funds.</div>
+                </div>
+
+                <div class="mb-5">
+                    <label class="form-label fw-bold text-dark fs-8">Payout Channel (For Charity)</label>
+                    <select class="form-select bg-light py-3" [(ngModel)]="pledgeChannel">
+                        <option>SendMo Account</option>
+                        <option>Bank Transfer</option>
+                        <option>Mobile Money</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-footer border-top pt-4 pb-0 d-flex justify-content-end gap-2">
+                <button class="btn btn-light fw-bold" (click)="closeCharityModal()">Cancel</button>
+                <button class="btn btn-gold px-5" (click)="savePledge()"><i class="fas fa-save me-2"></i> Confirm
+                    Pledge</button>
+            </div>
+        </div>
+    </div>
+
+</div>

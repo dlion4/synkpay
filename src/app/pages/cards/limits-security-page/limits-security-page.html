@@ -1,0 +1,305 @@
+<div class="container-xxl py-10" id="kt_content_container">
+    
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-8">
+        <div>
+            <h1 class="fw-bolder fs-2 m-0" style="color: #0f172a;">Limits & Security</h1>
+            <p class="text-muted mt-1 m-0">Advanced protection and fine-grained control over your card behavior.</p>
+        </div>
+        <div class="mt-4 mt-md-0 d-flex gap-3">
+            <button class="btn btn-light fw-bold" (click)="resetToDefaults()">Reset to Defaults</button>
+            <button class="btn btn-gold px-6" (click)="saveSecuritySettings()" [disabled]="isSaving">
+                <i class="bi bi-shield-check me-2" *ngIf="!isSaving"></i>
+                <i class="spinner-border spinner-border-sm me-2" *ngIf="isSaving"></i>
+                {{ isSaving ? 'Applying...' : 'Save Settings' }}
+            </button>
+        </div>
+    </div>
+
+    <div class="row g-6">
+        
+        <div class="col-xl-4 col-lg-5">
+            <div class="card-clarity p-6 mb-6">
+                <h5 class="fw-bolder mb-4 fs-5 text-dark">Target Card</h5>
+                <select class="form-select form-select-solid fw-bold border-gray-300 mb-6 bg-light py-3" [(ngModel)]="selectedCardId" (change)="selectCard(selectedCardId)">
+                    <option *ngFor="let card of myCards" [value]="card.id">
+                        {{ card.network }} **** {{ card.last4 }} ({{ card.name }})
+                    </option>
+                </select>
+
+                <div class="card-selector shadow-sm mb-6">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <i class="bi bi-credit-card-2-front fs-2x text-white opacity-75"></i>
+                        <span class="badge bg-success bg-opacity-25 text-white border border-success border-opacity-50" *ngIf="!isCardFrozen">Active</span>
+                        <span class="badge bg-danger bg-opacity-25 text-white border border-danger border-opacity-50" *ngIf="isCardFrozen">Frozen</span>
+                    </div>
+                    <h4 class="text-white font-monospace mb-1">**** **** **** {{ selectedCardId }}</h4>
+                    <span class="text-white opacity-50 fs-8 text-uppercase">{{ selectedCardId === '4242' ? 'Primary Checking' : 'Euro Travel' }}</span>
+                </div>
+
+                <div class="bg-light-danger rounded-3 p-4 border border-danger border-opacity-25 text-center cursor-pointer transition hover-elevate-up" (click)="toggleFreeze()">
+                    <i class="bi" [ngClass]="isCardFrozen ? 'bi-play-circle text-success' : 'bi-snow text-danger'" style="font-size: 2rem;"></i>
+                    <h6 class="fw-bolder mt-3 mb-1" [ngClass]="isCardFrozen ? 'text-success' : 'text-danger'">{{ isCardFrozen ? 'Unfreeze Card' : 'Freeze Card Instantly' }}</h6>
+                    <p class="text-muted fs-8 m-0">Blocks all new authorizations.</p>
+                </div>
+            </div>
+
+            <div class="card-clarity p-6">
+                <h5 class="fw-bolder mb-4 fs-5 text-dark">Security Posture</h5>
+                <div class="d-flex align-items-center mb-4">
+                    <div class="position-relative me-4">
+                        <svg width="70" height="70" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" stroke-width="10" />
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#10b981" stroke-width="10" stroke-dasharray="283" stroke-dashoffset="40" transform="rotate(-90 50 50)" />
+                        </svg>
+                        <div class="position-absolute top-50 start-50 translate-middle text-dark fw-bolder fs-5">85%</div>
+                    </div>
+                    <div>
+                        <h6 class="fw-bolder text-dark mb-1">Excellent</h6>
+                        <span class="text-muted fs-8">Your card is well protected against modern fraud vectors.</span>
+                    </div>
+                </div>
+                <div class="bg-light-warning p-3 rounded d-flex align-items-start border border-warning border-opacity-25">
+                    <i class="bi bi-lightbulb text-warning me-2 mt-1"></i>
+                    <span class="fs-8 text-dark">Enable <strong>Strict 3D Secure</strong> to reach 100% protection.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-8 col-lg-7">
+            
+            <div class="card-clarity p-6 p-md-8 mb-6">
+                <div class="d-flex align-items-center mb-6">
+                    <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-4">
+                        <i class="bi bi-speedometer2 text-primary fs-3"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bolder text-dark m-0 fs-4">Spending Limits</h3>
+                        <p class="text-muted m-0 fs-7">Control how much can be spent over specific timeframes.</p>
+                    </div>
+                </div>
+
+                <div class="row g-6">
+                    <div class="col-md-6">
+                        <div class="setting-row h-100">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="fw-bold text-dark fs-6">Daily Limit</span>
+                                <span class="badge bg-light text-dark fw-bolder fs-7 border">${{ dailyLimit | number }}</span>
+                            </div>
+                            <input type="range" class="form-range custom-range" min="100" max="10000" step="100" [(ngModel)]="dailyLimit">
+                            <div class="d-flex justify-content-between text-muted fs-9 mt-2 fw-semibold">
+                                <span>$100</span><span>$10k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="setting-row h-100">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="fw-bold text-dark fs-6">Monthly Limit</span>
+                                <span class="badge bg-light text-dark fw-bolder fs-7 border">${{ monthlyLimit | number }}</span>
+                            </div>
+                            <input type="range" class="form-range custom-range" min="1000" max="50000" step="500" [(ngModel)]="monthlyLimit">
+                            <div class="d-flex justify-content-between text-muted fs-9 mt-2 fw-semibold">
+                                <span>$1k</span><span>$50k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="setting-row h-100">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="fw-bold text-dark fs-6">Per-Transaction</span>
+                                <span class="badge bg-light text-dark fw-bolder fs-7 border">${{ perTransactionLimit | number }}</span>
+                            </div>
+                            <input type="range" class="form-range custom-range" min="50" max="5000" step="50" [(ngModel)]="perTransactionLimit">
+                            <div class="d-flex justify-content-between text-muted fs-9 mt-2 fw-semibold">
+                                <span>$50</span><span>$5k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="setting-row h-100">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="fw-bold text-dark fs-6">Daily ATM Withdrawal</span>
+                                <span class="badge bg-light text-dark fw-bolder fs-7 border">${{ atmDailyLimit | number }}</span>
+                            </div>
+                            <input type="range" class="form-range custom-range" min="0" max="2000" step="100" [(ngModel)]="atmDailyLimit">
+                            <div class="d-flex justify-content-between text-muted fs-9 mt-2 fw-semibold">
+                                <span>$0</span><span>$2k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-clarity p-6 p-md-8 mb-6">
+                <div class="d-flex align-items-center mb-6">
+                    <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4">
+                        <i class="bi bi-broadcast text-success fs-3"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bolder text-dark m-0 fs-4">Transaction Channels</h3>
+                        <p class="text-muted m-0 fs-7">Enable or disable specific methods of payment.</p>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column gap-3">
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-globe2 text-muted fs-3 me-4 w-30px text-center"></i>
+                            <div>
+                                <h6 class="fw-bolder text-dark m-0">Online / E-Commerce</h6>
+                                <span class="text-muted fs-8">Allow card to be used for internet purchases.</span>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch form-check-custom m-0">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="allowOnline">
+                        </div>
+                    </div>
+
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-wifi text-muted fs-3 me-4 w-30px text-center"></i>
+                            <div>
+                                <h6 class="fw-bolder text-dark m-0">Contactless (NFC)</h6>
+                                <span class="text-muted fs-8">Allow tap-to-pay at physical terminals.</span>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch form-check-custom m-0">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="allowContactless">
+                        </div>
+                    </div>
+
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-credit-card text-muted fs-3 me-4 w-30px text-center"></i>
+                            <div>
+                                <h6 class="fw-bolder text-dark m-0">Magstripe / Swipe</h6>
+                                <span class="text-danger fw-bold fs-8 d-block">High Risk: Keep disabled unless traveling to unsupported regions.</span>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch form-check-custom m-0">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="allowMagstripe">
+                        </div>
+                    </div>
+
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-airplane text-muted fs-3 me-4 w-30px text-center"></i>
+                            <div>
+                                <h6 class="fw-bolder text-dark m-0">International Transactions</h6>
+                                <span class="text-muted fs-8">Allow charges in foreign currencies outside your home country.</span>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch form-check-custom m-0">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="allowInternational">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-clarity p-6 p-md-8 mb-6 border-warning border-opacity-50">
+                <div class="d-flex align-items-center mb-6">
+                    <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-4">
+                        <i class="bi bi-cpu text-warning fs-3"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bolder text-dark m-0 fs-4">Advanced AI & Security</h3>
+                        <p class="text-muted m-0 fs-7">Next-generation protection logic powered by Sendmo Engine.</p>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column gap-3">
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                        <div>
+                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-arrow-repeat text-primary me-2"></i> Dynamic CVV</h6>
+                            <span class="text-muted fs-8">Automatically rotates your virtual card's CVV every 60 minutes. Defeats data breaches.</span>
+                        </div>
+                        <div class="form-check form-switch form-check-custom m-0">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="dynamicCvv">
+                        </div>
+                    </div>
+
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                        <div>
+                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-geo-alt-fill text-danger me-2"></i> GPS Location Matching</h6>
+                            <span class="text-muted fs-8">Declines physical transactions if the POS terminal is >100 miles from your phone's GPS.</span>
+                        </div>
+                        <div class="form-check form-switch form-check-custom m-0">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="locationMatching">
+                        </div>
+                    </div>
+
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                        <div>
+                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-robot text-info me-2"></i> AI Fraud Auto-Block</h6>
+                            <span class="text-muted fs-8">Allows our ML engine to automatically freeze your card if suspicious velocity is detected.</span>
+                        </div>
+                        <div class="form-check form-switch form-check-custom m-0">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="aiFraudBlock">
+                        </div>
+                    </div>
+
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                        <div>
+                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-shield-lock-fill text-success me-2"></i> Strict 3D Secure (OTP)</h6>
+                            <span class="text-muted fs-8">Force a Push Notification or SMS OTP approval for <em>every</em> online transaction, regardless of size.</span>
+                        </div>
+                        <div class="form-check form-switch form-check-custom m-0">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="strict3DS">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-clarity p-6 p-md-8">
+                <div class="d-flex align-items-center mb-6">
+                    <div class="bg-danger bg-opacity-10 p-3 rounded-circle me-4">
+                        <i class="bi bi-slash-circle text-danger fs-3"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bolder text-dark m-0 fs-4">Merchant Category Blocks</h3>
+                        <p class="text-muted m-0 fs-7">Automatically decline transactions at specific types of merchants.</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <label class="d-block setting-row text-center cursor-pointer h-100" [ngClass]="{'border-primary bg-primary bg-opacity-10': blockCrypto}">
+                            <input type="checkbox" class="d-none" [(ngModel)]="blockCrypto">
+                            <i class="bi bi-currency-bitcoin fs-2x mb-3 d-block" [ngClass]="blockCrypto ? 'text-primary' : 'text-muted'"></i>
+                            <h6 class="fw-bolder text-dark m-0">Crypto Exchanges</h6>
+                            <span class="badge mt-2" [ngClass]="blockCrypto ? 'bg-primary' : 'bg-light text-muted'">{{ blockCrypto ? 'BLOCKED' : 'ALLOWED' }}</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="d-block setting-row text-center cursor-pointer h-100" [ngClass]="{'border-danger bg-danger bg-opacity-10': blockGambling}">
+                            <input type="checkbox" class="d-none" [(ngModel)]="blockGambling">
+                            <i class="bi bi-dice-5 fs-2x mb-3 d-block" [ngClass]="blockGambling ? 'text-danger' : 'text-muted'"></i>
+                            <h6 class="fw-bolder text-dark m-0">Gambling / Betting</h6>
+                            <span class="badge mt-2" [ngClass]="blockGambling ? 'bg-danger' : 'bg-light text-muted'">{{ blockGambling ? 'BLOCKED' : 'ALLOWED' }}</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="d-block setting-row text-center cursor-pointer h-100" [ngClass]="{'border-warning bg-warning bg-opacity-10': blockAdult}">
+                            <input type="checkbox" class="d-none" [(ngModel)]="blockAdult">
+                            <i class="bi bi-exclamation-triangle fs-2x mb-3 d-block" [ngClass]="blockAdult ? 'text-warning' : 'text-muted'"></i>
+                            <h6 class="fw-bolder text-dark m-0">Adult Content</h6>
+                            <span class="badge mt-2" [ngClass]="blockAdult ? 'bg-warning text-dark' : 'bg-light text-muted'">{{ blockAdult ? 'BLOCKED' : 'ALLOWED' }}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-4" *ngIf="showSuccessToast">
+    <div class="toast show toast-animate align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body fw-bold fs-6">
+                <i class="bi bi-check-circle-fill me-2"></i> Security settings updated successfully.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" (click)="showSuccessToast = false" aria-label="Close"></button>
+        </div>
+    </div>
+</div>

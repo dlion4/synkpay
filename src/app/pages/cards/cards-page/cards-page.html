@@ -1,0 +1,589 @@
+<div class="container-xxl py-10" id="kt_content_container">
+    
+    <div class="d-flex justify-content-between align-items-center mb-8 fade-in">
+        <div>
+            <h1 class="fw-bold text-slate-dark m-0 fs-2">Card Management</h1>
+            <p class="text-secondary mt-1 m-0">Manage your physical and virtual cards, set limits, and view transactions.</p>
+        </div>
+        <div class="d-flex gap-3 align-items-center">
+            <div class="text-end d-none d-md-block">
+                <p class="m-0 text-secondary fs-7">Available Balance</p>
+                <h2 class="m-0 fw-bold text-primary-gold fs-3">$42,500.00</h2>
+            </div>
+            <button class="btn bg-primary-gold text-white px-4 py-2 rounded-3 shadow-sm transition hover-elevate-up">
+                <i class="fas fa-arrow-down me-2"></i> Receive
+            </button>
+        </div>
+    </div>
+
+    <div class="mb-6 border-bottom border-secondary-subtle overflow-auto fade-in">
+        <div class="d-flex" style="white-space: nowrap;">
+            <button class="btn btn-link pb-3 fs-5 me-4 border-0 text-decoration-none transition" 
+                    [ngClass]="activeMainTab === 'cards' ? 'main-tab-active text-primary-gold' : 'text-secondary'" 
+                    (click)="setMainTab('cards')">
+                <i class="fas fa-credit-card me-2"></i> My Cards
+            </button>
+            <button class="btn btn-link pb-3 fs-5 me-4 border-0 text-decoration-none transition" 
+                    [ngClass]="activeMainTab === 'virtual' ? 'main-tab-active text-primary-gold' : 'text-secondary'" 
+                    (click)="setMainTab('virtual')">
+                <i class="fas fa-gem me-2"></i> Virtual Cards
+            </button>
+            <button class="btn btn-link pb-3 fs-5 me-4 border-0 text-decoration-none transition" 
+                    [ngClass]="activeMainTab === 'security' ? 'main-tab-active text-primary-gold' : 'text-secondary'" 
+                    (click)="setMainTab('security')">
+                <i class="fas fa-shield-alt me-2"></i> Limits & Security
+            </button>
+        </div>
+    </div>
+
+    <div class="tab-content fade-in">
+        
+        <div *ngIf="activeMainTab === 'cards'" class="animate__animated animate__fadeIn">
+            
+            <div class="row g-5 mb-8">
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card h-100 p-5 border-0 shadow-sm rounded-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="d-flex align-items-center justify-content-center rounded-3 text-white fs-4" style="width: 50px; height: 50px; background: linear-gradient(135deg, #a050d6, #506ee4);">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <span class="badge bg-success text-white rounded-pill px-3 py-2 fw-bold text-uppercase fs-9">Active</span>
+                        </div>
+                        <div>
+                            <div class="text-muted fw-bold mb-1">Total Cards</div>
+                            <div class="text-dark fs-2x fw-bolder mb-1">4</div>
+                            <div class="text-success fs-8 fw-bolder">2 primary cards</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card h-100 p-5 border-0 shadow-sm rounded-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="d-flex align-items-center justify-content-center rounded-3 text-white fs-4" style="width: 50px; height: 50px; background: linear-gradient(135deg, #ff9900, #f53a40);">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <span class="badge bg-primary text-white rounded-pill px-3 py-2 fw-bold text-uppercase fs-9">Monthly</span>
+                        </div>
+                        <div>
+                            <div class="text-muted fw-bold mb-1">Total Spent</div>
+                            <div class="text-dark fs-2x fw-bolder mb-1">$3,892</div>
+                            <div class="text-muted fs-8 fw-bolder">$5,000 limit</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card h-100 p-5 border-0 shadow-sm rounded-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="d-flex align-items-center justify-content-center rounded-3 text-white fs-4" style="width: 50px; height: 50px; background: linear-gradient(135deg, #20b087, #019569);">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span class="badge bg-success text-white rounded-pill px-3 py-2 fw-bold text-uppercase fs-9">Secure</span>
+                        </div>
+                        <div>
+                            <div class="text-muted fw-bold mb-1">Available Credit</div>
+                            <div class="text-dark fs-2x fw-bolder mb-1">$6,108</div>
+                            <div class="text-success fs-8 fw-bolder">$10,000 total</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card h-100 p-5 border-0 shadow-sm rounded-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="d-flex align-items-center justify-content-center rounded-3 text-white fs-4" style="width: 50px; height: 50px; background: linear-gradient(135deg, #f74550, #da1e28);">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <span class="badge bg-warning text-white rounded-pill px-3 py-2 fw-bold text-uppercase fs-9">Pending</span>
+                        </div>
+                        <div>
+                            <div class="text-muted fw-bold mb-1">Transactions</div>
+                            <div class="text-dark fs-2x fw-bolder mb-1">127</div>
+                            <div class="text-muted fs-8 fw-bolder">This month</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-xl-7 col-lg-6">
+                    <div class="bg-white p-5 rounded-4 shadow-sm h-100">
+                        <h2 class="fs-4 fw-bold text-slate-dark mb-5 d-flex align-items-center">
+                            <i class="fas fa-wallet text-primary-gold me-3"></i> Your Active Cards
+                        </h2>
+
+                        <div class="d-flex flex-column align-items-center align-items-lg-start">
+                            
+                            <div class="bank-card theme-visa w-100 mb-5" [ngClass]="{'active-card': activeCardId === '4242'}" (click)="selectCard('4242')">
+                                <div class="position-absolute top-0 end-0 p-4 fs-4 fw-bold tracking-widest opacity-75 fst-italic">VISA</div>
+                                <div class="position-absolute top-0 start-0 p-4">
+                                    <i class="fas fa-microchip fs-2 text-warning opacity-75"></i>
+                                    <i class="fas fa-wifi fs-4 text-white opacity-50 ms-2" style="transform: rotate(90deg);"></i>
+                                </div>
+                                <div class="mt-5 pt-3 d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fs-5 fw-semibold text-light">Primary Checking</span>
+                                    <span class="badge rounded-pill text-dark bg-white px-3 py-2 fw-bold shadow-sm">USD</span>
+                                </div>
+                                <div class="fs-2 font-monospace tracking-wider mb-4" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                                    **** **** **** 4242
+                                </div>
+                                <div class="d-flex justify-content-between align-items-end">
+                                    <div>
+                                        <div class="text-uppercase mb-1" style="font-size: 0.65rem; letter-spacing: 1px; color: #cbd5e1;">Cardholder Name</div>
+                                        <div class="fs-5 fw-medium font-monospace">ALEXANDER PIERCE</div>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="text-uppercase mb-1" style="font-size: 0.65rem; letter-spacing: 1px; color: #cbd5e1;">Expires</div>
+                                        <div class="fs-5 fw-medium font-monospace">12/28</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bank-card theme-mastercard w-100 mb-2" [ngClass]="{'active-card': activeCardId === '9011', 'paused': isCardFrozen}" (click)="selectCard('9011')">
+                                <div class="position-absolute top-0 end-0 p-4 d-flex">
+                                    <div style="width: 24px; height: 24px; background: #eb001b; border-radius: 50%; opacity: 0.8;"></div>
+                                    <div style="width: 24px; height: 24px; background: #f79e1b; border-radius: 50%; margin-left: -10px; opacity: 0.8;"></div>
+                                </div>
+                                <div *ngIf="isCardFrozen && activeCardId === '9011'" class="position-absolute top-50 start-50 translate-middle fs-1 fw-bolder text-danger bg-white px-4 py-2 rounded-3 shadow-lg" style="transform: translate(-50%, -50%) rotate(-15deg) !important; z-index: 10;">
+                                    FROZEN
+                                </div>
+                                <div class="position-absolute top-0 start-0 p-4">
+                                    <i class="fas fa-microchip fs-2 text-warning opacity-75"></i>
+                                </div>
+                                <div class="mt-5 pt-3 d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fs-5 fw-semibold text-light">Euro Travel Account</span>
+                                    <span class="badge rounded-pill text-dark bg-white px-3 py-2 fw-bold shadow-sm">EUR</span>
+                                </div>
+                                <div class="fs-2 font-monospace tracking-wider mb-4" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                                    **** **** **** 9011
+                                </div>
+                                <div class="d-flex justify-content-between align-items-end">
+                                    <div>
+                                        <div class="text-uppercase mb-1" style="font-size: 0.65rem; letter-spacing: 1px; color: #cbd5e1;">Cardholder Name</div>
+                                        <div class="fs-5 fw-medium font-monospace">ALEXANDER PIERCE</div>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="text-uppercase mb-1" style="font-size: 0.65rem; letter-spacing: 1px; color: #cbd5e1;">Expires</div>
+                                        <div class="fs-5 fw-medium font-monospace">06/27</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-5 col-lg-6">
+                    <div class="bg-white p-5 rounded-4 shadow-sm h-100">
+                        <h3 class="fs-5 fw-bold mb-4 text-slate-dark border-bottom pb-3">
+                            Managing: <span class="text-primary-gold font-monospace">{{ activeCardId === '4242' ? 'VISA **** 4242' : 'MC **** 9011' }}</span>
+                        </h3>
+                        
+                        <div class="d-flex flex-column gap-3">
+                            <button class="btn btn-dark text-white p-4 rounded-3 shadow-sm d-flex justify-content-between align-items-center transition hover-elevate-up" (click)="openDetailsDrawer()">
+                                <span class="fs-6 fw-semibold"><i class="fas fa-eye me-2"></i> Reveal Card Details</span>
+                                <i class="fas fa-chevron-right fs-7 text-secondary"></i>
+                            </button>
+                            
+                            <button class="btn bg-light-gold text-primary-gold border border-warning p-4 rounded-3 shadow-sm d-flex justify-content-between align-items-center transition w-100 hover-elevate-up">
+                                <span class="fs-6 fw-semibold"><i class="fas fa-exchange-alt me-2"></i> Top Up & Withdraw</span>
+                                <i class="fas fa-chevron-right fs-7 text-secondary opacity-50"></i>
+                            </button>
+
+                            <button class="btn bg-light text-slate-dark border p-4 rounded-3 shadow-sm d-flex justify-content-between align-items-center transition hover-elevate-up" (click)="openChangePinModal()">
+                                <span class="fs-6 fw-semibold"><i class="fas fa-key me-2"></i> Change Card PIN</span>
+                                <i class="fas fa-chevron-right fs-7 text-secondary"></i>
+                            </button>
+
+                            <button class="btn bg-white text-dark border p-4 rounded-3 shadow-sm d-flex justify-content-between align-items-center transition hover-elevate-up" (click)="openSettingsDrawer()">
+                                <span class="fs-6 fw-bold text-gray-800"><i class="fas fa-cog me-3 text-primary"></i> Card Settings</span>
+                                <i class="fas fa-chevron-right fs-8 text-muted"></i>
+                            </button>
+
+                            <button class="btn btn-warning w-100 text-dark p-4 rounded-3 shadow-sm fw-bold hover-elevate-up mt-2" (click)="toggleFreeze()">
+                                <i class="fas" [ngClass]="isCardFrozen ? 'fa-play' : 'fa-snowflake'"></i> {{ isCardFrozen ? 'Unfreeze Card' : 'Freeze Card' }}
+                            </button>
+
+                            <div class="row g-2 mt-2">
+                                <div class="col-12">
+                                    <button class="btn btn-outline-danger w-100 p-3 rounded-3 shadow-sm fw-bold hover-elevate-up" (click)="openDeleteCardModal()">
+                                        <i class="fas fa-ban me-2"></i> Cancel Card
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-dark text-white p-5 rounded-4 shadow-sm mt-6 position-relative overflow-hidden">
+                            <div class="position-absolute top-0 end-0 p-3 opacity-25">
+                                <i class="fas fa-plus-circle fa-4x"></i>
+                            </div>
+                            <h3 class="fs-5 fw-bold mb-2 position-relative z-index-1">Need another card?</h3>
+                            <p class="text-light opacity-75 mb-4 position-relative z-index-1 fs-7">Order a new physical card for your secondary accounts or family members.</p>
+                            <button class="btn w-100 py-3 rounded-3 shadow-sm fw-bold fs-6 transition position-relative z-index-1 hover-elevate-up" (click)="openAddCardModal()" style="background-color: #FFC700; color: #000;">
+                                <i class="fas fa-plus me-2"></i> Add Card
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeMainTab === 'virtual'" class="animate__animated animate__fadeIn">
+            <div class="row g-5">
+                <div class="col-lg-8">
+                    <div class="bg-white p-5 rounded-4 shadow-sm border border-light h-100">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-4 mb-5">
+                            <h2 class="fs-3 fw-bold text-slate-dark m-0"><i class="fas fa-laptop me-2 text-primary-gold"></i> Virtual Cards</h2>
+                            <button class="btn bg-primary-gold text-white px-4 py-2 rounded-3 shadow-sm fw-bold hover-elevate-up" (click)="openAddCardModal()">
+                                <i class="fas fa-plus me-2"></i> Create Virtual Card
+                            </button>
+                        </div>
+
+                        <div class="row g-5">
+                            <div class="col-md-6">
+                                <div class="bank-card theme-virtual w-100 mb-0" (click)="openDetailsDrawer()">
+                                    <div class="position-absolute top-0 end-0 p-4 fs-5 fw-bold tracking-widest opacity-75">CloudSub</div>
+                                    <div class="mt-4 pt-2 d-flex justify-content-between align-items-center mb-2">
+                                        <span class="fs-5 fw-semibold text-light">AWS & GCP Billing</span>
+                                        <span class="badge rounded-pill text-success bg-white px-3 py-1 fw-bold shadow-sm">Active</span>
+                                    </div>
+                                    <div class="fs-3 font-monospace tracking-wider mb-4" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                                        **** **** **** 1003
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-end">
+                                        <div>
+                                            <div class="text-uppercase mb-1" style="font-size: 0.65rem; color: #cbd5e1;">Monthly Limit</div>
+                                            <div class="fs-5 fw-bold font-monospace">$5,000.00</div>
+                                        </div>
+                                        <div class="text-end">
+                                            <div class="text-uppercase mb-1" style="font-size: 0.65rem; color: #cbd5e1;">CVC</div>
+                                            <div class="fs-5 fw-medium font-monospace">***</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-3 px-2">
+                                    <span class="text-secondary fs-7 fw-bold">Spent: $1,240.50</span>
+                                    <a href="javascript:;" class="text-primary-gold text-decoration-none fs-7 fw-bold" (click)="openSettingsDrawer()">Edit Limits</a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="bank-card theme-burner w-100 mb-0" (click)="openDetailsDrawer()">
+                                    <div class="position-absolute top-0 end-0 p-4 fs-5 fw-bold tracking-widest opacity-75">Burner</div>
+                                    <div class="mt-4 pt-2 d-flex justify-content-between align-items-center mb-2">
+                                        <span class="fs-5 fw-semibold text-light">One-Time Online</span>
+                                        <span class="badge rounded-pill text-warning bg-white px-3 py-1 fw-bold shadow-sm">Single-Use</span>
+                                    </div>
+                                    <div class="fs-3 font-monospace tracking-wider mb-4" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                                        **** **** **** 8821
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-end">
+                                        <div>
+                                            <div class="text-uppercase mb-1" style="font-size: 0.65rem; color: #cbd5e1;">Total Limit</div>
+                                            <div class="fs-5 fw-bold font-monospace">$150.00</div>
+                                        </div>
+                                        <div class="text-end">
+                                            <div class="text-uppercase mb-1" style="font-size: 0.65rem; color: #cbd5e1;">Valid Thru</div>
+                                            <div class="fs-5 fw-medium font-monospace">12/24</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-3 px-2">
+                                    <span class="text-secondary fs-7 fw-bold">Deletes after 1st charge</span>
+                                    <a href="javascript:;" class="text-danger text-decoration-none fs-7 fw-bold" (click)="openDeleteCardModal()">Delete Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="bg-light-gold p-5 rounded-4 shadow-sm border border-warning h-100">
+                        <h4 class="fw-bold text-primary-gold mb-4"><i class="fas fa-lightbulb me-2"></i> Why use Virtual Cards?</h4>
+                        <ul class="list-unstyled d-flex flex-column gap-4 text-slate-dark">
+                            <li class="d-flex align-items-start gap-3">
+                                <i class="fas fa-check-circle text-success mt-1 fs-5"></i>
+                                <div>
+                                    <strong>Enhanced Security:</strong> Mask your physical card details when shopping on unfamiliar sites.
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-start gap-3">
+                                <i class="fas fa-check-circle text-success mt-1 fs-5"></i>
+                                <div>
+                                    <strong>Subscription Control:</strong> Create a card strictly for Netflix or Spotify and cap the monthly spend.
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-start gap-3">
+                                <i class="fas fa-check-circle text-success mt-1 fs-5"></i>
+                                <div>
+                                    <strong>Instant Issuance:</strong> Available to use online immediately after creation.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeMainTab === 'security'" class="animate__animated animate__fadeIn text-center py-10">
+            <i class="fas fa-shield-alt fs-3x text-muted mb-4"></i>
+            <h3 class="text-muted">Limits & Security Module Pending</h3>
+        </div>
+
+    </div>
+</div>
+
+<div class="drawer-overlay" [class.active]="isSettingsDrawerOpen" (click)="closeSettingsDrawer()"></div>
+<div class="drawer" [class.active]="isSettingsDrawerOpen">
+    <div class="p-6 border-bottom d-flex align-items-center justify-content-between bg-white sticky-top">
+        <div>
+            <h3 class="fw-bolder text-dark m-0 fs-4">Card Settings</h3>
+            <p class="text-muted fs-7 mb-0">Card Configuration & Limits</p>
+        </div>
+        <button class="btn btn-sm btn-icon btn-light-danger border-0 rounded-circle" (click)="closeSettingsDrawer()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <div class="p-6 overflow-auto flex-grow-1 bg-light-panel">
+        <div class="mb-8">
+            <h5 class="fw-bolder text-dark mb-4 d-flex align-items-center"><i class="fas fa-sliders-h me-3 text-primary"></i> Transaction Limits</h5>
+            
+            <div class="mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <label class="fw-bold text-gray-700 fs-7">Daily Spending Limit</label>
+                    <span class="badge bg-light-primary text-primary fw-bolder fs-8 px-3 py-1">$1,000</span>
+                </div>
+                <input type="range" min="100" max="5000" value="1000" class="form-range custom-range">
+                <div class="d-flex justify-content-between text-muted fs-9 mt-1 fw-semibold">
+                    <span>$100</span><span>$5,000</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <label class="fw-bold text-gray-700 fs-7">Monthly Spending Limit</label>
+                    <span class="badge bg-light-primary text-primary fw-bolder fs-8 px-3 py-1">$10,000</span>
+                </div>
+                <input type="range" min="1000" max="50000" value="10000" class="form-range custom-range">
+                <div class="d-flex justify-content-between text-muted fs-9 mt-1 fw-semibold">
+                    <span>$1,000</span><span>$50,000</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="text-gray-300 my-6">
+
+        <div class="mb-8">
+            <h5 class="fw-bolder text-dark mb-4 d-flex align-items-center"><i class="fas fa-shield-alt me-3 text-success"></i> Security Settings</h5>
+
+            <div class="d-flex align-items-center justify-content-between p-4 rounded-3 border border-dashed border-gray-300 bg-white mb-3 shadow-sm">
+                <div>
+                    <h6 class="fw-bolder text-gray-800 mb-1 fs-7"><i class="fas fa-globe me-2 text-primary"></i> Online Transactions</h6>
+                    <p class="text-muted fs-8 mb-0">Allow e-commerce purchases</p>
+                </div>
+                <div class="form-check form-switch fs-4 m-0">
+                    <input class="form-check-input cursor-pointer" type="checkbox" checked />
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between p-4 rounded-3 border border-dashed border-gray-300 bg-white mb-3 shadow-sm">
+                <div>
+                    <h6 class="fw-bolder text-gray-800 mb-1 fs-7"><i class="fas fa-wifi me-2 text-success"></i> Contactless Payment</h6>
+                    <p class="text-muted fs-8 mb-0">Enable tap to pay functionality</p>
+                </div>
+                <div class="form-check form-switch fs-4 m-0">
+                    <input class="form-check-input cursor-pointer" type="checkbox" checked />
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between p-4 rounded-3 border border-dashed border-gray-300 bg-white mb-4 shadow-sm">
+                <div>
+                    <h6 class="fw-bolder text-gray-800 mb-1 fs-7"><i class="fas fa-plane me-2 text-info"></i> International Spend</h6>
+                    <p class="text-muted fs-8 mb-0">Allow foreign currency purchases</p>
+                </div>
+                <div class="form-check form-switch fs-4 m-0">
+                    <input class="form-check-input cursor-pointer" type="checkbox" />
+                </div>
+            </div>
+
+            <div class="p-4 border border-warning rounded-3 d-flex justify-content-between align-items-center bg-warning bg-opacity-10">
+                <div>
+                    <h5 class="fw-bold mb-1 text-warning-emphasis fs-7"><i class="fas fa-map-marker-alt me-2"></i> Geo-Location Lock</h5>
+                    <p class="text-warning-emphasis fs-8 m-0 opacity-75">Restrict card usage to specific regions.</p>
+                </div>
+                <button class="btn btn-sm btn-warning fw-bold text-dark px-3 shadow-sm" (click)="openGeoLockModal()">Configure</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-4 border-top bg-white sticky-bottom d-flex gap-3">
+        <button class="btn btn-light flex-root fw-bold" (click)="closeSettingsDrawer()">Cancel</button>
+        <button class="btn btn-gold flex-root fw-bold" (click)="closeSettingsDrawer()">Save Changes</button>
+    </div>
+</div>
+
+<div class="drawer-overlay" [class.active]="isDetailsDrawerOpen" (click)="closeDetailsDrawer()"></div>
+<div class="drawer" [class.active]="isDetailsDrawerOpen">
+    <div class="p-6 border-bottom d-flex align-items-center justify-content-between bg-slate-dark text-white sticky-top">
+        <div>
+            <h3 class="fw-bolder m-0 fs-4 text-white"><i class="fas fa-lock me-2 text-primary-gold"></i> Secure View</h3>
+            <p class="text-gray-400 fs-7 mb-0">Card Details & Analytics</p>
+        </div>
+        <button class="btn btn-sm btn-icon btn-light border-0 rounded-circle" (click)="closeDetailsDrawer()">
+            <i class="fas fa-times text-dark"></i>
+        </button>
+    </div>
+
+    <div class="p-6 overflow-auto flex-grow-1 bg-light-panel text-center">
+        <p class="text-secondary mb-5">You are about to view sensitive card information. Authentication is required.</p>
+
+        <div *ngIf="!isVccAuthenticated" class="animate__animated animate__fadeIn">
+            <button class="btn btn-gold text-white w-100 py-3 rounded-3 fw-bold shadow-sm mb-4" (click)="revealCardData()">
+                <i class="fas fa-fingerprint me-2 fs-5 align-middle"></i> Authenticate to Reveal
+            </button>
+        </div>
+
+        <div *ngIf="isVccAuthenticated" class="text-start bg-white p-5 rounded-4 border shadow-sm animate__animated animate__fadeIn">
+            <div class="mb-4">
+                <label class="text-secondary fs-8 text-uppercase fw-bold mb-1">Card Number</label>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="font-monospace fs-4 fw-bold tracking-wider text-slate-dark">4242 5555 8888 1234</div>
+                    <button class="btn btn-sm btn-light border text-secondary"><i class="fas fa-copy"></i></button>
+                </div>
+            </div>
+            
+            <div class="row g-3 mb-4">
+                <div class="col-6">
+                    <label class="text-secondary fs-8 text-uppercase fw-bold mb-1">Expiry</label>
+                    <div class="font-monospace fs-5 fw-bold text-slate-dark">12/28</div>
+                </div>
+                <div class="col-6">
+                    <label class="text-secondary fs-8 text-uppercase fw-bold mb-1">CVV</label>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="font-monospace fs-5 fw-bold text-slate-dark">942</div>
+                        <button class="btn btn-sm btn-light border text-secondary"><i class="fas fa-copy"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-3 border-top text-center">
+                <span class="text-danger fs-8 fw-bold"><i class="fas fa-clock me-1"></i> Data hides in <span>{{ vccTimer }}</span>s</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);" *ngIf="isAddCardModalOpen">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 card-clarity">
+            <div class="modal-header border-0 pb-0 pt-6 px-8 d-flex justify-content-between align-items-center">
+                <h3 class="fw-bolder mb-0 text-slate-dark fs-3">Add New Card</h3>
+                <button type="button" class="btn-close" (click)="closeAddCardModal()"></button>
+            </div>
+            <div class="modal-body px-8 py-6">
+                <div class="mb-5">
+                    <label class="form-label fw-bold text-gray-700 fs-7 mb-3 d-block">Card Type</label>
+                    <div class="row g-3">
+                        <div class="col-4 custom-type-card">
+                            <input type="radio" name="cardTypeSel" id="ct1" checked>
+                            <label class="btn w-100 py-3 fw-bold border rounded-3" for="ct1">Credit</label>
+                        </div>
+                        <div class="col-4 custom-type-card">
+                            <input type="radio" name="cardTypeSel" id="ct2">
+                            <label class="btn w-100 py-3 fw-bold border rounded-3 text-secondary" for="ct2">Debit</label>
+                        </div>
+                        <div class="col-4 custom-type-card">
+                            <input type="radio" name="cardTypeSel" id="ct3">
+                            <label class="btn w-100 py-3 fw-bold border rounded-3 text-secondary" for="ct3">Virtual</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-5">
+                    <label class="form-label fw-bold text-gray-700 fs-7">Card Label</label>
+                    <input type="text" class="form-control form-control-solid py-3" placeholder="e.g. Netflix Subscription">
+                </div>
+
+                <div class="mb-5">
+                    <label class="form-label fw-bold text-gray-700 fs-7">Spending Limit (Optional)</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light">$</span>
+                        <input type="number" class="form-control form-control-solid py-3" placeholder="0.00">
+                        <select class="form-select form-control-solid border-start py-3" style="max-width: 120px;">
+                            <option>Monthly</option>
+                            <option>Total</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 mt-8">
+                    <button type="button" class="btn btn-light flex-root fw-bold py-3" (click)="closeAddCardModal()">Cancel</button>
+                    <button type="button" class="btn btn-gold flex-root fw-bold py-3" (click)="closeAddCardModal()">Generate Card</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);" *ngIf="isChangePinModalOpen">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content border-0 card-clarity p-2">
+            <div class="modal-header border-0 pb-0">
+                <h4 class="fw-bolder m-0">Change PIN</h4>
+                <button type="button" class="btn-close" (click)="closeChangePinModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-4">
+                    <label class="form-label fw-bold fs-8">Current PIN</label>
+                    <input type="password" placeholder="••••" maxlength="4" class="form-control form-control-solid text-center fs-3 ls-5 py-3" [(ngModel)]="currentPin">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label fw-bold fs-8">New PIN</label>
+                    <input type="password" placeholder="••••" maxlength="4" class="form-control form-control-solid text-center fs-3 ls-5 py-3" [(ngModel)]="newPin">
+                </div>
+                <div class="mb-5">
+                    <label class="form-label fw-bold fs-8">Confirm New PIN</label>
+                    <input type="password" placeholder="••••" maxlength="4" class="form-control form-control-solid text-center fs-3 ls-5 py-3" [(ngModel)]="confirmPin">
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-light w-50 fw-bold" (click)="closeChangePinModal()">Cancel</button>
+                    <button class="btn btn-gold w-50 fw-bold" (click)="closeChangePinModal()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);" *ngIf="isDeleteCardModalOpen">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+        <div class="modal-content border-0 card-clarity">
+            <div class="modal-header border-0 pb-0">
+                <h4 class="fw-bolder text-danger m-0"><i class="fas fa-exclamation-triangle me-2"></i> Delete Card</h4>
+                <button type="button" class="btn-close" (click)="closeDeleteCardModal()"></button>
+            </div>
+            <div class="modal-body p-6">
+                <p class="text-gray-600 fs-7 mb-5">How would you like to proceed with the removal of this card?</p>
+
+                <label class="d-flex align-items-start p-4 rounded-3 border border-gray-300 bg-light mb-4 cursor-pointer hover-elevate-up transition">
+                    <input type="radio" name="del_type" class="form-check-input mt-1 me-3" checked>
+                    <div>
+                        <span class="fw-bolder text-dark d-block fs-7">Scheduled Deletion</span>
+                        <span class="text-muted fs-8 d-block mt-1">Automatically delete once all active subscriptions clear. <strong>Safe choice.</strong></span>
+                    </div>
+                </label>
+
+                <label class="d-flex align-items-start p-4 rounded-3 border border-danger border-opacity-50 bg-danger bg-opacity-10 cursor-pointer hover-elevate-up transition">
+                    <input type="radio" name="del_type" class="form-check-input mt-1 me-3">
+                    <div>
+                        <span class="fw-bolder text-danger d-block fs-7">Forced Instant Delete</span>
+                        <span class="text-danger fs-8 opacity-75 d-block mt-1">Warning: Active service billing will fail immediately.</span>
+                    </div>
+                </label>
+
+                <div class="d-flex gap-3 mt-6">
+                    <button type="button" class="btn btn-light flex-root fw-bold" (click)="closeDeleteCardModal()">Cancel</button>
+                    <button type="button" class="btn btn-danger flex-root fw-bold shadow-sm" (click)="closeDeleteCardModal()">Confirm Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

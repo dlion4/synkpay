@@ -22,6 +22,14 @@ import { AirtimeDataPageComponent } from './pages/payment-hub/airtime-data-page/
 import { DisputesPageComponent } from './pages/payment-hub/disputes-page/disputes-page';
 import { TransactionsPageComponent } from './pages/payment-hub/transactions-page/transactions-page';
 
+import { CardsPageComponent } from './pages/cards/cards-page/cards-page';
+import { LimitsSecurityPageComponent } from './pages/cards/limits-security-page/limits-security-page';
+import { CardsTransactionsPageComponent } from './pages/cards/cards-transactions-page/cards-transactions-page';
+
+// ... other  DoD imports
+import { BeneficiaryPageComponent } from './pages/legacy/beneficiary-page/beneficiary-page';
+import { ContinuitySavingPageComponent } from './pages/legacy/continuity-saving-page/continuity-saving-page';
+
 export const routes: Routes = [
     {
         path: '',
@@ -97,6 +105,15 @@ export const routes: Routes = [
             { path: 'payment-hub/airtime-data', component: AirtimeDataPageComponent },
             { path: 'payment-hub/disputes', component: DisputesPageComponent },
             { path: 'payment-hub/transactions', component: TransactionsPageComponent },
+
+            // cards pages
+            { path: 'cards/my-cards', component: CardsPageComponent },
+            { path: 'cards/limits-security', component: LimitsSecurityPageComponent },
+            { path: 'cards/transactions', component: CardsTransactionsPageComponent },
+
+            //dod pagesss
+            { path: 'legacy/beneficiary', component: BeneficiaryPageComponent },
+            { path: 'legacy/continuity-saving', component: ContinuitySavingPageComponent },
         ]
     },
 

@@ -1,0 +1,206 @@
+<div class="container-xxl py-10" id="kt_content_container">
+    
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-8">
+        <div>
+            <h1 class="fw-bolder fs-1 text-dark m-0">Card Transactions</h1>
+            <p class="text-muted m-0">Detailed spending insights for your SendMO cards.</p>
+        </div>
+        <div class="d-flex gap-3 mt-4 mt-md-0">
+            <button class="btn btn-white border-gray-300 fw-bold shadow-sm" (click)="downloadStatement()">
+                <i class="bi bi-download me-2"></i> Export CSV
+            </button>
+            <button class="btn btn-dark fw-bold shadow-sm">
+                <i class="bi bi-file-earmark-pdf me-2"></i> Monthly Statement
+            </button>
+        </div>
+    </div>
+
+    <div class="row g-5 mb-8">
+        <div class="col-md-4">
+            <div class="card-clarity p-6 border-start border-primary border-4">
+                <div class="d-flex align-items-center mb-2">
+                    <i class="bi bi-credit-card-fill text-primary me-2"></i>
+                    <span class="text-muted fw-bold fs-8 uppercase">Card Volume (30D)</span>
+                </div>
+                <h2 class="fw-bolder text-dark m-0">$4,829.45</h2>
+                <div class="text-success fs-9 fw-bold mt-2">
+                    <i class="bi bi-arrow-up-short"></i> 8.4% vs last month
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-clarity p-6 border-start border-warning border-4">
+                <div class="d-flex align-items-center mb-2">
+                    <i class="bi bi-arrow-repeat text-warning me-2"></i>
+                    <span class="text-muted fw-bold fs-8 uppercase">Recurring Subs</span>
+                </div>
+                <h2 class="fw-bolder text-dark m-0">$142.10</h2>
+                <div class="text-muted fs-9 fw-bold mt-2">6 Active subscriptions</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-clarity p-6 border-start border-success border-4">
+                <div class="d-flex align-items-center mb-2">
+                    <i class="bi bi-piggy-bank-fill text-success me-2"></i>
+                    <span class="text-muted fw-bold fs-8 uppercase">Cashback Earned</span>
+                </div>
+                <h2 class="fw-bolder text-success m-0">+$48.29</h2>
+                <div class="text-muted fs-9 fw-bold mt-2">1% base reward applied</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-clarity p-5 mb-8 border-0 shadow-sm bg-white">
+        <div class="row g-4 align-items-center">
+            <div class="col-md-4">
+                <div class="position-relative">
+                    <i class="bi bi-search position-absolute top-50 translate-middle-y ms-4 text-muted"></i>
+                    <input type="text" class="form-control form-control-solid ps-12 py-3 border-gray-200" 
+                           placeholder="Search merchants, IDs..." [(ngModel)]="searchQuery" (input)="applyFilters()">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select form-select-solid py-3 border-gray-200 fw-bold" [(ngModel)]="selectedCard" (change)="applyFilters()">
+                    <option value="all">All Cards</option>
+                    <option value="4242">VISA •••• 4242</option>
+                    <option value="1003">VCC •••• 1003</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select form-select-solid py-3 border-gray-200 fw-bold" [(ngModel)]="selectedCategory" (change)="applyFilters()">
+                    <option value="all">All Categories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Food & Drink">Food & Drink</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-light-primary w-100 py-3 fw-bold"><i class="bi bi-funnel me-2"></i> More</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-clarity border-0 shadow-sm overflow-hidden">
+        <div class="table-responsive">
+            <table class="table align-middle table-hover m-0">
+                <thead class="bg-light">
+                    <tr class="text-muted fw-bolder fs-8 text-uppercase ls-1">
+                        <th class="ps-8 py-5">Merchant</th>
+                        <th>Status</th>
+                        <th>Method</th>
+                        <th>Date</th>
+                        <th class="text-end pe-8">Amount</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    <tr *ngFor="let tx of filteredTransactions" class="tx-row" (click)="openDetail(tx)">
+                        <td class="ps-8">
+                            <div class="d-flex align-items-center">
+                                <img [src]="tx.enrichment.logo" class="merchant-logo me-4 border shadow-sm">
+                                <div>
+                                    <div class="text-dark fw-bolder fs-6">{{ tx.merchant }}</div>
+                                    <div class="text-muted fs-8">{{ tx.category }} • {{ tx.location }}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-pill" [ngClass]="tx.status.toLowerCase()">{{ tx.status }}</span>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column">
+                                <span class="text-dark fw-bold fs-7">{{ tx.cardType }}</span>
+                                <span class="text-muted fs-9">Ends in {{ tx.cardLast4 }}</span>
+                            </div>
+                        </td>
+                        <td class="text-muted fs-7">
+                            {{ tx.date | date:'MMM d, y' }}<br>
+                            <span class="opacity-50">{{ tx.date | date:'shortTime' }}</span>
+                        </td>
+                        <td class="text-end pe-8">
+                            <span class="amount-display fs-5" [ngClass]="tx.amount < 0 ? 'negative' : 'positive'">
+                                {{ tx.amount < 0 ? '' : '+' }}{{ tx.amount | currency:tx.currency:'symbol':'1.2-2' }}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="p-6 text-center bg-light border-top border-gray-200">
+            <button class="btn btn-link text-primary-gold fw-bolder text-decoration-none">Load More History</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show d-block" tabindex="-1" *ngIf="isDetailModalOpen">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow-xl card-clarity overflow-hidden animate__animated animate__fadeInUp">
+            
+            <div class="modal-header border-0 bg-dark p-8 text-white flex-column align-items-center">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-6" (click)="closeDetail()"></button>
+                <div class="bg-white rounded-circle p-1 mb-4 shadow-lg">
+                    <img [src]="selectedTx.enrichment.logo" width="60" class="rounded-circle">
+                </div>
+                <h2 class="fw-bolder m-0">{{ selectedTx.merchant }}</h2>
+                <p class="text-gray-500 m-0">{{ selectedTx.location }} • {{ selectedTx.date | date:'medium' }}</p>
+                <h1 class="display-5 fw-bolder mt-4 mb-2">{{ selectedTx.amount | currency:selectedTx.currency }}</h1>
+                <span class="status-pill completed shadow-sm">{{ selectedTx.status }}</span>
+            </div>
+
+            <div class="modal-body p-8 bg-white">
+                <div class="row g-6">
+                    <div class="col-md-6">
+                        <h6 class="fw-bolder text-dark mb-4 text-uppercase ls-1 fs-8">Intelligence Enrichment</h6>
+                        <div class="analytic-box mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted fs-8">Carbon Footprint</span>
+                                <span class="text-dark fw-bold fs-8"><i class="bi bi-leaf text-success me-1"></i> {{ selectedTx.enrichment.co2 }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted fs-8">Rewards Earned</span>
+                                <span class="text-primary-gold fw-bold fs-8"><i class="bi bi-star-fill me-1"></i> {{ selectedTx.enrichment.pointsEarned }} SMO</span>
+                            </div>
+                        </div>
+                        <div class="analytic-box">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-geo-alt-fill text-danger me-3 fs-3"></i>
+                                <div>
+                                    <div class="text-dark fw-bold fs-7">Verified Location</div>
+                                    <div class="text-muted fs-9">Pos terminal matches your mobile GPS data.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h6 class="fw-bolder text-dark mb-4 text-uppercase ls-1 fs-8">Payment Context</h6>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between px-0 py-2 border-gray-200">
+                                <span class="text-muted fs-7">Method</span>
+                                <span class="text-dark fw-bold fs-7">{{ selectedTx.posType }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between px-0 py-2 border-gray-200">
+                                <span class="text-muted fs-7">Card Used</span>
+                                <span class="text-dark fw-bold fs-7">{{ selectedTx.cardType }} ({{ selectedTx.cardLast4 }})</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between px-0 py-2 border-gray-200">
+                                <span class="text-muted fs-7">Transaction ID</span>
+                                <span class="text-primary fw-bold fs-8 font-monospace">{{ selectedTx.id }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 mt-10">
+                    <button class="btn btn-light-primary fw-bolder flex-grow-1 py-3"><i class="bi bi-receipt me-2"></i> Get PDF Receipt</button>
+                    <button class="btn btn-light-danger fw-bolder flex-grow-1 py-3"><i class="bi bi-shield-exclamation me-2"></i> Dispute Transaction</button>
+                </div>
+            </div>
+            
+            <div class="modal-footer bg-light border-0 py-4 justify-content-center">
+                <p class="text-muted fs-9 m-0">This transaction was secured by <strong>Sendmo AI Sentinel</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop fade show modal-backdrop-blur" *ngIf="isDetailModalOpen"></div>
