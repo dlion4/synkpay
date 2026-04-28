@@ -1,0 +1,501 @@
+<div class="container-fluid py-5 fade-in">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="gold-text mb-4 fw-bolder">SENDMO Help & Information Center</h1>
+            <p class="text-secondary fs-5 mb-8">Access self-service tools, policies, and direct assistance for your account.</p>
+
+            <ul class="nav nav-pills mb-6 gap-2" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link fs-5" [class.active]="activeMainTab === 'help'" (click)="setMainTab('help')">
+                        <i class="fas fa-book me-2"></i> User Guidance & Policies
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link fs-5" [class.active]="activeMainTab === 'support'" (click)="setMainTab('support')">
+                        <i class="fas fa-headset me-2"></i> Action-Based Support
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link fs-5" [class.active]="activeMainTab === 'system'" (click)="setMainTab('system')">
+                        <i class="fas fa-server me-2"></i> System Audit & Activity
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content glass-card border-0">
+                
+                <div *ngIf="activeMainTab === 'help'" class="animate__animated animate__fadeIn">
+                    <h3 class="text-dark mb-4">User-Facing Guidance & Policies</h3>
+                    <p class="text-secondary mb-5">Use the mini-tabs below to navigate guidance and legal documents.</p>
+                    
+                    <ul class="nav nav-pills mb-5 gap-2 border-bottom pb-4">
+                        <li class="nav-item">
+                            <button class="nav-link" [class.active]="activeHelpSubTab === 'docs-legal'" (click)="setHelpSubTab('docs-legal')">
+                                <i class="fas fa-file-signature me-2"></i> Documentation & Legal
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" [class.active]="activeHelpSubTab === 'service-security'" (click)="setHelpSubTab('service-security')">
+                                <i class="fas fa-shield-alt me-2"></i> Service & Security
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div *ngIf="activeHelpSubTab === 'docs-legal'" class="animate__animated animate__fadeIn">
+                        <p class="text-secondary fs-5 mb-4">Documentation & Legal content index.</p>
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card">
+                                    <i class="fas fa-gavel text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Terms of Service</h6>
+                                    <p class="small text-secondary mb-0">Read our updated platform terms and conditions.</p>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card">
+                                    <i class="fas fa-user-shield text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Privacy Policy</h6>
+                                    <p class="small text-secondary mb-0">How we handle and protect your personal data.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="activeHelpSubTab === 'service-security'" class="animate__animated animate__fadeIn">
+                        <p class="text-secondary fs-5 mb-4">Service & Security guidelines.</p>
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card">
+                                    <i class="fas fa-question-circle text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Security FAQ</h6>
+                                    <p class="small text-secondary mb-0">Answers to common account security questions.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="activeMainTab === 'support'" class="animate__animated animate__fadeIn">
+                    <h3 class="text-dark mb-4">Action-Based Assistance & Issue Resolution</h3>
+                    
+                    <ul class="nav nav-pills mb-5 gap-2 border-bottom pb-4">
+                        <li class="nav-item">
+                            <button class="nav-link" [class.active]="activeSupportSubTab === 'issue-reporting'" (click)="setSupportSubTab('issue-reporting')">
+                                <i class="fas fa-exclamation-circle me-2"></i> Issue Reporting (4)
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" [class.active]="activeSupportSubTab === 'account-access'" (click)="setSupportSubTab('account-access')">
+                                <i class="fas fa-user-lock me-2"></i> Account Access (4)
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" [class.active]="activeSupportSubTab === 'history-escalation'" (click)="setSupportSubTab('history-escalation')">
+                                <i class="fas fa-history me-2"></i> History & Escalation (2)
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div *ngIf="activeSupportSubTab === 'issue-reporting'" class="animate__animated animate__fadeIn">
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card" (click)="openTicketModal()">
+                                    <i class="fas fa-ticket-alt text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Submit Support Ticket</h6>
+                                    <p class="small text-secondary mb-0">General issues and non-urgent inquiries.</p>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card border-danger border-opacity-50 bg-danger bg-opacity-10" (click)="openModal('alarm')">
+                                    <i class="fas fa-fire text-danger icon mb-3"></i>
+                                    <h6 class="text-danger fw-bold mb-2">Raise an Alarm</h6>
+                                    <p class="small text-danger opacity-75 mb-0">URGENT account or transaction freezing issues.</p>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card" (click)="openModal('fraud')">
+                                    <i class="fas fa-user-secret text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Report Fraud Case</h6>
+                                    <p class="small text-secondary mb-0">Suspicious activity and unauthorized transactions.</p>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card" (click)="openModal('dispute')">
+                                    <i class="fas fa-exchange-alt text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Transaction Dispute</h6>
+                                    <p class="small text-secondary mb-0">Chargebacks, failed transactions, or reversals.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="activeSupportSubTab === 'account-access'" class="animate__animated animate__fadeIn">
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card" (click)="openModal('recovery')">
+                                    <i class="fas fa-key text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Account Recovery</h6>
+                                    <p class="small text-secondary mb-0">Lost access, password resets, or locked accounts.</p>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card" (click)="openModal('verification')">
+                                    <i class="fas fa-id-card text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Verification Issues</h6>
+                                    <p class="small text-secondary mb-0">KYC, document rejection, or identity problems.</p>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card" (click)="openModal('payment')">
+                                    <i class="fas fa-money-check-alt text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Payment Issues</h6>
+                                    <p class="small text-secondary mb-0">Deposits, withdrawals, and bank link failures.</p>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card" (click)="openModal('merchant')">
+                                    <i class="fas fa-store text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Merchant Support</h6>
+                                    <p class="small text-secondary mb-0">Business, API, and merchant-specific help.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="activeSupportSubTab === 'history-escalation'" class="animate__animated animate__fadeIn">
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card" (click)="openModal('history')">
+                                    <i class="fas fa-archive text-muted icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Support History</h6>
+                                    <p class="small text-secondary mb-0">View past tickets, status, and resolutions.</p>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="javascript:;" class="support-item-card border-warning border-opacity-50" (click)="openModal('escalation')">
+                                    <i class="fas fa-level-up-alt text-warning icon mb-3"></i>
+                                    <h6 class="text-dark fw-bold mb-2">Escalation Requests</h6>
+                                    <p class="small text-secondary mb-0">Request review for unresolved or critical cases.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="activeMainTab === 'system'" class="animate__animated animate__fadeIn">
+                    <h3 class="text-dark mb-4">Audit, Monitoring, and Account Activity Tracking</h3>
+                    <div class="border border-gray-200 rounded-4 p-5 bg-light">
+                        <p class="text-secondary mb-4">Detailed activity logs, including login attempts, device history, IP address tracking, and security events.</p>
+                        <div class="bg-white p-4 rounded-3 border shadow-sm text-center w-50">
+                            <h5 class="mb-1 text-dark fw-bold"><i class="fas fa-sign-in-alt text-success me-2"></i> Last Login Activity</h5>
+                            <p class="small text-secondary mb-0">Successful login: 5 minutes ago (Nairobi, Kenya) • IP: 197.232.x.x</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isTicketModalOpen">
+    <div class="modal-wizard animate__animated animate__zoomIn">
+        <div class="modal-header border-bottom pb-4 px-6 pt-6 d-flex justify-content-between align-items-center">
+            <h4 class="fw-bolder gold-text m-0"><i class="fas fa-ticket-alt me-2"></i> New Support Ticket</h4>
+            <button class="btn btn-light rounded-circle btn-sm" (click)="closeTicketModal()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body p-6">
+            <ul class="nav nav-pills nav-justified mb-5 border-bottom pb-3">
+                <li class="nav-item">
+                    <button class="nav-link" [class.active]="activeTicketWizardStep === 1"><i class="fas fa-list-ul me-2"></i> Details</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" [class.active]="activeTicketWizardStep === 2"><i class="fas fa-paperclip me-2"></i> Attachments</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" [class.active]="activeTicketWizardStep === 3"><i class="fas fa-check-circle me-2"></i> Confirm</button>
+                </li>
+            </ul>
+
+            <div *ngIf="activeTicketWizardStep === 1" class="animate__animated animate__fadeIn">
+                <p class="text-secondary small mb-4">Please provide the necessary details for our support team to assist you efficiently.</p>
+                <div class="mb-4">
+                    <label class="form-label small fw-bold">Issue Category</label>
+                    <select class="form-select bg-light" [(ngModel)]="ticketForm.category">
+                        <option value="">Select Category...</option>
+                        <option value="GeneralInquiry">General Inquiry</option>
+                        <option value="DonationIssue">Donation/Payment Issue</option>
+                        <option value="PlatformBug">Platform Bug/Error</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label small fw-bold">Subject Line</label>
+                    <input type="text" class="form-control bg-light" placeholder="e.g., Unable to log in on mobile app" [(ngModel)]="ticketForm.subject">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label small fw-bold">Detailed Description</label>
+                    <textarea class="form-control bg-light" rows="4" placeholder="Describe the steps you took and the error you received..." [(ngModel)]="ticketForm.description"></textarea>
+                </div>
+                <div class="text-end">
+                    <button class="btn btn-gold" (click)="setTicketWizardStep(2)">Next: Attachments <i class="fas fa-arrow-right ms-2"></i></button>
+                </div>
+            </div>
+
+            <div *ngIf="activeTicketWizardStep === 2" class="animate__animated animate__fadeIn">
+                <p class="text-secondary small mb-4">Attach relevant screenshots or documents (PDF, JPG, PNG).</p>
+                <div class="mb-3">
+                    <label class="form-label small fw-bold">Upload Files (Max 3)</label>
+                    <input class="form-control bg-light p-3" type="file" multiple>
+                </div>
+                <p class="small text-muted mb-5">File limit: 5MB per file.</p>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-light fw-bold" (click)="setTicketWizardStep(1)"><i class="fas fa-arrow-left me-2"></i> Previous</button>
+                    <button class="btn btn-gold" (click)="setTicketWizardStep(3)">Next: Review & Submit <i class="fas fa-check me-2"></i></button>
+                </div>
+            </div>
+
+            <div *ngIf="activeTicketWizardStep === 3" class="animate__animated animate__fadeIn text-center py-5">
+                <i class="fas fa-check-circle checkmark-icon mb-4"></i>
+                <h4 class="gold-text fw-bolder">Ticket Submitted Successfully!</h4>
+                <p class="text-secondary mt-3 px-4">Your ticket (Reference: <strong>SENDMO-2025-0749</strong>) has been created. Our team will review it within 4 hours.</p>
+                <button class="btn btn-dark mt-4 px-5 fw-bold rounded-pill" (click)="closeTicketModal()">Close Window</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isAlarmModalOpen">
+    <div class="modal-wizard modal-md-custom animate__animated animate__zoomIn">
+        <div class="modal-header bg-danger text-white p-4 border-0 rounded-top-4 d-flex justify-content-between align-items-center">
+            <h5 class="modal-title m-0 fw-bold"><i class="fas fa-fire me-2"></i> URGENT: Raise an Alarm</h5>
+            <button class="btn btn-sm btn-light text-danger rounded-circle p-1" (click)="closeModal('alarm')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body p-6">
+            <div class="alert bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25 fw-bold fs-7 mb-4">
+                USE THIS ONLY FOR CRITICAL ISSUES (e.g., unauthorized funds movement, security breaches).
+            </div>
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Nature of Emergency</label>
+                <select class="form-select bg-light" [(ngModel)]="alarmForm.issue">
+                    <option value="AccountFrozen">My account is frozen / locked</option>
+                    <option value="UnauthorizedTx">Unauthorized Transaction</option>
+                    <option value="SecurityBreach">Potential Security Breach</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Immediate Contact Number</label>
+                <input type="tel" class="form-control bg-light" [(ngModel)]="alarmForm.contact">
+                <div class="form-text fs-8 mt-1">Our Security team will call this number immediately.</div>
+            </div>
+            <div class="mb-5">
+                <label class="form-label small fw-bold">Brief Description</label>
+                <textarea class="form-control bg-light" rows="2" placeholder="Describe the urgent situation concisely..." [(ngModel)]="alarmForm.notes"></textarea>
+            </div>
+            <button class="btn btn-danger w-100 fw-bold py-3 fs-6" (click)="submitForm('alarm', 'URGENT ALARM sent. Security team dispatched to contact you immediately at ' + alarmForm.contact + '. Please keep your phone nearby.')">
+                <i class="fas fa-shield-alt me-2"></i> Submit Critical Alarm
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isFraudModalOpen">
+    <div class="modal-wizard modal-md-custom animate__animated animate__zoomIn">
+        <div class="modal-header border-bottom p-4 d-flex justify-content-between align-items-center bg-light">
+            <h5 class="modal-title fw-bold text-dark m-0"><i class="fas fa-user-secret me-2 text-warning"></i> Report Fraud Case</h5>
+            <button class="btn btn-sm btn-light rounded-circle" (click)="closeModal('fraud')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body p-6">
+            <p class="text-secondary small mb-4">Please detail the suspicious activity and provide the transaction ID if known.</p>
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Incident Date</label>
+                <input type="date" class="form-control bg-light" [(ngModel)]="fraudForm.date">
+            </div>
+            <div class="mb-5">
+                <label class="form-label small fw-bold">Description of Suspicion</label>
+                <textarea class="form-control bg-light" rows="3" [(ngModel)]="fraudForm.description"></textarea>
+            </div>
+            <button class="btn btn-dark w-100 fw-bold py-3" (click)="submitForm('fraud', 'Fraud Report submitted. An investigator will contact you within 1 hour.')">Submit Report</button>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isDisputeModalOpen">
+    <div class="modal-wizard modal-md-custom animate__animated animate__zoomIn">
+        <div class="modal-header border-bottom p-4 d-flex justify-content-between align-items-center bg-light">
+            <h5 class="modal-title fw-bold text-dark m-0"><i class="fas fa-exchange-alt me-2 text-info"></i> Transaction Dispute</h5>
+            <button class="btn btn-sm btn-light rounded-circle" (click)="closeModal('dispute')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body p-6">
+            <p class="text-secondary small mb-4">Initiate a dispute for a failed or incorrect transaction.</p>
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Transaction ID</label>
+                <input type="text" class="form-control bg-light font-monospace" placeholder="TXN-XXXX-XXXX" [(ngModel)]="disputeForm.txnId">
+            </div>
+            <div class="mb-5">
+                <label class="form-label small fw-bold">Reason for Dispute</label>
+                <select class="form-select bg-light" [(ngModel)]="disputeForm.reason">
+                    <option>Chargeback Request</option>
+                    <option>Transaction Not Credited</option>
+                    <option>Incorrect Amount Processed</option>
+                </select>
+            </div>
+            <button class="btn btn-gold w-100 fw-bold py-3" (click)="submitForm('dispute', 'Dispute initiated. We will notify you of the outcome within 3 business days.')">Submit Dispute</button>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isRecoveryModalOpen">
+    <div class="modal-wizard modal-md-custom animate__animated animate__zoomIn">
+        <div class="modal-header border-bottom p-4 d-flex justify-content-between align-items-center bg-light">
+            <h5 class="modal-title fw-bold text-dark m-0"><i class="fas fa-key me-2 text-primary"></i> Account Recovery</h5>
+            <button class="btn btn-sm btn-light rounded-circle" (click)="closeModal('recovery')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body p-6">
+            <p class="text-secondary small mb-4">We will send a secure recovery link to your verified email address.</p>
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Verified Email Address</label>
+                <input type="email" class="form-control bg-light" placeholder="your.email@example.com" [(ngModel)]="recoveryForm.email">
+                <div class="form-text mt-2 fs-8">If you do not have access to your email, please call our support line immediately.</div>
+            </div>
+            <button class="btn btn-dark w-100 fw-bold py-3" (click)="submitForm('recovery', 'Recovery link sent! Check your inbox and spam folders.')">Send Recovery Link</button>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isVerificationModalOpen">
+    <div class="modal-wizard modal-md-custom animate__animated animate__zoomIn">
+        <div class="modal-header border-bottom p-4 d-flex justify-content-between align-items-center bg-light">
+            <h5 class="modal-title fw-bold text-dark m-0"><i class="fas fa-id-card me-2 text-success"></i> Verification Issues</h5>
+            <button class="btn btn-sm btn-light rounded-circle" (click)="closeModal('verification')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body p-6">
+            <p class="text-secondary small mb-4">Resubmit documents or inquire about a rejected KYC status.</p>
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Issue Type</label>
+                <select class="form-select bg-light" [(ngModel)]="verificationForm.type">
+                    <option>Document Rejected</option>
+                    <option>Verification Stuck in Pending</option>
+                    <option>Request Re-verification</option>
+                </select>
+            </div>
+            <div class="mb-5">
+                <label class="form-label small fw-bold">Upload New Document (Optional)</label>
+                <input type="file" class="form-control bg-light p-2">
+            </div>
+            <button class="btn btn-gold w-100 fw-bold py-3" (click)="submitForm('verification', 'Verification review request submitted. Please allow 24 hours.')">Submit Review Request</button>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isPaymentIssueModalOpen">
+    <div class="modal-wizard modal-md-custom animate__animated animate__zoomIn">
+        <div class="modal-header border-bottom p-4 d-flex justify-content-between align-items-center bg-light">
+            <h5 class="modal-title fw-bold text-dark m-0"><i class="fas fa-money-check me-2 text-primary"></i> Payment Issues</h5>
+            <button class="btn btn-sm btn-light rounded-circle" (click)="closeModal('payment')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body p-6">
+            <p class="text-secondary small mb-4">Report issues related to deposits, withdrawals, or bank link failures.</p>
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Payment Type</label>
+                <select class="form-select bg-light" [(ngModel)]="paymentIssueForm.type">
+                    <option>Deposit Failure</option>
+                    <option>Withdrawal Delayed</option>
+                    <option>Bank Account Link Error</option>
+                </select>
+            </div>
+            <div class="mb-5">
+                <label class="form-label small fw-bold">Amount/Reference</label>
+                <input type="text" class="form-control bg-light" placeholder="e.g., KSh 50,000 / MPESA ref." [(ngModel)]="paymentIssueForm.reference">
+            </div>
+            <button class="btn btn-dark w-100 fw-bold py-3" (click)="submitForm('payment', 'Payment issue reported. A financial specialist will investigate immediately.')">Report Payment Problem</button>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isEscalationModalOpen">
+    <div class="modal-wizard modal-md-custom animate__animated animate__zoomIn">
+        <div class="modal-header border-bottom p-4 d-flex justify-content-between align-items-center bg-warning bg-opacity-10">
+            <h5 class="modal-title fw-bold text-dark m-0"><i class="fas fa-level-up-alt me-2 text-warning"></i> Escalation Request</h5>
+            <button class="btn btn-sm btn-light rounded-circle" (click)="closeModal('escalation')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body p-6">
+            <div class="alert bg-warning bg-opacity-10 border border-warning border-opacity-25 text-dark fw-bold fs-8 p-3 mb-4">
+                Only use this if a ticket has been unresolved for >48 hours.
+            </div>
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Original Ticket ID</label>
+                <input type="text" class="form-control bg-light font-monospace" placeholder="SENDMO-2025-XXXX" [(ngModel)]="escalationForm.ticketId">
+            </div>
+            <div class="mb-5">
+                <label class="form-label small fw-bold">Reason for Escalation</label>
+                <textarea class="form-control bg-light" rows="3" [(ngModel)]="escalationForm.reason"></textarea>
+            </div>
+            <button class="btn btn-gold w-100 fw-bold py-3" (click)="submitForm('escalation', 'Escalation submitted. A senior manager will take ownership of your case.')">Submit Escalation</button>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isMerchantModalOpen">
+    <div class="modal-wizard modal-md-custom animate__animated animate__zoomIn">
+        <div class="modal-header border-bottom p-4 d-flex justify-content-between align-items-center bg-light">
+            <h5 class="modal-title fw-bold text-dark m-0"><i class="fas fa-store me-2 text-primary"></i> Merchant Support</h5>
+            <button class="btn btn-sm btn-light rounded-circle" (click)="closeModal('merchant')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body p-6">
+            <p class="text-secondary small mb-4">Dedicated support for business accounts and technical integration help.</p>
+            <div class="mb-4">
+                <label class="form-label small fw-bold">Merchant ID</label>
+                <input type="text" class="form-control bg-light font-monospace" placeholder="MID-XXXXX" [(ngModel)]="merchantForm.merchantId">
+            </div>
+            <div class="mb-5">
+                <label class="form-label small fw-bold">Nature of Request</label>
+                <select class="form-select bg-light" [(ngModel)]="merchantForm.requestType">
+                    <option>API Key Reset</option>
+                    <option>Transaction Volume Increase</option>
+                    <option>Integration Help</option>
+                </select>
+            </div>
+            <button class="btn btn-dark w-100 fw-bold py-3" (click)="submitForm('merchant', 'Merchant request submitted. A dedicated account manager will be in touch shortly.')">Contact Merchant Team</button>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="isHistoryModalOpen">
+    <div class="modal-wizard modal-xl-custom animate__animated animate__zoomIn">
+        <div class="modal-header border-bottom p-5 d-flex justify-content-between align-items-center bg-light">
+            <h4 class="modal-title fw-bolder text-dark m-0"><i class="fas fa-archive me-2 text-primary-gold"></i> Support History & Resolutions</h4>
+            <button class="btn btn-sm btn-light rounded-circle" (click)="closeModal('history')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body p-6">
+            <p class="text-secondary small mb-4">Your past support tickets and their current status.</p>
+            <div class="table-responsive border rounded-3 bg-white">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light text-muted small text-uppercase">
+                        <tr>
+                            <th class="ps-4 py-3">Ticket ID</th>
+                            <th>Subject</th>
+                            <th>Submitted On</th>
+                            <th>Status</th>
+                            <th class="pe-4 text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="border-top-0">
+                        <tr *ngFor="let item of supportHistory">
+                            <td class="ps-4 font-monospace fw-bold fs-7">{{ item.id }}</td>
+                            <td class="text-dark fw-medium">{{ item.subject }}</td>
+                            <td class="text-muted fs-7">{{ item.date }}</td>
+                            <td><span class="badge rounded-pill px-3" [ngClass]="item.badge">{{ item.status }}</span></td>
+                            <td class="pe-4 text-end">
+                                <button class="btn btn-sm btn-light border text-secondary fw-bold" *ngIf="item.status === 'Resolved'">View</button>
+                                <button class="btn btn-sm btn-outline-warning fw-bold" *ngIf="item.status !== 'Resolved'" (click)="closeModal('history'); openModal('escalation')">Escalate</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-end mt-4">
+                <button class="btn btn-dark px-5 fw-bold rounded-pill" (click)="closeModal('history')">Close Window</button>
+            </div>
+        </div>
+    </div>
+</div>

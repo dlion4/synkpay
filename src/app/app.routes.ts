@@ -30,6 +30,11 @@ import { CardsTransactionsPageComponent } from './pages/cards/cards-transactions
 import { BeneficiaryPageComponent } from './pages/legacy/beneficiary-page/beneficiary-page';
 import { ContinuitySavingPageComponent } from './pages/legacy/continuity-saving-page/continuity-saving-page';
 
+//support
+import { SupportCenterComponent } from './pages/support/support-center/support-center';
+import { HelpCenterComponent } from './pages/support/help-center/help-center';
+import { LiveChatComponent } from './pages/support/live-chat/live-chat';
+
 export const routes: Routes = [
     {
         path: '',
@@ -114,6 +119,11 @@ export const routes: Routes = [
             //dod pagesss
             { path: 'legacy/beneficiary', component: BeneficiaryPageComponent },
             { path: 'legacy/continuity-saving', component: ContinuitySavingPageComponent },
+
+            //supportt and heppp
+            { path: 'support/overview', component: SupportCenterComponent },
+            { path: 'support/help', component: HelpCenterComponent },
+            { path: 'support/live-chat', component: LiveChatComponent },
         ]
     },
 

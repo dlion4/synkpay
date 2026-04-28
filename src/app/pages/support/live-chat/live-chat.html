@@ -1,0 +1,332 @@
+<div class="container-xxl py-8 animate__animated animate__fadeIn">
+    
+    <header class="mb-8 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4">
+        <div>
+            <h1 class="fw-bolder text-dark mb-2"><i class="fas fa-headset me-3 text-gold"></i>Live Chat & Intelligence Hub</h1>
+            <p class="text-muted fs-6 m-0">24/7 AI assistance, Live Agent support, and secure communication channels.</p>
+        </div>
+        <div class="d-flex align-items-center bg-white p-3 rounded-pill border shadow-sm">
+            <div class="spinner-grow spinner-grow-sm text-success me-2" role="status"></div>
+            <span class="fw-bold text-dark fs-7 me-3">E2EE Secured Session</span>
+            <span class="badge bg-light-success text-success border border-success border-opacity-25 rounded-pill px-3">Active</span>
+        </div>
+    </header>
+
+    <ul class="nav nav-pills mb-6 justify-content-center justify-content-md-start border-0">
+        <li class="nav-item">
+            <button class="nav-link fs-6" [class.active]="activeMainTab === 'ai-chat'" (click)="setMainTab('ai-chat')">
+                <i class="fas fa-robot me-2"></i> AI Assistant
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link fs-6" [class.active]="activeMainTab === 'human-support'" (click)="setMainTab('human-support')">
+                <i class="fas fa-user-headset me-2"></i> Live Agent & Channels
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link fs-6" [class.active]="activeMainTab === 'history'" (click)="setMainTab('history')">
+                <i class="fas fa-history me-2"></i> Communication History
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link fs-6" [class.active]="activeMainTab === 'settings'" (click)="setMainTab('settings')">
+                <i class="fas fa-sliders-h me-2"></i> Chat Preferences
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        
+        <div *ngIf="activeMainTab === 'ai-chat'" class="row g-6 animate__animated animate__fadeIn">
+            
+            <div class="col-lg-8">
+                <div class="chat-container shadow-sm">
+                    <div class="p-4 border-bottom bg-light rounded-top d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <div class="position-relative me-3">
+                                <div class="bg-gold p-2 rounded-circle text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-robot fs-5"></i>
+                                </div>
+                                <span class="position-absolute bottom-0 end-0 translate-middle p-1 bg-success border border-light rounded-circle"></span>
+                            </div>
+                            <div>
+                                <h6 class="m-0 fw-bold text-dark">SendMO Intelligence</h6>
+                                <small class="text-success fw-bold fs-9">Online</small>
+                            </div>
+                        </div>
+                        <button class="btn btn-sm btn-light border text-muted hover-elevate-up" (click)="requestLiveAgent()">
+                            <i class="fas fa-user me-1"></i> Request Human
+                        </button>
+                    </div>
+
+                    <div class="chat-messages" #chatScrollContainer>
+                        <div *ngFor="let msg of chatMessages" class="message-wrapper" [ngClass]="msg.sender">
+                            <div class="message-bubble" [ngClass]="msg.sender">
+                                {{ msg.text }}
+                            </div>
+                            <div class="message-time" *ngIf="msg.sender !== 'system'">
+                                {{ msg.time | date:'shortTime' }} <i class="fas fa-check-double ms-1 text-primary" *ngIf="msg.sender === 'user'"></i>
+                            </div>
+                        </div>
+
+                        <div class="message-wrapper ai animate__animated animate__fadeIn" *ngIf="isAiTyping">
+                            <div class="message-bubble ai typing-indicator">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-area d-flex gap-3 align-items-center">
+                        <button class="btn btn-light rounded-circle text-muted p-2"><i class="fas fa-paperclip fs-5"></i></button>
+                        <input type="text" class="form-control flex-grow-1" placeholder="Type your secure message..." 
+                               [(ngModel)]="userInput" (keyup.enter)="sendMessage()">
+                        <button class="btn-send shadow-sm" (click)="sendMessage()" [disabled]="!userInput.trim()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="glass-card mb-6">
+                    <h6 class="fw-bolder text-dark mb-4 border-bottom pb-2"><i class="fas fa-bolt text-warning me-2"></i> Quick Prompts</h6>
+                    <div class="d-flex flex-column gap-2">
+                        <button class="btn btn-light text-start text-dark fw-medium border py-2 hover-elevate-up" 
+                                *ngFor="let action of quickActions" (click)="triggerQuickAction(action)">
+                            {{ action }}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass-card bg-light border-0 shadow-sm">
+                    <h6 class="fw-bolder text-dark mb-4 border-bottom pb-2"><i class="fas fa-fingerprint text-primary me-2"></i> Session Context</h6>
+                    <ul class="list-unstyled m-0 fs-8 text-muted d-flex flex-column gap-3">
+                        <li class="d-flex justify-content-between"><span>Auth Level:</span> <strong class="text-success">Biometric (Tier 2)</strong></li>
+                        <li class="d-flex justify-content-between"><span>Current View:</span> <strong class="text-dark">Support Hub</strong></li>
+                        <li class="d-flex justify-content-between"><span>Device IP:</span> <strong class="font-monospace">197.232.14.55</strong></li>
+                        <li class="d-flex justify-content-between"><span>Encryption:</span> <strong class="text-primary"><i class="fas fa-lock me-1"></i> AES-256</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeMainTab === 'human-support'" class="animate__animated animate__fadeIn">
+            
+            <div class="glass-card bg-dark text-white p-6 mb-8 d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <div class="d-flex align-items-center mb-4 mb-md-0">
+                    <div class="bg-white bg-opacity-10 p-3 rounded-circle me-4">
+                        <i class="fas fa-users fs-2 text-gold"></i>
+                    </div>
+                    <div>
+                        <h4 class="m-0 fw-bold text-white">Live Support Queue</h4>
+                        <p class="m-0 text-gray-400 fs-7">Connect with a specialized financial agent.</p>
+                    </div>
+                </div>
+                <div class="d-flex gap-4 text-center">
+                    <div>
+                        <div class="fs-7 text-gray-400 text-uppercase">Agents Online</div>
+                        <div class="fs-3 fw-bolder text-success">{{ agentsOnline }}</div>
+                    </div>
+                    <div class="border-start border-gray-600"></div>
+                    <div>
+                        <div class="fs-7 text-gray-400 text-uppercase">Est. Wait</div>
+                        <div class="fs-3 fw-bolder text-warning">{{ estWaitTime }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card h-100" (click)="requestLiveAgent()">
+                        <i class="fas fa-comments fs-2x text-primary mb-4 d-block"></i>
+                        <h5 class="fw-bold text-dark">In-App Live Chat</h5>
+                        <p class="text-muted fs-8 mb-4">Connect securely within the dashboard. Best for account-specific inquiries requiring authentication.</p>
+                        <span class="text-primary fw-bold fs-8">Join Queue <i class="fas fa-arrow-right ms-1"></i></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card whatsapp-card h-100" (click)="openModal('whatsapp')">
+                        <i class="fab fa-whatsapp fs-2x text-success mb-4 d-block"></i>
+                        <h5 class="fw-bold text-dark">WhatsApp Gateway</h5>
+                        <p class="text-muted fs-8 mb-4">Chat with our verified business account. End-to-end encrypted mobile support.</p>
+                        <span class="text-success fw-bold fs-8">Open WhatsApp <i class="fas fa-external-link-alt ms-1"></i></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card h-100" (click)="openModal('cobrowse')">
+                        <i class="fas fa-desktop fs-2x text-info mb-4 d-block"></i>
+                        <h5 class="fw-bold text-dark">Live Co-Browsing</h5>
+                        <p class="text-muted fs-8 mb-4">Generate a secure PIN to let an agent view your screen and guide you through complex flows.</p>
+                        <span class="text-info fw-bold fs-8">Generate PIN <i class="fas fa-key ms-1"></i></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card h-100 border-warning border-opacity-50" style="background: linear-gradient(135deg, #fff 0%, #fffbf0 100%);">
+                        <i class="fas fa-crown fs-2x text-warning mb-4 d-block"></i>
+                        <h5 class="fw-bold text-dark">VIP Concierge</h5>
+                        <p class="text-muted fs-8 mb-4">Exclusive direct line for Premium SendMO Cardholders. Skip the queue.</p>
+                        <span class="text-warning fw-bold fs-8 text-darken">Request Callback <i class="fas fa-phone-alt ms-1"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeMainTab === 'history'" class="animate__animated animate__fadeIn">
+            
+            <div class="row g-5 mb-8">
+                <div class="col-md-4">
+                    <div class="glass-card bg-white p-5 border-start border-4 border-primary">
+                        <span class="text-muted fw-bold fs-8 text-uppercase d-block mb-1">Total Interactions</span>
+                        <h2 class="fw-bolder m-0 text-dark">24</h2>
+                        <span class="text-success fs-9 fw-bold">Lifetime</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card bg-white p-5 border-start border-4 border-success">
+                        <span class="text-muted fw-bold fs-8 text-uppercase d-block mb-1">Avg Resolution Time</span>
+                        <h2 class="fw-bolder m-0 text-dark">4m 12s</h2>
+                        <span class="text-success fs-9 fw-bold"><i class="fas fa-arrow-down"></i> 12% faster</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card bg-white p-5 border-start border-4 border-warning">
+                        <span class="text-muted fw-bold fs-8 text-uppercase d-block mb-1">Overall Sentiment</span>
+                        <h2 class="fw-bolder m-0 text-dark">Positive</h2>
+                        <span class="text-muted fs-9 fw-bold">Based on AI text analysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card p-0 overflow-hidden">
+                <div class="p-5 border-bottom bg-light">
+                    <h5 class="fw-bolder m-0 text-dark"><i class="fas fa-archive me-2 text-muted"></i> Session Transcripts</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-middle table-hover m-0">
+                        <thead class="bg-white">
+                            <tr class="text-muted fw-bold fs-8 text-uppercase">
+                                <th class="ps-5 py-4">Session ID</th>
+                                <th>Date</th>
+                                <th>Primary Topic</th>
+                                <th>Handled By</th>
+                                <th>Sentiment</th>
+                                <th class="text-end pe-5">Transcript</th>
+                            </tr>
+                        </thead>
+                        <tbody class="border-top-0 bg-white">
+                            <tr *ngFor="let chat of chatHistory">
+                                <td class="ps-5 font-monospace fw-bold fs-7 text-dark">{{ chat.id }}</td>
+                                <td class="text-muted fs-7">{{ chat.date }}</td>
+                                <td class="text-dark fw-medium">{{ chat.topic }}</td>
+                                <td><span class="badge bg-light text-dark border">{{ chat.agent }}</span></td>
+                                <td>
+                                    <span class="badge rounded-pill px-3" 
+                                          [ngClass]="{'bg-success': chat.sentiment === 'Positive', 'bg-secondary': chat.sentiment === 'Neutral'}">
+                                        {{ chat.sentiment }}
+                                    </span>
+                                </td>
+                                <td class="text-end pe-5">
+                                    <button class="btn btn-sm btn-light border text-primary fw-bold hover-elevate-up" (click)="downloadTranscript(chat.id)">
+                                        <i class="fas fa-download me-1"></i> PDF
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeMainTab === 'settings'" class="animate__animated animate__fadeIn">
+            <div class="row g-6">
+                <div class="col-lg-6">
+                    <div class="glass-card h-100">
+                        <h4 class="fw-bolder text-dark mb-5 border-bottom pb-3"><i class="fas fa-shield-alt text-success me-2"></i> Security & Privacy</h4>
+                        
+                        <div class="d-flex justify-content-between align-items-center p-4 border rounded-3 mb-4 bg-light">
+                            <div>
+                                <h6 class="fw-bold m-0 text-dark">End-to-End Encryption</h6>
+                                <small class="text-muted">Encrypt all live agent and AI chats.</small>
+                            </div>
+                            <div class="form-check form-switch m-0 fs-4">
+                                <input class="form-check-input" type="checkbox" [(ngModel)]="chatPrefs.endToEndEncryption" disabled>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center p-4 border rounded-3 bg-light">
+                            <div>
+                                <h6 class="fw-bold m-0 text-dark">Save Transcripts</h6>
+                                <small class="text-muted">Automatically save chat logs to history.</small>
+                            </div>
+                            <div class="form-check form-switch m-0 fs-4">
+                                <input class="form-check-input cursor-pointer" type="checkbox" [(ngModel)]="chatPrefs.saveTranscripts">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="glass-card h-100">
+                        <h4 class="fw-bolder text-dark mb-5 border-bottom pb-3"><i class="fas fa-sliders-h text-primary me-2"></i> AI Preferences</h4>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold fs-8">Preferred Language</label>
+                            <select class="form-select bg-light py-3" [(ngModel)]="chatPrefs.language">
+                                <option value="en-US">English (US)</option>
+                                <option value="sw-KE">Swahili (KE)</option>
+                                <option value="fr-FR">French</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label fw-bold fs-8">AI Assistant Personality</label>
+                            <select class="form-select bg-light py-3" [(ngModel)]="chatPrefs.personality">
+                                <option value="Professional">Professional & Concise (Default)</option>
+                                <option value="Friendly">Friendly & Conversational</option>
+                                <option value="Technical">Technical & Detailed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="activeModal === 'cobrowse'">
+    <div class="modal-wizard animate__animated animate__zoomIn p-2">
+        <div class="modal-header border-0 pb-0 d-flex justify-content-between">
+            <h5 class="fw-bolder m-0"><i class="fas fa-desktop text-info me-2"></i> Screen Share Request</h5>
+            <button class="btn btn-sm btn-light rounded-circle" (click)="closeModal()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body text-center p-6">
+            <p class="text-muted mb-4">Provide this secure 6-digit PIN to your support agent. They will only be able to view your current SendMO dashboard.</p>
+            <div class="bg-light border border-info border-opacity-25 rounded-4 p-5 mb-5">
+                <h1 class="display-3 font-monospace fw-bolder tracking-widest text-info m-0" style="letter-spacing: 0.5rem;">{{ coBrowsePin }}</h1>
+            </div>
+            <button class="btn btn-dark w-100 py-3 fw-bold rounded-pill" (click)="closeModal()">End Session</button>
+        </div>
+    </div>
+</div>
+
+<div class="custom-modal-overlay animate__animated animate__fadeIn" *ngIf="activeModal === 'whatsapp'">
+    <div class="modal-wizard animate__animated animate__zoomIn p-2">
+        <div class="modal-header border-0 pb-0 d-flex justify-content-between">
+            <h5 class="fw-bolder m-0"><i class="fab fa-whatsapp text-success me-2"></i> WhatsApp Secure Link</h5>
+            <button class="btn btn-sm btn-light rounded-circle" (click)="closeModal()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body text-center p-6">
+            <div class="bg-light p-4 rounded-4 mb-5 border d-inline-block">
+                <i class="fas fa-qrcode fs-5x text-dark"></i>
+            </div>
+            <p class="text-muted mb-5">Scan the QR code or click the button below to open our verified WhatsApp Business channel securely.</p>
+            <a href="https://wa.me/1234567890" target="_blank" class="btn btn-success w-100 py-3 fw-bold rounded-pill shadow-sm" (click)="closeModal()">
+                Open WhatsApp <i class="fas fa-external-link-alt ms-2"></i>
+            </a>
+        </div>
+    </div>
+</div>

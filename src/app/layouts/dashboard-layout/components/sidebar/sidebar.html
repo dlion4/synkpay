@@ -864,37 +864,87 @@
                     </a>
                 </div>
 
-                <div class="tab-pane fade" id="tab_support" role="tabpanel">
-                    <h2 class="text-dark fw-bolder mb-8 fs-3">Support Center</h2>
+               <div class="tab-pane fade" id="tab_support" role="tabpanel">
+    <div class="d-flex align-items-center justify-content-between mb-8">
+        <h2 class="text-dark fw-bolder fs-3 m-0">Support Center</h2>
+        <span class="badge badge-light-primary fw-bold px-3 py-2">24/7 Available</span>
+    </div>
 
-                    <a routerLink="/support/help"
-                        class="card border border-dashed border-primary bg-light-primary mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-book text-primary fs-4"></i>
-                        </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Knowledge
-                                Base</span><span class="text-muted fs-8 fw-bold">FAQs & Guides</span></div>
-                    </a>
-                    <a routerLink="/support/tickets"
-                        class="card border border-dashed border-success bg-light-success mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-ticket-alt text-success fs-4"></i>
-                        </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Support
-                                Tickets</span><span class="text-muted fs-8 fw-bold">Open a request</span></div>
-                    </a>
+    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Self-Service Resources</h5>
+    
+    <a routerLink="support/overview"
+        class="card border border-gray-300 bg-white mb-4 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center transition">
+        <div class="symbol symbol-45px bg-light-primary rounded-3 me-4 d-flex justify-content-center align-items-center border border-primary border-opacity-10">
+            <i class="bi bi-book-half text-primary fs-3"></i>
+        </div>
+        <div class="d-flex flex-column flex-grow-1">
+            <span class="text-dark fw-bolder fs-6">Knowledge Base</span>
+            <span class="text-muted fs-8 fw-bold">Comprehensive FAQs & How-to Guides</span>
+        </div>
+        <i class="bi bi-chevron-right text-gray-400"></i>
+    </a>
 
-                    <div class="card bg-light-danger border border-dashed border-danger mt-8 p-6 text-center rounded-4">
-                        <div
-                            class="symbol symbol-50px bg-white rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center mb-3 border border-danger border-opacity-25">
-                            <i class="fas fa-phone-alt text-danger fs-3"></i>
-                        </div>
-                        <h5 class="text-gray-900 fw-bolder mb-1">Emergency Hotline</h5>
-                        <p class="text-danger fw-bolder fs-4 mb-0 mono-num">0758 489 861</p>
-                    </div>
-                </div>
+    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4 mt-6">Direct Assistance</h5>
+
+    <a routerLink="support/help"
+        class="card border border-gray-300 bg-white mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center transition">
+        <div class="symbol symbol-45px bg-light-success rounded-3 me-4 d-flex justify-content-center align-items-center border border-success border-opacity-10">
+            <i class="bi bi-ticket-perforated-fill text-success fs-3"></i>
+        </div>
+        <div class="d-flex flex-column flex-grow-1">
+            <span class="text-dark fw-bolder fs-6">Support Help Desk</span>
+            <span class="text-muted fs-8 fw-bold">Open a new request or track tickets</span>
+        </div>
+        <i class="bi bi-chevron-right text-gray-400"></i>
+    </a>
+
+    <a routerLink="support/live-chat"
+        class="card border border-gray-300 bg-white mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center transition">
+        <div class="symbol symbol-45px bg-light-info rounded-3 me-4 d-flex justify-content-center align-items-center border border-info border-opacity-10">
+            <i class="bi bi-chat-dots-fill text-info fs-3"></i>
+        </div>
+        <div class="d-flex flex-column flex-grow-1">
+            <span class="text-dark fw-bolder fs-6">Support Live Chat</span>
+            <span class="text-muted fs-8 fw-bold">Real-time chat with our agents</span>
+        </div>
+        <i class="bi bi-chevron-right text-gray-400"></i>
+    </a>
+
+    <div class="card bg-light-danger border border-dashed border-danger mt-8 p-6 text-center rounded-4 shadow-sm">
+        <div class="symbol symbol-50px bg-white rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center mb-3 border border-danger border-opacity-25">
+            <i class="bi bi-telephone-fill text-danger fs-3"></i>
+        </div>
+        <h5 class="text-dark fw-bolder mb-1">Emergency Hotline</h5>
+        <p class="text-muted fs-8 mb-3">For urgent account lockouts or fraud reporting only</p>
+        <a href="tel:0758489861" class="text-danger fw-bolder fs-4 text-decoration-none d-block">
+            <span class="font-monospace">0758 489 861</span>
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Premium Hover effect for the links */
+    .hover-elevate-up {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .hover-elevate-up:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        border-color: #d4af37 !important; /* The primary gold color */
+    }
+
+    /* Standardized Light Backgrounds */
+    .bg-light-primary { background-color: #f1faff !important; }
+    .bg-light-success { background-color: #e8fff3 !important; }
+    .bg-light-info { background-color: #f8f5ff !important; }
+    .bg-light-danger { background-color: #fff5f8 !important; }
+
+    /* Text Spacing */
+    .ls-1 { letter-spacing: 0.05rem; }
+    
+    /* Ensure icon symbols are perfect circles/squares */
+    .symbol { flex-shrink: 0; }
+</style>
 
             </div>
         </div>

@@ -1,0 +1,148 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    /* Silver/Gold Glass Theme Variables */
+    --silver-bg-start: #e0e5ec; 
+    --silver-bg-end: #f0f2f5;   
+    --glass-bg-color: rgba(255, 255, 255, 0.85); 
+    --glass-border-color: rgba(218, 165, 32, 0.3); 
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08); 
+    
+    --color-vibrant-gold: #b47a06; 
+    --color-light-gold: #FFD700;  
+    --color-gold-gradient: linear-gradient(90deg, #d4af37 0%, #b47a06 100%);
+    --color-danger: #DC3545;      
+    --color-success: #198754;     
+    --color-text-dark: #1e293b; 
+    --color-text-muted: #64748b; 
+    
+    background: linear-gradient(135deg, var(--silver-bg-start) 0%, var(--silver-bg-end) 100%);
+    color: var(--color-text-dark);
+}
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { animation: fadeIn 0.4s ease-out forwards; }
+
+/* Utilities */
+.text-vibrant { color: var(--color-vibrant-gold) !important; font-weight: 700; }
+.gold-text { color: var(--color-vibrant-gold) !important; }
+.cursor-pointer { cursor: pointer; }
+
+/* Glass Card Style */
+.glass-card, .page-card, .support-item-card {
+    backdrop-filter: blur(15px);
+    background-color: var(--glass-bg-color);
+    border: 1px solid var(--glass-border-color);
+    box-shadow: var(--glass-shadow);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.support-item-card {
+    display: block;
+    text-decoration: none;
+    height: 100%;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(18, 24, 31, 0.1);
+        border-color: var(--color-vibrant-gold);
+        .icon { color: var(--color-vibrant-gold) !important; }
+    }
+    .icon { font-size: 2.5rem; transition: color 0.3s ease; color: var(--color-text-muted); }
+}
+
+/* Buttons */
+.btn-gold {
+    background: var(--color-gold-gradient);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+    transition: all 0.2s ease;
+    &:hover:not(:disabled) {
+        transform: translateY(-2px); 
+        box-shadow: 0 6px 20px rgba(218, 165, 32, 0.5); 
+        color: #fff;
+    }
+}
+
+/* Tabs */
+.nav-pills {
+    .nav-link {
+        color: var(--color-text-muted);
+        background-color: transparent;
+        transition: all 0.3s ease;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        padding: 0.75rem 1.25rem;
+        border: 1px solid transparent;
+        &.active, &:hover {
+            color: var(--color-text-dark);
+            background-color: rgba(218, 165, 32, 0.15);
+            border-color: rgba(218, 165, 32, 0.4);
+        }
+    }
+}
+
+/* Forms */
+.form-control, .form-select {
+    background-color: rgba(255, 255, 255, 0.9); 
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    color: var(--color-text-dark);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+    &:focus {
+        background-color: #ffffff; 
+        border-color: var(--color-vibrant-gold);
+        box-shadow: 0 0 0 0.25rem rgba(218, 165, 32, 0.15); 
+        outline: none;
+    }
+}
+
+/* Modal Overlay */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-wizard {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(218, 165, 32, 0.3);
+}
+
+.modal-xl-custom { max-width: 900px; }
+.modal-md-custom { max-width: 500px; }
+
+/* Success Animation */
+.checkmark-icon {
+    font-size: 4rem;
+    color: #198754;
+    display: inline-block;
+    animation: bounceIn 0.5s forwards;
+}
+
+@keyframes bounceIn {
+    0% { opacity: 0; transform: scale(0.5); }
+    60% { opacity: 1; transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
