@@ -1,5 +1,5 @@
 <div class="container-xxl py-10" id="kt_content_container">
-    
+
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-8">
         <div>
             <h1 class="fw-bolder fs-2 m-0" style="color: #0f172a;">Limits & Security</h1>
@@ -15,12 +15,12 @@
         </div>
     </div>
 
-    <div class="row g-6">
-        
+    <div class="row g-6 mb-6">
         <div class="col-xl-4 col-lg-5">
-            <div class="card-clarity p-6 mb-6">
+            <div class="card-clarity p-6 h-100">
                 <h5 class="fw-bolder mb-4 fs-5 text-dark">Target Card</h5>
-                <select class="form-select form-select-solid fw-bold border-gray-300 mb-6 bg-light py-3" [(ngModel)]="selectedCardId" (change)="selectCard(selectedCardId)">
+                <select class="form-select form-select-solid fw-bold border-gray-300 mb-6 bg-light py-3"
+                    [(ngModel)]="selectedCardId" (change)="selectCard(selectedCardId)">
                     <option *ngFor="let card of myCards" [value]="card.id">
                         {{ card.network }} **** {{ card.last4 }} ({{ card.name }})
                     </option>
@@ -29,45 +29,31 @@
                 <div class="card-selector shadow-sm mb-6">
                     <div class="d-flex justify-content-between align-items-start mb-4">
                         <i class="bi bi-credit-card-2-front fs-2x text-white opacity-75"></i>
-                        <span class="badge bg-success bg-opacity-25 text-white border border-success border-opacity-50" *ngIf="!isCardFrozen">Active</span>
-                        <span class="badge bg-danger bg-opacity-25 text-white border border-danger border-opacity-50" *ngIf="isCardFrozen">Frozen</span>
+                        <span class="badge bg-success bg-opacity-25 text-white border border-success border-opacity-50"
+                            *ngIf="!isCardFrozen">Active</span>
+                        <span class="badge bg-danger bg-opacity-25 text-white border border-danger border-opacity-50"
+                            *ngIf="isCardFrozen">Frozen</span>
                     </div>
                     <h4 class="text-white font-monospace mb-1">**** **** **** {{ selectedCardId }}</h4>
-                    <span class="text-white opacity-50 fs-8 text-uppercase">{{ selectedCardId === '4242' ? 'Primary Checking' : 'Euro Travel' }}</span>
+                    <span class="text-white opacity-50 fs-8 text-uppercase">
+                        {{ selectedCardId === '4242' ? 'Primary Checking' : 'Euro Travel' }}
+                    </span>
                 </div>
 
-                <div class="bg-light-danger rounded-3 p-4 border border-danger border-opacity-25 text-center cursor-pointer transition hover-elevate-up" (click)="toggleFreeze()">
-                    <i class="bi" [ngClass]="isCardFrozen ? 'bi-play-circle text-success' : 'bi-snow text-danger'" style="font-size: 2rem;"></i>
-                    <h6 class="fw-bolder mt-3 mb-1" [ngClass]="isCardFrozen ? 'text-success' : 'text-danger'">{{ isCardFrozen ? 'Unfreeze Card' : 'Freeze Card Instantly' }}</h6>
+                <div class="bg-light-danger rounded-3 p-4 border border-danger border-opacity-25 text-center cursor-pointer transition hover-elevate-up"
+                    (click)="toggleFreeze()">
+                    <i class="bi" [ngClass]="isCardFrozen ? 'bi-play-circle text-success' : 'bi-snow text-danger'"
+                        style="font-size: 2rem;"></i>
+                    <h6 class="fw-bolder mt-3 mb-1" [ngClass]="isCardFrozen ? 'text-success' : 'text-danger'">
+                        {{ isCardFrozen ? 'Unfreeze Card' : 'Freeze Card Instantly' }}
+                    </h6>
                     <p class="text-muted fs-8 m-0">Blocks all new authorizations.</p>
-                </div>
-            </div>
-
-            <div class="card-clarity p-6">
-                <h5 class="fw-bolder mb-4 fs-5 text-dark">Security Posture</h5>
-                <div class="d-flex align-items-center mb-4">
-                    <div class="position-relative me-4">
-                        <svg width="70" height="70" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" stroke-width="10" />
-                            <circle cx="50" cy="50" r="45" fill="none" stroke="#10b981" stroke-width="10" stroke-dasharray="283" stroke-dashoffset="40" transform="rotate(-90 50 50)" />
-                        </svg>
-                        <div class="position-absolute top-50 start-50 translate-middle text-dark fw-bolder fs-5">85%</div>
-                    </div>
-                    <div>
-                        <h6 class="fw-bolder text-dark mb-1">Excellent</h6>
-                        <span class="text-muted fs-8">Your card is well protected against modern fraud vectors.</span>
-                    </div>
-                </div>
-                <div class="bg-light-warning p-3 rounded d-flex align-items-start border border-warning border-opacity-25">
-                    <i class="bi bi-lightbulb text-warning me-2 mt-1"></i>
-                    <span class="fs-8 text-dark">Enable <strong>Strict 3D Secure</strong> to reach 100% protection.</span>
                 </div>
             </div>
         </div>
 
         <div class="col-xl-8 col-lg-7">
-            
-            <div class="card-clarity p-6 p-md-8 mb-6">
+            <div class="card-clarity p-6 p-md-8 h-100">
                 <div class="d-flex align-items-center mb-6">
                     <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-4">
                         <i class="bi bi-speedometer2 text-primary fs-3"></i>
@@ -80,7 +66,7 @@
 
                 <div class="row g-6">
                     <div class="col-md-6">
-                        <div class="setting-row h-100">
+                        <div class="setting-row h-100 border p-4 rounded-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="fw-bold text-dark fs-6">Daily Limit</span>
                                 <span class="badge bg-light text-dark fw-bolder fs-7 border">${{ dailyLimit | number }}</span>
@@ -92,7 +78,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="setting-row h-100">
+                        <div class="setting-row h-100 border p-4 rounded-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="fw-bold text-dark fs-6">Monthly Limit</span>
                                 <span class="badge bg-light text-dark fw-bolder fs-7 border">${{ monthlyLimit | number }}</span>
@@ -104,7 +90,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="setting-row h-100">
+                        <div class="setting-row h-100 border p-4 rounded-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="fw-bold text-dark fs-6">Per-Transaction</span>
                                 <span class="badge bg-light text-dark fw-bolder fs-7 border">${{ perTransactionLimit | number }}</span>
@@ -116,7 +102,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="setting-row h-100">
+                        <div class="setting-row h-100 border p-4 rounded-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="fw-bold text-dark fs-6">Daily ATM Withdrawal</span>
                                 <span class="badge bg-light text-dark fw-bolder fs-7 border">${{ atmDailyLimit | number }}</span>
@@ -129,161 +115,177 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="card-clarity p-6 p-md-8 mb-6">
-                <div class="d-flex align-items-center mb-6">
-                    <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4">
-                        <i class="bi bi-broadcast text-success fs-3"></i>
+    <div class="row g-6 fade-in-up">
+        
+        <div class="col-lg-6">
+            <div class="card card-clarity h-100 p-6 p-md-8 border-0 shadow-sm bg-white">
+                <div class="d-flex align-items-center mb-8">
+                    <div class="bg-success bg-opacity-10 p-4 rounded-circle me-4 shadow-sm border border-success border-opacity-10">
+                        <i class="bi bi-broadcast text-success fs-2"></i>
                     </div>
                     <div>
                         <h3 class="fw-bolder text-dark m-0 fs-4">Transaction Channels</h3>
-                        <p class="text-muted m-0 fs-7">Enable or disable specific methods of payment.</p>
+                        <p class="text-muted m-0 fs-7">Control active payment methods for this card.</p>
                     </div>
                 </div>
 
-                <div class="d-flex flex-column gap-3">
-                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                <div class="d-flex flex-column gap-4">
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4 border rounded-4 transition-all bg-light hover-bg-white">
                         <div class="d-flex align-items-center">
-                            <i class="bi bi-globe2 text-muted fs-3 me-4 w-30px text-center"></i>
+                            <div class="symbol symbol-40px bg-white me-4 rounded-3 d-flex align-items-center justify-content-center shadow-sm">
+                                <i class="bi bi-globe2 text-primary fs-4"></i>
+                            </div>
                             <div>
                                 <h6 class="fw-bolder text-dark m-0">Online / E-Commerce</h6>
-                                <span class="text-muted fs-8">Allow card to be used for internet purchases.</span>
+                                <span class="text-muted fs-8">Enable web & app purchases.</span>
                             </div>
                         </div>
                         <div class="form-check form-switch form-check-custom m-0">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="allowOnline">
+                            <input class="form-check-input h-25px w-45px cursor-pointer" type="checkbox" [(ngModel)]="allowOnline">
                         </div>
                     </div>
 
-                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4 border rounded-4 transition-all bg-light hover-bg-white">
                         <div class="d-flex align-items-center">
-                            <i class="bi bi-wifi text-muted fs-3 me-4 w-30px text-center"></i>
+                            <div class="symbol symbol-40px bg-white me-4 rounded-3 d-flex align-items-center justify-content-center shadow-sm">
+                                <i class="bi bi-wifi text-success fs-4"></i>
+                            </div>
                             <div>
                                 <h6 class="fw-bolder text-dark m-0">Contactless (NFC)</h6>
-                                <span class="text-muted fs-8">Allow tap-to-pay at physical terminals.</span>
+                                <span class="text-muted fs-8">Tap-to-pay at physical terminals.</span>
                             </div>
                         </div>
                         <div class="form-check form-switch form-check-custom m-0">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="allowContactless">
+                            <input class="form-check-input h-25px w-45px cursor-pointer" type="checkbox" [(ngModel)]="allowContactless">
                         </div>
                     </div>
 
-                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4 border rounded-4 border-danger border-opacity-25 bg-danger bg-opacity-10 transition-all">
                         <div class="d-flex align-items-center">
-                            <i class="bi bi-credit-card text-muted fs-3 me-4 w-30px text-center"></i>
+                            <div class="symbol symbol-40px bg-white me-4 rounded-3 d-flex align-items-center justify-content-center shadow-sm">
+                                <i class="bi bi-credit-card-2-front text-danger fs-4"></i>
+                            </div>
                             <div>
-                                <h6 class="fw-bolder text-dark m-0">Magstripe / Swipe</h6>
-                                <span class="text-danger fw-bold fs-8 d-block">High Risk: Keep disabled unless traveling to unsupported regions.</span>
+                                <h6 class="fw-bolder text-danger m-0">Magstripe / Swipe</h6>
+                                <span class="text-danger opacity-75 fs-8">High Risk: Keep disabled normally.</span>
                             </div>
                         </div>
                         <div class="form-check form-switch form-check-custom m-0">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="allowMagstripe">
+                            <input class="form-check-input h-25px w-45px cursor-pointer" type="checkbox" [(ngModel)]="allowMagstripe">
                         </div>
                     </div>
 
-                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4 border rounded-4 transition-all bg-light hover-bg-white">
                         <div class="d-flex align-items-center">
-                            <i class="bi bi-airplane text-muted fs-3 me-4 w-30px text-center"></i>
+                            <div class="symbol symbol-40px bg-white me-4 rounded-3 d-flex align-items-center justify-content-center shadow-sm">
+                                <i class="bi bi-airplane-engines text-info fs-4"></i>
+                            </div>
                             <div>
-                                <h6 class="fw-bolder text-dark m-0">International Transactions</h6>
-                                <span class="text-muted fs-8">Allow charges in foreign currencies outside your home country.</span>
+                                <h6 class="fw-bolder text-dark m-0">International Usage</h6>
+                                <span class="text-muted fs-8">Transactions outside home region.</span>
                             </div>
                         </div>
                         <div class="form-check form-switch form-check-custom m-0">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="allowInternational">
+                            <input class="form-check-input h-25px w-45px cursor-pointer" type="checkbox" [(ngModel)]="allowInternational">
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="card-clarity p-6 p-md-8 mb-6 border-warning border-opacity-50">
+        <div class="col-lg-6 d-flex flex-column gap-6">
+            
+            <div class="card card-clarity p-6 p-md-8 border-warning border-opacity-50 shadow-sm bg-white flex-grow-1">
                 <div class="d-flex align-items-center mb-6">
-                    <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-4">
-                        <i class="bi bi-cpu text-warning fs-3"></i>
+                    <div class="bg-warning bg-opacity-10 p-4 rounded-circle me-4 shadow-sm border border-warning border-opacity-10">
+                        <i class="bi bi-cpu text-warning fs-2"></i>
                     </div>
                     <div>
                         <h3 class="fw-bolder text-dark m-0 fs-4">Advanced AI & Security</h3>
-                        <p class="text-muted m-0 fs-7">Next-generation protection logic powered by Sendmo Engine.</p>
+                        <p class="text-muted m-0 fs-7">Heuristic protection powered by Sendmo AI.</p>
                     </div>
                 </div>
 
                 <div class="d-flex flex-column gap-3">
-                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4 border rounded-4 bg-light">
                         <div>
-                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-arrow-repeat text-primary me-2"></i> Dynamic CVV</h6>
-                            <span class="text-muted fs-8">Automatically rotates your virtual card's CVV every 60 minutes. Defeats data breaches.</span>
+                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-shield-lock-fill text-primary-gold me-2"></i> Dynamic CVV</h6>
+                            <span class="text-muted fs-9">Rotates security code every 60 mins.</span>
                         </div>
                         <div class="form-check form-switch form-check-custom m-0">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="dynamicCvv">
+                            <input class="form-check-input h-25px w-45px cursor-pointer" type="checkbox" [(ngModel)]="dynamicCvv">
                         </div>
                     </div>
 
-                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4 border rounded-4 bg-light">
                         <div>
-                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-geo-alt-fill text-danger me-2"></i> GPS Location Matching</h6>
-                            <span class="text-muted fs-8">Declines physical transactions if the POS terminal is >100 miles from your phone's GPS.</span>
+                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-geo-alt-fill text-danger me-2"></i> GPS Match</h6>
+                            <span class="text-muted fs-9">Declines if POS is >100 miles from your phone.</span>
                         </div>
                         <div class="form-check form-switch form-check-custom m-0">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="locationMatching">
+                            <input class="form-check-input h-25px w-45px cursor-pointer" type="checkbox" [(ngModel)]="locationMatching">
                         </div>
                     </div>
 
-                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4 border rounded-4 bg-light">
                         <div>
-                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-robot text-info me-2"></i> AI Fraud Auto-Block</h6>
-                            <span class="text-muted fs-8">Allows our ML engine to automatically freeze your card if suspicious velocity is detected.</span>
+                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-shield-lock-fill text-success me-2"></i> Strict 3D Secure</h6>
+                            <span class="text-muted fs-9">Force OTP approval for <em>every</em> online transaction.</span>
                         </div>
                         <div class="form-check form-switch form-check-custom m-0">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="aiFraudBlock">
+                            <input class="form-check-input h-25px w-45px cursor-pointer" type="checkbox" [(ngModel)]="strict3DS">
                         </div>
                     </div>
 
-                    <div class="setting-row d-flex justify-content-between align-items-center p-4">
+                    <div class="setting-row d-flex justify-content-between align-items-center p-4 border rounded-4 bg-light">
                         <div>
-                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-shield-lock-fill text-success me-2"></i> Strict 3D Secure (OTP)</h6>
-                            <span class="text-muted fs-8">Force a Push Notification or SMS OTP approval for <em>every</em> online transaction, regardless of size.</span>
+                            <h6 class="fw-bolder text-dark m-0"><i class="bi bi-robot text-info me-2"></i> Auto-Block</h6>
+                            <span class="text-muted fs-9">Instant freeze on suspicious transaction velocity.</span>
                         </div>
                         <div class="form-check form-switch form-check-custom m-0">
-                            <input class="form-check-input" type="checkbox" [(ngModel)]="strict3DS">
+                            <input class="form-check-input h-25px w-45px cursor-pointer" type="checkbox" [(ngModel)]="aiFraudBlock">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card-clarity p-6 p-md-8">
+            <div class="card card-clarity p-6 p-md-8 border-0 shadow-sm bg-white">
                 <div class="d-flex align-items-center mb-6">
                     <div class="bg-danger bg-opacity-10 p-3 rounded-circle me-4">
-                        <i class="bi bi-slash-circle text-danger fs-3"></i>
+                        <i class="bi bi-slash-circle text-danger fs-4"></i>
                     </div>
-                    <div>
-                        <h3 class="fw-bolder text-dark m-0 fs-4">Merchant Category Blocks</h3>
-                        <p class="text-muted m-0 fs-7">Automatically decline transactions at specific types of merchants.</p>
-                    </div>
+                    <h4 class="fw-bolder text-dark m-0 fs-5">Merchant Category Blocks</h4>
                 </div>
 
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <label class="d-block setting-row text-center cursor-pointer h-100" [ngClass]="{'border-primary bg-primary bg-opacity-10': blockCrypto}">
+                <div class="row g-3">
+                    <div class="col-4">
+                        <label class="d-block setting-row text-center cursor-pointer p-4 h-100 transition-all border rounded-4" 
+                               [ngClass]="{'border-primary bg-primary bg-opacity-10': blockCrypto, 'bg-light': !blockCrypto}">
                             <input type="checkbox" class="d-none" [(ngModel)]="blockCrypto">
                             <i class="bi bi-currency-bitcoin fs-2x mb-3 d-block" [ngClass]="blockCrypto ? 'text-primary' : 'text-muted'"></i>
-                            <h6 class="fw-bolder text-dark m-0">Crypto Exchanges</h6>
-                            <span class="badge mt-2" [ngClass]="blockCrypto ? 'bg-primary' : 'bg-light text-muted'">{{ blockCrypto ? 'BLOCKED' : 'ALLOWED' }}</span>
+                            <span class="fw-bold fs-8 d-block text-dark mb-2">Crypto</span>
+                            <span class="badge fs-10" [ngClass]="blockCrypto ? 'bg-primary' : 'bg-secondary text-dark'">{{ blockCrypto ? 'BLOCKED' : 'OFF' }}</span>
                         </label>
                     </div>
-                    <div class="col-md-4">
-                        <label class="d-block setting-row text-center cursor-pointer h-100" [ngClass]="{'border-danger bg-danger bg-opacity-10': blockGambling}">
+                    <div class="col-4">
+                        <label class="d-block setting-row text-center cursor-pointer p-4 h-100 transition-all border rounded-4" 
+                               [ngClass]="{'border-danger bg-danger bg-opacity-10': blockGambling, 'bg-light': !blockGambling}">
                             <input type="checkbox" class="d-none" [(ngModel)]="blockGambling">
                             <i class="bi bi-dice-5 fs-2x mb-3 d-block" [ngClass]="blockGambling ? 'text-danger' : 'text-muted'"></i>
-                            <h6 class="fw-bolder text-dark m-0">Gambling / Betting</h6>
-                            <span class="badge mt-2" [ngClass]="blockGambling ? 'bg-danger' : 'bg-light text-muted'">{{ blockGambling ? 'BLOCKED' : 'ALLOWED' }}</span>
+                            <span class="fw-bold fs-8 d-block text-dark mb-2">Betting</span>
+                            <span class="badge fs-10" [ngClass]="blockGambling ? 'bg-danger' : 'bg-secondary text-dark'">{{ blockGambling ? 'BLOCKED' : 'OFF' }}</span>
                         </label>
                     </div>
-                    <div class="col-md-4">
-                        <label class="d-block setting-row text-center cursor-pointer h-100" [ngClass]="{'border-warning bg-warning bg-opacity-10': blockAdult}">
+                    <div class="col-4">
+                        <label class="d-block setting-row text-center cursor-pointer p-4 h-100 transition-all border rounded-4" 
+                               [ngClass]="{'border-warning bg-warning bg-opacity-10': blockAdult, 'bg-light': !blockAdult}">
                             <input type="checkbox" class="d-none" [(ngModel)]="blockAdult">
                             <i class="bi bi-exclamation-triangle fs-2x mb-3 d-block" [ngClass]="blockAdult ? 'text-warning' : 'text-muted'"></i>
-                            <h6 class="fw-bolder text-dark m-0">Adult Content</h6>
-                            <span class="badge mt-2" [ngClass]="blockAdult ? 'bg-warning text-dark' : 'bg-light text-muted'">{{ blockAdult ? 'BLOCKED' : 'ALLOWED' }}</span>
+                            <span class="fw-bold fs-8 d-block text-dark mb-2">Adult</span>
+                            <span class="badge fs-10" [ngClass]="blockAdult ? 'bg-warning text-dark' : 'bg-secondary text-dark'">{{ blockAdult ? 'BLOCKED' : 'OFF' }}</span>
                         </label>
                     </div>
                 </div>
@@ -295,11 +297,11 @@
 
 <div class="toast-container position-fixed bottom-0 end-0 p-4" *ngIf="showSuccessToast">
     <div class="toast show toast-animate align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body fw-bold fs-6">
-                <i class="bi bi-check-circle-fill me-2"></i> Security settings updated successfully.
+        <div class="d-flex p-3">
+            <div class="toast-body fw-bold fs-6 p-0 m-0">
+                <i class="bi bi-check-circle-fill me-2 fs-5 align-middle"></i> Security settings updated successfully.
             </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" (click)="showSuccessToast = false" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white ms-auto" (click)="showSuccessToast = false" aria-label="Close"></button>
         </div>
     </div>
 </div>
