@@ -1,0 +1,143 @@
+:host {
+    display: block;
+    background-color: #f5f8fa;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+
+    --color-primary-dark: #a0522d;
+    --color-primary-light: #e6b800;
+    --color-background-soft: #fcf8f3;
+    --color-tab-bg: #fffbe0;
+    --color-highlight-bg: #ffecc6;
+    --color-light-accent: #f7f2ea;
+    --kt-card-shadow: 0 0 20px 0 rgba(76, 87, 125, 0.02);
+}
+
+/* Base Card */
+.card-clarity, .card-fintech {
+    border-radius: 1.5rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 10px 30px rgba(160, 82, 45, 0.1);
+    transition: all 0.3s;
+    background-color: white;
+}
+
+/* Typography & Colors */
+.text-custom-primary { color: var(--color-primary-dark) !important; }
+.bg-primary-subtle { background-color: rgba(13, 110, 253, 0.1) !important; }
+.extra-small { font-size: 0.75rem; }
+
+/* Form Controls */
+.form-control-clarity {
+    border: 1px solid #bdbdbd;
+    border-radius: 0.75rem;
+    background-color: #fafafa;
+    transition: border-color 0.3s;
+    &:focus {
+        border-color: var(--color-primary-light);
+        box-shadow: 0 0 0 0.15rem rgba(230, 184, 0, 0.3);
+        background-color: white;
+    }
+}
+
+/* Nav Tabs */
+.nav-tabs .nav-link {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Payment Channels Selection */
+.btn-check { display: none; }
+.btn-outline-light {
+    background-color: #ffffff !important;
+    border-color: #f0f0f0 !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-check:checked + .btn-outline-light {
+    border-color: var(--bs-primary) !important;
+    background-color: rgba(13, 110, 253, 0.04) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    transform: translateY(-2px);
+    .channel-icon { filter: grayscale(0); }
+    .fw-bold { color: var(--bs-primary) !important; }
+}
+
+.channel-icon {
+    font-size: 1.5rem;
+    filter: grayscale(1);
+    transition: filter 0.2s;
+}
+
+/* Custom Tag Checkboxes */
+.btn-check:checked + .btn-outline-secondary {
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+}
+.btn-outline-secondary {
+    border: 1px dashed #dee2e6;
+    color: #6c757d;
+    transition: all 0.2s ease;
+    &:hover {
+        background-color: #f8f9fa;
+        border-color: var(--bs-primary);
+        color: var(--bs-primary);
+    }
+}
+
+/* Table Styling */
+.fintech-table {
+    thead th {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #edf2f9;
+        color: #6e84a3;
+        letter-spacing: 0.02em;
+    }
+    tbody tr {
+        transition: background-color 0.2s ease;
+        &:hover { background-color: #fcfdfe !important; }
+    }
+}
+
+/* Phone Mockup Styling */
+.preview-card-bg { background-color: #f7f2ea; }
+.mobile-device {
+    width: 260px;
+    height: 520px;
+    background: #1a1a1a;
+    border-radius: 40px;
+    padding: 10px;
+    border: 4px solid #333;
+    position: relative;
+}
+.mobile-screen {
+    background: #fdfdfd;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    &::-webkit-scrollbar { width: 0px; }
+}
+.status-bar { font-size: 10px; color: #000; }
+.active-method {
+    border-color: var(--bs-primary) !important;
+    background: rgba(13, 110, 253, 0.05) !important;
+    color: var(--bs-primary) !important;
+    font-weight: 600;
+}
+.brand-logo-preview {
+    transition: transform 0.3s ease;
+    &:hover { transform: scale(1.05); }
+}
+
+/* Utilities */
+#brandLogo::file-selector-button {
+    background: #e9ecef;
+    border: none;
+    font-size: 12px;
+    padding: 8px 12px;
+    margin-right: 10px;
+}

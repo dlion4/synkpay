@@ -1,0 +1,407 @@
+<div class="container-xxl py-10" id="kt_content_container">
+    
+    <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
+        <div class="mb-5 hover-scroll-x">
+            <div class="d-grid">
+                <ul class="nav nav-tabs flex-nowrap text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex" [class.btn-active-light-success]="activeTab === 'request'" [class.active]="activeTab === 'request'" (click)="setTab('request')">Request Money</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex" [class.btn-active-light-danger]="activeTab === 'track'" [class.active]="activeTab === 'track'" (click)="setTab('track')">Track Request</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex" [class.btn-active-light-primary]="activeTab === 'link'" [class.active]="activeTab === 'link'" (click)="setTab('link')">Payment Link</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            
+            <div class="animate__animated animate__fadeIn" *ngIf="activeTab === 'request'">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="card card-clarity shadow-sm border-0">
+                            <div class="card-body p-8">
+                                <h5 class="mb-6 fw-bold text-custom-primary">Request Money Information</h5>
+                                
+                                <div class="row g-6">
+                                    <div class="col-md-6">
+                                        <label class="form-label small text-muted">Payer Name (Optional)</label>
+                                        <input type="text" class="form-control form-control-clarity" placeholder="e.g., John Smith" [(ngModel)]="payerName">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small text-muted">Purpose of Payment</label>
+                                        <input type="text" class="form-control form-control-clarity" placeholder="e.g., Wifi package, loan repayment etc..." [(ngModel)]="paymentPurpose">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small text-muted fw-bold">Send Notifications To:</label>
+                                        <div class="d-flex gap-3">
+                                            <div class="flex-fill">
+                                                <input type="checkbox" class="btn-check" id="notifyEmail" [(ngModel)]="notifyEmail">
+                                                <label class="btn btn-outline-light w-100 border text-dark sm-text py-3" for="notifyEmail">
+                                                    <i class="fas fa-envelope me-2 text-primary"></i> Email
+                                                </label>
+                                            </div>
+                                            <div class="flex-fill">
+                                                <input type="checkbox" class="btn-check" id="notifyPhone" [(ngModel)]="notifyPhone">
+                                                <label class="btn btn-outline-light w-100 border text-dark sm-text py-3" for="notifyPhone">
+                                                    <i class="fas fa-mobile-alt me-2 text-success"></i> Phone
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex gap-4 flex-column flex-md-row">
+                                            <div class="flex-fill">
+                                                <label class="form-label small text-muted">Recipient Email</label>
+                                                <input type="email" class="form-control form-control-clarity bg-light border-0 py-3" placeholder="recipient@email.com" [(ngModel)]="recipientEmail">
+                                            </div>
+                                            <div class="flex-fill">
+                                                <label class="form-label small text-muted">Recipient Phone Number</label>
+                                                <input type="tel" class="form-control form-control-clarity bg-light border-0 py-3" placeholder="07123456789" [(ngModel)]="recipientPhone">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mt-6">
+                                        <label class="form-label small text-muted">Requested Amount</label>
+                                        <div class="d-flex gap-4 align-items-center">
+                                            <input type="number" class="form-control form-control-clarity fs-3 fw-bold text-success bg-light border-0 py-3 w-50" [(ngModel)]="requestAmount">
+                                            
+                                            <div class="btn-group w-50" role="group">
+                                                <input type="radio" class="btn-check" name="currencyType" id="currUsd" [checked]="requestCurrency === 'USD'" (change)="setCurrency('USD')">
+                                                <label class="btn btn-outline-success border-1 fw-bold py-3" for="currUsd">USD</label>
+
+                                                <input type="radio" class="btn-check" name="currencyType" id="currKes" [checked]="requestCurrency === 'KES'" (change)="setCurrency('KES')">
+                                                <label class="btn btn-outline-success border-1 fw-bold py-3" for="currKes">KES</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mt-6">
+                                        <label class="form-label small text-muted">Payment Due Date (Optional)</label>
+                                        <input type="date" class="form-control form-control-clarity py-3">
+                                        <small class="text-muted d-block mt-1">Leave blank for no deadline.</small>
+                                    </div>
+                                    <div class="col-md-6 mt-6">
+                                        <label class="form-label small text-muted">Custom Invoice / Reference ID</label>
+                                        <input type="text" class="form-control form-control-clarity py-3" placeholder="e.g., INV-2025-0042">
+                                    </div>
+
+                                    <div class="col-12 mt-8">
+                                        <h6 class="fw-bold text-custom-primary mb-3 border-bottom pb-2">Payer Payment Options</h6>
+                                        <p class="small text-muted mb-4">Select the methods you wish to enable for the payer. Fees may apply upon successful collection.</p>
+                                        
+                                        <div class="row g-4">
+                                            <div class="col-md-4">
+                                                <input type="checkbox" class="btn-check" id="bankTransferCheck" [checked]="channels.bank" (change)="toggleChannel('bank')">
+                                                <label class="btn btn-outline-light d-flex align-items-center p-3 rounded-3 border shadow-sm w-100 h-100 text-start" for="bankTransferCheck">
+                                                    <div class="channel-icon me-3">🏦</div>
+                                                    <div>
+                                                        <span class="d-block fw-bold text-dark">Bank Transfer</span>
+                                                        <span class="d-block small text-muted">(ACH/SEPA/SWIFT)</span>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="checkbox" class="btn-check" id="cardPaymentCheck" [checked]="channels.card" (change)="toggleChannel('card')">
+                                                <label class="btn btn-outline-light d-flex align-items-center p-3 rounded-3 border shadow-sm w-100 h-100 text-start" for="cardPaymentCheck">
+                                                    <div class="channel-icon me-3">💳</div>
+                                                    <div>
+                                                        <span class="d-block fw-bold text-dark">Card Payment</span>
+                                                        <span class="d-block small text-muted">(Visa, MC, Amex)</span>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="checkbox" class="btn-check" id="mobileMoneyCheck" [checked]="channels.mobile" (change)="toggleChannel('mobile')">
+                                                <label class="btn btn-outline-light d-flex align-items-center p-3 rounded-3 border shadow-sm w-100 h-100 text-start" for="mobileMoneyCheck">
+                                                    <div class="channel-icon me-3">📱</div>
+                                                    <div>
+                                                        <span class="d-block fw-bold text-dark">Mobile Money</span>
+                                                        <span class="d-block small text-muted">(Airtel, M-pesa)</span>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center mt-10">
+                                    <button class="btn btn-primary px-8 py-3 w-100 fw-bold rounded-3 shadow-sm fs-5" data-bs-toggle="modal" data-bs-target="#requestLinkModal" (click)="generateRequestLink()">
+                                        Generate Request Link <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="animate__animated animate__fadeIn" *ngIf="activeTab === 'track'">
+                <div class="card card-clarity border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-body p-6">
+                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-6 gap-3">
+                            <div>
+                                <h4 class="fw-bold text-custom-primary mb-1">Collection Requests</h4>
+                                <p class="small text-muted mb-0">Manage and track your outgoing payment links.</p>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <div class="input-group input-group-sm" style="max-width: 250px;">
+                                    <span class="input-group-text bg-light border-0"><i class="fas fa-search text-muted"></i></span>
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Search payer or ID..." [(ngModel)]="trackSearchQuery">
+                                </div>
+                                <button class="btn btn-sm btn-light border"><i class="fas fa-filter me-1"></i> Filter</button>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table align-middle table-hover table-clarity fintech-table">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th class="py-3 px-3 fw-bold small text-uppercase">Request ID</th>
+                                        <th class="py-3 fw-bold small text-uppercase">Payer Details</th>
+                                        <th class="py-3 fw-bold small text-uppercase">Amount</th>
+                                        <th class="py-3 fw-bold small text-uppercase">Status</th>
+                                        <th class="py-3 fw-bold small text-uppercase text-center">Payment Link</th>
+                                        <th class="py-3 fw-bold small text-uppercase text-end pe-4">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="border-top-0">
+                                    <tr *ngFor="let req of requests">
+                                        <td class="px-3">
+                                            <span class="fw-bold text-dark">{{ req.id }}</span>
+                                            <div class="extra-small text-muted">{{ req.time }}</div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar-sm me-3 bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width:35px; height:35px; font-size:12px;">{{ req.initial }}</div>
+                                                <div>
+                                                    <div class="text-dark small fw-bolder">{{ req.name }}</div>
+                                                    <div class="extra-small text-muted">{{ req.email }}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fw-bold text-dark">{{ req.amount }}</div>
+                                            <div class="extra-small text-muted text-uppercase">{{ req.currency }}</div>
+                                        </td>
+                                        <td><span class="badge rounded-pill px-3 {{ req.statusClass }}">{{ req.status }}</span></td>
+                                        <td class="text-center">
+                                            <div class="d-inline-flex align-items-center bg-light rounded-pill px-3 py-2 border">
+                                                <code class="extra-small me-3 bg-transparent p-0">{{ req.link }}</code>
+                                                <button class="btn btn-link btn-sm p-0 text-primary hover-elevate-up" (click)="copyLink('https://' + req.link)">
+                                                    <i class="fas fa-clipboard"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="text-end pe-4">
+                                            <button class="btn btn-sm btn-icon btn-light rounded-circle"><i class="fas fa-ellipsis-v text-muted"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="animate__animated animate__fadeIn" *ngIf="activeTab === 'link'">
+                <div class="row d-flex align-items-stretch g-6">
+                    <div class="col-lg-7">
+                        <div class="card card-clarity p-6 border-0 shadow-sm h-100">
+                            <div class="d-flex justify-content-between align-items-center mb-6">
+                                <h5 class="fw-bolder text-custom-primary m-0">Create Custom Tip Link</h5>
+                                <span class="badge bg-primary-subtle text-primary rounded-pill small px-3">New Feature</span>
+                            </div>
+
+                            <div class="row g-5 mb-6">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Link Purpose</label>
+                                    <input type="text" class="form-control bg-light border-0 py-3" placeholder="e.g., Buy me a coffee" [(ngModel)]="linkPurpose">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label small fw-bold">Currency</label>
+                                    <select class="form-select bg-light border-0 py-3" [(ngModel)]="linkCurrency">
+                                        <option value="USD">USD ($)</option>
+                                        <option value="KES">KES (KSh)</option>
+                                        <option value="GBP">GBP (£)</option>
+                                        <option value="EUR">EUR (€)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label small fw-bold">Default Amount</label>
+                                    <input type="number" class="form-control bg-light border-0 py-3" [(ngModel)]="linkAmount">
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="form-label small fw-bold d-block">Enable Payment Channels</label>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <input type="checkbox" class="btn-check" id="tagMobile" [checked]="channels.mobile" (change)="toggleChannel('mobile')">
+                                    <label class="btn btn-sm btn-outline-secondary rounded-pill px-4 py-2" for="tagMobile">+ Mobile Money</label>
+
+                                    <input type="checkbox" class="btn-check" id="tagCard" [checked]="channels.card" (change)="toggleChannel('card')">
+                                    <label class="btn btn-sm btn-outline-secondary rounded-pill px-4 py-2" for="tagCard">+ Credit Card</label>
+
+                                    <input type="checkbox" class="btn-check" id="tagCrypto" [checked]="channels.crypto" (change)="toggleChannel('crypto')">
+                                    <label class="btn btn-sm btn-outline-secondary rounded-pill px-4 py-2" for="tagCrypto">+ Crypto</label>
+                                    
+                                    <input type="checkbox" class="btn-check" id="tagBank" [checked]="channels.bank" (change)="toggleChannel('bank')">
+                                    <label class="btn btn-sm btn-outline-secondary rounded-pill px-4 py-2" for="tagBank">+ Bank Transfer</label>
+                                </div>
+                            </div>
+
+                            <div class="row g-5 mb-8">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Link Validity / Expiration</label>
+                                    <select class="form-select bg-light border-0 py-3" [(ngModel)]="linkValidity">
+                                        <option value="never">Never (Permanent)</option>
+                                        <option value="24h">Expires in 24 Hours</option>
+                                        <option value="7d">Expires in 7 Days</option>
+                                        <option value="30d">Expires in 30 Days</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Brand Logo <span class="text-muted fw-normal">(Optional)</span></label>
+                                    <div class="input-group">
+                                        <input type="file" class="form-control bg-light border-0 py-3" accept="image/*">
+                                        <label class="input-group-text bg-light border-0"><i class="fas fa-upload"></i></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-auto">
+                                <button class="btn btn-primary w-100 py-3 fw-bolder rounded-3 shadow-sm fs-5" data-bs-toggle="modal" data-bs-target="#generateSuccessModal" (click)="generateTipLink()">
+                                    Generate Link ✨
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 bg-light p-6 d-flex align-items-center justify-content-center rounded-4 border">
+                        <div class="mobile-device shadow-lg">
+                            <div class="mobile-screen p-3">
+                                <div class="status-bar d-flex justify-content-between mb-3 px-2">
+                                    <span class="extra-small fw-bold">9:41</span>
+                                    <span class="badge bg-danger rounded-pill px-3">Sendmo Tips</span>
+                                </div>
+                                
+                                <div class="text-center pt-2">
+                                    <div class="bg-white rounded-circle shadow-sm d-inline-block p-1 mb-2 brand-logo-preview border">
+                                        <img src="https://pkenya.co.ke/static/webpack_bundles/images/favicons/pkenya_logo.png" class="rounded-circle" width="40" height="40" style="object-fit: contain;">
+                                    </div>
+                                    <h6 class="fw-bolder mb-0 text-dark">Support with a Tip</h6>
+                                    <p class="extra-small text-muted mb-3">{{ linkPurpose || 'Supporting professionals' }}</p>
+                                </div>
+
+                                <div class="mobile-payment-list mt-4">
+                                    <div class="fs-1 fw-bolder text-center text-dark mb-4 border-bottom pb-3">
+                                        <span class="fs-5 opacity-50">{{ linkCurrency === 'USD' ? '$' : linkCurrency === 'GBP' ? '£' : linkCurrency === 'EUR' ? '€' : 'KSh ' }}</span>{{ linkAmount | number:'1.2-2' }}
+                                    </div>
+                                    
+                                    <label class="extra-small fw-bold text-muted mb-2 text-uppercase d-block">Select Payment Method</label>
+                                    
+                                    <div class="p-3 bg-white border rounded-3 mb-2 d-flex align-items-center justify-content-between active-method" *ngIf="channels.mobile">
+                                        <span class="small fw-bolder text-dark">📱 Mobile Money</span>
+                                    </div>
+                                    <div class="p-3 bg-white border rounded-3 mb-2 d-flex align-items-center justify-content-between" *ngIf="channels.card">
+                                        <span class="small fw-bolder text-dark">💳 Credit Card</span>
+                                    </div>
+                                </div>
+
+                                <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-white">
+                                    <button class="btn btn-primary w-100 py-2 rounded-pill small fw-bolder shadow-sm">Pay Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="requestLinkModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 card-clarity">
+            <div class="modal-header border-0 pb-0 justify-content-center mt-4">
+                <div class="bg-primary bg-opacity-10 p-4 rounded-circle">
+                    <i class="fas fa-link fs-1 text-primary"></i>
+                </div>
+            </div>
+            <div class="modal-body p-6 p-md-8">
+                <div class="text-center mb-6">
+                    <h4 class="fw-bolder text-dark">Payment Request Ready</h4>
+                    <p class="text-muted small">Share this link with the recipient to receive funds.</p>
+                </div>
+
+                <div class="card bg-light border-0 rounded-4 mb-6 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between mb-3 border-bottom border-dashed pb-2">
+                            <span class="text-muted small fw-bold">Recipient</span>
+                            <span class="fw-bolder text-dark small">{{ recipientEmail || recipientPhone }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 border-bottom border-dashed pb-2">
+                            <span class="text-muted small fw-bold">Deposit To</span>
+                            <span class="fw-bolder small text-primary">Sendmo Primary {{ requestCurrency }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted small fw-bold">Requested Amount</span>
+                            <span class="fw-bolder text-dark">{{ requestCurrency }} {{ requestAmount | number:'1.2-2' }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label small fw-bolder text-muted">Payment Link</label>
+                    <div class="input-group shadow-sm">
+                        <input type="text" class="form-control bg-light text-muted fw-bold border-0 py-3" [value]="generatedRequestLink" readonly>
+                        <button class="btn btn-primary px-4 fw-bolder" (click)="copyRequestLink()">
+                            <i class="fas fa-clipboard me-2"></i> Copy
+                        </button>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-3">
+                    <button class="btn btn-dark py-3 fw-bolder rounded-pill shadow-sm" data-bs-dismiss="modal">Complete Process</button>
+                    <button class="btn btn-link text-muted small text-decoration-none fw-bold" data-bs-dismiss="modal" (click)="setTab('track')">View All Active Links</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="generateSuccessModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 card-clarity">
+            <div class="modal-body p-6 text-center">
+                <div class="mb-4">
+                    <div class="bg-success bg-opacity-10 text-success d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 70px; height: 70px;">
+                        <i class="fas fa-check-circle fs-1"></i>
+                    </div>
+                </div>
+                <h4 class="fw-bolder text-dark mb-2">Your Link is Ready!</h4>
+                <p class="small text-muted mb-6">Share this link to start receiving tips.</p>
+                
+                <div class="bg-light p-2 rounded-3 border mb-6 d-flex align-items-center">
+                    <input type="text" class="form-control form-control-sm bg-transparent border-0 fw-bold text-dark text-truncate pe-0" [value]="generatedTipLink" readonly>
+                    <button class="btn btn-icon btn-light-primary btn-sm rounded" (click)="copyTipLink()">
+                        <i class="fas fa-clipboard"></i>
+                    </button>
+                </div>
+
+                <div class="d-grid gap-3">
+                    <button class="btn btn-primary py-2 rounded-pill fw-bolder shadow-sm" data-bs-dismiss="modal">Done</button>
+                    <button class="btn btn-light py-2 rounded-pill fw-bold text-success border border-success"><i class="fab fa-whatsapp me-2"></i>Share to Whatsapp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

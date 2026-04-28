@@ -1,0 +1,161 @@
+:host {
+    display: block;
+    background-color: #fcf8f3;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+
+    --color-primary-dark: #a0522d;
+    --color-primary-light: #e6b800;
+    --color-background-soft: #fcf8f3;
+    --color-tab-bg: #fffbe0;
+    --color-highlight-bg: #ffecc6;
+    --color-light-accent: #f7f2ea;
+    --color-success: #38a169;
+    --color-pending: #e6b800;
+    --color-failed: #dc3545;
+}
+
+.main-title { color: var(--color-primary-dark); letter-spacing: -0.5px; }
+
+.card-clarity {
+    border-radius: 1.5rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 10px 30px rgba(160, 82, 45, 0.1);
+    transition: all 0.3s;
+    background-color: white;
+}
+
+.form-control-clarity, .form-select-clarity {
+    border: 1px solid #bdbdbd;
+    border-radius: 0.75rem;
+    background-color: #fafafa;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    &:focus {
+        border-color: var(--color-primary-light);
+        box-shadow: 0 0 0 0.15rem rgba(230, 184, 0, 0.3);
+        background-color: white;
+    }
+}
+
+.btn-clarity-primary {
+    background: linear-gradient(45deg, var(--color-primary-light), var(--color-primary-dark));
+    border: none;
+    border-radius: 1rem;
+    font-weight: 700;
+    color: white;
+    box-shadow: 0 8px 15px rgba(230, 184, 0, 0.4);
+    transition: all 0.3s;
+    &:hover:not(:disabled) {
+        box-shadow: 0 10px 20px rgba(230, 184, 0, 0.6);
+        transform: translateY(-2px);
+    }
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+}
+
+/* Custom Tabs */
+.nav-pills-clarity .nav-link {
+    color: #616161;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+    &.active {
+        background-color: var(--color-primary-dark);
+        color: white;
+        box-shadow: 0 4px 10px rgba(160, 82, 45, 0.3);
+    }
+}
+
+/* Main Top Tabs */
+.nav-tabs .nav-link { cursor: pointer; }
+
+/* Mini-Tabs (Transaction Categories) */
+.mini-tabs {
+    background-color: var(--color-light-accent);
+    border-radius: 0.75rem;
+    padding: 4px;
+    display: inline-flex;
+    .nav-link {
+        padding: 8px 15px;
+        border-radius: 0.5rem;
+        color: var(--color-primary-dark);
+        font-weight: 600;
+        transition: all 0.3s;
+        cursor: pointer;
+        &.active {
+            background: var(--color-primary-dark);
+            color: white;
+            box-shadow: 0 2px 8px rgba(160, 82, 45, 0.4);
+        }
+    }
+}
+
+.text-custom-primary { color: var(--color-primary-dark) !important; }
+
+.section-header-gradient {
+    background: linear-gradient(90deg, var(--color-primary-dark) 0%, var(--color-primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* Table Styling */
+.transaction-table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    &:hover {
+        background-color: var(--color-highlight-bg) !important;
+        transform: scale(1.005);
+    }
+}
+
+.status-badge {
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 0.5rem;
+    display: inline-block;
+}
+.status-Completed { background-color: var(--color-success); color: white; }
+.status-Pending { background-color: var(--color-pending); color: white; }
+.status-Failed { background-color: var(--color-failed); color: white; }
+
+/* Animated Stat Card */
+.stat-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Spinner */
+@keyframes custom-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.golden-spinner {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: 0.25em solid transparent;
+    border-right-color: var(--color-primary-light);
+    border-top-color: var(--color-primary-dark);
+    border-radius: 50%;
+    animation: custom-spin 1s linear infinite;
+}
+
+/* Glow */
+@keyframes subtle-glow {
+    0%, 100% { box-shadow: 0 0 10px rgba(230, 184, 0, 0.0); }
+    50% { box-shadow: 0 0 15px rgba(230, 184, 0, 0.4); }
+}
+.export-section-glow {
+    animation: subtle-glow 3s ease-in-out infinite;
+}

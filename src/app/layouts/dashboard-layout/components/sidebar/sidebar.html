@@ -393,178 +393,232 @@
                     </a>
                 </div>
                 <div class="tab-pane fade" id="tab_wallet" role="tabpanel">
-                    
-                <div class="m-0 pt-5">
-                    <h1 class="text-gray-800 fw-semibold mb-6 mx-5">Wallet Accounts</h1>
 
-                    <div class="mx-5">
+                    <div class="m-0 pt-5">
+                        <h1 class="text-gray-800 fw-semibold mb-6 mx-5">Wallet Accounts</h1>
 
-                        <a routerLink="/wallet/accounts"
-                            class="card border border-dashed border-success bg-light-success mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm">
-                            <div class="card-body p-5">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="symbol symbol-45px me-4">
+                        <div class="mx-5">
+
+                            <a routerLink="/wallet/accounts"
+                                class="card border border-dashed border-success bg-light-success mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm">
+                                <div class="card-body p-5">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="symbol symbol-45px me-4">
+                                            <span
+                                                class="symbol-label bg-white shadow-sm border border-success border-dashed">
+                                                <i class="fas fa-university text-success fs-4"></i>
+                                            </span>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-gray-900 fw-bolder fs-5">Solo Account</span>
+                                            <span class="text-muted fw-semibold fs-8">KES / USD / EUR</span>
+                                        </div>
+                                    </div>
+                                    <div class="fs-7 text-gray-600 mb-4 lh-sm">
+                                        Standard cash balance for direct bank transfers and operational costs.
+                                    </div>
+                                    <div
+                                        class="d-flex justify-content-between align-items-center pt-4 border-top border-success border-opacity-25">
+                                        <span class="fw-bolder text-dark fs-4">500,980.00 KES</span>
+                                        <span class="badge bg-success text-white fw-bold px-3 py-2 shadow-sm">Available
+                                            Balance</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a routerLink="/wallet/sharedaccount"
+                                class="card border border-dashed mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm"
+                                style="border-color: #c99c35 !important; background-color: #fdfbf0 !important;">
+                                <div class="card-body p-5">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="symbol symbol-45px me-4">
+                                            <span class="symbol-label bg-white shadow-sm border border-dashed"
+                                                style="border-color: #c99c35 !important;">
+                                                <i class="fas fa-users fs-4" style="color: #c99c35;"></i>
+                                            </span>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-gray-900 fw-bolder fs-5">Shared Account</span>
+                                            <span class="text-muted fw-semibold fs-8">Group Wallet Balances</span>
+                                        </div>
+                                    </div>
+                                    <div class="fs-7 text-gray-600 mb-4 lh-sm">
+                                        Set temporary accounts and input a limited or fixed amount where others can use.
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center pt-4 border-top border-opacity-25"
+                                        style="border-color: #c99c35 !important;">
+                                        <span class="fw-bolder text-dark fs-4">550.00 USD</span>
+                                        <span class="badge text-white fw-bold px-3 py-2 shadow-sm"
+                                            style="background-color: #c99c35;">Shared Amount</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a routerLink="/wallet/tokens"
+                                class="card border border-dashed border-primary bg-light-primary mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm">
+                                <div class="card-body p-5">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="symbol symbol-45px me-4">
+                                            <span
+                                                class="symbol-label bg-white shadow-sm border border-primary border-dashed">
+                                                <i class="fas fa-coins text-primary fs-4"></i>
+                                            </span>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-gray-900 fw-bolder fs-5">SendMO Tokens</span>
+                                            <span class="text-muted fw-semibold fs-8">Internal Utility Token</span>
+                                        </div>
+                                    </div>
+                                    <div class="fs-7 text-gray-600 mb-4 lh-sm">
+                                        Native tokens used for internal network services and P2P transfers.
+                                    </div>
+                                    <div
+                                        class="d-flex justify-content-between align-items-center pt-4 border-top border-primary border-opacity-25">
+                                        <span class="fw-bolder text-dark fs-4">500.00 USD</span>
                                         <span
-                                            class="symbol-label bg-white shadow-sm border border-success border-dashed">
-                                            <i class="fas fa-university text-success fs-4"></i>
+                                            class="badge bg-primary text-white fw-bold px-3 py-2 shadow-sm">Active</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a routerLink="/wallet/referrals"
+                                class="card border border-dashed border-warning bg-light-warning mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm">
+                                <div class="card-body p-5">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="symbol symbol-45px me-4">
+                                            <span
+                                                class="symbol-label bg-white shadow-sm border border-warning border-dashed">
+                                                <i class="fas fa-user-friends text-warning fs-4"></i>
+                                            </span>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-gray-900 fw-bolder fs-5">Referral Bonuses</span>
+                                            <span class="text-muted fw-semibold fs-8">Earned Rewards</span>
+                                        </div>
+                                    </div>
+                                    <div class="fs-7 text-gray-600 mb-4 lh-sm">
+                                        Commission earned from inviting new partners to the ASEN network.
+                                    </div>
+                                    <div
+                                        class="d-flex justify-content-between align-items-center pt-4 border-top border-warning border-opacity-25">
+                                        <div class="text-gray-800 d-flex align-items-end">
+                                            <span class="fw-bolder fs-3 lh-1">12</span>
+                                            <span class="fs-8 fw-bold text-muted ms-2 pb-1">Invites</span>
+                                        </div>
+                                        <span class="text-warning fw-bolder fs-7 d-flex align-items-center">
+                                            Claim Rewards <i class="fas fa-arrow-right ms-2 fs-8"></i>
                                         </span>
                                     </div>
-                                    <div class="d-flex flex-column">
-                                        <span class="text-gray-900 fw-bolder fs-5">Solo Account</span>
-                                        <span class="text-muted fw-semibold fs-8">KES / USD / EUR</span>
-                                    </div>
                                 </div>
-                                <div class="fs-7 text-gray-600 mb-4 lh-sm">
-                                    Standard cash balance for direct bank transfers and operational costs.
-                                </div>
-                                <div
-                                    class="d-flex justify-content-between align-items-center pt-4 border-top border-success border-opacity-25">
-                                    <span class="fw-bolder text-dark fs-4">500,980.00 KES</span>
-                                    <span class="badge bg-success text-white fw-bold px-3 py-2 shadow-sm">Available
-                                        Balance</span>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
 
-                        <a routerLink="/wallet/sharedaccount"
-                            class="card border border-dashed mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm"
-                            style="border-color: #c99c35 !important; background-color: #fdfbf0 !important;">
-                            <div class="card-body p-5">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="symbol symbol-45px me-4">
-                                        <span class="symbol-label bg-white shadow-sm border border-dashed"
-                                            style="border-color: #c99c35 !important;">
-                                            <i class="fas fa-users fs-4" style="color: #c99c35;"></i>
-                                        </span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span class="text-gray-900 fw-bolder fs-5">Shared Account</span>
-                                        <span class="text-muted fw-semibold fs-8">Group Wallet Balances</span>
-                                    </div>
-                                </div>
-                                <div class="fs-7 text-gray-600 mb-4 lh-sm">
-                                    Set temporary accounts and input a limited or fixed amount where others can use.
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center pt-4 border-top border-opacity-25"
-                                    style="border-color: #c99c35 !important;">
-                                    <span class="fw-bolder text-dark fs-4">550.00 USD</span>
-                                    <span class="badge text-white fw-bold px-3 py-2 shadow-sm"
-                                        style="background-color: #c99c35;">Shared Amount</span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a routerLink="/wallet/tokens"
-                            class="card border border-dashed border-primary bg-light-primary mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm">
-                            <div class="card-body p-5">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="symbol symbol-45px me-4">
-                                        <span
-                                            class="symbol-label bg-white shadow-sm border border-primary border-dashed">
-                                            <i class="fas fa-coins text-primary fs-4"></i>
-                                        </span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span class="text-gray-900 fw-bolder fs-5">SendMO Tokens</span>
-                                        <span class="text-muted fw-semibold fs-8">Internal Utility Token</span>
-                                    </div>
-                                </div>
-                                <div class="fs-7 text-gray-600 mb-4 lh-sm">
-                                    Native tokens used for internal network services and P2P transfers.
-                                </div>
-                                <div
-                                    class="d-flex justify-content-between align-items-center pt-4 border-top border-primary border-opacity-25">
-                                    <span class="fw-bolder text-dark fs-4">500.00 USD</span>
-                                    <span class="badge bg-primary text-white fw-bold px-3 py-2 shadow-sm">Active</span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a routerLink="/wallet/referrals"
-                            class="card border border-dashed border-warning bg-light-warning mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm">
-                            <div class="card-body p-5">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="symbol symbol-45px me-4">
-                                        <span
-                                            class="symbol-label bg-white shadow-sm border border-warning border-dashed">
-                                            <i class="fas fa-user-friends text-warning fs-4"></i>
-                                        </span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span class="text-gray-900 fw-bolder fs-5">Referral Bonuses</span>
-                                        <span class="text-muted fw-semibold fs-8">Earned Rewards</span>
-                                    </div>
-                                </div>
-                                <div class="fs-7 text-gray-600 mb-4 lh-sm">
-                                    Commission earned from inviting new partners to the ASEN network.
-                                </div>
-                                <div
-                                    class="d-flex justify-content-between align-items-center pt-4 border-top border-warning border-opacity-25">
-                                    <div class="text-gray-800 d-flex align-items-end">
-                                        <span class="fw-bolder fs-3 lh-1">12</span>
-                                        <span class="fs-8 fw-bold text-muted ms-2 pb-1">Invites</span>
-                                    </div>
-                                    <span class="text-warning fw-bolder fs-7 d-flex align-items-center">
-                                        Claim Rewards <i class="fas fa-arrow-right ms-2 fs-8"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </a>
-
+                        </div>
                     </div>
-                </div>
                 </div>
 
                 <div class="tab-pane fade" id="tab_payments" role="tabpanel">
                     <h2 class="text-dark fw-bolder mb-8 fs-3">Payment Hub</h2>
 
                     <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Money Movement</h5>
-                    <a routerLink="/payments/sendmoney"
+
+                    <a routerLink="/payment-hub/send-money"
                         class="card border border-dashed border-primary bg-light-primary mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
                         <div
                             class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-paper-plane text-primary fs-4"></i>
+                            <i class="bi bi-send-fill text-primary fs-3"></i>
                         </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Send Money</span><span
-                                class="text-muted fs-8 fw-bold">Instant transfers</span></div>
+                        <div class="d-flex flex-column">
+                            <span class="text-dark fw-bolder fs-6">Send Money</span>
+                            <span class="text-muted fs-8 fw-bold">Instant global transfers</span>
+                        </div>
                     </a>
-                    <a routerLink="/payments/requestmoney"
+
+                    <a routerLink="/payment-hub/receive-money"
                         class="card border border-dashed border-success bg-light-success mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
                         <div
                             class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-hand-holding-usd text-success fs-4"></i>
+                            <i class="bi bi-qr-code-scan text-success fs-3"></i>
                         </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Request Money</span><span
-                                class="text-muted fs-8 fw-bold">Send payment links</span></div>
+                        <div class="d-flex flex-column">
+                            <span class="text-dark fw-bolder fs-6">Request Money</span>
+                            <span class="text-muted fs-8 fw-bold">Smart payment links</span>
+                        </div>
                     </a>
-                    <a routerLink="/payments/transfers"
+
+                    <a routerLink="/payment-hub/transfers"
                         class="card border border-dashed border-info bg-light-info mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
                         <div
                             class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-exchange-alt text-info fs-4"></i>
+                            <i class="bi bi-arrow-left-right text-info fs-3"></i>
                         </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Internal
-                                Transfers</span><span class="text-muted fs-8 fw-bold">Between wallets</span></div>
+                        <div class="d-flex flex-column">
+                            <span class="text-dark fw-bolder fs-6">Internal Transfers</span>
+                            <span class="text-muted fs-8 fw-bold">Move funds between wallets</span>
+                        </div>
                     </a>
 
                     <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Services</h5>
-                    <a routerLink="/payments/utilities"
-                        class="card border border-dashed border-gray-400 bg-light mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+
+                    <a routerLink="/payment-hub/utilities"
+                        class="card border border-dashed border-warning bg-light-warning mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
                         <div
                             class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-bolt text-warning-dark fs-4"></i>
+                            <i class="bi bi-lightning-charge-fill text-warning fs-3"></i>
                         </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Pay Utilities</span><span
-                                class="text-muted fs-8 fw-bold">Bills & Water</span></div>
+                        <div class="d-flex flex-column">
+                            <span class="text-dark fw-bolder fs-6">Pay Utilities</span>
+                            <span class="text-muted fs-8 fw-bold">Electricity, Water & Gas</span>
+                        </div>
                     </a>
-                    <a routerLink="/payments/airtime"
-                        class="card border border-dashed border-gray-400 bg-light mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+
+                    <a routerLink="/payment-hub/airtime-data"
+                        class="card border border-dashed border-danger bg-light-danger mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
                         <div
                             class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-mobile-alt text-danger fs-4"></i>
+                            <i class="bi bi-phone-vibrate-fill text-danger fs-3"></i>
                         </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Airtime &
-                                Data</span><span class="text-muted fs-8 fw-bold">Instant Top-ups</span></div>
+                        <div class="d-flex flex-column">
+                            <span class="text-dark fw-bolder fs-6">Airtime & Data</span>
+                            <span class="text-muted fs-8 fw-bold">Instant mobile top-ups</span>
+                        </div>
+                    </a>
+
+                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Management</h5>
+
+                    <a routerLink="/payment-hub/transactions"
+                        class="card border border-dashed border-gray-600 bg-light mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div
+                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
+                            <i class="bi bi-journal-text text-gray-700 fs-3"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <span class="text-dark fw-bolder fs-6">All Transactions</span>
+                            <span class="text-muted fs-8 fw-bold">Full financial audit log</span>
+                        </div>
+                    </a>
+
+                    <a routerLink="/payment-hub/recurring"
+                        class="card border border-dashed border-primary bg-light-primary mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div
+                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
+                            <i class="bi bi-calendar-check-fill text-primary fs-3"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <span class="text-dark fw-bolder fs-6">Recurring Payments</span>
+                            <span class="text-muted fs-8 fw-bold">Scheduled & auto-billing</span>
+                        </div>
+                    </a>
+
+                    <a routerLink="/payment-hub/disputes"
+                        class="card border border-dashed border-danger bg-light-danger mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
+                        <div
+                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
+                            <i class="bi bi-shield-exclamation text-danger fs-3"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <span class="text-dark fw-bolder fs-6">Disputes & Support</span>
+                            <span class="text-muted fs-8 fw-bold">Resolution center & claims</span>
+                        </div>
                     </a>
                 </div>
 

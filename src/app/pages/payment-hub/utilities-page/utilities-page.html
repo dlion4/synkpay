@@ -1,0 +1,287 @@
+<div class="container-xxl py-10" id="kt_content_container">
+
+    <div class="mb-5 hover-scroll-x">
+        <div class="d-grid">
+            <ul class="nav nav-tabs flex-nowrap text-nowrap border-0">
+                <li class="nav-item">
+                    <a class="nav-link w-100" [class.active]="activeMainTab === 'pay_bill'" (click)="setMainTab('pay_bill')">
+                        <i class="fas fa-file-invoice-dollar me-2"></i> Pay a Bill
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link w-100" [class.active]="activeMainTab === 'history'" (click)="setMainTab('history')">
+                        <i class="fas fa-history me-2"></i> Transaction History
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        
+        <div class="animate__animated animate__fadeIn" *ngIf="activeMainTab === 'pay_bill'">
+            
+            <div class="mb-5 p-6 bg-white rounded-4 shadow-sm fade-in-up border border-gray-200">
+                <h2 class="h4 fw-bold mb-4 text-custom-primary">Biller Selection</h2>
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <div class="position-relative">
+                            <i class="fas fa-search position-absolute top-50 translate-middle-y ms-4 text-muted"></i>
+                            <input type="text" class="form-control form-control-clarity ps-12 py-3" placeholder="Search by Biller, Country, or ID..." [(ngModel)]="searchQuery" (input)="applyFilters()">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <select class="form-select form-select-clarity py-3" [(ngModel)]="filterCategory" (change)="applyFilters()">
+                            <option value="">Filter by Type</option>
+                            <option value="Electricity">Electricity</option>
+                            <option value="Water">Water</option>
+                            <option value="Internet">Internet/Telecom</option>
+                            <option value="Gas">Gas/Fuel</option>
+                            <option value="Tax">Tax/Government</option>
+                            <option value="Other">Other Services</option>
+                        </select>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <select class="form-select form-select-clarity py-3" [(ngModel)]="filterCountry" (change)="applyFilters()">
+                            <option value="">Filter by Country</option>
+                            <option value="USA">USA</option>
+                            <option value="CAN">Canada</option>
+                            <option value="MEX">Mexico</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4 fade-in-up" style="animation-delay: 0.1s;">
+                <div class="col biller-item" *ngFor="let biller of filteredBillers">
+                    <button class="btn w-100 p-4 bg-white rounded-4 shadow-sm border-0 d-flex flex-column align-items-center text-center text-dark text-decoration-none h-100" (click)="openPaymentModal(biller)" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                        <span class="country-badge">{{ biller.flag }} {{ biller.country }}</span>
+                        <i class="{{ biller.iconClass }} fa-3x mb-3"></i>
+                        <p class="fw-semibold text-dark mb-1">{{ biller.name }}</p>
+                        <small class="text-secondary">{{ biller.category }}</small>
+                    </button>
+                </div>
+                <div class="col-12 w-100" *ngIf="filteredBillers.length === 0">
+                    <div class="alert bg-light-warning text-warning-dark border border-warning border-dashed text-center p-5 rounded-4">
+                        <i class="fas fa-search fs-2x mb-3 d-block"></i>
+                        <strong>No billers found</strong> matching your filters.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 p-6 bg-white rounded-4 shadow-sm fade-in-up border border-gray-200" style="animation-delay: 0.2s;">
+                <h2 class="h5 fw-bold mb-3 text-custom-primary">Frequently Used Billers</h2>
+                <div class="text-secondary p-4 bg-light rounded-3 border border-dashed text-center">
+                    <i class="fas fa-history text-muted mb-2 fs-3"></i><br>
+                    No recent utility payments found. Complete a payment to see your frequently used billers here.
+                </div>
+            </div>
+        </div>
+
+        <div class="animate__animated animate__fadeIn" *ngIf="activeMainTab === 'history'">
+            <div class="p-6 bg-white rounded-4 shadow-sm border border-gray-200">
+                <h2 class="h4 fw-bold mb-6 text-custom-primary">Payment History</h2>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle table-row-dashed">
+                        <thead class="bg-light">
+                            <tr class="text-muted fw-bolder fs-8 text-uppercase ls-1">
+                                <th class="ps-4 py-3">Biller Name</th>
+                                <th class="py-3">Type / Country</th>
+                                <th class="py-3">Amount</th>
+                                <th class="py-3">Date Paid</th>
+                                <th class="py-3 text-center">Reference</th>
+                                <th class="pe-4 py-3 text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="border-top-0">
+                            <tr>
+                                <td class="ps-4 fw-semibold text-dark">ConnectTel Fiber</td>
+                                <td>Internet <span class="badge bg-light ms-1">🇺🇸 USA</span></td>
+                                <td class="fw-bold text-danger">-$59.99</td>
+                                <td class="text-muted">2025-11-01</td>
+                                <td class="text-center"><code class="text-primary bg-light-primary px-2 py-1 rounded">UTIL-987654</code></td>
+                                <td class="pe-4 text-end">
+                                    <button class="btn btn-sm btn-outline-secondary" (click)="downloadPdf('ConnectTel Fiber', '59.99', '2025-11-01')">
+                                        <i class="fas fa-file-pdf me-1"></i> PDF
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ps-4 fw-semibold text-dark">National Power Corp</td>
+                                <td>Electricity <span class="badge bg-light ms-1">🇺🇸 USA</span></td>
+                                <td class="fw-bold text-danger">-$125.50</td>
+                                <td class="text-muted">2025-10-15</td>
+                                <td class="text-center"><code class="text-primary bg-light-primary px-2 py-1 rounded">UTIL-123456</code></td>
+                                <td class="pe-4 text-end">
+                                    <button class="btn btn-sm btn-outline-secondary" (click)="downloadPdf('National Power Corp', '125.50', '2025-10-15')">
+                                        <i class="fas fa-file-pdf me-1"></i> PDF
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ps-4 fw-semibold text-dark">Metro Water Inc.</td>
+                                <td>Water <span class="badge bg-light ms-1">🇨🇦 CAN</span></td>
+                                <td class="fw-bold text-danger">-$42.10</td>
+                                <td class="text-muted">2025-09-28</td>
+                                <td class="text-center"><code class="text-primary bg-light-primary px-2 py-1 rounded">UTIL-777888</code></td>
+                                <td class="pe-4 text-end">
+                                    <button class="btn btn-sm btn-outline-secondary" (click)="downloadPdf('Metro Water Inc.', '42.10', '2025-09-28')">
+                                        <i class="fas fa-file-pdf me-1"></i> PDF
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="paymentModal" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content p-2 rounded-4 shadow-lg border-0 card-clarity" *ngIf="selectedBiller">
+            
+            <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title h3 fw-bold text-custom-primary">Pay Bill: {{ selectedBiller.name }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="resetModal()"></button>
+            </div>
+            
+            <div class="modal-body pt-4">
+                
+                <ul class="nav stepper-nav nav-pills" role="tablist">
+                    <li class="stepper-item">
+                        <button class="nav-link w-100" [class.active]="paymentStep === 1">
+                            <span class="stepper-icon">1</span>
+                            <span class="stepper-title">
+                                <span class="fs-5 fw-bolder text-dark">Account</span>
+                                <span class="fs-7 fw-bold text-muted">Lookup ID</span>
+                            </span>
+                        </button>
+                    </li>
+                    <li class="stepper-item">
+                        <button class="nav-link w-100" [class.active]="paymentStep === 2">
+                            <span class="stepper-icon">2</span>
+                            <span class="stepper-title">
+                                <span class="fs-5 fw-bolder text-dark">Details</span>
+                                <span class="fs-7 fw-bold text-muted">Amount & Source</span>
+                            </span>
+                        </button>
+                    </li>
+                    <li class="stepper-item border-0">
+                        <button class="nav-link w-100" [class.active]="paymentStep === 3">
+                            <span class="stepper-icon">3</span>
+                            <span class="stepper-title">
+                                <span class="fs-5 fw-bolder text-dark">Confirm</span>
+                                <span class="fs-7 fw-bold text-muted">Process</span>
+                            </span>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content mt-6">
+                    
+                    <div class="animate__animated animate__fadeIn" *ngIf="paymentStep === 1">
+                        <div class="p-4 bg-light rounded-3 border border-warning-subtle mb-6 d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="text-sm text-secondary d-block mb-1">Country: <strong class="text-dark">{{ selectedBiller.flag }} {{ selectedBiller.country }}</strong></span>
+                                <span class="text-sm text-secondary d-block m-0">Biller Type: <strong class="text-dark">{{ selectedBiller.category }}</strong></span>
+                            </div>
+                            <i class="{{ selectedBiller.iconClass }} fs-1 opacity-50"></i>
+                        </div>
+
+                        <label class="form-label fw-bold text-dark">Account / Meter ID (e.g., Contract ID)</label>
+                        <input type="text" class="form-control form-control-clarity p-4 mb-4 fs-5" placeholder="Enter Account/Meter ID" [(ngModel)]="accountId">
+                        
+                        <div class="d-flex align-items-center justify-content-center py-4 rounded bg-light border border-dashed mb-4" *ngIf="isLookingUp">
+                            <div class="spinner"></div>
+                            <span class="ms-3 text-sm fw-bold text-custom-primary">Fetching live balance...</span>
+                        </div>
+
+                        <div class="border p-4 rounded-3 border-success bg-light-success mb-4 animate__animated animate__fadeIn" *ngIf="fetchedBalance !== null && !isLookingUp">
+                            <p class="text-success fw-bold text-center mb-3"><i class="fas fa-check-circle me-1"></i> Account Verified!</p>
+                            <div class="d-flex justify-content-between fs-5 text-dark mb-1">
+                                <span>Outstanding Balance Due:</span>
+                                <span class="fw-bolder text-custom-primary">${{ fetchedBalance | number:'1.2-2' }}</span>
+                            </div>
+                            <small class="text-secondary d-block text-end">Name on Account: J. Doe</small>
+                        </div>
+
+                        <div class="alert bg-light-danger border border-danger border-dashed text-danger fw-bold text-center py-3 mb-4 animate__animated animate__headShake" *ngIf="lookupError && !isLookingUp">
+                            <i class="fas fa-exclamation-triangle me-2"></i> Account ID not found or service unavailable.
+                        </div>
+
+                        <button class="btn btn-clarity-primary w-100 py-3 fw-bold rounded-pill shadow-sm fs-5" *ngIf="fetchedBalance === null" (click)="lookupBalance()" [disabled]="isLookingUp">
+                            Lookup Balance <i class="fas fa-search ms-2"></i>
+                        </button>
+                        <button class="btn btn-dark w-100 py-3 fw-bold rounded-pill shadow-sm fs-5" *ngIf="fetchedBalance !== null" (click)="nextPaymentStep(2)">
+                            Next: Payment Details <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+
+                    <div class="animate__animated animate__fadeIn" *ngIf="paymentStep === 2">
+                        <div class="p-4 bg-light rounded-3 border border-dashed border-secondary mb-6">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-sm text-secondary">Biller:</span>
+                                <span class="text-dark fw-bold">{{ selectedBiller.name }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-4 border-bottom pb-3">
+                                <span class="text-sm text-secondary">Account ID:</span>
+                                <span class="text-dark fw-bold">{{ accountId }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-dark">Payment Due:</span>
+                                <span class="fs-4 fw-bolder text-custom-primary">${{ fetchedBalance | number:'1.2-2' }}</span>
+                            </div>
+                        </div>
+
+                        <label class="form-label fw-bold text-dark">Payment Amount (USD)</label>
+                        <input type="number" class="form-control form-control-clarity p-4 border border-secondary-subtle fs-4 fw-bold text-success mb-5" [(ngModel)]="paymentAmount">
+
+                        <label class="form-label fw-bold text-dark">Payment Source</label>
+                        <select class="form-select form-control-clarity p-4 mb-8" [(ngModel)]="paymentSource">
+                            <option value="wallet">Primary Wallet (Balance: $1,250.00)</option>
+                            <option value="card">Linked Card ending 4567</option>
+                        </select>
+
+                        <div class="d-flex gap-3">
+                            <button class="btn btn-light fw-bold border rounded-pill w-25 py-3" (click)="nextPaymentStep(1)">Back</button>
+                            <button class="btn btn-success w-75 py-3 fw-bold rounded-pill shadow-sm fs-5" (click)="processPayment()">
+                                Confirm & Pay ${{ paymentAmount | number:'1.2-2' }} <i class="fas fa-check-circle ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="animate__animated animate__fadeIn" *ngIf="paymentStep === 3">
+                        
+                        <div class="d-flex flex-column align-items-center justify-content-center py-8" *ngIf="isProcessing">
+                            <div class="spinner mb-4" style="width: 50px; height: 50px; border-width: 6px;"></div>
+                            <h4 class="text-custom-primary fw-bolder">Processing secure transaction...</h4>
+                            <p class="text-muted">Contacting biller network</p>
+                        </div>
+
+                        <div class="d-flex flex-column align-items-center text-center py-6 animate__animated animate__zoomIn" *ngIf="isSuccess">
+                            <i class="fas fa-check-circle text-success animate-bounce mb-4" style="font-size: 5rem;"></i>
+                            <h3 class="fw-bolder text-dark mb-2">Payment Successful!</h3>
+                            <p class="text-secondary mb-6">Your bill has been settled successfully.</p>
+                            
+                            <div class="w-100 p-4 bg-light rounded-4 border border-success border-opacity-25 mb-8 text-start mx-auto" style="max-width: 400px;">
+                                <span class="text-sm text-secondary d-block mb-1">Bill Payment Reference Number:</span>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fs-4 font-monospace fw-bolder text-custom-primary">{{ paymentRef }}</span>
+                                    <button class="btn btn-sm btn-light border text-secondary" (click)="copyRef()">
+                                        <i class="fas fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-dark w-100 py-3 fw-bold rounded-pill mx-auto" style="max-width: 400px;" data-bs-dismiss="modal" (click)="resetModal()">Done</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,271 @@
+<div class="container-xxl py-10" id="kt_content_container">
+    
+    <div class="mb-5 hover-scroll-x">
+        <div class="d-grid">
+            <ul class="nav nav-tabs flex-nowrap text-nowrap">
+                <li class="nav-item">
+                    <a class="nav-link w-100 btn btn-flex btn-active-light-success" [class.active]="activeTab === 'audit'" (click)="setMainTab('audit')">Master Audit Log</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link w-100 btn btn-flex btn-active-light-danger" [class.active]="activeTab === 'statements'" (click)="setMainTab('statements')">Statements</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="animate__animated animate__fadeIn" *ngIf="activeTab === 'audit'">
+            <div class="card card-clarity p-4 p-md-5">
+                <h4 class="section-header-gradient mb-4">Activity Snapshot (Filtered)</h4>
+                
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-4">
+                        <div class="card stat-card p-4 rounded-3 shadow-sm border-2" style="border-color: var(--color-success)">
+                            <h6 class="small text-muted mb-2">Total Cash In (USD)</h6>
+                            <h3 class="fw-bold text-success">+${{ totalIn | number:'1.2-2' }}</h3>
+                            <p class="small m-0 text-muted">1.5% growth MoM</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card stat-card p-4 rounded-3 shadow-sm border-2" style="border-color: var(--color-failed)">
+                            <h6 class="small text-muted mb-2">Total Cash Out (USD)</h6>
+                            <h3 class="fw-bold text-danger">-${{ (totalOut * -1) | number:'1.2-2' }}</h3>
+                            <p class="small m-0 text-muted">Top category: B2B Payments</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card stat-card p-4 rounded-3 shadow-sm border-2" style="border-color: var(--color-primary-light)">
+                            <h6 class="small text-muted mb-2">Total Fees Paid</h6>
+                            <h3 class="fw-bold text-custom-primary">${{ totalFees | number:'1.2-2' }}</h3>
+                            <p class="small m-0 text-muted">FX fees are the largest component</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="section-header-gradient mb-3">Advanced Filtering</h5>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control form-control-clarity" placeholder="Global Search (Ref, Counterparty, ID)" [(ngModel)]="searchText" (input)="applyFilters()">
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select form-select-clarity" [(ngModel)]="filterType" (change)="applyFilters()">
+                            <option value="">Filter by Type (All)</option>
+                            <option value="Send">Send</option>
+                            <option value="Receive">Receive</option>
+                            <option value="Exchange">Exchange</option>
+                            <option value="Card Purchase">Card Purchase</option>
+                            <option value="Withdrawal">Withdrawal</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select form-select-clarity" [(ngModel)]="filterStatus" (change)="applyFilters()">
+                            <option value="">Filter by Status (All)</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Failed">Failed</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-outline-secondary w-100 py-2 small fw-semibold" data-bs-toggle="modal" data-bs-target="#dateRangeModal">
+                            Custom Date Range
+                        </button>
+                    </div>
+                </div>
+
+                <ul class="nav nav-pills justify-content-start mb-4 mini-tabs">
+                    <li class="nav-item">
+                        <button class="nav-link" [class.active]="activeCategoryTab === 'All'" (click)="setCategoryTab('All')">All Events</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" [class.active]="activeCategoryTab === 'Inbound'" (click)="setCategoryTab('Inbound')">Cash In</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" [class.active]="activeCategoryTab === 'Outbound'" (click)="setCategoryTab('Outbound')">Cash Out</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" [class.active]="activeCategoryTab === 'FX/Fees'" (click)="setCategoryTab('FX/Fees')">FX & Fees</button>
+                    </li>
+                </ul>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle transaction-table">
+                        <thead>
+                            <tr class="small text-muted text-uppercase">
+                                <th>Date/Time</th>
+                                <th>Transaction ID</th>
+                                <th>Description (Counterparty)</th>
+                                <th>Type</th>
+                                <th class="text-end">Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="filteredTransactions.length === 0">
+                                <td colspan="6" class="text-center text-muted py-5">No transactions found matching your criteria.</td>
+                            </tr>
+                            <tr *ngFor="let tx of filteredTransactions" class="small" data-bs-toggle="modal" data-bs-target="#transactionDetailModal" (click)="openTransactionDetails(tx)">
+                                <td>{{ tx.date | slice:0:10 }} <span class="text-muted ms-1">{{ tx.date | slice:11:16 }}</span></td>
+                                <td class="fw-semibold text-custom-primary">{{ tx.id }}</td>
+                                <td>{{ tx.description }} <span class="text-muted small">({{ tx.counterparty }})</span></td>
+                                <td><span class="badge rounded-pill bg-light text-secondary">{{ tx.type }}</span></td>
+                                <td class="text-end fw-bold" [ngClass]="tx.amount < 0 ? 'text-danger' : 'text-success'">
+                                    {{ tx.amount > 0 ? '+' : '' }}{{ tx.amount | number:'1.2-2' }} {{ tx.currency }}
+                                </td>
+                                <td><span class="status-badge {{ tx.statusClass }}">{{ tx.status }}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-secondary rounded-pill px-4 small">Load More Transactions</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="animate__animated animate__fadeIn" *ngIf="activeTab === 'statements'">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card card-clarity p-5 text-center export-section-glow">
+                        <h4 class="section-header-gradient mb-4">Generate Financial Statement</h4>
+                        <p class="small text-muted mb-4">Create an official statement for tax, audit, or accounting purposes.</p>
+                        
+                        <div class="mb-4">
+                            <label class="form-label small text-muted text-start w-100 fw-semibold">Select Report Type</label>
+                            <select class="form-select form-select-clarity">
+                                <option>Comprehensive Transaction Log (Audit)</option>
+                                <option>Tax Summary Report (Annual)</option>
+                                <option>Monthly Statement (PDF)</option>
+                                <option>Custom Date Range CSV Export</option>
+                            </select>
+                        </div>
+
+                        <div class="row g-3 mb-5">
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted text-start w-100 fw-semibold">From Date</label>
+                                <input type="date" class="form-control form-control-clarity" [(ngModel)]="filterFromDate">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted text-start w-100 fw-semibold">To Date</label>
+                                <input type="date" class="form-control form-control-clarity" [(ngModel)]="filterToDate">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-clarity-primary px-5 py-3 w-100" [disabled]="isExporting" (click)="handleExport()">
+                            <span *ngIf="!isExporting && !exportSuccess">Generate & Download Statement 💾</span>
+                            <span *ngIf="isExporting">Processing...</span>
+                            <span *ngIf="exportSuccess">Download Complete! (Click to Re-Generate)</span>
+                        </button>
+                        
+                        <div class="mt-4 text-center" *ngIf="isExporting">
+                            <div class="golden-spinner" role="status"></div>
+                            <p class="small mt-2 text-custom-primary fw-semibold">Processing 1,245 transactions...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="dateRangeModal" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content card-clarity">
+            <div class="modal-header border-0 pb-0">
+                <h6 class="modal-title fw-bold text-custom-primary">Custom Date Range Filter</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label small text-muted">From Date</label>
+                    <input type="date" class="form-control form-control-clarity" [(ngModel)]="filterFromDate">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small text-muted">To Date</label>
+                    <input type="date" class="form-control form-control-clarity" [(ngModel)]="filterToDate">
+                </div>
+                <button class="btn btn-clarity-primary w-100 mt-2 py-2" data-bs-dismiss="modal" (click)="applyFilters()">Apply Filter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="transactionDetailModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content card-clarity p-3" *ngIf="selectedTx">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title section-header-gradient fw-bold">
+                    Transaction Audit: <span>{{ selectedTx.id }}</span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-between align-items-center p-3 mb-4 rounded" style="background-color: var(--color-tab-bg)">
+                    <h4 class="m-0 fw-bold text-custom-primary" [ngClass]="selectedTx.amount < 0 ? 'text-danger' : 'text-success'">
+                        {{ selectedTx.amount > 0 ? '+' : '' }}{{ selectedTx.amount | number:'1.2-2' }} {{ selectedTx.currency }}
+                    </h4>
+                    <span class="status-badge {{ selectedTx.statusClass }}">{{ selectedTx.status }}</span>
+                </div>
+                
+                <ul class="nav nav-tabs nav-pills-clarity mb-3" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#modalOverview">Overview</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#modalAudit">Audit & Compliance</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="modalOverview">
+                        <div class="row g-3 small">
+                            <div class="col-md-4">
+                                <strong>Counterparty/Description:</strong> <span>{{ selectedTx.description }} ({{ selectedTx.counterparty }})</span>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Transaction Type:</strong> <span>{{ selectedTx.type }}</span>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Date (Local):</strong> <span>{{ selectedTx.date }}</span>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Full System ID:</strong> <span class="text-break text-custom-primary">{{ selectedTx.id }}</span>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Full Timestamp (UTC):</strong> <span>{{ selectedTx.fullTimestamp }}</span>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Category:</strong> <span>{{ selectedTx.purpose }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="modalAudit">
+                        <div class="row g-3 small">
+                            <div class="col-md-4">
+                                <strong>KYC/AML Purpose:</strong> <span class="fw-semibold text-custom-primary">{{ selectedTx.purpose }}</span>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Fees Paid:</strong> <span>${{ selectedTx.fee | number:'1.2-2' }} {{ selectedTx.currency }}</span>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>FX Rate Applied:</strong> <span>1 USD = {{ selectedTx.fxRate }} {{ selectedTx.currency }}</span>
+                            </div>
+                            <div class="col-md-12">
+                                <h6 class="mt-3 fw-bold text-muted">Internal Audit Notes:</h6>
+                                <p class="p-2 rounded" style="background-color: var(--color-light-accent)">
+                                    This transaction passed L1 and L2 AML screening. Rate was locked for 15 seconds. No adverse media match found on counterparty.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-3 mt-4 border-top text-end">
+                    <button class="btn btn-sm btn-outline-dark me-2" data-bs-dismiss="modal">Print Receipt</button>
+                    <button class="btn btn-sm btn-clarity-primary" data-bs-dismiss="modal">Dispute This Transaction</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

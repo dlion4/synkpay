@@ -1,0 +1,343 @@
+<div class="container-xxl py-10" id="kt_content_container">
+
+    <div class="mb-8 hover-scroll-x">
+        <div class="d-grid">
+            <ul class="nav nav-tabs flex-nowrap text-nowrap">
+                <li class="nav-item">
+                    <a class="nav-link w-100" [class.active]="activeTab === 'bank'" (click)="setTab('bank')">
+                        <i class="fas fa-university me-2"></i> Bank Transfer
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link w-100" [class.active]="activeTab === 'wallet'" (click)="setTab('wallet')">
+                        <i class="fas fa-wallet me-2"></i> Digital Wallet
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link w-100" [class.active]="activeTab === 'sendmo'" (click)="setTab('sendmo')">
+                        <i class="fas fa-bolt text-warning me-2"></i> Sendmo User
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row g-5">
+        
+        <div class="col-lg-7">
+            <div class="card card-clarity border-0 shadow-sm rounded-4 bg-white fade-in-up">
+                <div class="card-body p-6 p-md-8">
+                    
+                    <div *ngIf="activeTab === 'bank'" class="animate__animated animate__fadeIn">
+                        <h5 class="mb-6 fw-bold text-custom-primary">Recipient Bank Information</h5>
+                        <div class="row g-5 mb-6">
+                            <div class="col-12">
+                                <label class="form-label small text-muted">Bank Name / Institution</label>
+                                <input type="text" class="form-control form-control-clarity" placeholder="e.g., Chase, DBS, Barclays" [(ngModel)]="bankName">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">Account Number / IBAN</label>
+                                <input type="text" class="form-control form-control-clarity" placeholder="Enter full account number" [(ngModel)]="accountNumber">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">SWIFT / BIC Code</label>
+                                <input type="text" class="form-control form-control-clarity" placeholder="Optional" [(ngModel)]="swiftCode">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small text-muted">Recipient Full Name</label>
+                                <input type="text" class="form-control form-control-clarity" placeholder="Name on the bank account" [(ngModel)]="recipientName">
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-6">
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted fw-bold mb-3">Processing Speed</label>
+                                <div class="custom-selection-card">
+                                    <input class="btn-check" type="radio" name="speedOption" id="speedInstant" [checked]="processingSpeed === 'instant'" (change)="setProcessingSpeed('instant')">
+                                    <label class="btn btn-outline-light d-block text-start p-3 rounded-3 border shadow-sm" for="speedInstant">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fw-bold text-dark">Express (Instant)</span>
+                                            <span class="badge bg-success bg-opacity-10 text-success fs-9">Fastest</span>
+                                        </div>
+                                        <span class="d-block small text-muted mt-1 fs-9">We advance funds instantly. Premium fee applies (2.9%).</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted fw-bold mb-3">&nbsp;</label>
+                                <div class="custom-selection-card">
+                                    <input class="btn-check" type="radio" name="speedOption" id="speedReg" [checked]="processingSpeed === 'standard'" (change)="setProcessingSpeed('standard')">
+                                    <label class="btn btn-outline-light d-block text-start p-3 rounded-3 border shadow-sm" for="speedReg">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fw-bold text-dark">Standard (1-3 Days)</span>
+                                        </div>
+                                        <span class="d-block small text-muted mt-1 fs-9">Standard ACH/Wire timing. Lower fee (0.5%).</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="activeTab === 'wallet'" class="animate__animated animate__fadeIn">
+                        <h5 class="mb-6 fw-bold text-custom-primary">Digital Wallet Information</h5>
+                        <div class="row g-5 mb-6">
+                            <div class="col-12">
+                                <label class="form-label small text-muted">Wallet Provider</label>
+                                <select class="form-select form-control-clarity" [(ngModel)]="walletProvider">
+                                    <option selected disabled>Select Provider</option>
+                                    <option value="PayPal">PayPal</option>
+                                    <option value="Venmo">Venmo</option>
+                                    <option value="Cash App">Cash App</option>
+                                    <option value="M-Pesa">M-Pesa / Mobile Money</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small text-muted">Recipient Email or Phone Number</label>
+                                <input type="text" class="form-control form-control-clarity" placeholder="e.g., recipient@email.com or +1 555 123 4567" [(ngModel)]="walletIdentifier">
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-6">
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted fw-bold mb-3">Processing Speed</label>
+                                <div class="custom-selection-card">
+                                    <input class="btn-check" type="radio" name="speedOptionW" id="speedInstantW" [checked]="processingSpeed === 'instant'" (change)="setProcessingSpeed('instant')">
+                                    <label class="btn btn-outline-light d-block text-start p-3 rounded-3 border shadow-sm" for="speedInstantW">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fw-bold text-dark">Express (Instant)</span>
+                                            <span class="badge bg-success bg-opacity-10 text-success fs-9">Fastest</span>
+                                        </div>
+                                        <span class="d-block small text-muted mt-1 fs-9">Funds available in seconds. Premium fee applies.</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted fw-bold mb-3">&nbsp;</label>
+                                <div class="custom-selection-card">
+                                    <input class="btn-check" type="radio" name="speedOptionW" id="speedRegW" [checked]="processingSpeed === 'standard'" (change)="setProcessingSpeed('standard')">
+                                    <label class="btn btn-outline-light d-block text-start p-3 rounded-3 border shadow-sm" for="speedRegW">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="fw-bold text-dark">Standard (1-3 Days)</span>
+                                        </div>
+                                        <span class="d-block small text-muted mt-1 fs-9">Standard processing. Lower fee.</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="activeTab === 'sendmo'" class="animate__animated animate__fadeIn">
+                        <h5 class="mb-6 fw-bold text-custom-primary">Internal User Transfer</h5>
+                        
+                        <div class="d-flex align-items-center py-2 px-4 mb-5 rounded" style="background-color: var(--color-tab-bg); border: 1px solid var(--color-primary-light);">
+                            <span class="badge me-3 rounded-pill px-3 py-1" style="background-color: var(--color-primary-light); color: var(--color-primary-dark)">Instant & Free</span>
+                            <p class="small text-custom-primary m-0 fw-bold">Transfers between internal platform accounts are always instant and free of charge.</p>
+                        </div>
+
+                        <div class="row g-5 mb-6">
+                            <div class="col-12">
+                                <label class="form-label small text-muted">Recipient Platform Username or ID</label>
+                                <input type="text" class="form-control form-control-clarity" placeholder="Search by username or ID" [(ngModel)]="sendmoUserId">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small text-muted">Account Tag (Optional)</label>
+                                <input type="text" class="form-control form-control-clarity" placeholder="Recipient's account tag (e.g., Savings, Primary)" [(ngModel)]="sendmoAccountTag">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mb-5 pt-4 border-top">
+                        <div class="col-md-7">
+                            <label class="form-label small text-muted fw-bold">From (Funding Source)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-0"><i class="fas fa-wallet text-muted"></i></span>
+                                <select class="form-select border-0 bg-light fw-medium" [(ngModel)]="fundingSource">
+                                    <option value="Personal Account ($4,250.00)">Personal Account ($4,250.00)</option>
+                                    <option value="Business Wallet ($12,890.50)">Business Wallet ($12,890.50)</option>
+                                    <option value="Savings Vault ($1,100.00)">Savings Vault ($1,100.00)</option>
+                                    <option value="Visa Debit Card (**** 4412)">Visa Debit Card (**** 4412)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="form-label small text-muted fw-bold">Currency</label>
+                            <div class="btn-group w-100" role="group">
+                                <input type="radio" class="btn-check" name="currType" id="cUSD" [checked]="currencyType === 'USD'" (change)="setCurrency('USD')">
+                                <label class="btn btn-outline-success border-1 fw-bold py-2" for="cUSD">USD</label>
+                                
+                                <input type="radio" class="btn-check" name="currType" id="cKES" [checked]="currencyType === 'KES'" (change)="setCurrency('KES')">
+                                <label class="btn btn-outline-success border-1 fw-bold py-2" for="cKES">KES</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mt-4">
+                            <label class="form-label small text-muted">Transfer Amount ({{ currencyType }})</label>
+                            <input type="number" class="form-control form-control-clarity fs-3 fw-bold text-success py-3" placeholder="0.00" [(ngModel)]="transferAmount">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label small text-muted">Memo / Description</label>
+                            <input type="text" class="form-control form-control-clarity py-3" placeholder="Optional: What is this transfer for?" [(ngModel)]="memo">
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-8">
+                        <button type="button" class="btn btn-clarity-primary px-5 py-3 w-100 fs-5" (click)="openReviewModal()">
+                            Proceed to Review <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="card card-clarity h-100 preview-card-bg fade-in-up" style="animation-delay: 0.2s;">
+                <div class="card-body p-6 p-md-8">
+                    <h6 class="fw-bold d-flex align-items-center mb-6 text-custom-primary fs-5">
+                        <i class="fas fa-info-circle me-2"></i> Transfer Summary
+                    </h6>
+                    
+                    <h6 class="fw-semibold small mb-3 border-bottom pb-2 text-muted">COST BREAKDOWN</h6>
+                    
+                    <ul class="list-group list-group-flush rounded-4 bg-white shadow-sm mb-6">
+                        <li class="list-group-item d-flex justify-content-between py-3 border-0">
+                            <span class="text-muted">Transfer Value</span>
+                            <strong class="text-dark">{{ currencyType === 'USD' ? '$' : 'KSh' }}{{ transferAmount | number:'1.2-2' }}</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between py-3 border-0">
+                            <span class="text-muted">Service Fee</span>
+                            <strong [ngClass]="serviceFee === 0 ? 'text-success' : 'text-danger'">
+                                {{ serviceFee === 0 ? 'FREE' : '-' + (currencyType === 'USD' ? '$' : 'KSh') + (serviceFee | number:'1.2-2') }}
+                            </strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between py-3 border-top fw-bold" style="background-color: var(--color-highlight-bg);">
+                            <span class="text-dark">Recipient Gets</span>
+                            <strong class="text-custom-primary">{{ currencyType === 'USD' ? '$' : 'KSh' }}{{ transferAmount | number:'1.2-2' }}</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between py-3 rounded-bottom border-0" style="background-color: var(--color-tab-bg);">
+                            <span class="text-custom-primary fw-bold">Total Debit</span>
+                            <strong class="text-custom-primary fw-bolder">{{ currencyType === 'USD' ? '$' : 'KSh' }}{{ totalDebit | number:'1.2-2' }}</strong>
+                        </li>
+                    </ul>
+
+                    <h6 class="fw-semibold small mt-6 mb-3 border-bottom pb-2 text-muted">TRANSACTION INFO</h6>
+                    
+                    <p class="small text-dark fw-bold mb-1">Estimated Arrival:</p>
+                    <p class="small fw-semibold mb-4" [ngClass]="processingSpeed === 'instant' || activeTab === 'sendmo' ? 'text-success' : 'text-primary'">
+                        {{ activeTab === 'sendmo' || processingSpeed === 'instant' ? 'Instant (within seconds)' : 'Standard (1-3 Business Days)' }}
+                    </p>
+                    
+                    <p class="small text-muted mb-0 lh-lg">
+                        Transfers to external accounts or digital wallets may incur a processing fee for express speed. Internal platform transfers are always free.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);" *ngIf="isModalOpen">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 card-clarity animate__animated animate__zoomIn">
+            
+            <div class="modal-header border-0 bg-light rounded-top-4 pb-4 px-6 pt-6">
+                <h4 class="modal-title fw-bolder text-dark w-100 text-center">Review Transfer</h4>
+            </div>
+
+            <div class="modal-body p-6 p-md-8" *ngIf="!isSuccess">
+                
+                <div class="alert alert-warning border-0 d-flex align-items-center mb-6 rounded-4 p-4">
+                    <i class="fas fa-clock fs-2x me-4 text-warning"></i>
+                    <div>
+                        <strong class="d-block mb-1">Transfer Initiating...</strong>
+                        <span class="small">You have <span class="fw-bolder fs-5 text-danger">{{ countdownTimer }}</span> seconds to cancel this transaction before the lock.</span>
+                    </div>
+                </div>
+
+                <div class="card bg-light border-0 rounded-4 mb-8">
+                    <div class="card-body p-5">
+                        <div class="row g-4 text-sm">
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Funding Source (From):</span>
+                                <strong class="text-dark">{{ fundingSource }}</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted d-block mb-1">Receiver (To):</span>
+                                <strong class="text-dark">
+                                    {{ activeTab === 'bank' ? recipientName : activeTab === 'wallet' ? walletIdentifier : sendmoUserId }}
+                                </strong>
+                            </div>
+
+                            <div class="col-12 border-bottom py-2"></div>
+
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Send Amount:</span>
+                                <strong class="text-dark">{{ currencyType === 'USD' ? '$' : 'KSh' }}{{ transferAmount | number:'1.2-2' }}</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted d-block mb-1">Network Fee:</span>
+                                <strong [ngClass]="serviceFee === 0 ? 'text-success' : 'text-danger'">
+                                    {{ serviceFee === 0 ? 'FREE' : (currencyType === 'USD' ? '$' : 'KSh') + (serviceFee | number:'1.2-2') }}
+                                </strong>
+                            </div>
+
+                            <div class="col-12 border-bottom py-2"></div>
+
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Total Deducted:</span>
+                                <strong class="text-dark">{{ currencyType === 'USD' ? '$' : 'KSh' }}{{ totalDebit | number:'1.2-2' }}</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted d-block mb-1">Est. Arrival:</span>
+                                <strong class="text-success">{{ activeTab === 'sendmo' || processingSpeed === 'instant' ? 'Instant' : 'Standard (1-3 Days)' }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row gap-3">
+                    <button type="button" class="btn btn-danger py-3 fw-bolder w-100 rounded-pill shadow-sm" (click)="cancelTransfer()">
+                        Cancel Transfer
+                    </button>
+                    <button type="button" class="btn py-3 fw-bolder w-100 rounded-pill shadow-sm" 
+                            [ngClass]="countdownTimer > 0 || isConfirming ? 'btn-secondary text-muted' : 'btn-success'" 
+                            [disabled]="countdownTimer > 0 || isConfirming" 
+                            (click)="confirmTransfer()">
+                        <span *ngIf="countdownTimer > 0">Wait {{ countdownTimer }}s...</span>
+                        <span *ngIf="countdownTimer <= 0 && !isConfirming">Confirm & Pay Now <i class="fas fa-check-circle ms-2"></i></span>
+                        <span *ngIf="isConfirming"><i class="fas fa-circle-notch fa-spin me-2"></i> Processing...</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-body p-8 text-center animate__animated animate__zoomIn" *ngIf="isSuccess">
+                <div class="mb-5 d-inline-flex align-items-center justify-content-center bg-success bg-opacity-10 rounded-circle" style="width: 90px; height: 90px;">
+                    <i class="fas fa-thumbs-up text-success" style="font-size: 3rem;"></i>
+                </div>
+
+                <h3 class="fw-bolder text-dark mb-2">Transfer Successful!</h3>
+                <p class="text-muted mb-6">Your funds have been securely dispatched.</p>
+
+                <div class="bg-light p-4 rounded-4 mb-6 border border-dashed border-success text-center w-75 mx-auto">
+                    <span class="d-block small text-uppercase text-muted fw-bold mb-1" style="letter-spacing: 1px;">Transfer Code</span>
+                    <h4 class="fw-bolder text-success mb-0">#TRX-9942-B82</h4>
+                </div>
+
+                <div class="mb-6 w-75 mx-auto">
+                    <label class="form-label small text-muted fw-bold">Share Proof of Payment</label>
+                    <div class="input-group shadow-sm">
+                        <input type="text" class="form-control border-light-subtle bg-light text-center fw-bolder text-dark" value="sendmo.me/p/5521" readonly>
+                        <button class="btn btn-primary px-4 fw-bold" (click)="copySuccessLink()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-dark w-75 py-3 fw-bold rounded-pill shadow-sm" (click)="closeSuccessModal()">Back to Dashboard</button>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,749 @@
+<div class="container-xxl py-10" id="kt_content_container">
+
+    <div class="mb-8 hover-scroll-x">
+        <div class="d-grid">
+            <ul class="nav nav-tabs flex-nowrap text-nowrap">
+                <li class="nav-item">
+                    <a class="nav-link w-100" [class.active]="activeTab === 'how_it_works'" (click)="setTab('how_it_works')">
+                        <i class="fas fa-info-circle me-2"></i> How it Works
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link w-100" [class.active]="activeTab === 'set_account'" (click)="setTab('set_account')">
+                        <i class="fas fa-cog me-2"></i> 🚀 Set Account
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link w-100" [class.active]="activeTab === 'remittance'" (click)="setTab('remittance')">
+                        <i class="fas fa-globe me-2"></i> 🌍 Remittance (Cross-Border)
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        
+        <div *ngIf="activeTab === 'how_it_works'" class="animate__animated animate__fadeIn fade-in-up">
+            <div class="card border-0 shadow-sm mb-7" style="border-radius: 24px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
+                <div class="card-body p-10">
+                    <div class="d-flex flex-stack mb-10">
+                        <h3 class="fw-bolder text-dark mb-0">System Activation Flow</h3>
+                        <span class="badge badge-light-primary fs-8 fw-bold">v2.4 Live Engine</span>
+                    </div>
+
+                    <div class="row g-5 position-relative">
+                        <div class="position-absolute d-none d-md-block" style="top: 50px; left: 10%; width: 80%; height: 2px; background: linear-gradient(to right, #50cd89 25%, #e4e6ef 25%); z-index: 0;"></div>
+
+                        <div class="col-md-3 text-center position-relative" style="z-index: 1;">
+                            <div class="mx-auto mb-4 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; border-radius: 20px; background: #50cd89; box-shadow: 0 10px 20px rgba(80, 205, 137, 0.3); transform: rotate(-5deg);">
+                                <i class="fas fa-user-check text-white fs-2x"></i>
+                            </div>
+                            <h5 class="fw-bold fs-7 mb-1">Account Verified</h5>
+                            <div class="text-success fs-9 fw-bolder text-uppercase">Completed</div>
+                        </div>
+
+                        <div class="col-md-3 text-center position-relative" style="z-index: 1;">
+                            <div class="mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm" style="width: 70px; height: 70px; border-radius: 20px; background: #fff; border: 2px dashed #009ef7; animation: pulse-blue 2s infinite;">
+                                <i class="fas fa-microchip text-primary fs-2x"></i>
+                            </div>
+                            <h5 class="fw-bold fs-7 mb-1">Transfer Trigger</h5>
+                            <div class="text-primary fs-9 fw-bolder text-uppercase">Next Action</div>
+                        </div>
+
+                        <div class="col-md-3 text-center position-relative" style="z-index: 1;">
+                            <div class="mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm opacity-50" style="width: 70px; height: 70px; border-radius: 20px; background: #f5f8fa; border: 1px solid #e4e6ef;">
+                                <i class="fas fa-university text-gray-600 fs-2x"></i>
+                            </div>
+                            <h5 class="fw-bold fs-7 mb-1 text-gray-600">Virtual IBAN</h5>
+                            <div class="text-gray-400 fs-9 fw-bolder text-uppercase">Locked</div>
+                        </div>
+
+                        <div class="col-md-3 text-center position-relative" style="z-index: 1;">
+                            <div class="mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm opacity-50" style="width: 70px; height: 70px; border-radius: 20px; background: #f5f8fa; border: 1px solid #e4e6ef;">
+                                <i class="fas fa-globe-americas text-gray-600 fs-2x"></i>
+                            </div>
+                            <h5 class="fw-bold fs-7 mb-1 text-gray-600">Global Remit</h5>
+                            <div class="text-gray-400 fs-9 fw-bolder text-uppercase">Final Step</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mb-7" style="border-radius: 24px;">
+                <div class="card-body p-10">
+                    <h4 class="fw-bolder mb-8 text-center">How the Money Moves</h4>
+
+                    <div class="rounded-4 p-8 d-flex flex-column gap-5" style="background: #1e1e2d;">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="p-4 rounded-3 border border-white border-opacity-10 bg-white bg-opacity-5 w-200px">
+                                <span class="text-white fs-7 fw-bold">Source Wallet</span>
+                                <div class="text-gray-500 fs-9">Your Local Currency</div>
+                            </div>
+                            <div class="flex-grow-1 mx-4 border-bottom border-dashed border-primary opacity-25 position-relative">
+                                <i class="fas fa-arrow-right text-primary position-absolute end-0 top-50 translate-middle-y"></i>
+                            </div>
+                            <div class="p-4 rounded-3 border border-primary border-opacity-25 bg-primary bg-opacity-10 w-200px text-end">
+                                <span class="text-white fs-7 fw-bold">Sendmo Engine</span>
+                                <div class="text-primary fs-9">Real-time FX Swap</div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="h-40px border-start border-dashed border-primary mx-auto" style="width:1px;"></div>
+                            <span class="badge border border-primary text-primary fs-9 px-3 py-1">Compliance & AML Check</span>
+                            <div class="h-40px border-start border-dashed border-primary mx-auto" style="width:1px;"></div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="p-4 rounded-3 border border-success border-opacity-25 bg-success bg-opacity-10 w-200px">
+                                <span class="text-white fs-7 fw-bold">Virtual Account</span>
+                                <div class="text-success fs-9">Receiver ID assigned</div>
+                            </div>
+                            <div class="flex-grow-1 mx-4 border-bottom border-dashed border-success opacity-25 position-relative">
+                                <i class="fas fa-arrow-right text-success position-absolute end-0 top-50 translate-middle-y"></i>
+                            </div>
+                            <div class="p-4 rounded-3 border border-white border-opacity-10 bg-white bg-opacity-5 w-200px text-end">
+                                <span class="text-white fs-7 fw-bold">Payout Partner</span>
+                                <div class="text-gray-500 fs-9">Local Bank Credit</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 text-center">
+                        <button class="btn btn-lg w-100 py-4 fs-5 fw-bolder shadow-lg hover-elevate-up text-white" (click)="setTab('set_account')" style="border-radius: 16px; background: linear-gradient(135deg, #f1416c 0%, #ff6b6b 100%); border:none;">
+                            Step 2: Set Account to Start Remittance <i class="fas fa-arrow-right ms-2 fs-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeTab === 'set_account'" class="animate__animated animate__fadeIn fade-in-up">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-8">
+                <div>
+                    <h2 class="fw-bolder text-dark fs-1 mb-1">Global Receiving Accounts</h2>
+                    <p class="text-muted fs-7 mb-0">Manage your local virtual IBANs and receiving details.</p>
+                </div>
+                <div class="d-flex gap-3 mt-4 mt-md-0">
+                    <button class="btn btn-outline btn-outline-primary bg-white d-flex align-items-center px-4 py-2 shadow-sm hover-elevate-up" [class.active]="activeVirtualAccount === 'usd'" (click)="setVirtualAccount('usd')" style="border-radius: 12px;">
+                        <img src="https://flagcdn.com/w20/us.png" class="me-2" width="20" alt="USD">
+                        <span class="fw-bolder">USD Account</span>
+                    </button>
+                    <button class="btn btn-outline btn-outline-primary bg-white d-flex align-items-center px-4 py-2 shadow-sm hover-elevate-up" [class.active]="activeVirtualAccount === 'eur'" (click)="setVirtualAccount('eur')" style="border-radius: 12px;">
+                        <img src="https://flagcdn.com/w20/eu.png" class="me-2" width="20" alt="EUR">
+                        <span class="fw-bolder">EUR Account</span>
+                    </button>
+                    <button class="btn btn-icon btn-light-success shadow-sm hover-elevate-up" (click)="openAddCurrencyModal()" style="border-radius: 12px; width: 40px; height: 40px;" title="Add Another Currency">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row g-8">
+                <div class="col-xl-7">
+                    <div *ngIf="activeVirtualAccount === 'usd'" class="animate__animated animate__fadeIn">
+                        <div class="card border-0 mb-8 position-relative overflow-hidden shadow-lg" style="border-radius: 24px; background: linear-gradient(135deg, #1e1e2d 0%, #151521 100%);">
+                            <div class="position-absolute top-0 end-0 opacity-25" style="width: 300px; height: 300px; background: radial-gradient(circle, #3b82f6 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+
+                            <div class="card-body p-10 position-relative z-index-1">
+                                <div class="d-flex justify-content-between align-items-center mb-8">
+                                    <i class="fas fa-university text-white opacity-50 fs-1"></i>
+                                    <span class="badge bg-success bg-opacity-25 text-success fs-8 fw-bolder px-4 py-2 border border-success border-opacity-50" style="border-radius: 8px;">
+                                        <i class="fas fa-circle text-success fs-9 me-2 animation-blink"></i> LIVE & ACTIVE
+                                    </span>
+                                </div>
+
+                                <h3 class="text-white fw-bolder letter-spacing-2 mb-2 fs-2">Community Federal Savings Bank</h3>
+                                <p class="text-gray-500 fs-7 text-uppercase ls-1">Checking Account</p>
+
+                                <div class="d-flex align-items-end justify-content-between mt-10">
+                                    <div>
+                                        <div class="text-gray-600 fs-9 text-uppercase fw-bold mb-1">Beneficiary Name</div>
+                                        <div class="text-white fs-4 fw-bolder text-uppercase">John Doe (Sendmo LLC)</div>
+                                    </div>
+                                    <img src="https://flagcdn.com/w40/us.png" class="rounded-circle border border-2 border-white border-opacity-25" alt="US" style="width: 40px; height: 40px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0 shadow-sm mb-6 card-clarity">
+                            <div class="card-body p-8">
+                                <div class="d-flex justify-content-between align-items-center mb-7">
+                                    <h4 class="fw-bolder text-dark m-0 d-flex align-items-center">
+                                        <span class="bullet bullet-vertical bg-success h-20px me-3"></span> Receiving Details
+                                    </h4>
+                                    <button class="btn btn-sm btn-light-primary fw-bolder hover-elevate-up" (click)="copyToClipboard('Bank: Community Federal Savings Bank\nRouting: 026009593\nAccount: 3948572019')" style="border-radius: 10px;">
+                                        <i class="fas fa-copy me-2"></i> Copy Details
+                                    </button>
+                                </div>
+
+                                <div class="row g-5">
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center p-4 rounded-3 border border-dashed border-gray-300 bg-light hover-elevate-up transition-all">
+                                            <div class="flex-grow-1">
+                                                <span class="text-muted fs-8 fw-bold text-uppercase d-block mb-1">Routing (ACH)</span>
+                                                <span class="text-dark fw-bolder fs-5">026009593</span>
+                                            </div>
+                                            <button class="btn btn-icon btn-sm btn-light text-muted border" (click)="copyToClipboard('026009593')"><i class="fas fa-clipboard"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center p-4 rounded-3 border border-dashed border-gray-300 bg-light hover-elevate-up transition-all">
+                                            <div class="flex-grow-1">
+                                                <span class="text-muted fs-8 fw-bold text-uppercase d-block mb-1">Account Number</span>
+                                                <span class="text-dark fw-bolder fs-5">3948572019</span>
+                                            </div>
+                                            <button class="btn btn-icon btn-sm btn-light text-muted border" (click)="copyToClipboard('3948572019')"><i class="fas fa-clipboard"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-8 px-2">
+                            <a href="javascript:;" class="text-muted text-hover-danger fw-bold fs-8 transition-all" (click)="openDeactivateModal()">
+                                <i class="fas fa-trash me-1"></i> Deactivate this account
+                            </a>
+                            <a href="javascript:;" class="text-primary fw-bold fs-8 transition-all">
+                                View Account Statements <i class="fas fa-external-link-alt ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div *ngIf="activeVirtualAccount === 'eur'" class="animate__animated animate__fadeIn">
+                        <div class="text-center p-10 bg-white rounded-4 border border-dashed border-gray-300 shadow-sm">
+                            <i class="fas fa-lock text-muted fs-3x mb-4 d-block"></i>
+                            <h4 class="fw-bolder text-dark">EUR Account Inactive</h4>
+                            <p class="text-muted">Click below to generate your SEPA receiving details.</p>
+                            <button class="btn btn-primary px-6 mt-3 hover-elevate-up">Activate EUR Account</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-5">
+                    <div class="card border-0 shadow-sm mb-8 card-clarity">
+                        <div class="card-body p-8">
+                            <h5 class="fw-bolder text-dark mb-2">Auto-Sweep Destination</h5>
+                            <p class="text-muted fs-8 mb-6">Select where funds should land once collected from the virtual account.</p>
+
+                            <div class="row g-4">
+                                <div class="col-12">
+                                    <label class="w-100 cursor-pointer custom-wallet-card">
+                                        <input type="radio" name="auto_sweep" value="checking" class="d-none" checked>
+                                        <div class="card border border-2 rounded-4 p-5 d-flex flex-row align-items-center transition-all bg-hover-light">
+                                            <div class="symbol symbol-40px me-4">
+                                                <div class="symbol-label bg-light-primary"><i class="fas fa-wallet text-primary fs-4"></i></div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <span class="fw-bolder text-dark d-block fs-6">Main Checking</span>
+                                                <span class="text-muted fs-9">Ends in •••• 4092</span>
+                                            </div>
+                                            <i class="fas fa-check-circle text-primary fs-3 d-none check-icon"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label class="w-100 cursor-pointer custom-wallet-card">
+                                        <input type="radio" name="auto_sweep" value="savings" class="d-none">
+                                        <div class="card border border-2 rounded-4 p-5 d-flex flex-row align-items-center transition-all bg-hover-light">
+                                            <div class="symbol symbol-40px me-4">
+                                                <div class="symbol-label bg-light-success"><i class="fas fa-piggy-bank text-success fs-4"></i></div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <span class="fw-bolder text-dark d-block fs-6">High-Yield Savings</span>
+                                                <span class="text-muted fs-9">Ends in •••• 8810</span>
+                                            </div>
+                                            <i class="fas fa-check-circle text-primary fs-3 d-none check-icon"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-lg" style="border-radius: 20px; background: #0f172a;">
+                        <div class="card-body p-8 text-center">
+                            <div class="mb-5">
+                                <i class="fas fa-rocket text-white fs-2x mb-3 d-block opacity-75"></i>
+                                <h4 class="text-white fw-bolder">Ready to Move Funds?</h4>
+                                <p class="text-gray-500 fs-8">Your virtual account is fully primed. You can now initiate a remittance payout to your local network.</p>
+                            </div>
+                            <button class="btn btn-lg w-100 py-3 fs-5 fw-bolder shadow-sm btn-clarity-primary text-white" (click)="setTab('remittance')">
+                                Proceed to Remittance <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeTab === 'remittance'" class="animate__animated animate__fadeIn fade-in-up">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-8">
+                <div>
+                    <h2 class="fw-bolder text-dark fs-1 mb-1">Execute Global Transfer</h2>
+                    <p class="text-muted fs-7 mb-0">Route funds from your virtual balances to local bank networks.</p>
+                </div>
+                <span class="badge bg-light-primary text-primary border border-primary border-opacity-25 px-4 py-2 fs-8 fw-bolder d-flex align-items-center rounded-pill">
+                    <i class="fas fa-shield-alt me-2"></i> End-to-End Encrypted
+                </span>
+            </div>
+
+            <div class="row g-8">
+                <div class="col-xl-7">
+                    <div class="card card-clarity border-0 shadow-sm mb-6">
+                        <div class="card-body p-8">
+                            <h5 class="fw-bolder text-dark mb-5 d-flex align-items-center">
+                                <span class="bullet bullet-vertical bg-primary h-20px me-3"></span> Sending From
+                            </h5>
+
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="w-100 cursor-pointer custom-wallet-card">
+                                        <input type="radio" name="source_wallet" value="usd_virtual" class="d-none" [(ngModel)]="remitFundingSource">
+                                        <div class="card border border-2 rounded-4 p-4 transition-all bg-hover-light">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <img src="https://flagcdn.com/w20/us.png" class="rounded-sm" width="20" alt="USD">
+                                                <i class="fas fa-check-circle text-primary d-none check-icon"></i>
+                                            </div>
+                                            <div class="fw-bolder text-dark fs-5">USD Virtual IBAN</div>
+                                            <div class="text-muted fs-8 mb-2">Acc: •••• 2019</div>
+                                            <div class="text-success fw-bolder fs-4">$24,500.00 <span class="text-muted fs-9 fw-bold">Available</span></div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="w-100 cursor-pointer custom-wallet-card">
+                                        <input type="radio" name="source_wallet" value="eur_virtual" class="d-none" [(ngModel)]="remitFundingSource">
+                                        <div class="card border border-2 rounded-4 p-4 transition-all bg-hover-light">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <img src="https://flagcdn.com/w20/eu.png" class="rounded-sm" width="20" alt="EUR">
+                                                <i class="fas fa-check-circle text-primary d-none check-icon"></i>
+                                            </div>
+                                            <div class="fw-bolder text-dark fs-5">EUR Virtual IBAN</div>
+                                            <div class="text-muted fs-8 mb-2">Acc: •••• 8841</div>
+                                            <div class="text-success fw-bolder fs-4">€8,120.50 <span class="text-muted fs-9 fw-bold">Available</span></div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-clarity border-0 shadow-sm mb-6">
+                        <div class="card-body p-8">
+                            <div class="d-flex justify-content-between align-items-center mb-5">
+                                <h5 class="fw-bolder text-dark m-0 d-flex align-items-center">
+                                    <span class="bullet bullet-vertical bg-success h-20px me-3"></span> Receiving To
+                                </h5>
+                                <button class="btn btn-sm btn-light-success fw-bolder hover-elevate-up" (click)="openAddBeneficiaryModal()" style="border-radius: 8px;">
+                                    <i class="fas fa-plus"></i> Add New
+                                </button>
+                            </div>
+
+                            <div class="p-4 border border-gray-300 rounded-3 d-flex align-items-center justify-content-between bg-light mb-4">
+                                <div class="d-flex align-items-center">
+                                    <div class="symbol symbol-40px me-4">
+                                        <span class="symbol-label bg-light-danger text-danger fw-bolder">AC</span>
+                                    </div>
+                                    <div>
+                                        <div class="fw-bolder text-dark fs-6">Acme Corp Suppliers Ltd.</div>
+                                        <div class="text-muted fs-8">Kenya Commercial Bank •••• 9921</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-down text-muted"></i>
+                            </div>
+
+                            <div class="row g-5 mt-2">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-gray-700 fs-8 text-uppercase">Transfer Tag / Reference</label>
+                                    <input type="text" class="form-control form-control-clarity" placeholder="e.g. Invoice #4092" [(ngModel)]="remitTransferTag">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-gray-700 fs-8 text-uppercase">Purpose of Remittance</label>
+                                    <select class="form-select form-control-clarity" [(ngModel)]="remitPurpose">
+                                        <option>Supplier Payment</option>
+                                        <option>Family Support</option>
+                                        <option>Freelance Services</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row g-5 mt-2">
+                                <div class="col-md-6">
+                                    <label class="form-label small text-muted fw-bold mb-3 text-uppercase">Transfer Timing</label>
+                                    <div class="custom-selection-card mb-2">
+                                        <input class="btn-check" type="radio" name="timingOption" id="sendNowR" [checked]="remitSpeed === 'instant'" (change)="setProcessingSpeed('instant')">
+                                        <label class="btn btn-outline-light d-block text-start p-3 rounded-3 border shadow-sm" for="sendNowR">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="fw-bold text-dark">Send Instantly</span>
+                                                <i class="fas fa-bolt text-warning"></i>
+                                            </div>
+                                            <span class="d-block small text-muted mt-1 fs-9">*Funds available in seconds</span>
+                                        </label>
+                                    </div>
+                                    <div class="custom-selection-card">
+                                        <input class="btn-check" type="radio" name="timingOption" id="scheduleR" [checked]="remitSpeed === 'standard'" (change)="setProcessingSpeed('standard')">
+                                        <label class="btn btn-outline-light d-block text-start p-3 rounded-3 border shadow-sm" for="scheduleR">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="fw-bold text-dark">Standard (1-3 Days)</span>
+                                            </div>
+                                            <span class="d-block small text-muted mt-1 fs-9">Lower fee, standard processing</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small text-muted fw-bold mb-3 text-uppercase">Transfer Amount (USD)</label>
+                                    <input type="number" class="form-control form-control-clarity fs-3 fw-bold text-success py-3 h-auto" placeholder="0.00" [(ngModel)]="remitAmount">
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-8">
+                                <button type="button" class="btn btn-clarity-primary px-5 py-3 w-100 fw-bold rounded-3 shadow-sm fs-5" (click)="openReviewModal()">
+                                    Proceed to Review <i class="fas fa-arrow-right ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-5">
+                    <div class="card card-clarity h-100 preview-card-bg">
+                        <div class="card-body p-6 p-md-8">
+                            <h6 class="fw-bold d-flex align-items-center mb-6 text-custom-primary fs-5">
+                                <i class="fas fa-info-circle me-2"></i> Wallet Transfer Summary
+                            </h6>
+                            
+                            <h6 class="fw-semibold small mb-3 border-bottom pb-2 text-muted">COST BREAKDOWN</h6>
+                            
+                            <ul class="list-group list-group-flush rounded-4 bg-white shadow-sm mb-6">
+                                <li class="list-group-item d-flex justify-content-between py-3 border-0">
+                                    <span class="text-muted">Transfer Value</span>
+                                    <strong class="text-dark">${{ remitAmount | number:'1.2-2' }}</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between py-2 border-0">
+                                    <span class="text-muted">Base Transfer Fee</span>
+                                    <strong class="text-danger">-${{ remitBaseFee | number:'1.2-2' }}</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between py-2 border-0">
+                                    <span class="text-muted">FX Margin (0.5%)</span>
+                                    <strong class="text-danger">-${{ remitFxMargin | number:'1.2-2' }}</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between py-2 border-0">
+                                    <span class="text-muted">Regulatory Tax (VAT)</span>
+                                    <strong class="text-danger">-${{ remitTax | number:'1.2-2' }}</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between py-3 border-top bg-light-primary border-primary border-opacity-25 mt-2">
+                                    <span class="text-primary fw-bolder fs-8 text-uppercase"><i class="fas fa-exchange-alt me-2"></i> Guaranteed Rate</span>
+                                    <span class="text-primary fw-bolder fs-7">1 USD = 132.40 KES</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between py-3 border-top fw-bold" style="background-color: var(--color-highlight-bg);">
+                                    <span class="text-dark">Receiver Gets</span>
+                                    <strong class="text-success fs-4">KES {{ remitReceiverGets | number:'1.2-2' }}</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between py-3 rounded-bottom border-0" style="background-color: var(--color-tab-bg);">
+                                    <span class="text-custom-primary fw-bold">Total Debit</span>
+                                    <strong class="text-custom-primary fw-bolder">${{ remitTotalDebit | number:'1.2-2' }}</strong>
+                                </li>
+                            </ul>
+
+                            <h6 class="fw-semibold small mt-6 mb-3 border-bottom pb-2 text-muted">TRANSACTION INFO</h6>
+                            <div class="row g-4">
+                                <div class="col-6">
+                                    <span class="text-muted fs-9 text-uppercase d-block mb-1">Arrival Time</span>
+                                    <span class="text-dark fw-bold fs-8"><i class="fas fa-bolt text-warning me-1"></i> {{ remitSpeed === 'instant' ? 'Instant (0-2 mins)' : '1-3 Days' }}</span>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <span class="text-muted fs-9 text-uppercase d-block mb-1">Date</span>
+                                    <span class="text-dark fw-bold fs-8">Today</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="text-muted fs-9 text-uppercase d-block mb-1">Status</span>
+                                    <span class="badge bg-light-warning text-warning fs-9 fw-bolder">Draft Pending</span>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <span class="text-muted fs-9 text-uppercase d-block mb-1">Post-Transfer Bal</span>
+                                    <span class="text-dark fw-bold fs-8">$19,500.00</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="kt_modal_add_currency" tabindex="-1" [ngClass]="{'show d-block': isAddCurrencyModalOpen}" *ngIf="isAddCurrencyModalOpen" style="background: rgba(0,0,0,0.5);">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card-clarity border-0 shadow-lg">
+            <div class="modal-header border-0 pb-0 justify-content-end">
+                <button type="button" class="btn-close" (click)="closeAddCurrencyModal()"></button>
+            </div>
+            <div class="modal-body p-10 pt-0">
+                <h3 class="fw-bolder text-dark mb-2">Open New Balance</h3>
+                <p class="text-muted fs-7 mb-8">Select a region to generate local receiving details.</p>
+
+                <select class="form-select form-select-solid form-control-clarity fw-bold mb-8 py-3">
+                    <option value="" disabled selected>Select a Currency...</option>
+                    <option value="gbp">🇬🇧 British Pound (GBP) - Sort Code & Acc</option>
+                    <option value="cad">🇨🇦 Canadian Dollar (CAD) - EFT Details</option>
+                    <option value="aud">🇦🇺 Australian Dollar (AUD) - BSB</option>
+                </select>
+
+                <button type="button" class="btn btn-clarity-primary w-100 py-3 fw-bolder fs-5" (click)="closeAddCurrencyModal()">Generate Virtual Account</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="kt_modal_deactivate" tabindex="-1" [ngClass]="{'show d-block': isDeactivateModalOpen}" *ngIf="isDeactivateModalOpen" style="background: rgba(0,0,0,0.5);">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card-clarity border-0 shadow-lg text-center">
+            <div class="modal-body p-10">
+                <div class="mx-auto mb-6 d-flex align-items-center justify-content-center bg-light-danger rounded-circle" style="width: 80px; height: 80px;">
+                    <i class="fas fa-exclamation-triangle text-danger fs-3x"></i>
+                </div>
+                <h2 class="fw-bolder text-dark mb-4">Deactivate USD Account?</h2>
+                <p class="text-muted fs-6 mb-8">If you deactivate this virtual account, any future payments sent to these routing details will be rejected and bounced back to the sender.</p>
+                <div class="d-flex justify-content-center gap-4">
+                    <button type="button" class="btn btn-light fw-bolder px-6 py-2" (click)="closeDeactivateModal()">Cancel</button>
+                    <button type="button" class="btn btn-danger fw-bolder px-6 py-2" (click)="closeDeactivateModal()">Yes, Deactivate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="kt_modal_add_beneficiary" tabindex="-1" [ngClass]="{'show d-block': isAddBeneficiaryModalOpen}" *ngIf="isAddBeneficiaryModalOpen" style="background: rgba(0,0,0,0.5);">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow-xl card-clarity overflow-hidden">
+            
+            <div class="modal-header border-0 pb-0 pt-8 px-10 position-relative">
+                <div class="position-absolute top-0 start-0 w-100 h-4px" style="background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%);"></div>
+                <div>
+                    <h2 class="fw-bolder text-dark mb-1">Add Receiving Account</h2>
+                    <p class="text-muted fs-7 mb-0">Enter the exact banking details to avoid routing delays.</p>
+                </div>
+                <button type="button" class="btn-close mb-auto" (click)="closeAddBeneficiaryModal()" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body px-10 py-8">
+                <div class="mb-8">
+                    <label class="text-muted fw-bold fs-9 text-uppercase mb-3 d-block">1. Beneficiary Type</label>
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <label class="w-100 cursor-pointer custom-type-card">
+                                <input type="radio" name="ben_type" value="business" class="d-none" [(ngModel)]="benType">
+                                <div class="card border border-2 rounded-4 p-4 text-center transition-all bg-hover-light">
+                                    <i class="fas fa-building fs-2x mb-2 icon-color"></i>
+                                    <span class="fw-bolder text-dark d-block fs-6">Business / Vendor</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="col-6">
+                            <label class="w-100 cursor-pointer custom-type-card">
+                                <input type="radio" name="ben_type" value="individual" class="d-none" [(ngModel)]="benType">
+                                <div class="card border border-2 rounded-4 p-4 text-center transition-all bg-hover-light">
+                                    <i class="fas fa-user-tie fs-2x mb-2 icon-color"></i>
+                                    <span class="fw-bolder text-dark d-block fs-6">Personal / Individual</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <label class="text-muted fw-bold fs-9 text-uppercase mb-3 d-block">2. General Details</label>
+                    <div class="row g-5">
+                        <div class="col-md-12">
+                            <label class="form-label fw-bold text-gray-700 fs-8">Registered Account Name</label>
+                            <input type="text" class="form-control form-control-clarity py-3" placeholder="e.g. Acme Corp Ltd." [(ngModel)]="benBankName">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-gray-700 fs-8">Destination Country</label>
+                            <select class="form-select form-control-clarity py-3" [(ngModel)]="benCountry">
+                                <option value="" disabled selected>Select Country...</option>
+                                <option value="ke">🇰🇪 Kenya</option>
+                                <option value="uk">🇬🇧 United Kingdom</option>
+                                <option value="de">🇩🇪 Germany</option>
+                                <option value="ng">🇳🇬 Nigeria</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-gray-700 fs-8">Receiving Currency</label>
+                            <select class="form-select form-control-clarity py-3" [(ngModel)]="benCurrency">
+                                <option value="kes">KES - Kenyan Shilling</option>
+                                <option value="gbp">GBP - British Pound</option>
+                                <option value="eur">EUR - Euro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <label class="text-muted fw-bold fs-9 text-uppercase m-0">3. Banking Coordinates</label>
+                        <span class="badge bg-light-success text-success fs-9 fw-bold"><i class="fas fa-shield-check me-1"></i> Auto-Validation Active</span>
+                    </div>
+
+                    <div class="p-5 bg-light border border-gray-200 rounded-4">
+                        <div class="row g-5">
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold text-gray-700 fs-8">Bank Name</label>
+                                <input type="text" class="form-control form-control-clarity py-3" placeholder="e.g. Barclays Bank" [(ngModel)]="benBankName">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold text-gray-700 fs-8">IBAN / Account Number</label>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control form-control-clarity font-monospace py-3" placeholder="GB82 WEBK 6016 1331 9268 19" [(ngModel)]="benAccount">
+                                </div>
+                                <div class="text-muted fs-9 mt-1">No spaces required. We will automatically format this.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-gray-700 fs-8">SWIFT / BIC Code</label>
+                                <input type="text" class="form-control form-control-clarity font-monospace text-uppercase py-3" placeholder="8-11 Characters" [(ngModel)]="benSwift">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-gray-700 fs-8">Routing / Sort Code <span class="text-muted fw-normal">(Optional)</span></label>
+                                <input type="text" class="form-control form-control-clarity font-monospace py-3" placeholder="e.g. 60-16-13" [(ngModel)]="benRouting">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer border-top border-gray-200 p-6 d-flex justify-content-between align-items-center bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-light-danger fw-bolder px-6 py-3" (click)="closeAddBeneficiaryModal()">Cancel</button>
+                <button type="button" class="btn btn-clarity-primary fw-bolder px-8 py-3 shadow-sm hover-elevate-up" (click)="saveBeneficiary()">
+                    Save & Select Beneficiary <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);" *ngIf="isReviewModalOpen">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 card-clarity animate__animated animate__zoomIn">
+            
+            <div class="modal-header border-0 bg-light rounded-top-4 pb-4 px-6 pt-6">
+                <h4 class="modal-title fw-bolder text-dark w-100 text-center">Review Transfer</h4>
+            </div>
+
+            <div class="modal-body p-6 p-md-8" *ngIf="!isSuccessModalOpen">
+                
+                <div class="alert alert-warning border-0 d-flex align-items-center mb-6 rounded-4 p-4">
+                    <i class="fas fa-clock fs-2x me-4 text-warning"></i>
+                    <div>
+                        <strong class="d-block mb-1">Transfer Initiating...</strong>
+                        <span class="small">You have <span class="fw-bolder fs-5 text-danger">{{ countdownTimer }}</span> seconds to cancel this transaction before the lock.</span>
+                    </div>
+                </div>
+
+                <div class="card bg-light border-0 rounded-4 mb-8">
+                    <div class="card-body p-5">
+                        <div class="row g-4 text-sm">
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Date & Time:</span>
+                                <strong class="text-dark">Today - 14:30 GMT</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted d-block mb-1">Est. Arrival:</span>
+                                <strong class="text-success">{{ remitSpeed === 'instant' ? 'Instant' : '1-3 Days' }}</strong>
+                            </div>
+
+                            <div class="col-12 border-bottom py-2"></div>
+
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Sender (From):</span>
+                                <strong class="text-dark">John Doe (US)</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted d-block mb-1">Receiver (To):</span>
+                                <strong class="text-dark">Acme Corp Suppliers Ltd.</strong>
+                            </div>
+                            
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Send Amount:</span>
+                                <strong class="text-dark">${{ remitAmount | number:'1.2-2' }} USD</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted d-block mb-1">Exchange Rate:</span>
+                                <strong class="text-dark">1 USD = 132.40 KES</strong>
+                            </div>
+
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Network/Service Fees:</span>
+                                <strong class="text-danger">${{ (remitBaseFee + remitFxMargin) | number:'1.2-2' }} USD</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted d-block mb-1">Tax / VAT:</span>
+                                <strong class="text-danger">${{ remitTax | number:'1.2-2' }} USD</strong>
+                            </div>
+
+                            <div class="col-12 border-bottom py-2"></div>
+
+                            <div class="col-6">
+                                <span class="text-muted d-block mb-1">Total Deducted:</span>
+                                <strong class="text-dark">${{ remitTotalDebit | number:'1.2-2' }} USD</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted d-block mb-1">Receiver Gets:</span>
+                                <strong class="text-success fs-5">KES {{ remitReceiverGets | number:'1.2-2' }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row gap-3">
+                    <button type="button" class="btn btn-danger py-3 fw-bolder w-100 rounded-pill shadow-sm" (click)="cancelTransfer()">
+                        Cancel Transfer
+                    </button>
+                    <button type="button" class="btn py-3 fw-bolder w-100 rounded-pill shadow-sm" 
+                            [ngClass]="countdownTimer > 0 || isConfirming ? 'btn-secondary text-muted' : 'btn-success'" 
+                            [disabled]="countdownTimer > 0 || isConfirming" 
+                            (click)="confirmTransfer()">
+                        <span *ngIf="countdownTimer > 0">Wait {{ countdownTimer }}s...</span>
+                        <span *ngIf="countdownTimer <= 0 && !isConfirming">Confirm & Pay Now <i class="fas fa-check-circle ms-2"></i></span>
+                        <span *ngIf="isConfirming"><i class="fas fa-circle-notch fa-spin me-2"></i> Processing...</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);" *ngIf="isSuccessModalOpen">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4 card-clarity animate__animated animate__zoomIn">
+            <div class="modal-body p-8 text-center">
+                <div class="mb-5 d-inline-flex align-items-center justify-content-center bg-success bg-opacity-10 rounded-circle" style="width: 90px; height: 90px;">
+                    <i class="fas fa-thumbs-up text-success" style="font-size: 3rem;"></i>
+                </div>
+
+                <h3 class="fw-bolder text-dark mb-2">Transfer Successful!</h3>
+                <p class="text-muted mb-6">Your funds have been securely dispatched.</p>
+
+                <div class="bg-light p-4 rounded-4 mb-6 border border-dashed border-success text-center w-75 mx-auto">
+                    <span class="d-block small text-uppercase text-muted fw-bold mb-1" style="letter-spacing: 1px;">Transfer Code</span>
+                    <h4 class="fw-bolder text-success mb-0">#TRX-9942-B82</h4>
+                </div>
+
+                <div class="mb-6 w-75 mx-auto">
+                    <label class="form-label small text-muted fw-bold">Share Proof of Payment</label>
+                    <div class="input-group shadow-sm">
+                        <input type="text" class="form-control border-light-subtle bg-light text-center fw-bolder text-dark" value="sendmo.me/p/5521" readonly>
+                        <button class="btn btn-primary px-4 fw-bold" (click)="copySuccessLink()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-dark w-75 py-3 fw-bold rounded-pill shadow-sm mx-auto" (click)="closeSuccessModal()">Back to Dashboard</button>
+            </div>
+        </div>
+    </div>
+</div>

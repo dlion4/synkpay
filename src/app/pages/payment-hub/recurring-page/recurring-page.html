@@ -1,0 +1,490 @@
+<div class="container-xxl py-10" id="kt_content_container">
+    
+    <div class="row g-5 mb-10 animate__animated animate__fadeIn">
+        <div class="col-md-3">
+            <div class="card card-fintech p-6 stat-widget" style="border-left-color: var(--kt-success);">
+                <span class="text-muted fw-bold d-block fs-7 mb-1">TOTAL INFLOW</span>
+                <span class="text-dark fw-bolder fs-2">$42,500.00</span>
+                <div class="progress h-6px mt-4 bg-light-success">
+                    <div class="progress-bar bg-success" style="width: 70%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-fintech p-6 stat-widget" style="border-left-color: var(--kt-danger);">
+                <span class="text-muted fw-bold d-block fs-7 mb-1">TOTAL OUTFLOW</span>
+                <span class="text-dark fw-bolder fs-2">$12,180.00</span>
+                <div class="progress h-6px mt-4 bg-light-danger">
+                    <div class="progress-bar bg-danger" style="width: 40%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-fintech p-6 stat-widget" style="border-left-color: var(--kt-primary);">
+                <span class="text-muted fw-bold d-block fs-7 mb-1">ACTIVE CONTRACTS</span>
+                <span class="text-dark fw-bolder fs-2">24</span>
+                <span class="text-muted fs-8 mt-2 d-block">8 new since last month</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-fintech p-6 stat-widget" style="border-left-color: var(--kt-warning);">
+                <span class="text-muted fw-bold d-block fs-7 mb-1">NET POSITION</span>
+                <span class="text-dark fw-bolder fs-2">+$30,320.00</span>
+                <span class="badge badge-light-success fs-8 mt-2">Health: Stable</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-fintech shadow-sm animate__animated animate__fadeInUp">
+        <div class="card-header border-0 pt-5 px-8">
+            <h3 class="card-title align-items-start flex-column">
+                <span class="card-label fw-bolder fs-3 text-dark">Recurring Management</span>
+                <span class="text-muted mt-1 fw-bold fs-7">Manage your automatic subscriptions and collections</span>
+            </h3>
+            <div class="card-toolbar">
+                <ul class="nav nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary" [class.active]="activeMainTab === 'outflows'" (click)="setMainTab('outflows')">💸 Outflows</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary" [class.active]="activeMainTab === 'inflows'" (click)="setMainTab('inflows')">💰 Collections</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-body p-8">
+            <div class="tab-content">
+                
+                <div class="animate__animated animate__fadeIn" *ngIf="activeMainTab === 'outflows'">
+                    <div class="d-flex justify-content-between align-items-center mb-7">
+                        <div class="position-relative">
+                            <i class="fas fa-search position-absolute top-50 translate-middle-y ms-4 text-muted"></i>
+                            <input type="text" class="form-control form-control-solid w-250px ps-12" placeholder="Search billing..." [(ngModel)]="outflowSearch" (input)="applyOutflowFilter()">
+                        </div>
+                        <button class="btn btn-primary fw-bolder" data-bs-toggle="modal" data-bs-target="#modal_new_outflow" (click)="resetOutflowModal()">
+                            <i class="fas fa-plus"></i> Create New Bill
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                            <thead>
+                                <tr class="fw-bolder text-muted">
+                                    <th class="min-w-200px">Recipient</th>
+                                    <th class="min-w-150px">Amount</th>
+                                    <th class="min-w-150px">Next Billing</th>
+                                    <th class="min-w-100px text-end">Status</th>
+                                    <th class="min-w-100px text-end">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="filteredOutflows.length === 0">
+                                    <td colspan="5" class="text-center text-muted py-5">No recurring bills found.</td>
+                                </tr>
+                                <tr *ngFor="let item of filteredOutflows">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="symbol symbol-45px me-5">
+                                                <span class="symbol-label bg-light-primary text-primary">{{ item.initial }}</span>
+                                            </div>
+                                            <div class="d-flex justify-content-start flex-column">
+                                                <a href="javascript:;" class="text-dark fw-bolder text-hover-primary fs-6">{{ item.name }}</a>
+                                                <span class="text-muted fw-bold d-block fs-7">{{ item.category }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark fw-bolder d-block fs-6">${{ item.amount | number:'1.2-2' }}</span>
+                                        <span class="text-muted fs-7">{{ item.frequency }}</span>
+                                    </td>
+                                    <td><span class="text-dark fw-bolder d-block fs-6">{{ item.nextBilling }}</span></td>
+                                    <td class="text-end"><span class="badge fw-bolder {{ item.statusClass }}">{{ item.status }}</span></td>
+                                    <td class="text-end">
+                                        <button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"><i class="fas fa-pen"></i></button>
+                                        <button class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal_cancel"><i class="fas fa-stop"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="animate__animated animate__fadeIn" *ngIf="activeMainTab === 'inflows'">
+                    <div class="row g-7">
+                        
+                        <div class="col-lg-7 col-xl-8">
+                            <div class="card card-fintech border-0 h-100 shadow-none" style="background-color: #fafbfc;">
+                                <div class="card-body p-8">
+                                    <h3 class="fw-bolder text-dark mb-2">Create New Collection</h3>
+                                    <p class="text-muted fw-bold mb-8">Set up automatic invoicing and recurring card deductions.</p>
+
+                                    <ul class="nav nav-pills nav-steps-inflow mb-8 flex-column flex-sm-row">
+                                        <li class="nav-item">
+                                            <a class="nav-link active"><i class="fas fa-user me-2"></i> 1. Payer Details</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="row g-6 mb-6">
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bolder text-dark">Service / Product Name</label>
+                                            <input type="text" class="form-control form-control-solid" placeholder="e.g. Premium API Access">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bolder text-dark">Payer Email</label>
+                                            <input type="email" class="form-control form-control-solid" placeholder="client@company.com">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row g-6 mb-8">
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bolder text-dark">Collection Amount ($)</label>
+                                            <input type="number" class="form-control form-control-solid fs-4 fw-bolder text-primary" placeholder="0.00">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bolder text-dark">Billing Interval</label>
+                                            <select class="form-select form-control-solid fw-bold">
+                                                <option>Weekly</option>
+                                                <option selected>Monthly</option>
+                                                <option>Quarterly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-light-primary rounded p-5 mb-8 border border-dashed border-primary">
+                                        <h5 class="fw-bolder text-primary mb-3"><i class="fas fa-bell me-2"></i> Notifications</h5>
+                                        <div class="form-check form-switch mb-3">
+                                            <input class="form-check-input cursor-pointer" type="checkbox" id="notify_prebill" checked>
+                                            <label class="form-check-label text-dark fw-bold cursor-pointer" for="notify_prebill">
+                                                Auto-remind payer 3 days before deduction
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input cursor-pointer" type="checkbox" id="notify_receipt" checked>
+                                            <label class="form-check-label text-dark fw-bold cursor-pointer" for="notify_receipt">
+                                                Send automatic receipt upon successful collection
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-6">
+                                        <label class="form-label fw-bolder text-dark">Shareable Payment Link</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light-primary border-0 text-primary"><i class="fas fa-link fs-5"></i></span>
+                                            <input type="text" class="form-control form-control-solid text-dark fw-bold" value="https://pay.sendmo.co/collect/CL-2094B" readonly>
+                                            <button class="btn btn-primary fw-bolder" type="button" (click)="copyCollectLink()"><i class="fas fa-clipboard"></i> Copy</button>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-success fw-bolder w-100 py-3 shadow-sm"><i class="fas fa-check-double me-2"></i> Save Collection to Dashboard</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 col-xl-4">
+                            <h4 class="fw-bolder text-dark mb-6 d-flex justify-content-between align-items-center">
+                                Active Collections
+                                <span class="badge badge-light-primary fw-bolder fs-7">3 Active</span>
+                            </h4>
+
+                            <div class="collection-item" *ngFor="let coll of collections">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="symbol symbol-40px me-3">
+                                            <span class="symbol-label fw-bolder {{ coll.avatarClass }}">{{ coll.initial }}</span>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bolder text-dark fs-6">{{ coll.name }}</span>
+                                            <span class="text-muted fw-bold fs-8">{{ coll.category }}</span>
+                                        </div>
+                                    </div>
+                                    <span class="badge fs-8 {{ coll.statusClass }}">{{ coll.status }}</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-end mt-4">
+                                    <div class="d-flex flex-column">
+                                        <span class="text-dark fw-bolder fs-4">${{ coll.amount | number:'1.2-2' }}</span>
+                                        <span class="text-muted fw-bold fs-8">{{ coll.frequency }} <span *ngIf="coll.nextBilling !== '-'"> (Next: {{ coll.nextBilling }})</span></span>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button *ngIf="coll.status === 'Paused'" class="btn-action-light text-success" title="Resume"><i class="fas fa-play"></i></button>
+                                        <button *ngIf="coll.status === 'Collecting'" class="btn-action-light text-warning" title="Pause"><i class="fas fa-pause"></i></button>
+                                        <button *ngIf="coll.status === 'Awaiting Card'" class="btn-action-light text-primary" title="Copy Link" (click)="copyCollectLink()"><i class="fas fa-link"></i></button>
+                                        <button class="btn-action-light text-danger" title="Stop"><i class="fas fa-stop"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-light-primary fw-bolder w-100 mt-2 shadow-sm">View All Collections</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal_cancel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered mx-auto w-400px">
+        <div class="modal-content card-fintech shadow-lg border-0">
+            <div class="modal-body p-10 text-center">
+                <div class="mb-5">
+                    <i class="fas fa-exclamation-octagon text-danger" style="font-size: 4rem;"></i>
+                </div>
+                <h3 class="fw-bolder text-dark mb-2">Cancel Subscription?</h3>
+                <p class="text-muted fw-bold mb-8">This will immediately terminate your access to AWS Cloud Services at the end of this billing cycle.</p>
+                
+                <div class="mb-6">
+                    <input type="text" class="form-control form-control-solid text-center fw-bolder" placeholder="Type 'CONFIRM' to stop">
+                </div>
+
+                <div class="d-flex flex-stack gap-3">
+                    <button type="button" class="btn btn-light fw-bolder w-100" data-bs-dismiss="modal">Keep Active</button>
+                    <button type="button" class="btn btn-danger fw-bolder w-100 shadow-sm" (click)="cancelSubscription()" data-bs-dismiss="modal">Cancel Plan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal_new_outflow" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content card-fintech shadow-lg border-0">
+            
+            <div class="modal-header border-0 pb-0 pt-8 px-8 d-flex justify-content-between align-items-center">
+                <h3 class="fw-bolder text-dark m-0 fs-2">Create Recurring Payment</h3>
+                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" (click)="resetOutflowModal()">
+                    <i class="fas fa-times fs-3"></i>
+                </div>
+            </div>
+
+            <div class="modal-body py-8 px-8 px-lg-10">
+                <ul class="nav stepper-nav nav-pills" role="tablist">
+                    <li class="stepper-item" role="presentation">
+                        <button class="nav-link w-100" [class.active]="outflowStep === 1">
+                            <span class="stepper-icon">1</span>
+                            <span class="stepper-title">
+                                <span class="fs-5 fw-bolder text-dark">Recipient</span>
+                                <span class="fs-7 fw-bold text-muted">Who gets paid?</span>
+                            </span>
+                        </button>
+                    </li>
+                    <li class="stepper-item" role="presentation">
+                        <button class="nav-link w-100" [class.active]="outflowStep === 2">
+                            <span class="stepper-icon">2</span>
+                            <span class="stepper-title">
+                                <span class="fs-5 fw-bolder text-dark">Configuration</span>
+                                <span class="fs-7 fw-bold text-muted">Funding & Limits</span>
+                            </span>
+                        </button>
+                    </li>
+                    <li class="stepper-item border-0" role="presentation">
+                        <button class="nav-link w-100" [class.active]="outflowStep === 3">
+                            <span class="stepper-icon">3</span>
+                            <span class="stepper-title">
+                                <span class="fs-5 fw-bolder text-dark">Confirm</span>
+                                <span class="fs-7 fw-bold text-muted">Review & Submit</span>
+                            </span>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    
+                    <div class="animate__animated animate__fadeIn" *ngIf="outflowStep === 1">
+                        <div class="mb-8">
+                            <label class="d-flex align-items-center fs-5 fw-bold mb-4">
+                                <span>Select Destination Type</span>
+                            </label>
+                            <div class="row g-5">
+                                <div class="col-md-4">
+                                    <input type="radio" class="radio-card-input" name="dest_type" id="dest_sendmo" value="sendmo" [(ngModel)]="destType">
+                                    <label class="radio-card-label text-center" for="dest_sendmo">
+                                        <i class="fas fa-wallet fs-2x mb-3 text-primary"></i>
+                                        <span class="fw-bolder text-dark d-block fs-5">sendMO ID</span>
+                                        <span class="fw-bold text-muted fs-7">Instant Transfer</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="radio" class="radio-card-input" name="dest_type" id="dest_mobile" value="mobile" [(ngModel)]="destType">
+                                    <label class="radio-card-label text-center" for="dest_mobile">
+                                        <i class="fas fa-mobile-alt fs-2x mb-3 text-success"></i>
+                                        <span class="fw-bolder text-dark d-block fs-5">Mobile Money</span>
+                                        <span class="fw-bold text-muted fs-7">Phone Wallet</span>
+                                    </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="radio" class="radio-card-input" name="dest_type" id="dest_bank" value="bank" [(ngModel)]="destType">
+                                    <label class="radio-card-label text-center" for="dest_bank">
+                                        <i class="fas fa-university fs-2x mb-3 text-warning"></i>
+                                        <span class="fw-bolder text-dark d-block fs-5">Bank Account</span>
+                                        <span class="fw-bold text-muted fs-7">ACH / Wire</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-8 mb-5">
+                            <div class="col-md-6">
+                                <label class="form-label fs-6 fw-bolder text-dark mb-2">Account ID / Phone / IBAN</label>
+                                <input type="text" class="form-control form-control-solid py-3" placeholder="e.g. SM-9482-110">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fs-6 fw-bolder text-dark mb-2">Recipient Full Name</label>
+                                <input type="text" class="form-control form-control-solid py-3" placeholder="e.g. John Doe">
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <label class="form-label fs-6 fw-bolder text-dark mb-2">Reference / Note (Optional)</label>
+                            <input type="text" class="form-control form-control-solid py-3" placeholder="e.g. Server Hosting Rent">
+                        </div>
+
+                        <div class="d-flex justify-content-end pt-6 border-top border-dashed border-gray-300 mt-8">
+                            <button type="button" class="btn btn-primary fw-bolder px-8 shadow-sm" (click)="nextOutflowStep(2)">Continue to Configuration <i class="fas fa-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="animate__animated animate__fadeIn" *ngIf="outflowStep === 2">
+                        <div class="mb-8">
+                            <label class="form-label fs-5 fw-bolder text-dark mb-4">Fund From</label>
+                            <div class="row g-5">
+                                <div class="col-md-6">
+                                    <input type="radio" class="inflow-radio-input" name="fund_source" id="fund_wallet" value="wallet" [(ngModel)]="fundSource">
+                                    <label class="inflow-radio-label d-flex flex-row align-items-center justify-content-between p-4" for="fund_wallet">
+                                        <div class="d-flex align-items-center">
+                                            <div class="symbol symbol-40px me-4">
+                                                <span class="symbol-label bg-light-success text-success"><i class="fas fa-wallet fs-4"></i></span>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bolder text-dark fs-5">Main USD Wallet</span>
+                                                <span class="fw-bold text-muted fs-7">Available: $30,320.00</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="radio" class="inflow-radio-input" name="fund_source" id="fund_card" value="card" [(ngModel)]="fundSource">
+                                    <label class="inflow-radio-label d-flex flex-row align-items-center justify-content-between p-4" for="fund_card">
+                                        <div class="d-flex align-items-center">
+                                            <div class="symbol symbol-40px me-4">
+                                                <span class="symbol-label bg-light-primary text-primary"><i class="fas fa-credit-card fs-4"></i></span>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bolder text-dark fs-5">Visa ending 4432</span>
+                                                <span class="fw-bold text-muted fs-7">Corporate Card</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-8 mb-8">
+                            <div class="col-md-4">
+                                <label class="form-label fs-6 fw-bolder text-dark mb-2">Amount</label>
+                                <div class="input-group input-group-solid">
+                                    <span class="input-group-text border-0 fw-bolder">$</span>
+                                    <input type="number" class="form-control form-control-solid fw-bolder text-primary" placeholder="0.00" [(ngModel)]="outflowAmount">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fs-6 fw-bolder text-dark mb-2">Frequency</label>
+                                <select class="form-select form-select-solid fw-bold cursor-pointer" [(ngModel)]="outflowFreq">
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Quarterly">Quarterly</option>
+                                    <option value="Annually">Annually</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fs-6 fw-bolder text-dark mb-2">End Date (Limit)</label>
+                                <input type="date" class="form-control form-control-solid text-muted cursor-pointer">
+                            </div>
+                        </div>
+
+                        <div class="bg-light p-5 rounded-3 mb-5 border border-dashed">
+                            <h5 class="fw-bolder text-dark mb-4">Automation Actions</h5>
+                            <div class="d-flex align-items-center justify-content-between mb-4 form-check-custom">
+                                <div class="d-flex flex-column">
+                                    <span class="fw-bolder text-dark fs-6">Pre-billing Notifications</span>
+                                    <span class="fw-bold text-muted fs-8">Send an alert 3 days before deduction</span>
+                                </div>
+                                <input class="form-check-input cursor-pointer shadow-sm" type="checkbox" [(ngModel)]="outflowNotifPrebill">
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between form-check-custom">
+                                <div class="d-flex flex-column">
+                                    <span class="fw-bolder text-dark fs-6">Payment Receipts</span>
+                                    <span class="fw-bold text-muted fs-8">Auto-email receipt to recipient</span>
+                                </div>
+                                <input class="form-check-input cursor-pointer shadow-sm" type="checkbox" [(ngModel)]="outflowNotifReceipt">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between pt-6 border-top border-dashed border-gray-300 mt-8">
+                            <button type="button" class="btn btn-light fw-bolder px-8" (click)="nextOutflowStep(1)">Back</button>
+                            <button type="button" class="btn btn-primary fw-bolder px-8 shadow-sm" (click)="nextOutflowStep(3)">Review Details <i class="fas fa-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="animate__animated animate__fadeIn" *ngIf="outflowStep === 3">
+                        <div class="text-center mb-8">
+                            <i class="fas fa-shield-check text-success mb-3" style="font-size: 4rem;"></i>
+                            <h4 class="fw-bolder text-dark mt-3">Review Your Setup</h4>
+                            <p class="text-muted fw-bold fs-6">Please verify the automated billing details before saving.</p>
+                        </div>
+
+                        <div class="summary-block p-6 mb-8 shadow-sm">
+                            <div class="row g-4 mb-4 pb-4 border-bottom border-dashed border-gray-300">
+                                <div class="col-6">
+                                    <span class="text-muted fw-bold d-block fs-8 text-uppercase">Sending To</span>
+                                    <span class="text-dark fw-bolder fs-5">AWS Cloud Services</span>
+                                    <span class="text-muted fw-bold d-block fs-7">SM-9482-110 (sendMO)</span>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <span class="text-muted fw-bold d-block fs-8 text-uppercase">Funding Source</span>
+                                    <span class="text-dark fw-bolder fs-5">Main USD Wallet</span>
+                                    <span class="text-muted fw-bold d-block fs-7">Available: $30,320.00</span>
+                                </div>
+                            </div>
+                            <div class="row g-4">
+                                <div class="col-4">
+                                    <span class="text-muted fw-bold d-block fs-8 text-uppercase">Amount</span>
+                                    <span class="text-primary fw-bolder fs-3">${{ outflowAmount ? (outflowAmount | number:'1.2-2') : '0.00' }}</span>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <span class="text-muted fw-bold d-block fs-8 text-uppercase">Frequency</span>
+                                    <span class="text-dark fw-bolder fs-5 mt-1">{{ outflowFreq }}</span>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <span class="text-muted fw-bold d-block fs-8 text-uppercase">Ref Code</span>
+                                    <span class="badge badge-light-primary fw-bolder fs-6 mt-1">REC-8821X</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <label class="form-label fs-6 fw-bolder text-dark mb-2">Shareable Tracking Link</label>
+                            <div class="input-group shadow-sm">
+                                <input type="text" class="form-control form-control-solid text-muted" value="https://pay.sendmo.co/track/REC-8821X" readonly>
+                                <button class="btn btn-light-primary fw-bolder border border-primary border-opacity-25" type="button" title="Copy to clipboard" (click)="copyTrackLink()">
+                                    <i class="fas fa-clipboard"></i> Copy
+                                </button>
+                            </div>
+                            <div class="form-text text-muted mt-2 fw-bold">Share this URL with the recipient to let them track incoming payments securely.</div>
+                        </div>
+
+                        <div class="d-flex justify-content-between pt-6 border-top border-dashed border-gray-300 mt-8">
+                            <button type="button" class="btn btn-light-danger fw-bolder px-8" data-bs-dismiss="modal" (click)="resetOutflowModal()">Cancel Process</button>
+                            <div>
+                                <button type="button" class="btn btn-light fw-bolder px-8 me-3" (click)="nextOutflowStep(2)">Back</button>
+                                <button type="button" class="btn btn-success fw-bolder px-8 shadow-sm" data-bs-dismiss="modal" (click)="confirmOutflow()">Confirm & Activate <i class="fas fa-check-circle ms-2"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

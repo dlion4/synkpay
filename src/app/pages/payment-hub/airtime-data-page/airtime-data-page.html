@@ -1,0 +1,225 @@
+<div class="container-xxl py-10" id="kt_content_container">
+    
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="kt_tab_pane_1" role="tabpanel">
+            <div class="container py-5">
+                <div class="text-center mb-2">
+                    <h2 class="fw-bolder main-title" style="font-size:2.5rem;">📱 Global Airtime & Data Top-Up</h2>
+                    <p class="text-secondary" style="font-size:1rem;">Instant mobile top-ups across 100+ countries and 500+ carriers.</p>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card card-clarity p-4 p-md-8">
+                            <h4 class="section-header-gradient mb-6">Top-Up Destination & Details</h4>
+                            
+                            <div class="row g-4 mb-8">
+                                <div class="col-md-6">
+                                    <label class="form-label small text-muted fw-semibold">1. Select Destination Country</label>
+                                    <select class="form-select form-control-clarity fs-6" [(ngModel)]="selectedCountry" (change)="onCountryChange($event)">
+                                        <option selected disabled>Choose Country...</option>
+                                        <option value="NGN" data-code="+234">Nigeria (NGN)</option>
+                                        <option value="KES" data-code="+254">Kenya (KES)</option>
+                                        <option value="USD" data-code="+1">United States (USD)</option>
+                                        <option value="ZAR" data-code="+27">South Africa (ZAR)</option>
+                                        <option value="GHS" data-code="+233">Ghana (GHS)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small text-muted fw-semibold">2. Recipient Mobile Number</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold text-custom-primary">{{ countryCode }}</span>
+                                        <input type="tel" class="form-control fs-5" placeholder="e.g., 805 555 1234" [(ngModel)]="mobileNumber" (input)="onNumberChange()">
+                                        <span class="input-group-text carrier-icon bg-light-primary text-primary fw-bolder" [class.detected]="carrierName !== ''">{{ carrierInitial }}</span>
+                                    </div>
+                                    <small class="d-block mt-2" [ngClass]="carrierName !== '' ? 'text-custom-primary fw-bold' : 'text-muted'">
+                                        {{ carrierName !== '' ? 'Detected Carrier: ' + carrierName : 'Awaiting number for carrier detection...' }}
+                                    </small>
+                                </div>
+                            </div>
+                            
+                            <h4 class="section-header-gradient mb-4">3. Select Product & Denomination</h4>
+                            <ul class="nav nav-pills nav-pills-clarity mini-tabs justify-content-start mb-6 p-1 rounded" style="background-color: var(--color-light-accent)">
+                                <li class="nav-item me-2">
+                                    <button class="nav-link py-2 px-4" [class.active]="activeProductTab === 'airtime'" (click)="setProductTab('airtime')">📞 Airtime (Minutes)</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="nav-link py-2 px-4" [class.active]="activeProductTab === 'data'" (click)="setProductTab('data')">🌐 Data Bundles</button>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content mb-8">
+                                <div class="animate__animated animate__fadeIn" *ngIf="activeProductTab === 'airtime'">
+                                    <div class="row g-4">
+                                        <div class="col-4">
+                                            <div class="product-card text-center" [class.selected]="selectedProduct?.amount === 500" (click)="selectProduct('airtime', 500, '500', '~50 Minutes')">
+                                                <h5 class="fw-bold mb-0 text-custom-primary">500</h5>
+                                                <p class="small text-muted mb-0">~50 Minutes</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="product-card text-center" [class.selected]="selectedProduct?.amount === 1000" (click)="selectProduct('airtime', 1000, '1,000', '~100 Minutes')">
+                                                <h5 class="fw-bold mb-0 text-custom-primary">1,000</h5>
+                                                <p class="small text-muted mb-0">~100 Minutes</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="product-card text-center" [class.selected]="selectedProduct?.amount === 2000" (click)="selectProduct('airtime', 2000, '2,000', '~210 Minutes')">
+                                                <h5 class="fw-bold mb-0 text-custom-primary">2,000</h5>
+                                                <p class="small text-muted mb-0">~210 Minutes</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="animate__animated animate__fadeIn" *ngIf="activeProductTab === 'data'">
+                                    <div class="row g-4">
+                                        <div class="col-4">
+                                            <div class="product-card text-center" [class.selected]="selectedProduct?.amount === 1500" (click)="selectProduct('data', 1500, '1,500', '5GB / 7 Days')">
+                                                <h5 class="fw-bold mb-0 text-custom-primary">5 GB</h5>
+                                                <p class="small text-muted mb-0">7 Days | 1,500</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="product-card text-center" [class.selected]="selectedProduct?.amount === 3000" (click)="selectProduct('data', 3000, '3,000', '10GB / 30 Days')">
+                                                <h5 class="fw-bold mb-0 text-custom-primary">10 GB</h5>
+                                                <p class="small text-muted mb-0">30 Days | 3,000</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="product-card text-center" [class.selected]="selectedProduct?.amount === 5000" (click)="selectProduct('data', 5000, '5,000', '25GB / 30 Days')">
+                                                <h5 class="fw-bold mb-0 text-custom-primary">25 GB</h5>
+                                                <p class="small text-muted mb-0">30 Days | 5,000</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h4 class="section-header-gradient mb-4">4. Funding & Summary</h4>
+                            <div class="row g-4 mb-8">
+                                <div class="col-md-6">
+                                    <label class="form-label small text-muted fw-semibold">Select Funding Account</label>
+                                    <select class="form-select form-control-clarity fs-6" [(ngModel)]="fundingAccount">
+                                        <option value="USD Account: $1,200.50">USD Account: $1,200.50</option>
+                                        <option value="NGN Wallet: ₦55,200.00">NGN Wallet: ₦55,200.00</option>
+                                        <option value="EUR Savings: €5,000.00">EUR Savings: €5,000.00</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="p-4 rounded border" style="background-color: var(--color-tab-bg)">
+                                        <p class="small text-muted mb-1 fw-bold">Total Top-Up Amount</p>
+                                        <h4 class="fw-bolder text-custom-primary mb-0" *ngIf="selectedProduct">{{ selectedProduct.formattedAmount }} <span class="small fw-normal text-muted fs-6 ms-1">{{ selectedProduct.details }}</span></h4>
+                                        <h5 class="fw-bold text-muted mb-0" *ngIf="!selectedProduct">Please Select a Product</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <button class="btn btn-clarity-primary px-8 py-4 fs-5" [disabled]="!isReadyToProceed" data-bs-toggle="modal" data-bs-target="#paymentModal" (click)="resetPaymentModal()">
+                                    Proceed to Payment Confirmation <i class="fas fa-arrow-right ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="paymentModal" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content card-clarity border-0 overflow-hidden">
+            <div class="modal-header bg-light border-0 p-5">
+                <h4 class="modal-title section-header-gradient fw-bolder m-0">Finalize Top-Up</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            
+            <div class="modal-body p-6 p-md-8">
+                
+                <ul class="nav nav-tabs mb-6 border-0 justify-content-between px-4" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link border-0 px-0" [class.active]="paymentStep === 1" [class.text-custom-primary]="paymentStep === 1" [class.fw-bolder]="paymentStep === 1" [class.text-muted]="paymentStep !== 1" disabled>1. Review</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link border-0 px-0" [class.active]="paymentStep === 2" [class.text-custom-primary]="paymentStep === 2" [class.fw-bolder]="paymentStep === 2" [class.text-muted]="paymentStep !== 2" disabled>2. Authorize</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link border-0 px-0" [class.active]="paymentStep === 3" [class.text-custom-primary]="paymentStep === 3" [class.fw-bolder]="paymentStep === 3" [class.text-muted]="paymentStep !== 3" disabled>3. Status</button>
+                    </li>
+                </ul>
+
+                <div *ngIf="paymentStep === 1" class="animate__animated animate__fadeIn">
+                    <div class="p-5 rounded mb-6" style="background-color: var(--color-light-accent)">
+                        <h6 class="fw-bolder text-custom-primary mb-4">Transaction Review</h6>
+                        <div class="d-flex justify-content-between mb-3 border-bottom border-dashed pb-2">
+                            <span class="text-muted fw-bold">Recipient</span>
+                            <span class="fw-bolder text-dark">{{ countryCode }} {{ mobileNumber }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 border-bottom border-dashed pb-2">
+                            <span class="text-muted fw-bold">Carrier</span>
+                            <span class="fw-bolder text-dark">{{ carrierName }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 border-bottom border-dashed pb-2">
+                            <span class="text-muted fw-bold">Product</span>
+                            <span class="fw-bolder text-dark text-uppercase">{{ activeProductTab }} - {{ selectedProduct?.details }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 border-bottom border-dashed pb-2">
+                            <span class="text-muted fw-bold">Funding Source</span>
+                            <span class="fw-bolder text-success">{{ fundingAccount }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <span class="text-muted fw-bolder fs-6">Total Amount</span>
+                            <span class="fw-bolder fs-4 text-custom-primary">{{ selectedProduct?.formattedAmount }}</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-clarity-primary w-100 py-3 fs-5" (click)="nextPaymentStep(2)">Confirm & Authorize <i class="fas fa-lock ms-2"></i></button>
+                </div>
+
+                <div *ngIf="paymentStep === 2" class="animate__animated animate__fadeIn text-center">
+                    <i class="fas fa-shield-alt fs-3x mb-4 text-custom-primary"></i>
+                    <h5 class="fw-bolder text-dark mb-3">Security Authorization (2FA)</h5>
+                    <p class="small text-muted mb-6 px-4">A one-time code has been sent to your registered mobile device for verification.</p>
+                    
+                    <input type="text" class="form-control text-center fs-2 fw-bolder py-4 mb-6 mx-auto bg-light border-gray-300" placeholder="••••••" maxlength="6" [(ngModel)]="authCode" style="letter-spacing: 0.5rem; max-width: 250px;">
+                    
+                    <button class="btn btn-clarity-primary w-100 py-3 fs-5 mb-4" (click)="nextPaymentStep(3)">Verify Code & Execute</button>
+                    
+                    <p class="text-center small m-0 fw-bold">
+                        <a href="javascript:;" class="text-decoration-none text-custom-primary me-2">Resend Code</a> | <span class="text-danger ms-2">0:58</span>
+                    </p>
+                </div>
+
+                <div *ngIf="paymentStep === 3" class="animate__animated animate__fadeIn">
+                    
+                    <div *ngIf="isProcessing" class="text-center py-6 animate__animated animate__fadeIn">
+                        <div class="d-inline-block position-relative mb-5 mt-4">
+                            <div class="spinner-border spinner-gold rounded-circle" role="status"></div>
+                            <div class="ring-pulse-gold"></div>
+                        </div>
+                        <h4 class="fw-bolder text-custom-primary mb-2">Processing Top-Up...</h4>
+                        <p class="text-muted fw-bold">Transaction sent to carrier network. Awaiting confirmation.</p>
+                    </div>
+
+                    <div *ngIf="isSuccess" class="text-center py-6 animate__animated animate__zoomIn">
+                        <i class="fas fa-check-circle text-success mb-4" style="font-size: 5rem;"></i>
+                        <h3 class="fw-bolder text-success mb-2">Top-Up Successful!</h3>
+                        <p class="text-muted fw-bold mb-6 px-4">
+                            {{ selectedProduct?.formattedAmount }} sent to <strong class="text-dark">{{ countryCode }} {{ mobileNumber }}</strong> via <strong class="text-dark">{{ carrierName }}</strong>.
+                        </p>
+                        <button class="btn btn-clarity-primary px-8 py-3" data-bs-dismiss="modal">Done</button>
+                    </div>
+
+                    <div *ngIf="isError" class="text-center py-6 animate__animated animate__zoomIn">
+                        <i class="fas fa-exclamation-triangle text-danger mb-4" style="font-size: 5rem;"></i>
+                        <h3 class="fw-bolder text-danger mb-2">Transaction Failed</h3>
+                        <p class="text-muted fw-bold mb-6 px-4">The carrier rejected the request. Please check the number and try again.</p>
+                        <button class="btn btn-outline btn-outline-dark fw-bold px-8 py-3" data-bs-dismiss="modal">Close & Retry</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
