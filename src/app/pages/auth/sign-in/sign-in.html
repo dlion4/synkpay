@@ -1,0 +1,84 @@
+<div class="glass-card p-8 p-md-12 shadow-lg animate-fade position-relative mesh-bg">
+    
+    <div class="text-center mb-10 position-relative z-index-1">
+        <h1 class="text-dark fw-bolder mb-3 display-6">Sign In</h1>
+        <div class="text-muted fw-semibold fs-6">
+            Not a Member yet? 
+            <a routerLink="/auth/sign-up" class="fw-bolder hover-gold transition-300">Create an Account</a>
+        </div>
+    </div>
+
+    <form class="form w-100 position-relative z-index-1" (ngSubmit)="onSubmit()">
+        
+        <div class="fv-row mb-8 input-icon-wrapper">
+            <i class="fas fa-envelope input-icon"></i>
+            <input class="form-control form-control-lg bg-light border-0 py-4 ps-12 fw-bold custom-input" 
+                   type="email" 
+                   placeholder="Email Address" 
+                   [(ngModel)]="credentials.email" 
+                   name="email" 
+                   autocomplete="off" />
+        </div>
+
+        <div class="fv-row mb-4 position-relative input-icon-wrapper">
+            <i class="fas fa-lock input-icon"></i>
+            <input class="form-control form-control-lg bg-light border-0 py-4 ps-12 pe-12 fw-bold custom-input" 
+                   [type]="showPassword ? 'text' : 'password'" 
+                   placeholder="Password" 
+                   [(ngModel)]="credentials.password" 
+                   name="password" 
+                   autocomplete="off" />
+            
+            <span class="btn btn-sm btn-icon position-absolute translate-middle-y top-50 end-0 me-2" (click)="togglePassword()">
+                <i class="fas fs-5 transition-300" [ngClass]="showPassword ? 'fa-eye text-primary' : 'fa-eye-slash text-muted'"></i>
+            </span>
+        </div>
+
+        <div class="alert bg-light-warning border border-warning border-dashed p-3 rounded-3 mb-4 animate-fade" *ngIf="capsLockOn">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-exclamation-triangle text-warning fs-4 me-3"></i>
+                <span class="text-dark fw-bold fs-8">Caps Lock is currently ON.</span>
+            </div>
+        </div>
+
+        <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
+            <label class="form-check form-switch form-check-custom form-check-solid cursor-pointer">
+                <input class="form-check-input h-20px w-30px" type="checkbox" [(ngModel)]="credentials.trustDevice" name="trustDevice"/>
+                <span class="form-check-label fw-bold text-gray-700 fs-7 ms-2">Trust this device</span>
+            </label>
+
+            <a routerLink="/auth/reset-password" class="hover-gold transition-300">Forgot Password?</a>
+        </div>
+
+        <div class="d-grid mb-8">
+            <button type="submit" class="btn btn-gold py-4 fs-5 rounded-pill shadow-lg d-flex justify-content-center align-items-center" [disabled]="isSubmitting">
+                <span *ngIf="!isSubmitting">Secure Sign In <i class="fas fa-arrow-right ms-2"></i></span>
+                <span *ngIf="isSubmitting"><span class="spinner-border spinner-border-sm me-3"></span> Authenticating...</span>
+            </button>
+        </div>
+
+        <div class="d-flex align-items-center mb-8">
+            <div class="border-bottom border-gray-300 flex-grow-1"></div>
+            <span class="fw-bolder text-muted mx-4 text-uppercase ls-1 fs-8">Or Continue With</span>
+            <div class="border-bottom border-gray-300 flex-grow-1"></div>
+        </div>
+
+        <div class="d-flex justify-content-center gap-3">
+            <a href="javascript:void(0)" class="btn btn-light bg-white border border-gray-200 py-3 px-6 rounded-pill hover-elevate-up fw-bolder text-dark d-flex align-items-center w-100 justify-content-center" (click)="showToast('Google OAuth Not Configured', 'warning', 'fa-info-circle')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="h-20px me-3" alt="Google"> Google
+            </a>
+            <a href="javascript:void(0)" class="btn btn-dark py-3 px-6 rounded-pill hover-elevate-up fw-bolder text-white d-flex align-items-center w-100 justify-content-center" (click)="showToast('Biometric Auth Required', 'warning', 'fa-fingerprint')">
+                <i class="fas fa-fingerprint fs-4 me-3 text-gold"></i> Biometric
+            </a>
+        </div>
+    </form>
+</div>
+
+<div class="custom-toast shadow-lg" 
+     [ngClass]="{'show': toast.show, 'bg-danger': toast.type === 'error', 'bg-success': toast.type === 'success', 'bg-warning': toast.type === 'warning'}">
+    <i class="fas fs-3" [ngClass]="toast.icon"></i>
+    <div class="d-flex flex-column ms-2">
+        <span class="fw-bolder fs-7 text-white">{{ toast.type | uppercase }}</span>
+        <span class="fw-semibold text-white opacity-75 fs-8">{{ toast.message }}</span>
+    </div>
+</div>

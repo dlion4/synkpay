@@ -1,0 +1,98 @@
+<div class="glass-card p-8 p-md-12 shadow-lg animate-fade position-relative mesh-bg">
+    
+    <div class="text-center mb-10 position-relative z-index-1">
+        <h1 class="text-dark fw-bolder mb-3 display-6">Create an Account</h1>
+        <div class="text-muted fw-semibold fs-6">
+            Get unlimited access to SendMo. Already a member? 
+            <a routerLink="/auth/sign-in" class="fw-bolder" style="color: var(--gold-dark);">Sign in here</a>
+        </div>
+    </div>
+
+    <form class="form w-100 position-relative z-index-1" (ngSubmit)="onSubmit()">
+        
+        <div class="row g-4 mb-6">
+            <div class="col-sm-6">
+                <div class="input-icon-wrapper">
+                    <i class="fas fa-user input-icon"></i>
+                    <input class="form-control form-control-lg bg-light border-0 py-4 ps-12 fw-bold custom-input" type="text" placeholder="First Name" [(ngModel)]="user.firstName" name="firstName" autocomplete="off" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="input-icon-wrapper">
+                    <input class="form-control form-control-lg bg-light border-0 py-4 fw-bold custom-input" type="text" placeholder="Last Name" [(ngModel)]="user.lastName" name="lastName" autocomplete="off" />
+                </div>
+            </div>
+        </div>
+
+        <div class="fv-row mb-6 input-icon-wrapper">
+            <i class="fas fa-envelope input-icon"></i>
+            <input class="form-control form-control-lg bg-light border-0 py-4 ps-12 fw-bold custom-input" type="email" placeholder="Email Address" [(ngModel)]="user.email" name="email" autocomplete="off" />
+        </div>
+
+        <div class="fv-row mb-3 position-relative input-icon-wrapper">
+            <i class="fas fa-lock input-icon"></i>
+            <input class="form-control form-control-lg bg-light border-0 py-4 ps-12 pe-12 fw-bold custom-input" 
+                   [type]="showPassword ? 'text' : 'password'" 
+                   placeholder="Password" 
+                   [(ngModel)]="user.password" 
+                   name="password" 
+                   (ngModelChange)="checkPasswordStrength()" 
+                   autocomplete="off" />
+            
+            <span class="btn btn-sm btn-icon position-absolute translate-middle-y top-50 end-0 me-2" (click)="togglePassword()">
+                <i class="fas" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'" style="color: #a1a5b7;"></i>
+            </span>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+            <div class="flex-grow-1 rounded h-5px me-2 transition-300" [ngClass]="{'bg-danger': passwordScore >= 1, 'bg-warning': passwordScore >= 2, 'bg-success': passwordScore >= 3, 'bg-secondary': passwordScore === 0}"></div>
+            <div class="flex-grow-1 rounded h-5px me-2 transition-300" [ngClass]="{'bg-warning': passwordScore >= 2, 'bg-success': passwordScore >= 3, 'bg-secondary': passwordScore < 2}"></div>
+            <div class="flex-grow-1 rounded h-5px me-2 transition-300" [ngClass]="{'bg-success': passwordScore >= 3, 'bg-secondary': passwordScore < 3}"></div>
+            <div class="flex-grow-1 rounded h-5px transition-300" [ngClass]="{'bg-success': passwordScore === 4, 'bg-secondary': passwordScore < 4}"></div>
+        </div>
+        <div class="text-muted fs-8 mb-8 fw-semibold">
+            Use 8+ characters with a mix of letters, numbers & symbols.
+        </div>
+
+        <div class="fv-row mb-8 input-icon-wrapper">
+            <i class="fas fa-check-double input-icon"></i>
+            <input class="form-control form-control-lg bg-light border-0 py-4 ps-12 fw-bold custom-input" type="password" placeholder="Confirm Password" [(ngModel)]="user.confirmPassword" name="confirmPassword" autocomplete="off" />
+        </div>
+
+        <div class="fv-row mb-8">
+            <label class="form-check form-check-custom form-check-solid align-items-center cursor-pointer">
+                <input class="form-check-input h-20px w-20px border border-gray-400" type="checkbox" [(ngModel)]="user.agreedToTerms" name="agreedToTerms" />
+                <span class="form-check-label fw-semibold text-gray-700 fs-7 ms-3">
+                    I Agree to the <a href="javascript:void(0)" class="fw-bolder hover-underline" style="color: var(--gold-dark);">Terms and conditions</a>.
+                </span>
+            </label>
+        </div>
+
+        <div class="d-grid mb-8">
+            <button type="submit" class="btn btn-gold py-4 fs-5 rounded-pill shadow-lg d-flex justify-content-center align-items-center" [disabled]="isSubmitting">
+                <span *ngIf="!isSubmitting">Create Secure Account <i class="fas fa-shield-alt ms-2"></i></span>
+                <span *ngIf="isSubmitting"><span class="spinner-border spinner-border-sm me-3"></span> Encrypting & Securing...</span>
+            </button>
+        </div>
+
+        <div class="d-flex align-items-center mb-8">
+            <div class="border-bottom border-gray-300 flex-grow-1"></div>
+            <span class="fw-bolder text-muted mx-4 text-uppercase ls-1 fs-8">Or Register With</span>
+            <div class="border-bottom border-gray-300 flex-grow-1"></div>
+        </div>
+
+        <div class="d-flex justify-content-center gap-3">
+            <a href="javascript:void(0)" class="btn btn-light bg-white border border-gray-200 py-3 px-6 rounded-pill hover-elevate-up fw-bolder text-dark d-flex align-items-center w-100 justify-content-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="h-20px me-3" alt="Google"> Google
+            </a>
+            <a href="javascript:void(0)" class="btn btn-dark py-3 px-6 rounded-pill hover-elevate-up fw-bolder d-flex align-items-center w-100 justify-content-center">
+                <i class="fab fa-apple fs-4 me-3"></i> Apple
+            </a>
+        </div>
+    </form>
+</div>
+
+<div class="custom-toast shadow-lg" [ngClass]="{'show': toast.show, 'bg-danger': toast.type === 'error', 'bg-success': toast.type === 'success'}">
+    <i class="fas fs-3" [ngClass]="toast.type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'"></i>
+    <span class="fw-bold">{{ toast.message }}</span>
+</div>

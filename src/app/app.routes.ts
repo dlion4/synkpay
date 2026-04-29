@@ -3,7 +3,14 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { KycPageComponent } from './pages/compliance/kyc-page/kyc-page';
 import { KybPageComponent } from './pages/compliance/kyb-page/kyb-page';
 // ... other imports aaap
-// a
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout';
+// Auth Pages
+import { SignInComponent } from './pages/auth/sign-in/sign-in';
+import { SignUpComponent } from './pages/auth/sign-up/sign-up';
+import { ResetPasswordComponent } from './pages/auth/reset-password/reset-password';
+import { NewPasswordComponent } from './pages/auth/new-password/new-password';
+import { TwoFactorComponent } from './pages/auth/two-factor/two-factor';
+// authyyy
 import { SalesPageComponent } from './pages/performance/sales-page/sales-page';
 import { StatementsPageComponent } from './pages/performance/statements-page/statements-page';
 import { ValuationPageComponent } from './pages/performance/valuation-page/valuation-page';
@@ -124,6 +131,19 @@ export const routes: Routes = [
             { path: 'support/overview', component: SupportCenterComponent },
             { path: 'support/help', component: HelpCenterComponent },
             { path: 'support/live-chat', component: LiveChatComponent },
+        ]
+    },
+    // --- AUTHENTICATION routinggggggggg ---
+    {
+        path: 'auth',
+        component: AuthLayoutComponent,
+        children: [
+            { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
+            { path: 'sign-in', component: SignInComponent },
+            { path: 'sign-up', component: SignUpComponent },
+            { path: 'reset-password', component: ResetPasswordComponent },
+            { path: 'new-password', component: NewPasswordComponent },
+            { path: 'two-factor', component: TwoFactorComponent }
         ]
     },
 
