@@ -1,8 +1,9 @@
 /* Smooth transition for the sidebar wrapper */
 .transition-sidebar {
-  transition: width 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), 
-              opacity 0.25s ease-in-out,
-              min-width 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition:
+    width 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity 0.25s ease-in-out,
+    min-width 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 325px;
   min-width: 325px;
   opacity: 1;
@@ -29,18 +30,20 @@
 /* --- Sidebar Collapse Animations --- */
 
 .aside-secondary {
-    /* Base expanded state */
-    width: 325px; 
-    min-width: 325px;
-    overflow: hidden; /* Crucial: stops text from spilling out while animating */
-    transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out;
+  /* Base expanded state */
+  width: 325px;
+  min-width: 325px;
+  overflow: hidden; /* Crucial: stops text from spilling out while animating */
+  transition:
+    width 0.3s ease-in-out,
+    min-width 0.3s ease-in-out;
 }
 
 .aside-secondary.collapsed-sidebar {
-    /* Collapsed state */
-    width: 0 !important;
-    min-width: 0 !important;
-    border-right: none !important; /* Hides the border line when closed */
+  /* Collapsed state */
+  width: 0 !important;
+  min-width: 0 !important;
+  border-right: none !important; /* Hides the border line when closed */
 }
 
 /* --- Main Content Collapse Animations --- */
@@ -48,81 +51,258 @@
 /* Note: Ensure this targets your specific container-fluid. 
    You might want to wrap it in a custom class like .main-content-wrapper if it affects other containers */
 .container-fluid {
-    /* 100px (Primary) + 325px (Secondary) */
-    margin-left: 425px; 
-    width: auto;
-    transition: margin-left 0.3s ease-in-out;
+  /* 100px (Primary) + 325px (Secondary) */
+  margin-left: 425px;
+  width: auto;
+  transition: margin-left 0.3s ease-in-out;
 }
 
 .container-fluid.collapsed-sidebar {
-    /* 100px (Primary only) */
-    margin-left: 100px; 
+  /* 100px (Primary only) */
+  margin-left: 100px;
 }
 
 /* Optional: Media query for mobile/tablet where the sidebar might be hidden by default */
 @media (max-width: 991.98px) {
-    .container-fluid,
-    .container-fluid.collapsed-sidebar {
-        margin-left: 0;
-    }
+  .container-fluid,
+  .container-fluid.collapsed-sidebar {
+    margin-left: 0;
+  }
 }
 
 /* --- Sidebar Collapse Animations --- */
 .aside-secondary {
-    width: 325px; 
-    min-width: 325px;
-    overflow-x: hidden !important; 
-    transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out;
+  width: 325px;
+  min-width: 325px;
+  overflow-x: hidden !important;
+  transition:
+    width 0.3s ease-in-out,
+    min-width 0.3s ease-in-out;
 }
 
 .aside-secondary.collapsed-sidebar {
-    width: 0 !important;
-    min-width: 0 !important;
-    border-right: none !important; 
+  width: 0 !important;
+  min-width: 0 !important;
+  border-right: none !important;
 }
 
 /* --- Light Mode Primary Navigation Buttons --- */
 .btn-custom {
-    transition: all 0.25s ease-in-out;
-    border-radius: 12px;
-    padding: 14px;
-    color: #94a3b8 !important; /* Soft gray for inactive state */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-right: 3px solid transparent;
+  transition: all 0.25s ease-in-out;
+  border-radius: 12px;
+  padding: 14px;
+  color: #94a3b8 !important; /* Soft gray for inactive state */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 3px solid transparent;
 }
 
 .btn-custom:hover {
-    background-color: #f8fafc; /* Very light gray hover */
-    color: #D4AF37 !important; /* Theme Gold */
-    transform: translateY(-2px);
+  background-color: #f8fafc; /* Very light gray hover */
+  color: #d4af37 !important; /* Theme Gold */
+  transform: translateY(-2px);
 }
 
 .btn-custom.active {
-    background-color: rgba(212, 175, 55, 0.08) !important; /* Subtle gold tint */
-    color: #D4AF37 !important; 
-    border-right: 3px solid #D4AF37; /* Flat gold border connecting to secondary sidebar */
-    border-radius: 12px 0 0 12px;
+  background-color: rgba(212, 175, 55, 0.08) !important; /* Subtle gold tint */
+  color: #d4af37 !important;
+  border-right: 3px solid #d4af37; /* Flat gold border connecting to secondary sidebar */
+  border-radius: 12px 0 0 12px;
 }
 
 /* --- Reusable Utility Classes --- */
 .hover-elevate-up {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 .hover-elevate-up:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 .mono-num {
-    font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-    letter-spacing: -0.5px;
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  letter-spacing: -0.5px;
 }
 .transition-icon {
-    transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 .rotate-180 {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
-//vvvvvv
+/* Styling adjustments to guarantee the Secondary Aside stays constrained */
+.aside-secondary {
+  /* Prevents the sidebar from blowing out standard widths */
+  max-width: 325px;
+}
+
+.btn-custom {
+  /* Smooth transitions for the left icon nav */
+  transition: all 0.2s ease-in-out;
+  border-radius: 12px;
+  padding: 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.btn-custom:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.btn-custom.active {
+  background-color: rgba(212, 175, 55, 0.15) !important;
+  /* Gold subtle bg */
+  color: #d4af37 !important;
+  /* Gold primary */
+  border-right: 3px solid #d4af37;
+  border-radius: 12px 0 0 12px;
+}
+
+/* --- NEW ANIMATED ICON STYLES (Gemini Border Trick) --- */
+
+.gemini-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  /* Foolproof CSS Mask for a 2.5px ring that cannot be broken by Bootstrap */
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 2.5px),
+    #fff calc(100% - 2.5px)
+  );
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #fff calc(100% - 2.5px));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+/* The actual giant spinning gradient inside the masked container */
+.gemini-ring::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  /* Make it huge so corners are never cut off during rotation */
+  width: 200%;
+  height: 200%;
+
+  /* The Gemini Tracer Effect: Mostly transparent, with a glowing tail */
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 60%,
+    rgba(66, 133, 244, 0.3) 70%,
+    #4285f4 80%,
+    #ea4335 88%,
+    #fbbc05 95%,
+    #34a853 100%
+  );
+  animation: spin-gemini 3.5s linear infinite;
+}
+
+/* Keep the logo block proportional */
+.logo-ring {
+  width: 55px;
+  height: 55px;
+}
+
+/* Inner icon bounce and scale logic */
+.icon-inner {
+  position: relative; /* Required for z-index to work */
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    color 0.3s ease;
+  z-index: 2; /* Keeps icon above the animated border */
+}
+
+/* Trigger the animation on hover or when active */
+.btn-custom:hover .gemini-ring,
+.btn-custom.active .gemini-ring,
+.logo-wrapper:hover .logo-ring {
+  opacity: 1;
+}
+
+.btn-custom:hover .icon-inner,
+.btn-custom.active .icon-inner,
+.logo-wrapper:hover .icon-inner {
+  transform: scale(1.15);
+  color: #d4af37 !important;
+}
+
+/* The continuous rotation animation */
+@keyframes spin-gemini {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* --------------------------------- */
+
+.hover-elevate-up {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hover-elevate-up:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.mono-num {
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  letter-spacing: -0.5px;
+}
+/* Premium Hover effect for the links */
+.hover-elevate-up {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.hover-elevate-up:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-color: #d4af37 !important;
+  /* The primary gold color */
+}
+
+/* Standardized Light Backgrounds */
+.bg-light-primary {
+  background-color: #f1faff !important;
+}
+
+.bg-light-success {
+  background-color: #e8fff3 !important;
+}
+
+.bg-light-info {
+  background-color: #f8f5ff !important;
+}
+
+.bg-light-danger {
+  background-color: #fff5f8 !important;
+}
+
+/* Text Spacing */
+.ls-1 {
+  letter-spacing: 0.05rem;
+}
+
+/* Ensure icon symbols are perfect circles/squares */
+.symbol {
+  flex-shrink: 0;
+}

@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './wallet-sharedaccount-page.html',
   styleUrls: ['./wallet-sharedaccount-page.scss']
 })
-export class WalletSharedaccountPageComponent implements OnInit {
+export class WalletSharedAccountPageComponent implements OnInit {
   // Main Tabs
   activeTab: string = 'mo_overview';
 

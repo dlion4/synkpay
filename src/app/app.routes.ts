@@ -1,154 +1,299 @@
 import { Routes } from '@angular/router';
-import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout';
-import { KycPageComponent } from './pages/compliance/kyc-page/kyc-page';
-import { KybPageComponent } from './pages/compliance/kyb-page/kyb-page';
-// ... other imports aaap
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout';
-// Auth Pages
-import { SignInComponent } from './pages/auth/sign-in/sign-in';
-import { SignUpComponent } from './pages/auth/sign-up/sign-up';
-import { ResetPasswordComponent } from './pages/auth/reset-password/reset-password';
-import { NewPasswordComponent } from './pages/auth/new-password/new-password';
-import { TwoFactorComponent } from './pages/auth/two-factor/two-factor';
-// authyyy
-import { SalesPageComponent } from './pages/performance/sales-page/sales-page';
-import { StatementsPageComponent } from './pages/performance/statements-page/statements-page';
-import { ValuationPageComponent } from './pages/performance/valuation-page/valuation-page';
-
-import { WalletSoloaccountPageComponent } from './pages/wallet/wallet-soloaccount-page/wallet-soloaccount-page';
-import { WalletSharedaccountPageComponent } from './pages/wallet/wallet-sharedaccount-page/wallet-sharedaccount-page';
-import { WalletTokensPageComponent } from './pages/wallet/wallet-tokens-page/wallet-tokens-page';
-import { WalletReferralsPageComponent } from './pages/wallet/wallet-referrals-page/wallet-referrals-page';
-
-import { SendMoneyPageComponent } from './pages/payment-hub/send-money-page/send-money-page';
-import { ReceiveMoneyPageComponent } from './pages/payment-hub/receive-money-page/receive-money-page';
-import { RecurringPageComponent } from './pages/payment-hub/recurring-page/recurring-page';
-import { TransfersPageComponent } from './pages/payment-hub/transfers-page/transfers-page';
-import { UtilitiesPageComponent } from './pages/payment-hub/utilities-page/utilities-page';
-import { AirtimeDataPageComponent } from './pages/payment-hub/airtime-data-page/airtime-data-page';
-import { DisputesPageComponent } from './pages/payment-hub/disputes-page/disputes-page';
-import { TransactionsPageComponent } from './pages/payment-hub/transactions-page/transactions-page';
-
-import { CardsPageComponent } from './pages/cards/cards-page/cards-page';
-import { LimitsSecurityPageComponent } from './pages/cards/limits-security-page/limits-security-page';
-import { CardsTransactionsPageComponent } from './pages/cards/cards-transactions-page/cards-transactions-page';
-
-// ... other  DoD imports
-import { BeneficiaryPageComponent } from './pages/legacy/beneficiary-page/beneficiary-page';
-import { ContinuitySavingPageComponent } from './pages/legacy/continuity-saving-page/continuity-saving-page';
-
-//support
-import { SupportCenterComponent } from './pages/support/support-center/support-center';
-import { HelpCenterComponent } from './pages/support/help-center/help-center';
-import { LiveChatComponent } from './pages/support/live-chat/live-chat';
+import { authenticationGuard } from './guards/auth/authentication-guard';
 
 export const routes: Routes = [
-    {
+  {
+    path: '',
+    loadComponent: () => import('./layouts/base-layout/base-layout').then((m) => m.BaseLayout),
+    children: [
+      {
         path: '',
         loadComponent: () =>
-            import('./layouts/base-layout/base-layout').then(m => m.BaseLayout)
-        ,
-        children: [
-            {
-                path: '',
-                loadComponent: () =>
-                    import('./pages/home-page-component/home-page-component').then(m => m.HomePageComponent)
-            },
-            {
-                path: 'about',
-                loadComponent: () =>
-                    import('./pages/about-page-component/about-page-component').then(m => m.AboutPageComponent)
-            }
-        ]
-
-    },
-    {
-        path: 'dashboard',
+          import('./pages/home-page-component/home-page-component').then(
+            (m) => m.HomePageComponent,
+          ),
+      },
+      {
+        path: 'about',
         loadComponent: () =>
-            import('./layouts/dashboard-layout/dashboard-layout').then(m => m.DashboardLayoutComponent),
-        children: [
-            {
-                path: '',
-                loadComponent: () =>
-                    import('./pages/dashboard/dashboard-page-component/dashboard-page-component').then(m => m.DashboardPageComponent)
-            },
-            {
-                path: 'wallet',
-                loadComponent: () =>
-                    import('./pages/dashboard/wallet-page-component/wallet-page-component').then(m => m.WalletPageComponent),
-                children: [
-                    {
-
-                        path: 'soloaccount',
-                        loadComponent: () =>
-                            import('./pages/dashboard/wallet/wallet-soloaccount-page-component/wallet-soloaccount-page-component').then(m => m.WalletSoloaccountPageComponent)
-                    }
-                ]
-            }
-        ]
-
-
-    },
-    {
+          import('./pages/about-page-component/about-page-component').then(
+            (m) => m.AboutPageComponent,
+          ),
+      },
+    ],
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./layouts/dashboard-layout/dashboard-layout').then((m) => m.DashboardLayoutComponent),
+    canActivate: [/* AuthGuard */ authenticationGuard],
+    children: [
+      {
         path: '',
-        component: DashboardLayoutComponent,
+        loadComponent: () =>
+          import('./pages/dashboard/dashboard-page-component/dashboard-page-component').then(
+            (m) => m.DashboardPageComponent,
+          ),
+      },
+      {
+        path: 'compliance',
+        loadComponent: () =>
+          import('./layouts/dashboard-layout/compliance/dashboard-compliance-layout').then(
+            (m) => m.DashboardComplianceLayoutComponent,
+          ),
         children: [
-            // ... theeee other dashboard routes
-            { path: 'compliance/kyc', component: KycPageComponent },
-            { path: 'compliance/kyb', component: KybPageComponent },
-
-            // perfomance pages
-            { path: 'performance/sales', component: SalesPageComponent },
-            { path: 'performance/statements', component: StatementsPageComponent },
-            { path: 'performance/valuation', component: ValuationPageComponent },
-
-            // walettt pages
-            { path: 'wallet/accounts', component: WalletSoloaccountPageComponent },
-            { path: 'wallet/sharedaccount', component: WalletSharedaccountPageComponent },
-            { path: 'wallet/tokens', component: WalletTokensPageComponent },
-            { path: 'wallet/referrals', component: WalletReferralsPageComponent },
-
-            // payments pages not yet
-            { path: 'payment-hub/send-money', component: SendMoneyPageComponent },
-            { path: 'payment-hub/receive-money', component: ReceiveMoneyPageComponent },
-            { path: 'payment-hub/recurring', component: RecurringPageComponent },
-            { path: 'payment-hub/transfers', component: TransfersPageComponent },
-            { path: 'payment-hub/utilities', component: UtilitiesPageComponent },
-            { path: 'payment-hub/airtime-data', component: AirtimeDataPageComponent },
-            { path: 'payment-hub/disputes', component: DisputesPageComponent },
-            { path: 'payment-hub/transactions', component: TransactionsPageComponent },
-
-            // cards pages
-            { path: 'cards/my-cards', component: CardsPageComponent },
-            { path: 'cards/limits-security', component: LimitsSecurityPageComponent },
-            { path: 'cards/transactions', component: CardsTransactionsPageComponent },
-
-            //dod pagesss
-            { path: 'legacy/beneficiary', component: BeneficiaryPageComponent },
-            { path: 'legacy/continuity-saving', component: ContinuitySavingPageComponent },
-
-            //supportt and heppp
-            { path: 'support/overview', component: SupportCenterComponent },
-            { path: 'support/help', component: HelpCenterComponent },
-            { path: 'support/live-chat', component: LiveChatComponent },
-        ]
-    },
-    // --- AUTHENTICATION routinggggggggg ---
-    {
-        path: 'auth',
-        component: AuthLayoutComponent,
+          {
+            path: 'kyc',
+            loadComponent: () =>
+              import('./pages/compliance/kyc-page/kyc-page').then((m) => m.KycPageComponent),
+          },
+          {
+            path: 'kyb',
+            loadComponent: () =>
+              import('./pages/compliance/kyb-page/kyb-page').then((m) => m.KybPageComponent),
+          },
+        ],
+      },
+      {
+        path: 'performance',
+        loadComponent: () =>
+          import('./layouts/dashboard-layout/performance/performance-dashboard-layout-component').then(
+            (m) => m.DashboardPerformanceLayoutComponent,
+          ),
         children: [
-            { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
-            { path: 'sign-in', component: SignInComponent },
-            { path: 'sign-up', component: SignUpComponent },
-            { path: 'reset-password', component: ResetPasswordComponent },
-            { path: 'new-password', component: NewPasswordComponent },
-            { path: 'two-factor', component: TwoFactorComponent }
-        ]
-    },
-
-
+          {
+            path: 'sales',
+            loadComponent: () =>
+              import('./pages/performance/sales-page/sales-page').then((m) => m.SalesPageComponent),
+          },
+          {
+            path: 'statements',
+            loadComponent: () =>
+              import('./pages/performance/statements-page/statements-page').then(
+                (m) => m.StatementsPageComponent,
+              ),
+          },
+          {
+            path: 'valuation',
+            loadComponent: () =>
+              import('./pages/performance/valuation-page/valuation-page').then(
+                (m) => m.ValuationPageComponent,
+              ),
+          },
+        ],
+      },
+      {
+        path: 'wallet',
+        loadComponent: () =>
+          import('./layouts/dashboard-layout/wallet/dashboard-wallet-layout-component').then(
+            (m) => m.DashboardWalletLayoutComponent,
+          ),
+        children: [
+          {
+            path: 'accounts',
+            loadComponent: () =>
+              import('./pages/wallet/wallet-soloaccount-page/wallet-soloaccount-page').then(
+                (m) => m.WalletSoloAccountPageComponent,
+              ),
+          },
+          {
+            path: 'shared-account',
+            loadComponent: () =>
+              import('./pages/wallet/wallet-sharedaccount-page/wallet-sharedaccount-page').then(
+                (m) => m.WalletSharedAccountPageComponent,
+              ),
+          },
+          {
+            path: 'tokens',
+            loadComponent: () =>
+              import('./pages/wallet/wallet-tokens-page/wallet-tokens-page').then(
+                (m) => m.WalletTokensPageComponent,
+              ),
+          },
+          {
+            path: 'referrals',
+            loadComponent: () =>
+              import('./pages/wallet/wallet-referrals-page/wallet-referrals-page').then(
+                (m) => m.WalletReferralsPageComponent,
+              ),
+          },
+        ],
+      },
+      {
+        path: 'payment-hub',
+        loadComponent: () =>
+          import('./layouts/dashboard-layout/payment-hub/payment-hub-dashboard-layout-component').then(
+            (m) => m.DashboardPaymentHubLayoutComponent,
+          ),
+        children: [
+          {
+            path: 'send-money',
+            loadComponent: () =>
+              import('./pages/payment-hub/send-money-page/send-money-page').then(
+                (m) => m.SendMoneyPageComponent,
+              ),
+          },
+          {
+            path: 'receive-money',
+            loadComponent: () =>
+              import('./pages/payment-hub/receive-money-page/receive-money-page').then(
+                (m) => m.ReceiveMoneyPageComponent,
+              ),
+          },
+          {
+            path: 'recurring',
+            loadComponent: () =>
+              import('./pages/payment-hub/recurring-page/recurring-page').then(
+                (m) => m.RecurringPageComponent,
+              ),
+          },
+          {
+            path: 'transfers',
+            loadComponent: () =>
+              import('./pages/payment-hub/transfers-page/transfers-page').then(
+                (m) => m.TransfersPageComponent,
+              ),
+          },
+          {
+            path: 'utilities',
+            loadComponent: () =>
+              import('./pages/payment-hub/utilities-page/utilities-page').then(
+                (m) => m.UtilitiesPageComponent,
+              ),
+          },
+          {
+            path: 'airtime-data',
+            loadComponent: () =>
+              import('./pages/payment-hub/airtime-data-page/airtime-data-page').then(
+                (m) => m.AirtimeDataPageComponent,
+              ),
+          },
+          {
+            path: 'disputes',
+            loadComponent: () =>
+              import('./pages/payment-hub/disputes-page/disputes-page').then(
+                (m) => m.DisputesPageComponent,
+              ),
+          },
+          {
+            path: 'transactions',
+            loadComponent: () =>
+              import('./pages/payment-hub/transactions-page/transactions-page').then(
+                (m) => m.TransactionsPageComponent,
+              ),
+          },
+        ],
+      },
+      {
+        path: 'cards',
+        loadComponent: () =>
+          import('./layouts/dashboard-layout/card/card-dashboard-layout-component').then(
+            (m) => m.DashboardCardLayoutComponent,
+          ),
+        children: [
+          {
+            path: 'my-cards',
+            loadComponent: () =>
+              import('./pages/cards/cards-page/cards-page').then((m) => m.CardsPageComponent),
+          },
+          {
+            path: 'limits-security',
+            loadComponent: () =>
+              import('./pages/cards/limits-security-page/limits-security-page').then(
+                (m) => m.LimitsSecurityPageComponent,
+              ),
+          },
+          {
+            path: 'transactions',
+            loadComponent: () =>
+              import('./pages/cards/cards-transactions-page/cards-transactions-page').then(
+                (m) => m.CardsTransactionsPageComponent,
+              ),
+          },
+        ],
+      },
+      {
+        path: 'legacy',
+        loadComponent: () =>
+          import('./layouts/dashboard-layout/legacy/legacy-dashboard-layout-component').then(
+            (m) => m.DashboardLegacyLayoutComponent,
+          ),
+        children: [
+          {
+            path: 'beneficiary',
+            loadComponent: () =>
+              import('./pages/legacy/beneficiary-page/beneficiary-page').then(
+                (m) => m.BeneficiaryPageComponent,
+              ),
+          },
+          {
+            path: 'continuity-saving',
+            loadComponent: () =>
+              import('./pages/legacy/continuity-saving-page/continuity-saving-page').then(
+                (m) => m.ContinuitySavingPageComponent,
+              ),
+          },
+        ],
+      },
+      {
+        path: 'support',
+        loadComponent: () =>
+          import('./layouts/dashboard-layout/support/support-dashboard-layout-component').then(
+            (m) => m.DashboardSupportLayoutComponent,
+          ),
+        children: [
+          {
+            path: 'overview',
+            loadComponent: () =>
+              import('./pages/support/support-center/support-center').then(
+                (m) => m.SupportCenterComponent,
+              ),
+          },
+          {
+            path: 'help',
+            loadComponent: () =>
+              import('./pages/support/help-center/help-center').then((m) => m.HelpCenterComponent),
+          },
+          {
+            path: 'live-chat',
+            loadComponent: () =>
+              import('./pages/support/live-chat/live-chat').then((m) => m.LiveChatComponent),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: 'auth',
+    loadComponent: () =>
+      import('./layouts/auth-layout/auth-layout').then((m) => m.AuthLayoutComponent),
+    children: [
+      { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
+      {
+        path: 'sign-in',
+        loadComponent: () => import('./pages/auth/sign-in/sign-in').then((m) => m.SignInComponent),
+      },
+      {
+        path: 'sign-up',
+        loadComponent: () => import('./pages/auth/sign-up/sign-up').then((m) => m.SignUpComponent),
+      },
+      {
+        path: 'reset-password',
+        loadComponent: () =>
+          import('./pages/auth/reset-password/reset-password').then(
+            (m) => m.ResetPasswordComponent,
+          ),
+      },
+      {
+        path: 'new-password',
+        loadComponent: () =>
+          import('./pages/auth/new-password/new-password').then((m) => m.NewPasswordComponent),
+      },
+      {
+        path: 'two-factor',
+        loadComponent: () =>
+          import('./pages/auth/two-factor/two-factor').then((m) => m.TwoFactorComponent),
+      },
+    ],
+  },
 ];
-
-
-

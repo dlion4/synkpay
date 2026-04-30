@@ -8,15 +8,14 @@
         </div>
     </div>
 
-    <form class="form w-100 position-relative z-index-1" (ngSubmit)="onSubmit()">
+    <form class="form w-100 position-relative z-index-1" (ngSubmit)="onSubmit()" novalidate autocomplete="off" [formGroup]="fm">
         
         <div class="fv-row mb-8 input-icon-wrapper">
             <i class="fas fa-envelope input-icon"></i>
             <input class="form-control form-control-lg bg-light border-0 py-4 ps-12 fw-bold custom-input" 
                    type="email" 
                    placeholder="Email Address" 
-                   [(ngModel)]="credentials.email" 
-                   name="email" 
+                   formControlName="email"
                    autocomplete="off" />
         </div>
 
@@ -25,8 +24,7 @@
             <input class="form-control form-control-lg bg-light border-0 py-4 ps-12 pe-12 fw-bold custom-input" 
                    [type]="showPassword ? 'text' : 'password'" 
                    placeholder="Password" 
-                   [(ngModel)]="credentials.password" 
-                   name="password" 
+                   formControlName="password"
                    autocomplete="off" />
             
             <span class="btn btn-sm btn-icon position-absolute translate-middle-y top-50 end-0 me-2" (click)="togglePassword()">
@@ -34,16 +32,11 @@
             </span>
         </div>
 
-        <div class="alert bg-light-warning border border-warning border-dashed p-3 rounded-3 mb-4 animate-fade" *ngIf="capsLockOn">
-            <div class="d-flex align-items-center">
-                <i class="fas fa-exclamation-triangle text-warning fs-4 me-3"></i>
-                <span class="text-dark fw-bold fs-8">Caps Lock is currently ON.</span>
-            </div>
-        </div>
+
 
         <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
             <label class="form-check form-switch form-check-custom form-check-solid cursor-pointer">
-                <input class="form-check-input h-20px w-30px" type="checkbox" [(ngModel)]="credentials.trustDevice" name="trustDevice"/>
+                <input class="form-check-input h-20px w-30px" type="checkbox" formControlName="trustDevice"/>
                 <span class="form-check-label fw-bold text-gray-700 fs-7 ms-2">Trust this device</span>
             </label>
 
@@ -51,9 +44,13 @@
         </div>
 
         <div class="d-grid mb-8">
-            <button type="submit" class="btn btn-gold py-4 fs-5 rounded-pill shadow-lg d-flex justify-content-center align-items-center" [disabled]="isSubmitting">
-                <span *ngIf="!isSubmitting">Secure Sign In <i class="fas fa-arrow-right ms-2"></i></span>
-                <span *ngIf="isSubmitting"><span class="spinner-border spinner-border-sm me-3"></span> Authenticating...</span>
+            <button type="submit" class="btn btn-gold py-4 fs-5 rounded-pill shadow-lg d-flex justify-content-center align-items-center" [disabled]="!fm.valid || isSubmitting()">
+                @if (!isSubmitting()) {
+                    <span>Secure Sign In <i class="fas fa-arrow-right ms-2"></i></span>
+                } @else {
+                    <span>
+                    <span class="spinner-border spinner-border-sm me-3"></span> Authenticating...</span>
+                }
             </button>
         </div>
 

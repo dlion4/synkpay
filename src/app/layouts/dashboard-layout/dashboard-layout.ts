@@ -32,3 +32,5 @@ export class DashboardLayoutComponent implements OnInit {
     this.renderer.setAttribute(document.documentElement, 'data-bs-theme', themeMode);
   }
 }
+
+

@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-wallet-soloaccount-page',
+  selector: 'app-wallet-solo-account-page',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './wallet-soloaccount-page.html',
-  styleUrls: ['./wallet-soloaccount-page.scss']
+  templateUrl: './wallet-solo-account-page.html',
+  styleUrls: ['./wallet-solo-account-page.scss']
 })
-export class WalletSoloaccountPageComponent implements OnInit, OnDestroy {
+export class WalletSoloAccountPageComponent  implements OnInit, OnDestroy {
   // Main Tab State
   activeTab: string = 'checking';
   vaultCurrency: 'KES' | 'USD' = 'KES';

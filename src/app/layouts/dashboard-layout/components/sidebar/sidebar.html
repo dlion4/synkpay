@@ -1,1117 +1,1243 @@
-<div id="kt_aside" class="aside aside-extended shadow-lg d-flex h-100" data-kt-drawer="true" data-kt-drawer-name="aside"
-    data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="auto"
-    data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_mobile_toggle"
-    style="position: fixed; top: 0; left: 0; z-index: 100; height: 100vh;">
+<div
+  id="kt_aside"
+  class="aside aside-extended shadow-lg d-flex h-100"
+  data-kt-drawer="true"
+  data-kt-drawer-name="aside"
+  data-kt-drawer-activate="{default: true, lg: false}"
+  data-kt-drawer-overlay="true"
+  data-kt-drawer-width="auto"
+  data-kt-drawer-direction="start"
+  data-kt-drawer-toggle="#kt_aside_mobile_toggle"
+  style="position: fixed; top: 0; left: 0; z-index: 100; height: 100vh"
+>
+  <div
+    class="aside-primary d-flex flex-column align-items-center flex-row-auto"
+    style="width: 100px; background: #ffffff; border-right: 1px solid #e2e8f0; z-index: 2"
+  >
+    <div
+      class="aside-logo d-flex flex-column align-items-center flex-column-auto py-8"
+      id="kt_aside_logo"
+    >
+      <a routerLink="/">
+        <div
+          class="symbol symbol-45px bg-light rounded-circle border border-gray-200 d-flex align-items-center justify-content-center shadow-sm position-relative logo-wrapper"
+        >
+          <div class="gemini-ring logo-ring"></div>
+          <i class="fas fa-paper-plane text-gold fs-3 icon-inner" style="color: #d4af37"></i>
+        </div>
+      </a>
+    </div>
 
-    <div class="aside-primary d-flex flex-column align-items-center flex-row-auto"
-        style="width: 100px; background: #ffffff; border-right: 1px solid #e2e8f0; z-index: 2;">
+    <div
+      class="aside-nav d-flex flex-column align-items-center flex-column-fluid w-100 py-5 scroll-y"
+      style="scrollbar-width: none"
+    >
+      <ul
+        class="nav flex-column w-100 align-items-center gap-3"
+        id="kt_aside_nav_tabs"
+        role="tablist"
+      >
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
+          <a
+            class="nav-link btn btn-icon btn-custom active position-relative"
+            data-bs-toggle="tab"
+            href="#tab_dashboard"
+            role="tab"
+          >
+            <div class="gemini-ring"></div>
+            <i class="fas fa-chart-pie fs-2x icon-inner"></i>
+          </a>
+        </li>
 
-        <div class="aside-logo d-flex flex-column align-items-center flex-column-auto py-8" id="kt_aside_logo">
-            <a routerLink="/">
-                <div
-                    class="symbol symbol-45px bg-light rounded-circle border border-gray-200 d-flex align-items-center justify-content-center shadow-sm position-relative logo-wrapper">
-                    <div class="gemini-ring logo-ring"></div>
-                    <i class="fas fa-paper-plane text-gold fs-3 icon-inner" style="color: #D4AF37;"></i>
+        <li
+          class="nav-item"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="Compliance & KYC"
+        >
+          <a
+            class="nav-link btn btn-icon btn-custom position-relative"
+            data-bs-toggle="tab"
+            href="#tab_compliance"
+            role="tab"
+          >
+            <div class="gemini-ring"></div>
+            <i class="fas fa-user-shield fs-2x icon-inner"></i>
+          </a>
+        </li>
+
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Performance">
+          <a
+            class="nav-link btn btn-icon btn-custom position-relative"
+            data-bs-toggle="tab"
+            href="#tab_performance"
+            role="tab"
+          >
+            <div class="gemini-ring"></div>
+            <i class="fas fa-chart-line fs-2x icon-inner"></i>
+          </a>
+        </li>
+
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Wallet">
+          <a
+            class="nav-link btn btn-icon btn-custom position-relative"
+            data-bs-toggle="tab"
+            href="#tab_wallet"
+            role="tab"
+          >
+            <div class="gemini-ring"></div>
+            <i class="fas fa-wallet fs-2x icon-inner"></i>
+          </a>
+        </li>
+
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Payments">
+          <a
+            class="nav-link btn btn-icon btn-custom position-relative"
+            data-bs-toggle="tab"
+            href="#tab_payments"
+            role="tab"
+          >
+            <div class="gemini-ring"></div>
+            <i class="fas fa-money-bill-transfer fs-2x icon-inner"></i>
+          </a>
+        </li>
+
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Channels">
+          <a
+            class="nav-link btn btn-icon btn-custom position-relative"
+            data-bs-toggle="tab"
+            href="#tab_channels"
+            role="tab"
+          >
+            <div class="gemini-ring"></div>
+            <i class="fas fa-network-wired fs-2x icon-inner"></i>
+          </a>
+        </li>
+
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Cards">
+          <a
+            class="nav-link btn btn-icon btn-custom position-relative"
+            data-bs-toggle="tab"
+            href="#tab_cards"
+            role="tab"
+          >
+            <div class="gemini-ring"></div>
+            <i class="fas fa-credit-card fs-2x icon-inner"></i>
+          </a>
+        </li>
+
+        <li
+          class="nav-item"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="Legacy & Continuity"
+        >
+          <a
+            class="nav-link btn btn-icon btn-custom position-relative"
+            data-bs-toggle="tab"
+            href="#tab_dod"
+            role="tab"
+          >
+            <div class="gemini-ring"></div>
+            <i class="fas fa-shield-halved fs-2x icon-inner"></i>
+          </a>
+        </li>
+
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Tools">
+          <a
+            class="nav-link btn btn-icon btn-custom position-relative"
+            data-bs-toggle="tab"
+            href="#tab_tools"
+            role="tab"
+          >
+            <div class="gemini-ring"></div>
+            <i class="fas fa-screwdriver-wrench fs-2x icon-inner"></i>
+          </a>
+        </li>
+
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Support">
+          <a
+            class="nav-link btn btn-icon btn-custom position-relative"
+            data-bs-toggle="tab"
+            href="#tab_support"
+            role="tab"
+          >
+            <div class="gemini-ring"></div>
+            <i class="fas fa-life-ring fs-2x icon-inner"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="aside-footer d-flex flex-column align-items-center py-6">
+      <div class="btn btn-icon btn-custom position-relative">
+        <div class="gemini-ring"></div>
+        <i class="fas fa-graduation-cap fs-2x icon-inner"></i>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="aside-secondary d-flex flex-column bg-white shadow-sm"
+    [class.collapsed-sidebar]="isCollapsed"
+    style="border-right: 1px solid rgba(0, 0, 0, 0.05); z-index: 1"
+  >
+    <div
+      class="aside-workspace w-100 h-100 overflow-auto scroll-y pt-6 pb-10"
+      style="scrollbar-width: thin"
+    >
+      <div class="tab-content px-6">
+        <div class="tab-pane fade active show" id="tab_dashboard" role="tabpanel">
+          <h2 class="text-dark fw-bolder mb-8 fs-3">Businesses</h2>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Personal Identity</h5>
+          <div
+            class="card border border-dashed border-primary bg-light-primary mb-8 hover-elevate-up transition-300"
+          >
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center mb-3">
+                <div class="symbol symbol-45px me-3">
+                  <span class="symbol-label bg-white shadow-sm border border-primary border-dashed"
+                    ><i class="fas fa-user-shield text-primary fs-3"></i
+                  ></span>
                 </div>
+                <div class="d-flex flex-column">
+                  <span class="text-dark fw-bolder fs-6">Daniel Milimo</span>
+                  <div class="d-flex align-items-center mt-1">
+                    <i class="fas fa-map-marker-alt text-danger fs-9 me-1"></i>
+                    <span class="text-muted fw-bold fs-8 me-2">Kenya</span>
+                    <span class="badge bg-success text-white fw-bold px-2 py-1 fs-9">Verified</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center bg-white p-2 rounded border border-dashed mb-3"
+              >
+                <span class="text-muted fs-9 fw-bold ms-2"
+                  >ID: <span class="text-primary font-monospace fw-bolder">#SMP-123454</span></span
+                >
+                <button class="btn btn-icon btn-sm btn-light">
+                  <i class="fas fa-copy text-muted fs-8"></i>
+                </button>
+              </div>
+              <button
+                class="btn btn-primary btn-sm w-100 fw-bold shadow-sm"
+                routerLink="/dashboard"
+              >
+                Personal Dashboard <i class="fas fa-arrow-right ms-1 fs-9"></i>
+              </button>
+            </div>
+          </div>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Corporate Entities</h5>
+
+          <div
+            class="card border border-dashed border-success bg-light-success mb-4 hover-elevate-up transition-300"
+          >
+            <div class="card-body p-4">
+              <div class="d-flex align-items-start justify-content-between mb-3">
+                <div class="d-flex align-items-center">
+                  <div class="symbol symbol-40px me-3">
+                    <span class="symbol-label bg-white shadow-sm"
+                      ><i class="fas fa-building text-success fs-3"></i
+                    ></span>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <span class="text-dark fw-bolder fs-6">Pkenya LTD</span>
+                    <span class="text-muted fw-bold fs-8"
+                      ><i class="fas fa-microchip me-1 text-info"></i>Tech Services</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center bg-white p-2 rounded border border-dashed mb-3"
+              >
+                <span class="text-muted fs-9 fw-bold ms-2"
+                  >Pay ID: <span class="text-success font-monospace fw-bolder">#SMB-882</span></span
+                >
+                <button class="btn btn-icon btn-sm btn-light">
+                  <i class="fas fa-copy text-muted fs-8"></i>
+                </button>
+              </div>
+              <button
+                class="btn btn-success btn-sm w-100 fw-bold shadow-sm text-white"
+                routerLink="/business/pkenya"
+              >
+                Manage Business
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="card border border-dashed border-danger bg-light-danger mb-6 hover-elevate-up transition-300"
+          >
+            <div class="card-body p-4">
+              <div class="d-flex align-items-start justify-content-between mb-3">
+                <div class="d-flex align-items-center">
+                  <div class="symbol symbol-40px me-3">
+                    <span class="symbol-label bg-white shadow-sm"
+                      ><i class="fas fa-heart text-danger fs-3"></i
+                    ></span>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <span class="text-dark fw-bolder fs-6">ASEN Org</span>
+                    <span class="text-muted fw-bold fs-8">NGO / Social</span>
+                  </div>
+                </div>
+                <span
+                  class="badge bg-light-danger text-danger fw-bold border border-danger border-dashed fs-9"
+                  >Pending KYB</span
+                >
+              </div>
+              <button
+                class="btn btn-danger btn-sm w-100 fw-bold shadow-sm text-white"
+                routerLink="/dashboard/compliance/kyb"
+              >
+                Upload Documents <i class="fas fa-exclamation-circle ms-1 fs-9"></i>
+              </button>
+            </div>
+          </div>
+
+          <button
+            class="btn w-100 py-3 fw-bolder text-white shadow-sm hover-elevate-up mb-6"
+            style="background: linear-gradient(135deg, #d4af37 0%, #996515 100%)"
+          >
+            <i class="fas fa-plus-circle me-2"></i> Register New Entity
+          </button>
+
+          <div
+            class="card border-0 bg-dark p-5 rounded-4 position-relative overflow-hidden hover-elevate-up"
+            style="background: linear-gradient(135deg, #111827 0%, #1f2937 100%)"
+          >
+            <i
+              class="fas fa-code position-absolute text-white opacity-5"
+              style="font-size: 5rem; right: -1rem; bottom: -1rem"
+            ></i>
+            <h5 class="text-white fw-bolder mb-1">Developer Platform</h5>
+            <p class="text-white opacity-50 fs-8 mb-4">Enable API access & webhooks.</p>
+            <button
+              class="btn btn-sm btn-light border-0 fw-bold w-100"
+              data-bs-toggle="modal"
+              data-bs-target="#developerActivationModal"
+            >
+              <i class="fas fa-terminal me-1 text-dark"></i> API Settings
+            </button>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab_compliance" role="tabpanel">
+          <div class="m-0 pt-5">
+            <div class="mb-10">
+              <h3 class="text-gray-800 fw-bold mb-6 mx-5 fs-4">Verified Users</h3>
+              <div class="mx-5">
+                <div class="card border border-dashed border-primary bg-light-primary mb-3">
+                  <div class="card-body p-4">
+                    <div class="d-flex align-items-center">
+                      <div class="symbol symbol-35px me-3">
+                        <span class="symbol-label bg-light">
+                          <i class="fas fa-user-doctor text-primary fs-4"></i>
+                        </span>
+                      </div>
+                      <div class="d-flex flex-column flex-grow-1">
+                        <span class="text-gray-900 fw-bold fs-6">Dan Delion</span>
+                        <div class="d-flex align-items-center">
+                          <span class="text-muted fw-semibold fs-7">Kenya</span>
+                          <span class="bullet bullet-dot bg-success h-5px w-5px mx-2"></span>
+                          <span class="text-success fw-bold fs-8">Verified</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-10">
+              <h3 class="text-gray-800 fw-bold mb-6 mx-5 fs-4">Verified Businesses</h3>
+              <div class="mx-5">
+                <div class="card border border-dashed border-gray-300 mb-4 hover-elevate-up">
+                  <div class="card-body p-4">
+                    <div class="d-flex align-items-start justify-content-between mb-2">
+                      <div class="d-flex align-items-center">
+                        <div class="symbol symbol-35px me-3">
+                          <span class="symbol-label bg-light">
+                            <i class="fas fa-microchip text-primary fs-4"></i>
+                          </span>
+                        </div>
+                        <div>
+                          <span class="text-gray-900 fw-bold fs-6">Pkenya LTD</span>
+                          <span class="badge badge-light-success fw-bold fs-9 px-2 py-1 ms-2"
+                            >Active</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 fs-7 mt-3">
+                      <div class="d-flex align-items-center text-gray-500">
+                        <i class="fas fa-briefcase fs-8 me-2"></i>Tech Services
+                      </div>
+                      <div class="d-flex align-items-center text-gray-500 ms-3">
+                        <i class="fas fa-map-marker-alt fs-8 me-2"></i>Kenya
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card border border-dashed border-gray-300 mb-4 hover-elevate-up">
+                  <div class="card-body p-4">
+                    <div class="d-flex align-items-start justify-content-between mb-2">
+                      <div class="d-flex align-items-center">
+                        <div class="symbol symbol-35px me-3">
+                          <span class="symbol-label bg-light">
+                            <i class="fas fa-heart text-danger fs-4"></i>
+                          </span>
+                        </div>
+                        <div>
+                          <span class="text-gray-900 fw-bold fs-6">ASEN Organization</span>
+                          <span class="badge badge-light-warning fw-bold fs-9 px-2 py-1 ms-2"
+                            >Pending Docs</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 fs-7 mt-3">
+                      <div class="d-flex align-items-center text-gray-500">
+                        <i class="fas fa-hands-helping fs-8 me-2"></i>NGO / Social
+                      </div>
+                      <div class="d-flex align-items-center text-gray-500 ms-3">
+                        <i class="fas fa-map-marker-alt fs-8 me-2"></i>Kenya
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="separator separator-dashed my-5 mx-5"></div>
+
+            <div class="mx-5">
+              <div class="card border border-dashed border-gray-300 card-custom mb-5 bg-lighten">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="d-flex align-items-center">
+                      <div class="symbol symbol-30px me-3">
+                        <span class="symbol-label bg-white shadow-sm">
+                          <i class="fas fa-user text-primary fs-5"></i>
+                        </span>
+                      </div>
+                      <div class="d-flex flex-column">
+                        <span class="text-gray-800 fw-bold fs-6">Individual KYC</span>
+                        <span class="text-muted fw-semibold fs-8">Identity Verification</span>
+                      </div>
+                    </div>
+                    <span class="badge badge-light-success fw-bold px-3 py-2">Unverified</span>
+                  </div>
+                  <p class="text-gray-600 fs-8 mb-4">
+                    Personal documents and biometrics have been successfully processed.
+                  </p>
+                  <a
+                    routerLink="/dashboard/compliance/kyc"
+                    class="btn btn-sm btn-light-primary fw-bold w-100"
+                    >View Details</a
+                  >
+                </div>
+              </div>
+
+              <div class="card border border-dashed border-danger card-custom mb-5 bg-light-danger">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="d-flex align-items-center">
+                      <div class="symbol symbol-30px me-3">
+                        <span
+                          class="symbol-label bg-white shadow-sm border border-danger border-dashed"
+                        >
+                          <i class="fas fa-building text-danger fs-5"></i>
+                        </span>
+                      </div>
+                      <div class="d-flex flex-column">
+                        <span class="text-gray-800 fw-bold fs-6">Business KYB</span>
+                        <span class="text-muted fw-semibold fs-8">ASEN Organisation</span>
+                      </div>
+                    </div>
+                    <span class="badge badge-light-danger fw-bold px-3 py-2">Unverified</span>
+                  </div>
+                  <p class="text-danger opacity-75 fs-8 mb-4 fw-bold">
+                    Registration documents are required to activate your dashboard endpoints.
+                  </p>
+
+                  <a
+                    routerLink="/dashboard/compliance/kyb"
+                    class="btn btn-sm btn-danger fw-bold w-100 shadow-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal_compliance_upload"
+                  >
+                    Fix Issue
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="separator separator-dashed my-5 mx-5"></div>
+
+            <div class="mx-5 mb-10">
+              <button
+                class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#kt_modal_create_app"
+              >
+                <i class="fas fa-plus-circle fs-4 me-2"></i>Register New Entity
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab_performance" role="tabpanel">
+          <h2 class="text-dark fw-bolder mb-8 fs-3">Performance</h2>
+
+          <a
+            routerLink="/dashboard/performance/sales"
+            class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up p-4 d-block"
+          >
+            <div class="d-flex align-items-center">
+              <div class="symbol symbol-45px me-4">
+                <span class="symbol-label bg-white shadow-sm"
+                  ><i class="ki-duotone ki-chart-line-up text-primary fs-2x"
+                    ><span class="path1"></span><span class="path2"></span></i
+                ></span>
+              </div>
+              <div class="d-flex flex-column">
+                <span class="text-dark fw-bolder fs-5">Sales Report</span
+                ><span class="text-muted fw-bold fs-8">Revenue & Growth</span>
+              </div>
+            </div>
+          </a>
+
+          <a
+            routerLink="/dashboard/performance/statements"
+            class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-4 d-block"
+          >
+            <div class="d-flex align-items-center">
+              <div class="symbol symbol-45px me-4">
+                <span class="symbol-label bg-white shadow-sm"
+                  ><i class="fas fa-wallet text-success fs-3"></i
+                ></span>
+              </div>
+              <div class="d-flex flex-column">
+                <span class="text-dark fw-bolder fs-5">Settlements</span
+                ><span class="text-muted fw-bold fs-8">Payout tracking</span>
+              </div>
+            </div>
+          </a>
+
+          <a
+            routerLink="/dashboard/performance/valuation"
+            class="card border border-dashed border-gray-400 bg-light mb-4 text-decoration-none hover-elevate-up p-4 d-block"
+          >
+            <div class="d-flex align-items-center">
+              <div class="symbol symbol-45px me-4">
+                <span class="symbol-label bg-white shadow-sm"
+                  ><i class="fas fa-chart-pie text-gray-700 fs-3"></i
+                ></span>
+              </div>
+              <div class="d-flex flex-column">
+                <span class="text-dark fw-bolder fs-5">Valuation Engine</span
+                ><span class="text-muted fw-bold fs-8">Asset & Entity Value</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="tab-pane fade" id="tab_wallet" role="tabpanel">
+          <div class="m-0 pt-5">
+            <h1 class="text-gray-800 fw-semibold mb-6 mx-5">Wallet Accounts</h1>
+
+            <div class="mx-5">
+              <a
+                routerLink="/dashboard/wallet/accounts"
+                class="card border border-dashed border-success bg-light-success mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm"
+              >
+                <div class="card-body p-5">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="symbol symbol-45px me-4">
+                      <span
+                        class="symbol-label bg-white shadow-sm border border-success border-dashed"
+                      >
+                        <i class="fas fa-university text-success fs-4"></i>
+                      </span>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-gray-900 fw-bolder fs-5">Solo Account</span>
+                      <span class="text-muted fw-semibold fs-8">KES / USD / EUR</span>
+                    </div>
+                  </div>
+                  <div class="fs-7 text-gray-600 mb-4 lh-sm">
+                    Standard cash balance for direct bank transfers and operational costs.
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center pt-4 border-top border-success border-opacity-25"
+                  >
+                    <span class="fw-bolder text-dark fs-4">500,980.00 KES</span>
+                    <span class="badge bg-success text-white fw-bold px-3 py-2 shadow-sm"
+                      >Available Balance</span
+                    >
+                  </div>
+                </div>
+              </a>
+
+              <a
+                routerLink="/dashboard/wallet/sharedaccount"
+                class="card border border-dashed mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm"
+                style="border-color: #c99c35 !important; background-color: #fdfbf0 !important"
+              >
+                <div class="card-body p-5">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="symbol symbol-45px me-4">
+                      <span
+                        class="symbol-label bg-white shadow-sm border border-dashed"
+                        style="border-color: #c99c35 !important"
+                      >
+                        <i class="fas fa-users fs-4" style="color: #c99c35"></i>
+                      </span>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-gray-900 fw-bolder fs-5">Shared Account</span>
+                      <span class="text-muted fw-semibold fs-8">Group Wallet Balances</span>
+                    </div>
+                  </div>
+                  <div class="fs-7 text-gray-600 mb-4 lh-sm">
+                    Set temporary accounts and input a limited or fixed amount where others can use.
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center pt-4 border-top border-opacity-25"
+                    style="border-color: #c99c35 !important"
+                  >
+                    <span class="fw-bolder text-dark fs-4">550.00 USD</span>
+                    <span
+                      class="badge text-white fw-bold px-3 py-2 shadow-sm"
+                      style="background-color: #c99c35"
+                      >Shared Amount</span
+                    >
+                  </div>
+                </div>
+              </a>
+
+              <a
+                routerLink="/dashboard/wallet/tokens"
+                class="card border border-dashed border-primary bg-light-primary mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm"
+              >
+                <div class="card-body p-5">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="symbol symbol-45px me-4">
+                      <span
+                        class="symbol-label bg-white shadow-sm border border-primary border-dashed"
+                      >
+                        <i class="fas fa-coins text-primary fs-4"></i>
+                      </span>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-gray-900 fw-bolder fs-5">SendMO Tokens</span>
+                      <span class="text-muted fw-semibold fs-8">Internal Utility Token</span>
+                    </div>
+                  </div>
+                  <div class="fs-7 text-gray-600 mb-4 lh-sm">
+                    Native tokens used for internal network services and P2P transfers.
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center pt-4 border-top border-primary border-opacity-25"
+                  >
+                    <span class="fw-bolder text-dark fs-4">500.00 USD</span>
+                    <span class="badge bg-primary text-white fw-bold px-3 py-2 shadow-sm"
+                      >Active</span
+                    >
+                  </div>
+                </div>
+              </a>
+
+              <a
+                routerLink="/dashboard/wallet/referrals"
+                class="card border border-dashed border-warning bg-light-warning mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm"
+              >
+                <div class="card-body p-5">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="symbol symbol-45px me-4">
+                      <span
+                        class="symbol-label bg-white shadow-sm border border-warning border-dashed"
+                      >
+                        <i class="fas fa-user-friends text-warning fs-4"></i>
+                      </span>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-gray-900 fw-bolder fs-5">Referral Bonuses</span>
+                      <span class="text-muted fw-semibold fs-8">Earned Rewards</span>
+                    </div>
+                  </div>
+                  <div class="fs-7 text-gray-600 mb-4 lh-sm">
+                    Commission earned from inviting new partners to the ASEN network.
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center pt-4 border-top border-warning border-opacity-25"
+                  >
+                    <div class="text-gray-800 d-flex align-items-end">
+                      <span class="fw-bolder fs-3 lh-1">12</span>
+                      <span class="fs-8 fw-bold text-muted ms-2 pb-1">Invites</span>
+                    </div>
+                    <span class="text-warning fw-bolder fs-7 d-flex align-items-center">
+                      Claim Rewards <i class="fas fa-arrow-right ms-2 fs-8"></i>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab_payments" role="tabpanel">
+          <h2 class="text-dark fw-bolder mb-8 fs-3">Payment Hub</h2>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Money Movement</h5>
+
+          <a
+            routerLink="/dashboard/payment-hub/send-money"
+            class="card border border-dashed border-primary bg-light-primary mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-send-fill text-primary fs-3"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">Send Money</span>
+              <span class="text-muted fs-8 fw-bold">Instant global transfers</span>
+            </div>
+          </a>
+
+          <a
+            routerLink="/dashboard/payment-hub/receive-money"
+            class="card border border-dashed border-success bg-light-success mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-qr-code-scan text-success fs-3"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">Request Money</span>
+              <span class="text-muted fs-8 fw-bold">Smart payment links</span>
+            </div>
+          </a>
+
+          <a
+            routerLink="/dashboard/payment-hub/transfers"
+            class="card border border-dashed border-info bg-light-info mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-arrow-left-right text-info fs-3"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">Internal Transfers</span>
+              <span class="text-muted fs-8 fw-bold">Move funds between wallets</span>
+            </div>
+          </a>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Services</h5>
+
+          <a
+            routerLink="/dashboard/payment-hub/utilities"
+            class="card border border-dashed border-warning bg-light-warning mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-lightning-charge-fill text-warning fs-3"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">Pay Utilities</span>
+              <span class="text-muted fs-8 fw-bold">Electricity, Water & Gas</span>
+            </div>
+          </a>
+
+          <a
+            routerLink="/dashboard/payment-hub/airtime-data"
+            class="card border border-dashed border-danger bg-light-danger mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-phone-vibrate-fill text-danger fs-3"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">Airtime & Data</span>
+              <span class="text-muted fs-8 fw-bold">Instant mobile top-ups</span>
+            </div>
+          </a>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Management</h5>
+
+          <a
+            routerLink="/dashboard/payment-hub/transactions"
+            class="card border border-dashed border-gray-600 bg-light mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-journal-text text-gray-700 fs-3"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">All Transactions</span>
+              <span class="text-muted fs-8 fw-bold">Full financial audit log</span>
+            </div>
+          </a>
+
+          <a
+            routerLink="/dashboard/payment-hub/recurring"
+            class="card border border-dashed border-primary bg-light-primary mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-calendar-check-fill text-primary fs-3"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">Recurring Payments</span>
+              <span class="text-muted fs-8 fw-bold">Scheduled & auto-billing</span>
+            </div>
+          </a>
+
+          <a
+            routerLink="/dashboard/payment-hub/disputes"
+            class="card border border-dashed border-danger bg-light-danger mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-shield-exclamation text-danger fs-3"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">Disputes & Support</span>
+              <span class="text-muted fs-8 fw-bold">Resolution center & claims</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="tab-pane fade" id="tab_channels" role="tabpanel">
+          <h2 class="text-dark fw-bolder mb-8 fs-3">Active Channels</h2>
+
+          <a
+            routerLink="/channels/POS"
+            class="card border border-dashed border-gray-400 bg-light mb-4 text-decoration-none hover-elevate-up p-4 d-block"
+          >
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-calculator text-dark fs-3 me-3"></i
+                ><span class="text-dark fw-bolder fs-6">POS Terminal</span>
+              </div>
+              <span class="badge bg-success text-white fw-bold">Connected</span>
+            </div>
+            <p class="text-muted fs-8 mb-0 fw-bold mt-2">Manage physical terminal integrations.</p>
+          </a>
+
+          <a
+            routerLink="/channels/api-push"
+            class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up p-4 d-block"
+          >
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-cloud text-primary fs-3 me-3"></i
+                ><span class="text-dark fw-bolder fs-6">API Push (PCS)</span>
+              </div>
+              <span class="badge bg-primary text-white fw-bold">Active</span>
+            </div>
+            <p class="text-muted fs-8 mb-0 fw-bold mt-2">Automated system alerts & webhooks.</p>
+          </a>
+
+          <a
+            routerLink="/channels/stk-push"
+            class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-4 d-block"
+          >
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-mobile text-success fs-3 me-3"></i
+                ><span class="text-dark fw-bolder fs-6">STK Mobile Push</span>
+              </div>
+              <span class="badge bg-success text-white fw-bold">Automated</span>
+            </div>
+            <p class="text-muted fs-8 mb-0 fw-bold mt-2">M-Pesa express checkout prompts.</p>
+          </a>
+
+          <a
+            routerLink="/channels/e-social"
+            class="card border border-dashed border-info bg-light-info mb-4 text-decoration-none hover-elevate-up p-4 d-block"
+          >
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-hashtag text-info fs-3 me-3"></i
+                ><span class="text-dark fw-bolder fs-6">e-Social Links</span>
+              </div>
+              <span class="badge bg-info text-white fw-bold">Active</span>
+            </div>
+            <p class="text-muted fs-8 mb-0 fw-bold mt-2">
+              Social media payment links (IG/WhatsApp).
+            </p>
+          </a>
+
+          <a
+            routerLink="/channels/subscriptions"
+            class="card border border-dashed border-warning bg-light-warning mb-4 text-decoration-none hover-elevate-up p-4 d-block"
+          >
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-sync text-warning-dark fs-3 me-3"></i
+                ><span class="text-dark fw-bolder fs-6">Subscriptions</span>
+              </div>
+              <span class="badge bg-warning text-dark fw-bold border border-warning"
+                >Recurring</span
+              >
+            </div>
+            <p class="text-muted fs-8 mb-0 fw-bold mt-2">
+              Manage automated billing and memberships.
+            </p>
+          </a>
+        </div>
+
+        <div class="tab-pane fade" id="tab_cards" role="tabpanel">
+          <h2 class="text-dark fw-bolder mb-8 fs-3">My Cards</h2>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Active Cards</h5>
+          <a
+            routerLink="/dashboard/cards/my-cards"
+            class="card border-0 mb-6 shadow-lg hover-elevate-up text-decoration-none d-block position-relative overflow-hidden rounded-4"
+            style="background: linear-gradient(135deg, #111827 0%, #374151 100%)"
+          >
+            <i
+              class="fas fa-wifi position-absolute text-white opacity-25"
+              style="font-size: 8rem; right: -1rem; top: -1rem"
+            ></i>
+            <div class="card-body p-6 position-relative z-index-1">
+              <div class="d-flex justify-content-between align-items-start mb-8">
+                <div class="d-flex flex-column">
+                  <span class="text-white fw-bolder fs-4" style="letter-spacing: 1px"
+                    >SendMO Card</span
+                  >
+                  <span class="text-gold fw-bold fs-8 text-uppercase" style="color: #d4af37"
+                    >Premium</span
+                  >
+                </div>
+                <i class="fas fa-sim-card text-gold fs-2x" style="color: #d4af37"></i>
+              </div>
+              <div class="mb-4">
+                <span class="text-white fs-5 fw-bolder font-monospace" style="letter-spacing: 2px"
+                  >**** **** **** 8892</span
+                >
+              </div>
+              <div class="d-flex justify-content-between align-items-end">
+                <span class="text-white opacity-75 fs-8 text-uppercase fw-bold">ASEN Network</span>
+                <i class="fab fa-cc-mastercard text-white fs-2x"></i>
+              </div>
+            </div>
+          </a>
+
+          <div
+            class="alert bg-light-primary border border-dashed border-primary p-4 mb-6 rounded-4"
+          >
+            <div class="d-flex align-items-start">
+              <i class="fas fa-info-circle-fill fs-3 text-primary me-3 mt-1"></i>
+              <span class="text-dark fs-8 fw-bold"
+                >Our <strong class="text-primary">SendMO Card</strong> is an all-in-one solution
+                allowing you to manage both
+                <span class="badge bg-white border text-dark fs-9 px-2">Credit</span> and
+                <span class="badge bg-white border text-dark fs-9 px-2">Debit</span> balances
+                instantly.</span
+              >
+            </div>
+          </div>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Card Control Center</h5>
+
+          <a
+            routerLink="/dashboard/cards/limits-security"
+            class="card border border-gray-300 mb-3 text-decoration-none hover-elevate-up bg-white p-4 d-flex flex-row align-items-center transition"
+          >
+            <div
+              class="symbol symbol-40px bg-light-warning rounded-3 me-4 d-flex justify-content-center align-items-center border border-warning border-opacity-25"
+            >
+              <i class="fas fa-shield-lock-fill text-warning fs-3"></i>
+            </div>
+            <div class="d-flex flex-column flex-grow-1">
+              <span class="text-dark fw-bolder fs-6">Limits & Security</span>
+              <span class="text-muted fs-8 fw-bold">Manage spend limits & fraud protection</span>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+          </a>
+
+          <a
+            routerLink="/dashboard/cards/transactions"
+            class="card border border-gray-300 mb-6 text-decoration-none hover-elevate-up bg-white p-4 d-flex flex-row align-items-center transition"
+          >
+            <div
+              class="symbol symbol-40px bg-light-info rounded-3 me-4 d-flex justify-content-center align-items-center border border-info border-opacity-25"
+            >
+              <i class="fas fa-receipt-cutoff text-info fs-3"></i>
+            </div>
+            <div class="d-flex flex-column flex-grow-1">
+              <span class="text-dark fw-bolder fs-6">Card Transactions</span>
+              <span class="text-muted fs-8 fw-bold"
+                >View history specific to your physical card</span
+              >
+            </div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+          </a>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Standard Banking</h5>
+          <a
+            routerLink="/dashboard/cards/debit"
+            class="card border border-dashed border-gray-300 mb-3 text-decoration-none hover-elevate-up bg-light p-4 d-block"
+          >
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-credit-card-2-back-fill text-dark fs-3 me-3"></i>
+                <span class="text-dark fw-bolder fs-6">ATM Debit Card</span>
+              </div>
+              <span
+                class="badge badge-light-success text-success fw-bold border border-success border-opacity-25"
+                >Active</span
+              >
+            </div>
+            <p class="text-muted fs-8 mb-0 fw-bold">
+              Linked to fiat wallet for global ATM withdrawals.
+            </p>
+          </a>
+        </div>
+
+        <style>
+          .hover-elevate-up {
+            transition:
+              transform 0.3s ease,
+              box-shadow 0.3s ease;
+          }
+
+          .hover-elevate-up:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+          }
+
+          .bg-light-warning {
+            background-color: #fff8dd !important;
+          }
+
+          .bg-light-info {
+            background-color: #f8f5ff !important;
+          }
+        </style>
+
+        <div class="tab-pane fade" id="tab_dod" role="tabpanel">
+          <h2 class="text-dark fw-bolder mb-8 fs-3">Legacy & Continuity</h2>
+
+          <a
+            routerLink="legacy/beneficiary"
+            class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up p-5 d-block"
+          >
+            <div class="d-flex align-items-center mb-3">
+              <div class="symbol symbol-45px me-3">
+                <span class="symbol-label bg-white shadow-sm"
+                  ><i class="fas fa-users text-primary fs-4"></i
+                ></span>
+              </div>
+              <div class="d-flex flex-column">
+                <span class="text-dark fw-bolder fs-5">Beneficiaries</span
+                ><span class="text-muted fw-bold fs-8">Family & Successors</span>
+              </div>
+            </div>
+            <p class="text-muted fs-8 mb-4 fw-bold">
+              Designated individuals authorized to manage or inherit assets.
+            </p>
+            <span class="text-primary fw-bolder fs-8"
+              >Manage Nominees <i class="fas fa-arrow-right ms-1"></i
+            ></span>
+          </a>
+
+          <a
+            routerLink="legacy/continuity-saving"
+            class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-5 d-block"
+          >
+            <div class="d-flex align-items-center mb-3">
+              <div class="symbol symbol-45px me-3">
+                <span class="symbol-label bg-white shadow-sm"
+                  ><i class="fas fa-shield-alt text-success fs-4"></i
+                ></span>
+              </div>
+              <div class="d-flex flex-column">
+                <span class="text-dark fw-bolder fs-5">Continuity Savings</span
+                ><span class="text-muted fw-bold fs-8">Inactivity Safety Net</span>
+              </div>
+            </div>
+            <p class="text-muted fs-8 mb-4 fw-bold">
+              Smart funds that trigger payouts after prolonged inactivity.
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted fw-bolder fs-8">Auto-Save Status</span>
+              <span class="text-success fw-bolder fs-8">Enabled</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="tab-pane fade" id="tab_tools" role="tabpanel">
+          <h2 class="text-dark fw-bolder mb-8 fs-3">Integrations & Tools</h2>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Financial Control</h5>
+          <a
+            routerLink="/tools/budgeting"
+            class="card border border-dashed border-primary bg-light-primary mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-chart-pie text-primary fs-4"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">Budgeting Tools</span
+              ><span class="text-muted fs-8 fw-bold">Expense tracking</span>
+            </div>
+          </a>
+          <a
+            routerLink="/tools/taxation"
+            class="card border border-dashed border-danger bg-light-danger mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-percentage text-danger fs-4"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">Taxation Suite</span
+              ><span class="text-muted fs-8 fw-bold">KRA compliance</span>
+            </div>
+          </a>
+          <a
+            routerLink="/tools/credit"
+            class="card border border-dashed border-success bg-light-success mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-university text-success fs-4"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">Credit Scoring</span
+              ><span class="text-muted fs-8 fw-bold">Check eligibility</span>
+            </div>
+          </a>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Advanced Tech</h5>
+          <a
+            routerLink="/tools/daas"
+            class="card border border-dashed border-gray-400 bg-light mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center"
+          >
+            <div
+              class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center"
+            >
+              <i class="fas fa-cloud-download-alt text-dark fs-4"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="text-dark fw-bolder fs-6">DAAS Tools</span
+              ><span class="text-muted fs-8 fw-bold">Data as a Service</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="tab-pane fade" id="tab_support" role="tabpanel">
+          <div class="d-flex align-items-center justify-content-between mb-8">
+            <h2 class="text-dark fw-bolder fs-3 m-0">Support Center</h2>
+            <span class="badge badge-light-primary fw-bold px-3 py-2">24/7 Available</span>
+          </div>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Self-Service Resources</h5>
+
+          <a
+            routerLink="support/overview"
+            class="card border border-gray-300 bg-white mb-4 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center transition"
+          >
+            <div
+              class="symbol symbol-45px bg-light-primary rounded-3 me-4 d-flex justify-content-center align-items-center border border-primary border-opacity-10"
+            >
+              <i class="fas fa-book-half text-primary fs-3"></i>
+            </div>
+            <div class="d-flex flex-column flex-grow-1">
+              <span class="text-dark fw-bolder fs-6">Knowledge Base</span>
+              <span class="text-muted fs-8 fw-bold">Comprehensive FAQs & How-to Guides</span>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+          </a>
+
+          <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4 mt-6">Direct Assistance</h5>
+
+          <a
+            routerLink="support/help"
+            class="card border border-gray-300 bg-white mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center transition"
+          >
+            <div
+              class="symbol symbol-45px bg-light-success rounded-3 me-4 d-flex justify-content-center align-items-center border border-success border-opacity-10"
+            >
+              <i class="fas fa-ticket-perforated-fill text-success fs-3"></i>
+            </div>
+            <div class="d-flex flex-column flex-grow-1">
+              <span class="text-dark fw-bolder fs-6">Support Help Desk</span>
+              <span class="text-muted fs-8 fw-bold">Open a new request or track tickets</span>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+          </a>
+
+          <a
+            routerLink="support/live-chat"
+            class="card border border-gray-300 bg-white mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center transition"
+          >
+            <div
+              class="symbol symbol-45px bg-light-info rounded-3 me-4 d-flex justify-content-center align-items-center border border-info border-opacity-10"
+            >
+              <i class="fas fa-chat-dots-fill text-info fs-3"></i>
+            </div>
+            <div class="d-flex flex-column flex-grow-1">
+              <span class="text-dark fw-bolder fs-6">Support Live Chat</span>
+              <span class="text-muted fs-8 fw-bold">Real-time chat with our agents</span>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+          </a>
+
+          <div
+            class="card bg-light-danger border border-dashed border-danger mt-8 p-6 text-center rounded-4 shadow-sm"
+          >
+            <div
+              class="symbol symbol-50px bg-white rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center mb-3 border border-danger border-opacity-25"
+            >
+              <i class="fas fa-telephone-fill text-danger fs-3"></i>
+            </div>
+            <h5 class="text-dark fw-bolder mb-1">Emergency Hotline</h5>
+            <p class="text-muted fs-8 mb-3">For urgent account lockouts or fraud reporting only</p>
+            <a
+              href="tel:0758489861"
+              class="text-danger fw-bolder fs-4 text-decoration-none d-block"
+            >
+              <span class="font-monospace">0758 489 861</span>
             </a>
+          </div>
         </div>
 
-        <div class="aside-nav d-flex flex-column align-items-center flex-column-fluid w-100 py-5 scroll-y"
-            style="scrollbar-width: none;">
-            <ul class="nav flex-column w-100 align-items-center gap-3" id="kt_aside_nav_tabs" role="tablist">
-
-                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
-                    <a class="nav-link btn btn-icon btn-custom active position-relative" data-bs-toggle="tab" href="#tab_dashboard"
-                        role="tab">
-                        <div class="gemini-ring"></div>
-                        <i class="fas fa-chart-pie fs-2x icon-inner"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Compliance & KYC">
-                    <a class="nav-link btn btn-icon btn-custom position-relative" data-bs-toggle="tab" href="#tab_compliance" role="tab">
-                        <div class="gemini-ring"></div>
-                        <i class="fas fa-user-shield fs-2x icon-inner"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Performance">
-                    <a class="nav-link btn btn-icon btn-custom position-relative" data-bs-toggle="tab" href="#tab_performance" role="tab">
-                        <div class="gemini-ring"></div>
-                        <i class="fas fa-chart-line fs-2x icon-inner"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Wallet">
-                    <a class="nav-link btn btn-icon btn-custom position-relative" data-bs-toggle="tab" href="#tab_wallet" role="tab">
-                        <div class="gemini-ring"></div>
-                        <i class="fas fa-wallet fs-2x icon-inner"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Payments">
-                    <a class="nav-link btn btn-icon btn-custom position-relative" data-bs-toggle="tab" href="#tab_payments" role="tab">
-                        <div class="gemini-ring"></div>
-                        <i class="fas fa-money-bill-transfer fs-2x icon-inner"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Channels">
-                    <a class="nav-link btn btn-icon btn-custom position-relative" data-bs-toggle="tab" href="#tab_channels" role="tab">
-                        <div class="gemini-ring"></div>
-                        <i class="fas fa-network-wired fs-2x icon-inner"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Cards">
-                    <a class="nav-link btn btn-icon btn-custom position-relative" data-bs-toggle="tab" href="#tab_cards" role="tab">
-                        <div class="gemini-ring"></div>
-                        <i class="fas fa-credit-card fs-2x icon-inner"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Legacy & Continuity">
-                    <a class="nav-link btn btn-icon btn-custom position-relative" data-bs-toggle="tab" href="#tab_dod" role="tab">
-                        <div class="gemini-ring"></div>
-                        <i class="fas fa-shield-halved fs-2x icon-inner"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Tools">
-                    <a class="nav-link btn btn-icon btn-custom position-relative" data-bs-toggle="tab" href="#tab_tools" role="tab">
-                        <div class="gemini-ring"></div>
-                        <i class="fas fa-screwdriver-wrench fs-2x icon-inner"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Support">
-                    <a class="nav-link btn btn-icon btn-custom position-relative" data-bs-toggle="tab" href="#tab_support" role="tab">
-                        <div class="gemini-ring"></div>
-                        <i class="fas fa-life-ring fs-2x icon-inner"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="aside-footer d-flex flex-column align-items-center py-6">
-            <div class="btn btn-icon btn-custom position-relative">
-                <div class="gemini-ring"></div>
-                <i class="fas fa-graduation-cap fs-2x icon-inner"></i>
-            </div>
-        </div>
+     
+      </div>
     </div>
-
-    <div class="aside-secondary d-flex flex-column bg-white shadow-sm" [class.collapsed-sidebar]="isCollapsed"
-        style="border-right: 1px solid rgba(0,0,0,0.05); z-index: 1;">
-        <div class="aside-workspace w-100 h-100 overflow-auto scroll-y pt-6 pb-10" style="scrollbar-width: thin;">
-            <div class="tab-content px-6">
-
-                <div class="tab-pane fade active show" id="tab_dashboard" role="tabpanel">
-                    <h2 class="text-dark fw-bolder mb-8 fs-3">Businesses</h2>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Personal Identity</h5>
-                    <div
-                        class="card border border-dashed border-primary bg-light-primary mb-8 hover-elevate-up transition-300">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="symbol symbol-45px me-3">
-                                    <span class="symbol-label bg-white shadow-sm border border-primary border-dashed"><i
-                                            class="fas fa-user-shield text-primary fs-3"></i></span>
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark fw-bolder fs-6">Daniel Milimo</span>
-                                    <div class="d-flex align-items-center mt-1">
-                                        <i class="fas fa-map-marker-alt text-danger fs-9 me-1"></i> <span
-                                            class="text-muted fw-bold fs-8 me-2">Kenya</span>
-                                        <span class="badge bg-success text-white fw-bold px-2 py-1 fs-9">Verified</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="d-flex justify-content-between align-items-center bg-white p-2 rounded border border-dashed mb-3">
-                                <span class="text-muted fs-9 fw-bold ms-2">ID: <span
-                                        class="text-primary font-monospace fw-bolder">#SMP-123454</span></span>
-                                <button class="btn btn-icon btn-sm btn-light"><i
-                                        class="fas fa-copy text-muted fs-8"></i></button>
-                            </div>
-                            <button class="btn btn-primary btn-sm w-100 fw-bold shadow-sm"
-                                routerLink="/dashboard">Personal Dashboard <i
-                                    class="fas fa-arrow-right ms-1 fs-9"></i></button>
-                        </div>
-                    </div>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Corporate Entities</h5>
-
-                    <div
-                        class="card border border-dashed border-success bg-light-success mb-4 hover-elevate-up transition-300">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-start justify-content-between mb-3">
-                                <div class="d-flex align-items-center">
-                                    <div class="symbol symbol-40px me-3">
-                                        <span class="symbol-label bg-white shadow-sm"><i
-                                                class="fas fa-building text-success fs-3"></i></span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span class="text-dark fw-bolder fs-6">Pkenya LTD</span>
-                                        <span class="text-muted fw-bold fs-8"><i
-                                                class="fas fa-microchip me-1 text-info"></i>Tech Services</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="d-flex justify-content-between align-items-center bg-white p-2 rounded border border-dashed mb-3">
-                                <span class="text-muted fs-9 fw-bold ms-2">Pay ID: <span
-                                        class="text-success font-monospace fw-bolder">#SMB-882</span></span>
-                                <button class="btn btn-icon btn-sm btn-light"><i
-                                        class="fas fa-copy text-muted fs-8"></i></button>
-                            </div>
-                            <button class="btn btn-success btn-sm w-100 fw-bold shadow-sm text-white"
-                                routerLink="/business/pkenya">Manage Business</button>
-                        </div>
-                    </div>
-
-                    <div
-                        class="card border border-dashed border-danger bg-light-danger mb-6 hover-elevate-up transition-300">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-start justify-content-between mb-3">
-                                <div class="d-flex align-items-center">
-                                    <div class="symbol symbol-40px me-3">
-                                        <span class="symbol-label bg-white shadow-sm"><i
-                                                class="fas fa-heart text-danger fs-3"></i></span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span class="text-dark fw-bolder fs-6">ASEN Org</span>
-                                        <span class="text-muted fw-bold fs-8">NGO / Social</span>
-                                    </div>
-                                </div>
-                                <span
-                                    class="badge bg-light-danger text-danger fw-bold border border-danger border-dashed fs-9">Pending
-                                    KYB</span>
-                            </div>
-                            <button class="btn btn-danger btn-sm w-100 fw-bold shadow-sm text-white"
-                                routerLink="/compliance/kyb">Upload Documents <i
-                                    class="fas fa-exclamation-circle ms-1 fs-9"></i></button>
-                        </div>
-                    </div>
-
-                    <button class="btn w-100 py-3 fw-bolder text-white shadow-sm hover-elevate-up mb-6"
-                        style="background: linear-gradient(135deg, #D4AF37 0%, #996515 100%);">
-                        <i class="fas fa-plus-circle me-2"></i> Register New Entity
-                    </button>
-
-                    <div class="card border-0 bg-dark p-5 rounded-4 position-relative overflow-hidden hover-elevate-up"
-                        style="background: linear-gradient(135deg, #111827 0%, #1f2937 100%);">
-                        <i class="fas fa-code position-absolute text-white opacity-5"
-                            style="font-size: 5rem; right: -1rem; bottom: -1rem;"></i>
-                        <h5 class="text-white fw-bolder mb-1">Developer Platform</h5>
-                        <p class="text-white opacity-50 fs-8 mb-4">Enable API access & webhooks.</p>
-                        <button class="btn btn-sm btn-light border-0 fw-bold w-100" data-bs-toggle="modal"
-                            data-bs-target="#developerActivationModal">
-                            <i class="fas fa-terminal me-1 text-dark"></i> API Settings
-                        </button>
-                    </div>
-                </div>
-
-                <div class="tab-pane fade" id="tab_compliance" role="tabpanel">
-                    <div class="m-0 pt-5">
-
-                        <div class="mb-10">
-                            <h3 class="text-gray-800 fw-bold mb-6 mx-5 fs-4">Verified Users</h3>
-                            <div class="mx-5">
-                                <div class="card border border-dashed border-primary bg-light-primary mb-3">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-35px me-3">
-                                                <span class="symbol-label bg-light">
-                                                    <i class="fas fa-user-doctor text-primary fs-4"></i>
-                                                </span>
-                                            </div>
-                                            <div class="d-flex flex-column flex-grow-1">
-                                                <span class="text-gray-900 fw-bold fs-6">Dan Delion</span>
-                                                <div class="d-flex align-items-center">
-                                                    <span class="text-muted fw-semibold fs-7">Kenya</span>
-                                                    <span class="bullet bullet-dot bg-success h-5px w-5px mx-2"></span>
-                                                    <span class="text-success fw-bold fs-8">Verified</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-10">
-                            <h3 class="text-gray-800 fw-bold mb-6 mx-5 fs-4">Verified Businesses</h3>
-                            <div class="mx-5">
-
-                                <div class="card border border-dashed border-gray-300 mb-4 hover-elevate-up">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex align-items-start justify-content-between mb-2">
-                                            <div class="d-flex align-items-center">
-                                                <div class="symbol symbol-35px me-3">
-                                                    <span class="symbol-label bg-light">
-                                                        <i class="fas fa-microchip text-primary fs-4"></i>
-                                                    </span>
-                                                </div>
-                                                <div>
-                                                    <span class="text-gray-900 fw-bold fs-6">Pkenya LTD</span>
-                                                    <span
-                                                        class="badge badge-light-success fw-bold fs-9 px-2 py-1 ms-2">Active</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-wrap gap-2 fs-7 mt-3">
-                                            <div class="d-flex align-items-center text-gray-500">
-                                                <i class="fas fa-briefcase fs-8 me-2"></i>Tech Services
-                                            </div>
-                                            <div class="d-flex align-items-center text-gray-500 ms-3">
-                                                <i class="fas fa-map-marker-alt fs-8 me-2"></i>Kenya
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card border border-dashed border-gray-300 mb-4 hover-elevate-up">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex align-items-start justify-content-between mb-2">
-                                            <div class="d-flex align-items-center">
-                                                <div class="symbol symbol-35px me-3">
-                                                    <span class="symbol-label bg-light">
-                                                        <i class="fas fa-heart text-danger fs-4"></i>
-                                                    </span>
-                                                </div>
-                                                <div>
-                                                    <span class="text-gray-900 fw-bold fs-6">ASEN Organization</span>
-                                                    <span
-                                                        class="badge badge-light-warning fw-bold fs-9 px-2 py-1 ms-2">Pending
-                                                        Docs</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-wrap gap-2 fs-7 mt-3">
-                                            <div class="d-flex align-items-center text-gray-500">
-                                                <i class="fas fa-hands-helping fs-8 me-2"></i>NGO / Social
-                                            </div>
-                                            <div class="d-flex align-items-center text-gray-500 ms-3">
-                                                <i class="fas fa-map-marker-alt fs-8 me-2"></i>Kenya
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="separator separator-dashed my-5 mx-5"></div>
-
-                        <div class="mx-5">
-                            <div class="card border border-dashed border-gray-300 card-custom mb-5 bg-lighten">
-                                <div class="card-body p-4">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-30px me-3">
-                                                <span class="symbol-label bg-white shadow-sm">
-                                                    <i class="fas fa-user text-primary fs-5"></i>
-                                                </span>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <span class="text-gray-800 fw-bold fs-6">Individual KYC</span>
-                                                <span class="text-muted fw-semibold fs-8">Identity Verification</span>
-                                            </div>
-                                        </div>
-                                        <span class="badge badge-light-success fw-bold px-3 py-2">Unverified</span>
-                                    </div>
-                                    <p class="text-gray-600 fs-8 mb-4">Personal documents and biometrics have been
-                                        successfully processed.</p>
-                                    <a routerLink="/compliance/kyc"
-                                        class="btn btn-sm btn-light-primary fw-bold w-100">View Details</a>
-                                </div>
-                            </div>
-
-                            <div class="card border border-dashed border-danger card-custom mb-5 bg-light-danger">
-                                <div class="card-body p-4">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-30px me-3">
-                                                <span
-                                                    class="symbol-label bg-white shadow-sm border border-danger border-dashed">
-                                                    <i class="fas fa-building text-danger fs-5"></i>
-                                                </span>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <span class="text-gray-800 fw-bold fs-6">Business KYB</span>
-                                                <span class="text-muted fw-semibold fs-8">ASEN Organisation</span>
-                                            </div>
-                                        </div>
-                                        <span class="badge badge-light-danger fw-bold px-3 py-2">Unverified</span>
-                                    </div>
-                                    <p class="text-danger opacity-75 fs-8 mb-4 fw-bold">Registration documents are
-                                        required to activate your dashboard endpoints.</p>
-
-                                    <a routerLink="/compliance/kyb"
-                                        class="btn btn-sm btn-danger fw-bold w-100 shadow-sm" data-bs-toggle="modal"
-                                        data-bs-target="#kt_modal_compliance_upload">
-                                        Fix Issue
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="separator separator-dashed my-5 mx-5"></div>
-
-                        <div class="mx-5 mb-10">
-                            <button class="btn btn-primary w-100 py-3 fw-bold shadow-sm" data-bs-toggle="modal"
-                                data-bs-target="#kt_modal_create_app">
-                                <i class="fas fa-plus-circle fs-4 me-2"></i>Register New Entity
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="tab-pane fade" id="tab_performance" role="tabpanel">
-                    <h2 class="text-dark fw-bolder mb-8 fs-3">Performance</h2>
-
-                    <a routerLink="/performance/sales"
-                        class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up p-4 d-block">
-                        <div class="d-flex align-items-center">
-                            <div class="symbol symbol-45px me-4"><span class="symbol-label bg-white shadow-sm"><i
-                                        class="ki-duotone ki-chart-line-up text-primary fs-2x"><span
-                                            class="path1"></span><span class="path2"></span></i></span></div>
-                            <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-5">Sales
-                                    Report</span><span class="text-muted fw-bold fs-8">Revenue & Growth</span></div>
-                        </div>
-                    </a>
-
-                    <a routerLink="/performance/statements"
-                        class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-4 d-block">
-                        <div class="d-flex align-items-center">
-                            <div class="symbol symbol-45px me-4"><span class="symbol-label bg-white shadow-sm"><i
-                                        class="fas fa-wallet text-success fs-3"></i></span></div>
-                            <div class="d-flex flex-column"><span
-                                    class="text-dark fw-bolder fs-5">Settlements</span><span
-                                    class="text-muted fw-bold fs-8">Payout tracking</span></div>
-                        </div>
-                    </a>
-
-                    <a routerLink="/performance/valuation"
-                        class="card border border-dashed border-gray-400 bg-light mb-4 text-decoration-none hover-elevate-up p-4 d-block">
-                        <div class="d-flex align-items-center">
-                            <div class="symbol symbol-45px me-4"><span class="symbol-label bg-white shadow-sm"><i
-                                        class="fas fa-chart-pie text-gray-700 fs-3"></i></span></div>
-                            <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-5">Valuation
-                                    Engine</span><span class="text-muted fw-bold fs-8">Asset & Entity Value</span></div>
-                        </div>
-                    </a>
-                </div>
-                <div class="tab-pane fade" id="tab_wallet" role="tabpanel">
-
-                    <div class="m-0 pt-5">
-                        <h1 class="text-gray-800 fw-semibold mb-6 mx-5">Wallet Accounts</h1>
-
-                        <div class="mx-5">
-
-                            <a routerLink="/wallet/accounts"
-                                class="card border border-dashed border-success bg-light-success mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm">
-                                <div class="card-body p-5">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="symbol symbol-45px me-4">
-                                            <span
-                                                class="symbol-label bg-white shadow-sm border border-success border-dashed">
-                                                <i class="fas fa-university text-success fs-4"></i>
-                                            </span>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="text-gray-900 fw-bolder fs-5">Solo Account</span>
-                                            <span class="text-muted fw-semibold fs-8">KES / USD / EUR</span>
-                                        </div>
-                                    </div>
-                                    <div class="fs-7 text-gray-600 mb-4 lh-sm">
-                                        Standard cash balance for direct bank transfers and operational costs.
-                                    </div>
-                                    <div
-                                        class="d-flex justify-content-between align-items-center pt-4 border-top border-success border-opacity-25">
-                                        <span class="fw-bolder text-dark fs-4">500,980.00 KES</span>
-                                        <span class="badge bg-success text-white fw-bold px-3 py-2 shadow-sm">Available
-                                            Balance</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a routerLink="/wallet/sharedaccount"
-                                class="card border border-dashed mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm"
-                                style="border-color: #c99c35 !important; background-color: #fdfbf0 !important;">
-                                <div class="card-body p-5">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="symbol symbol-45px me-4">
-                                            <span class="symbol-label bg-white shadow-sm border border-dashed"
-                                                style="border-color: #c99c35 !important;">
-                                                <i class="fas fa-users fs-4" style="color: #c99c35;"></i>
-                                            </span>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="text-gray-900 fw-bolder fs-5">Shared Account</span>
-                                            <span class="text-muted fw-semibold fs-8">Group Wallet Balances</span>
-                                        </div>
-                                    </div>
-                                    <div class="fs-7 text-gray-600 mb-4 lh-sm">
-                                        Set temporary accounts and input a limited or fixed amount where others can use.
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center pt-4 border-top border-opacity-25"
-                                        style="border-color: #c99c35 !important;">
-                                        <span class="fw-bolder text-dark fs-4">550.00 USD</span>
-                                        <span class="badge text-white fw-bold px-3 py-2 shadow-sm"
-                                            style="background-color: #c99c35;">Shared Amount</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a routerLink="/wallet/tokens"
-                                class="card border border-dashed border-primary bg-light-primary mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm">
-                                <div class="card-body p-5">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="symbol symbol-45px me-4">
-                                            <span
-                                                class="symbol-label bg-white shadow-sm border border-primary border-dashed">
-                                                <i class="fas fa-coins text-primary fs-4"></i>
-                                            </span>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="text-gray-900 fw-bolder fs-5">SendMO Tokens</span>
-                                            <span class="text-muted fw-semibold fs-8">Internal Utility Token</span>
-                                        </div>
-                                    </div>
-                                    <div class="fs-7 text-gray-600 mb-4 lh-sm">
-                                        Native tokens used for internal network services and P2P transfers.
-                                    </div>
-                                    <div
-                                        class="d-flex justify-content-between align-items-center pt-4 border-top border-primary border-opacity-25">
-                                        <span class="fw-bolder text-dark fs-4">500.00 USD</span>
-                                        <span
-                                            class="badge bg-primary text-white fw-bold px-3 py-2 shadow-sm">Active</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a routerLink="/wallet/referrals"
-                                class="card border border-dashed border-warning bg-light-warning mb-5 text-decoration-none hover-elevate-up transition-300 d-block shadow-sm">
-                                <div class="card-body p-5">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <div class="symbol symbol-45px me-4">
-                                            <span
-                                                class="symbol-label bg-white shadow-sm border border-warning border-dashed">
-                                                <i class="fas fa-user-friends text-warning fs-4"></i>
-                                            </span>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="text-gray-900 fw-bolder fs-5">Referral Bonuses</span>
-                                            <span class="text-muted fw-semibold fs-8">Earned Rewards</span>
-                                        </div>
-                                    </div>
-                                    <div class="fs-7 text-gray-600 mb-4 lh-sm">
-                                        Commission earned from inviting new partners to the ASEN network.
-                                    </div>
-                                    <div
-                                        class="d-flex justify-content-between align-items-center pt-4 border-top border-warning border-opacity-25">
-                                        <div class="text-gray-800 d-flex align-items-end">
-                                            <span class="fw-bolder fs-3 lh-1">12</span>
-                                            <span class="fs-8 fw-bold text-muted ms-2 pb-1">Invites</span>
-                                        </div>
-                                        <span class="text-warning fw-bolder fs-7 d-flex align-items-center">
-                                            Claim Rewards <i class="fas fa-arrow-right ms-2 fs-8"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane fade" id="tab_payments" role="tabpanel">
-                    <h2 class="text-dark fw-bolder mb-8 fs-3">Payment Hub</h2>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Money Movement</h5>
-
-                    <a routerLink="/payment-hub/send-money"
-                        class="card border border-dashed border-primary bg-light-primary mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-send-fill text-primary fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="text-dark fw-bolder fs-6">Send Money</span>
-                            <span class="text-muted fs-8 fw-bold">Instant global transfers</span>
-                        </div>
-                    </a>
-
-                    <a routerLink="/payment-hub/receive-money"
-                        class="card border border-dashed border-success bg-light-success mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-qr-code-scan text-success fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="text-dark fw-bolder fs-6">Request Money</span>
-                            <span class="text-muted fs-8 fw-bold">Smart payment links</span>
-                        </div>
-                    </a>
-
-                    <a routerLink="/payment-hub/transfers"
-                        class="card border border-dashed border-info bg-light-info mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-arrow-left-right text-info fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="text-dark fw-bolder fs-6">Internal Transfers</span>
-                            <span class="text-muted fs-8 fw-bold">Move funds between wallets</span>
-                        </div>
-                    </a>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Services</h5>
-
-                    <a routerLink="/payment-hub/utilities"
-                        class="card border border-dashed border-warning bg-light-warning mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-lightning-charge-fill text-warning fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="text-dark fw-bolder fs-6">Pay Utilities</span>
-                            <span class="text-muted fs-8 fw-bold">Electricity, Water & Gas</span>
-                        </div>
-                    </a>
-
-                    <a routerLink="/payment-hub/airtime-data"
-                        class="card border border-dashed border-danger bg-light-danger mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-phone-vibrate-fill text-danger fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="text-dark fw-bolder fs-6">Airtime & Data</span>
-                            <span class="text-muted fs-8 fw-bold">Instant mobile top-ups</span>
-                        </div>
-                    </a>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Management</h5>
-
-                    <a routerLink="/payment-hub/transactions"
-                        class="card border border-dashed border-gray-600 bg-light mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-journal-text text-gray-700 fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="text-dark fw-bolder fs-6">All Transactions</span>
-                            <span class="text-muted fs-8 fw-bold">Full financial audit log</span>
-                        </div>
-                    </a>
-
-                    <a routerLink="/payment-hub/recurring"
-                        class="card border border-dashed border-primary bg-light-primary mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-calendar-check-fill text-primary fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="text-dark fw-bolder fs-6">Recurring Payments</span>
-                            <span class="text-muted fs-8 fw-bold">Scheduled & auto-billing</span>
-                        </div>
-                    </a>
-
-                    <a routerLink="/payment-hub/disputes"
-                        class="card border border-dashed border-danger bg-light-danger mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-shield-exclamation text-danger fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="text-dark fw-bolder fs-6">Disputes & Support</span>
-                            <span class="text-muted fs-8 fw-bold">Resolution center & claims</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="tab-pane fade" id="tab_channels" role="tabpanel">
-                    <h2 class="text-dark fw-bolder mb-8 fs-3">Active Channels</h2>
-
-                    <a routerLink="/channels/POS"
-                        class="card border border-dashed border-gray-400 bg-light mb-4 text-decoration-none hover-elevate-up p-4 d-block">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <div class="d-flex align-items-center"><i
-                                    class="fas fa-calculator text-dark fs-3 me-3"></i><span
-                                    class="text-dark fw-bolder fs-6">POS Terminal</span></div>
-                            <span class="badge bg-success text-white fw-bold">Connected</span>
-                        </div>
-                        <p class="text-muted fs-8 mb-0 fw-bold mt-2">Manage physical terminal integrations.</p>
-                    </a>
-
-                    <a routerLink="/channels/api-push"
-                        class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up p-4 d-block">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <div class="d-flex align-items-center"><i
-                                    class="fas fa-cloud text-primary fs-3 me-3"></i><span
-                                    class="text-dark fw-bolder fs-6">API Push (PCS)</span></div>
-                            <span class="badge bg-primary text-white fw-bold">Active</span>
-                        </div>
-                        <p class="text-muted fs-8 mb-0 fw-bold mt-2">Automated system alerts & webhooks.</p>
-                    </a>
-
-                    <a routerLink="/channels/stk-push"
-                        class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-4 d-block">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <div class="d-flex align-items-center"><i
-                                    class="fas fa-mobile text-success fs-3 me-3"></i><span
-                                    class="text-dark fw-bolder fs-6">STK Mobile Push</span></div>
-                            <span class="badge bg-success text-white fw-bold">Automated</span>
-                        </div>
-                        <p class="text-muted fs-8 mb-0 fw-bold mt-2">M-Pesa express checkout prompts.</p>
-                    </a>
-
-                    <a routerLink="/channels/e-social"
-                        class="card border border-dashed border-info bg-light-info mb-4 text-decoration-none hover-elevate-up p-4 d-block">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <div class="d-flex align-items-center"><i
-                                    class="fas fa-hashtag text-info fs-3 me-3"></i><span
-                                    class="text-dark fw-bolder fs-6">e-Social Links</span></div>
-                            <span class="badge bg-info text-white fw-bold">Active</span>
-                        </div>
-                        <p class="text-muted fs-8 mb-0 fw-bold mt-2">Social media payment links (IG/WhatsApp).</p>
-                    </a>
-
-                    <a routerLink="/channels/subscriptions"
-                        class="card border border-dashed border-warning bg-light-warning mb-4 text-decoration-none hover-elevate-up p-4 d-block">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <div class="d-flex align-items-center"><i
-                                    class="fas fa-sync text-warning-dark fs-3 me-3"></i><span
-                                    class="text-dark fw-bolder fs-6">Subscriptions</span></div>
-                            <span class="badge bg-warning text-dark fw-bold border border-warning">Recurring</span>
-                        </div>
-                        <p class="text-muted fs-8 mb-0 fw-bold mt-2">Manage automated billing and memberships.</p>
-                    </a>
-                </div>
-
-                <div class="tab-pane fade" id="tab_cards" role="tabpanel">
-                    <h2 class="text-dark fw-bolder mb-8 fs-3">My Cards</h2>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Active Cards</h5>
-                    <a routerLink="/cards/my-cards"
-                        class="card border-0 mb-6 shadow-lg hover-elevate-up text-decoration-none d-block position-relative overflow-hidden rounded-4"
-                        style="background: linear-gradient(135deg, #111827 0%, #374151 100%);">
-                        <i class="fas fa-wifi position-absolute text-white opacity-25"
-                            style="font-size: 8rem; right: -1rem; top: -1rem;"></i>
-                        <div class="card-body p-6 position-relative z-index-1">
-                            <div class="d-flex justify-content-between align-items-start mb-8">
-                                <div class="d-flex flex-column">
-                                    <span class="text-white fw-bolder fs-4" style="letter-spacing: 1px;">SendMO
-                                        Card</span>
-                                    <span class="text-gold fw-bold fs-8 text-uppercase"
-                                        style="color: #D4AF37;">Premium</span>
-                                </div>
-                                <i class="fas fa-sim-card text-gold fs-2x" style="color: #D4AF37;"></i>
-                            </div>
-                            <div class="mb-4">
-                                <span class="text-white fs-5 fw-bolder font-monospace" style="letter-spacing: 2px;">****
-                                    **** **** 8892</span>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-end">
-                                <span class="text-white opacity-75 fs-8 text-uppercase fw-bold">ASEN Network</span>
-                                <i class="fab fa-cc-mastercard text-white fs-2x"></i>
-                            </div>
-                        </div>
-                    </a>
-
-                    <div class="alert bg-light-primary border border-dashed border-primary p-4 mb-6 rounded-4">
-                        <div class="d-flex align-items-start">
-                            <i class="fas fa-info-circle-fill fs-3 text-primary me-3 mt-1"></i>
-                            <span class="text-dark fs-8 fw-bold">Our <strong class="text-primary">SendMO Card</strong>
-                                is an all-in-one solution allowing you to manage both <span
-                                    class="badge bg-white border text-dark fs-9 px-2">Credit</span> and <span
-                                    class="badge bg-white border text-dark fs-9 px-2">Debit</span> balances
-                                instantly.</span>
-                        </div>
-                    </div>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Card Control Center</h5>
-
-                    <a routerLink="/cards/limits-security"
-                        class="card border border-gray-300 mb-3 text-decoration-none hover-elevate-up bg-white p-4 d-flex flex-row align-items-center transition">
-                        <div
-                            class="symbol symbol-40px bg-light-warning rounded-3 me-4 d-flex justify-content-center align-items-center border border-warning border-opacity-25">
-                            <i class="fas fa-shield-lock-fill text-warning fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column flex-grow-1">
-                            <span class="text-dark fw-bolder fs-6">Limits & Security</span>
-                            <span class="text-muted fs-8 fw-bold">Manage spend limits & fraud protection</span>
-                        </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
-                    </a>
-
-                    <a routerLink="/cards/transactions"
-                        class="card border border-gray-300 mb-6 text-decoration-none hover-elevate-up bg-white p-4 d-flex flex-row align-items-center transition">
-                        <div
-                            class="symbol symbol-40px bg-light-info rounded-3 me-4 d-flex justify-content-center align-items-center border border-info border-opacity-25">
-                            <i class="fas fa-receipt-cutoff text-info fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column flex-grow-1">
-                            <span class="text-dark fw-bolder fs-6">Card Transactions</span>
-                            <span class="text-muted fs-8 fw-bold">View history specific to your physical card</span>
-                        </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
-                    </a>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Standard Banking</h5>
-                    <a routerLink="/cards/debit"
-                        class="card border border-dashed border-gray-300 mb-3 text-decoration-none hover-elevate-up bg-light p-4 d-block">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-credit-card-2-back-fill text-dark fs-3 me-3"></i>
-                                <span class="text-dark fw-bolder fs-6">ATM Debit Card</span>
-                            </div>
-                            <span
-                                class="badge badge-light-success text-success fw-bold border border-success border-opacity-25">Active</span>
-                        </div>
-                        <p class="text-muted fs-8 mb-0 fw-bold">Linked to fiat wallet for global ATM withdrawals.</p>
-                    </a>
-                </div>
-
-                <style>
-                    .hover-elevate-up {
-                        transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    }
-
-                    .hover-elevate-up:hover {
-                        transform: translateY(-4px);
-                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-                    }
-
-                    .bg-light-warning {
-                        background-color: #fff8dd !important;
-                    }
-
-                    .bg-light-info {
-                        background-color: #f8f5ff !important;
-                    }
-                </style>
-
-                <div class="tab-pane fade" id="tab_dod" role="tabpanel">
-                    <h2 class="text-dark fw-bolder mb-8 fs-3">Legacy & Continuity</h2>
-
-                    <a routerLink="legacy/beneficiary"
-                        class="card border border-dashed border-primary bg-light-primary mb-4 text-decoration-none hover-elevate-up p-5 d-block">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="symbol symbol-45px me-3"><span class="symbol-label bg-white shadow-sm"><i
-                                        class="fas fa-users text-primary fs-4"></i></span></div>
-                            <div class="d-flex flex-column"><span
-                                    class="text-dark fw-bolder fs-5">Beneficiaries</span><span
-                                    class="text-muted fw-bold fs-8">Family & Successors</span></div>
-                        </div>
-                        <p class="text-muted fs-8 mb-4 fw-bold">Designated individuals authorized to manage or inherit
-                            assets.</p>
-                        <span class="text-primary fw-bolder fs-8">Manage Nominees <i
-                                class="fas fa-arrow-right ms-1"></i></span>
-                    </a>
-
-                    <a routerLink="legacy/continuity-saving"
-                        class="card border border-dashed border-success bg-light-success mb-4 text-decoration-none hover-elevate-up p-5 d-block">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="symbol symbol-45px me-3"><span class="symbol-label bg-white shadow-sm"><i
-                                        class="fas fa-shield-alt text-success fs-4"></i></span></div>
-                            <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-5">Continuity
-                                    Savings</span><span class="text-muted fw-bold fs-8">Inactivity Safety Net</span>
-                            </div>
-                        </div>
-                        <p class="text-muted fs-8 mb-4 fw-bold">Smart funds that trigger payouts after prolonged
-                            inactivity.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted fw-bolder fs-8">Auto-Save Status</span>
-                            <span class="text-success fw-bolder fs-8">Enabled</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="tab-pane fade" id="tab_tools" role="tabpanel">
-                    <h2 class="text-dark fw-bolder mb-8 fs-3">Integrations & Tools</h2>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Financial Control</h5>
-                    <a routerLink="/tools/budgeting"
-                        class="card border border-dashed border-primary bg-light-primary mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-chart-pie text-primary fs-4"></i>
-                        </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Budgeting
-                                Tools</span><span class="text-muted fs-8 fw-bold">Expense tracking</span></div>
-                    </a>
-                    <a routerLink="/tools/taxation"
-                        class="card border border-dashed border-danger bg-light-danger mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-percentage text-danger fs-4"></i>
-                        </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Taxation
-                                Suite</span><span class="text-muted fs-8 fw-bold">KRA compliance</span></div>
-                    </a>
-                    <a routerLink="/tools/credit"
-                        class="card border border-dashed border-success bg-light-success mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-university text-success fs-4"></i>
-                        </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">Credit
-                                Scoring</span><span class="text-muted fs-8 fw-bold">Check eligibility</span></div>
-                    </a>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Advanced Tech</h5>
-                    <a routerLink="/tools/daas"
-                        class="card border border-dashed border-gray-400 bg-light mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center">
-                        <div
-                            class="symbol symbol-40px bg-white rounded shadow-sm me-4 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-cloud-download-alt text-dark fs-4"></i>
-                        </div>
-                        <div class="d-flex flex-column"><span class="text-dark fw-bolder fs-6">DAAS Tools</span><span
-                                class="text-muted fs-8 fw-bold">Data as a Service</span></div>
-                    </a>
-                </div>
-
-                <div class="tab-pane fade" id="tab_support" role="tabpanel">
-                    <div class="d-flex align-items-center justify-content-between mb-8">
-                        <h2 class="text-dark fw-bolder fs-3 m-0">Support Center</h2>
-                        <span class="badge badge-light-primary fw-bold px-3 py-2">24/7 Available</span>
-                    </div>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4">Self-Service Resources</h5>
-
-                    <a routerLink="support/overview"
-                        class="card border border-gray-300 bg-white mb-4 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center transition">
-                        <div
-                            class="symbol symbol-45px bg-light-primary rounded-3 me-4 d-flex justify-content-center align-items-center border border-primary border-opacity-10">
-                            <i class="fas fa-book-half text-primary fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column flex-grow-1">
-                            <span class="text-dark fw-bolder fs-6">Knowledge Base</span>
-                            <span class="text-muted fs-8 fw-bold">Comprehensive FAQs & How-to Guides</span>
-                        </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
-                    </a>
-
-                    <h5 class="text-muted fw-bold text-uppercase ls-1 fs-8 mb-4 mt-6">Direct Assistance</h5>
-
-                    <a routerLink="support/help"
-                        class="card border border-gray-300 bg-white mb-3 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center transition">
-                        <div
-                            class="symbol symbol-45px bg-light-success rounded-3 me-4 d-flex justify-content-center align-items-center border border-success border-opacity-10">
-                            <i class="fas fa-ticket-perforated-fill text-success fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column flex-grow-1">
-                            <span class="text-dark fw-bolder fs-6">Support Help Desk</span>
-                            <span class="text-muted fs-8 fw-bold">Open a new request or track tickets</span>
-                        </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
-                    </a>
-
-                    <a routerLink="support/live-chat"
-                        class="card border border-gray-300 bg-white mb-6 text-decoration-none hover-elevate-up p-4 d-flex flex-row align-items-center transition">
-                        <div
-                            class="symbol symbol-45px bg-light-info rounded-3 me-4 d-flex justify-content-center align-items-center border border-info border-opacity-10">
-                            <i class="fas fa-chat-dots-fill text-info fs-3"></i>
-                        </div>
-                        <div class="d-flex flex-column flex-grow-1">
-                            <span class="text-dark fw-bolder fs-6">Support Live Chat</span>
-                            <span class="text-muted fs-8 fw-bold">Real-time chat with our agents</span>
-                        </div>
-                        <i class="fas fa-chevron-right text-gray-400"></i>
-                    </a>
-
-                    <div
-                        class="card bg-light-danger border border-dashed border-danger mt-8 p-6 text-center rounded-4 shadow-sm">
-                        <div
-                            class="symbol symbol-50px bg-white rounded-circle shadow-sm d-inline-flex align-items-center justify-content-center mb-3 border border-danger border-opacity-25">
-                            <i class="fas fa-telephone-fill text-danger fs-3"></i>
-                        </div>
-                        <h5 class="text-dark fw-bolder mb-1">Emergency Hotline</h5>
-                        <p class="text-muted fs-8 mb-3">For urgent account lockouts or fraud reporting only</p>
-                        <a href="tel:0758489861" class="text-danger fw-bolder fs-4 text-decoration-none d-block">
-                            <span class="font-monospace">0758 489 861</span>
-                        </a>
-                    </div>
-                </div>
-
-                <style>
-                    /* Premium Hover effect for the links */
-                    .hover-elevate-up {
-                        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-                    }
-
-                    .hover-elevate-up:hover {
-                        transform: translateY(-4px);
-                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-                        border-color: #d4af37 !important;
-                        /* The primary gold color */
-                    }
-
-                    /* Standardized Light Backgrounds */
-                    .bg-light-primary {
-                        background-color: #f1faff !important;
-                    }
-
-                    .bg-light-success {
-                        background-color: #e8fff3 !important;
-                    }
-
-                    .bg-light-info {
-                        background-color: #f8f5ff !important;
-                    }
-
-                    .bg-light-danger {
-                        background-color: #fff5f8 !important;
-                    }
-
-                    /* Text Spacing */
-                    .ls-1 {
-                        letter-spacing: 0.05rem;
-                    }
-
-                    /* Ensure icon symbols are perfect circles/squares */
-                    .symbol {
-                        flex-shrink: 0;
-                    }
-                </style>
-
-            </div>
-        </div>
-    </div>
-
-    <button id="kt_aside_toggle"
-        class="aside-toggle btn btn-sm btn-icon bg-body btn-color-gray-700 btn-active-warning position-absolute shadow-sm d-none d-lg-flex"
-        style="bottom: 2rem; left: 85px; z-index: 105; border: 1px solid rgba(212, 175, 55, 0.3);"
-        (click)="toggleSidebar()">
-        <i class="fas fa-chevron-left fs-3 transition-icon text-dark" [class.rotate-180]="isCollapsed"></i>
-    </button>
+  </div>
+
+  <button
+    id="kt_aside_toggle"
+    class="aside-toggle btn btn-sm btn-icon bg-body btn-color-gray-700 btn-active-warning position-absolute shadow-sm d-none d-lg-flex"
+    style="bottom: 2rem; left: 85px; z-index: 105; border: 1px solid rgba(212, 175, 55, 0.3)"
+    (click)="toggleSidebar()"
+  >
+    <i
+      class="fas fa-chevron-left fs-3 transition-icon text-dark"
+      [class.rotate-180]="isCollapsed"
+    ></i>
+  </button>
 </div>
 
-<style>
-    /* Styling adjustments to guarantee the Secondary Aside stays constrained */
-    .aside-secondary {
-        /* Prevents the sidebar from blowing out standard widths */
-        max-width: 325px;
-    }
-
-    .btn-custom {
-        /* Smooth transitions for the left icon nav */
-        transition: all 0.2s ease-in-out;
-        border-radius: 12px;
-        padding: 12px;
-        position: relative; 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1;
-    }
-
-    .btn-custom:hover {
-        background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .btn-custom.active {
-        background-color: rgba(212, 175, 55, 0.15) !important;
-        /* Gold subtle bg */
-        color: #D4AF37 !important;
-        /* Gold primary */
-        border-right: 3px solid #D4AF37;
-        border-radius: 12px 0 0 12px;
-    }
-
-    /* --- NEW ANIMATED ICON STYLES (Gemini Border Trick) --- */
-    
-    .gemini-ring {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        /* Foolproof CSS Mask for a 2.5px ring that cannot be broken by Bootstrap */
-        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #fff calc(100% - 2.5px));
-        mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #fff calc(100% - 2.5px));
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        z-index: 0;
-    }
-
-    /* The actual giant spinning gradient inside the masked container */
-    .gemini-ring::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        /* Make it huge so corners are never cut off during rotation */
-        width: 200%;
-        height: 200%;
-        
-        /* The Gemini Tracer Effect: Mostly transparent, with a glowing tail */
-        background: conic-gradient(
-            from 0deg,
-            transparent 0%,
-            transparent 60%,
-            rgba(66, 133, 244, 0.3) 70%,
-            #4285f4 80%,
-            #ea4335 88%,
-            #fbbc05 95%,
-            #34a853 100%
-        );
-        animation: spin-gemini 3.5s linear infinite;
-    }
-
-    /* Keep the logo block proportional */
-    .logo-ring {
-        width: 55px;
-        height: 55px;
-    }
-
-    /* Inner icon bounce and scale logic */
-    .icon-inner {
-        position: relative; /* Required for z-index to work */
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
-        z-index: 2; /* Keeps icon above the animated border */
-    }
-
-    /* Trigger the animation on hover or when active */
-    .btn-custom:hover .gemini-ring,
-    .btn-custom.active .gemini-ring,
-    .logo-wrapper:hover .logo-ring {
-        opacity: 1;
-    }
-
-    .btn-custom:hover .icon-inner,
-    .btn-custom.active .icon-inner,
-    .logo-wrapper:hover .icon-inner {
-        transform: scale(1.15);
-        color: #D4AF37 !important;
-    }
-
-    /* The continuous rotation animation */
-    @keyframes spin-gemini {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-    
-    /* --------------------------------- */
-
-    .hover-elevate-up {
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .hover-elevate-up:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .mono-num {
-        font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-        letter-spacing: -0.5px;
-    }
-</style>
