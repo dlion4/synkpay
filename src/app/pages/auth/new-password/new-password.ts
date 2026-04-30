@@ -12,19 +12,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewPasswordComponent implements OnInit, OnDestroy {
   
-  // Form Model
   credentials = {
     newPassword: '',
     confirmPassword: ''
   };
 
-  // UI & Security States
   showNewPass: boolean = false;
   showConfPass: boolean = false;
   isSubmitting: boolean = false;
   passwordsMatch: boolean = false;
 
-  // Security Matrix
   reqs = {
     length: false,
     upper: false,
@@ -33,12 +30,10 @@ export class NewPasswordComponent implements OnInit, OnDestroy {
   };
   score: number = 0;
 
-  // Session Timer
-  timeLeft: number = 900; // 15 minutes in seconds
+  timeLeft: number = 900;
   timerDisplay: string = '15:00';
   private timerInterval: any;
 
-  // Toast Notification System
   toast = { show: false, message: '', type: 'success', icon: '' };
 
   constructor(private router: Router) {}
@@ -51,7 +46,6 @@ export class NewPasswordComponent implements OnInit, OnDestroy {
     if (this.timerInterval) clearInterval(this.timerInterval);
   }
 
-  // --- Feature 1: Dynamic Security Matrix ---
   evaluatePassword() {
     const pw = this.credentials.newPassword;
     
@@ -61,10 +55,9 @@ export class NewPasswordComponent implements OnInit, OnDestroy {
     this.reqs.symbol = /[^A-Za-z0-9]/.test(pw);
 
     this.score = Object.values(this.reqs).filter(Boolean).length;
-    this.checkMatch(); // Re-evaluate match if base password changes
+    this.checkMatch();
   }
 
-  // --- Feature 4: Real-Time Match Validator ---
   checkMatch() {
     if (this.credentials.confirmPassword.length > 0) {
       this.passwordsMatch = this.credentials.newPassword === this.credentials.confirmPassword;
@@ -73,13 +66,11 @@ export class NewPasswordComponent implements OnInit, OnDestroy {
     }
   }
 
-  // --- Feature 2: Anti-Paste Enforcement ---
   preventPaste(event: ClipboardEvent) {
     event.preventDefault();
     this.showToast('Security Alert: Pasting is disabled for confirmation.', 'warning', 'fa-shield-alt');
   }
 
-  // --- Feature 3: Session Expiry Timer ---
   startSessionTimer() {
     this.timerInterval = setInterval(() => {
       if (this.timeLeft > 0) {
@@ -95,13 +86,11 @@ export class NewPasswordComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
-  // --- Toggles ---
   togglePass(field: 'new' | 'conf') {
     if (field === 'new') this.showNewPass = !this.showNewPass;
     if (field === 'conf') this.showConfPass = !this.showConfPass;
   }
 
-  // --- Form Submission ---
   onSubmit() {
     if (this.score < 4) {
       this.showToast('Password does not meet security requirements.', 'error', 'fa-times-circle');
@@ -114,7 +103,6 @@ export class NewPasswordComponent implements OnInit, OnDestroy {
 
     this.isSubmitting = true;
     
-    // Simulate API Call for updating password
     setTimeout(() => {
       this.isSubmitting = false;
       this.showToast('Vault Secured! Password updated successfully.', 'success', 'fa-check-double');

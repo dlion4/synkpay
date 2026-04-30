@@ -15,14 +15,12 @@
     --color-failed: #dc3545;
 }
 
-/* Typography & Layout */
 .main-title { color: var(--color-primary-dark); letter-spacing: -0.5px; }
 .text-custom-primary { color: var(--color-primary-dark) !important; }
 .ls-1 { letter-spacing: 1px; }
 .z-index-1 { z-index: 1; }
 .pointer { cursor: pointer; }
 
-/* Tab Navigation */
 .nav-tabs {
     border-bottom: 1px solid transparent;
     .nav-link {
@@ -43,7 +41,6 @@
     }
 }
 
-/* Premium Cards */
 .card-clarity {
     border-radius: 1.5rem;
     border: 1px solid #e0e0e0;
@@ -54,7 +51,6 @@
 
 .preview-card-bg { background-color: var(--color-light-accent); }
 
-/* Form Controls */
 .form-control-clarity, .form-select-clarity {
     border: 1px solid #bdbdbd;
     border-radius: 0.75rem;
@@ -80,7 +76,6 @@
     margin: 0;
 }
 
-/* Primary Button */
 .btn-clarity-primary {
     background: linear-gradient(45deg, var(--color-primary-light), var(--color-primary-dark));
     border: none;
@@ -96,7 +91,6 @@
     &:disabled { opacity: 0.7; cursor: not-allowed; }
 }
 
-/* Custom Radio Selection Cards (Speed & Wallet) */
 .custom-selection-card, .custom-wallet-card {
     .btn-check, input[type="radio"] { display: none; }
     .btn-outline-light, .card {
@@ -115,7 +109,6 @@
     }
 }
 
-/* Custom Beneficiary Type Cards */
 .custom-type-card {
     input[type="radio"] { display: none; }
     .card {
@@ -136,7 +129,6 @@
     }
 }
 
-/* Animations */
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .fade-in-up { animation: fadeInUp 0.6s ease forwards; opacity: 0; }
 
@@ -171,7 +163,6 @@
     100% { transform: scale(1); opacity: 1; }
 }
 
-/* Section Gradients */
 .section-header-gradient {
     background: linear-gradient(90deg, var(--color-primary-dark) 0%, var(--color-primary-light) 100%);
     -webkit-background-clip: text;

@@ -10,22 +10,18 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./continuity-saving-page.scss']
 })
 export class ContinuitySavingPageComponent implements OnInit, OnDestroy {
-  // --- Core State ---
   isProtectionActive: boolean = false;
-  inactivityPeriod: string = '12'; // Default 12 months
-  destinationType: string = 'internal'; // 'internal' or 'external'
+  inactivityPeriod: string = '12';
+  destinationType: string = 'internal';
 
-  // --- Fund Destination Logic ---
   selectedInternalVault: string = 'Vault-A';
   selectedExternalBank: string = 'Bank-KCB';
 
-  // --- Verification Rules ---
   requireOtp: boolean = true;
   requirePin: boolean = true;
   requireBiometric: boolean = false;
   trustedContactPing: boolean = true;
 
-  // --- Post-Trigger Automation Actions (The 10+ Features) ---
   actions = {
     renderDormant: true,
     freezePhysicalCards: true,
@@ -41,7 +37,6 @@ export class ContinuitySavingPageComponent implements OnInit, OnDestroy {
     autoLiquidateAssets: false
   };
 
-  // --- Modal & UI State ---
   isConfirmModalOpen: boolean = false;
   isSuccessModalOpen: boolean = false;
   isSaving: boolean = false;
@@ -52,7 +47,6 @@ export class ContinuitySavingPageComponent implements OnInit, OnDestroy {
   private timerRef: any;
 
   ngOnInit() {
-    // Initialization
   }
 
   ngOnDestroy() {
@@ -63,7 +57,6 @@ export class ContinuitySavingPageComponent implements OnInit, OnDestroy {
     if (this.timerRef) clearInterval(this.timerRef);
   }
 
-  // --- Methods ---
   toggleProtection() {
     this.isProtectionActive = !this.isProtectionActive;
     this.displayToast(this.isProtectionActive ? 'Continuity Protection Activated.' : 'Continuity Protection Paused.');

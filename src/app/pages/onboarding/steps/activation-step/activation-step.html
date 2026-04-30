@@ -1,0 +1,56 @@
+<div class="step-container px-3 py-4 text-center" [formGroup]="parentForm">
+  
+  <div class="mb-5">
+    <div class="success-icon-box rounded-circle bg-primary-subtle text-custom-primary d-inline-flex align-items-center justify-content-center mb-4 shadow-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <h2 class="fw-bold mb-3 text-custom-primary display-6">You're almost ready!</h2>
+    <p class="text-muted fs-5 mx-auto" style="max-width: 500px;">
+      Please review and accept our regulatory agreements to activate your account.
+    </p>
+  </div>
+
+  <div class="card-fintech p-4 p-md-5 mx-auto text-start" style="max-width: 600px; animation-delay: 0.2s;">
+    
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <h5 class="fw-bold text-dark mb-0">Agreements & Disclosures</h5>
+      <span class="badge bg-light text-muted border px-2 py-1">Required</span>
+    </div>
+
+    <div class="legal-list">
+      
+      <div class="legal-row-wrapper mb-3" *ngFor="let doc of legalDocs; let i = index" [style.animation-delay]="(i * 0.1 + 0.3) + 's'">
+        
+        <input 
+          type="checkbox" 
+          [id]="doc.id" 
+          [formControlName]="doc.id"
+          class="legal-input-hidden">
+        
+        <label class="legal-row-label d-flex align-items-center p-3 rounded-3 w-100 m-0 cursor-pointer" [for]="doc.id">
+          
+          <div class="custom-square-check me-3 flex-shrink-0 d-flex align-items-center justify-content-center rounded-2 transition-all">
+            <svg class="check-mark text-white" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          
+          <div class="flex-grow-1">
+            <div class="d-flex align-items-center flex-wrap gap-1">
+              <span class="text-dark fw-medium">I agree to the </span>
+              <a [href]="doc.link" target="_blank" class="text-custom-primary fw-bold text-decoration-none policy-link" (click)="$event.stopPropagation()">
+                {{ doc.label }}
+              </a>
+            </div>
+            <div class="text-muted extra-small mt-1">{{ doc.desc }}</div>
+          </div>
+
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+</div>

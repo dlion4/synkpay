@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common'; 
-// Exactly matching the folder and file name (without .ts)
 import { SidebarService } from '../../../../services/sidebar/sidebar.service'; 
 
 @Component({

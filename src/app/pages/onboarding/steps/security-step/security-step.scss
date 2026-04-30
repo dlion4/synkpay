@@ -1,0 +1,81 @@
+:host {
+    display: block;
+    --color-primary-dark: #a0522d;
+    --color-background-soft: #fcf8f3;
+    --kt-card-shadow: 0 10px 30px rgba(160, 82, 45, 0.08);
+}
+
+.text-custom-primary { color: var(--color-primary-dark) !important; }
+.bg-primary-subtle { background-color: rgba(160, 82, 45, 0.08) !important; }
+.tracking-wide { letter-spacing: 0.05em; }
+
+.step-container { animation: fadeIn 0.4s ease-out forwards; }
+.feature-card-wrapper, .card-fintech {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.card-fintech {
+    border-radius: 1.5rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: var(--kt-card-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: white;
+}
+
+.btn-outline-custom {
+    color: #212529;
+    
+    &:hover {
+        border-color: rgba(160, 82, 45, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .icon-box {
+        width: 50px;
+        height: 50px;
+        background-color: #f8f9fa;
+        color: #6c757d;
+        transition: all 0.3s ease;
+        ::ng-deep svg { width: 24px; height: 24px; stroke: currentColor; }
+    }
+
+    .check-indicator {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #dee2e6;
+        background-color: white;
+        transition: all 0.3s ease;
+
+        .check-mark {
+            width: 14px;
+            height: 14px;
+            color: white;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    }
+}
+
+.btn-check:checked + .btn-outline-custom {
+    border-color: var(--color-primary-dark) !important;
+    background-color: var(--color-background-soft) !important;
+    box-shadow: 0 10px 30px rgba(160, 82, 45, 0.12) !important;
+    transform: translateY(-2px);
+
+    .card-title-text { color: var(--color-primary-dark) !important; }
+    .icon-box { background-color: var(--color-primary-dark); color: white; }
+    .check-indicator {
+        border-color: var(--color-primary-dark);
+        background-color: var(--color-primary-dark);
+        .check-mark { opacity: 1; transform: scale(1); }
+    }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

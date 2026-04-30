@@ -296,4 +296,15 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+  path: 'onboarding',
+  loadComponent: () => import('./layouts/onboarding-layout/onboarding-layout').then(m => m.OnboardingLayoutComponent),
+  canActivate: [authenticationGuard], 
+  children: [
+    {
+      path: '',
+      loadComponent: () => import('./pages/onboarding/onboarding-flow/onboarding-flow').then(m => m.OnboardingFlowComponent)
+    }
+  ]
+},
 ];

@@ -1,0 +1,73 @@
+:host {
+    display: block;
+    --color-primary-dark: #a0522d;
+    --color-primary-light: #e6b800;
+    --kt-card-shadow: 0 10px 30px rgba(160, 82, 45, 0.08);
+}
+
+.flow-container {
+    max-width: 800px;
+}
+
+.text-custom-primary { 
+    color: var(--color-primary-dark) !important; 
+}
+
+.tracking-wide {
+    letter-spacing: 0.05em;
+}
+
+/* Base Card from your reference */
+.card-fintech {
+    border-radius: 1.5rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: var(--kt-card-shadow);
+    background-color: white;
+}
+
+.form-wrapper {
+    min-height: 400px; // Prevents layout jumping between steps
+}
+
+/* Custom Progress Bar matching the theme */
+.custom-progress-bg {
+    height: 8px;
+    background-color: rgba(160, 82, 45, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.custom-progress-bar {
+    background-color: var(--color-primary-dark);
+    border-radius: 10px;
+    transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Custom Buttons matching the Fintech aesthetic */
+.btn-custom-primary {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    color: white;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: #8B4513; // Slightly darker terracotta
+        border-color: #8B4513;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(160, 82, 45, 0.2) !important;
+    }
+}
+
+.btn-nav-back {
+    color: #6c757d;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: var(--color-primary-dark);
+        background-color: rgba(160, 82, 45, 0.05);
+    }
+}

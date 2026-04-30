@@ -3,7 +3,6 @@
     min-height: 100vh;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     
-    /* Silver/Gold Glass Theme Variables */
     --silver-bg-start: #e0e5ec; 
     --silver-bg-end: #f0f2f5;   
     --glass-bg-color: rgba(255, 255, 255, 0.85); 
@@ -22,16 +21,13 @@
     color: var(--color-text-dark);
 }
 
-/* Animations */
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .fade-in { animation: fadeIn 0.4s ease-out forwards; }
 
-/* Utilities */
 .text-vibrant { color: var(--color-vibrant-gold) !important; font-weight: 700; }
 .gold-text { color: var(--color-vibrant-gold) !important; }
 .cursor-pointer { cursor: pointer; }
 
-/* Glass Card Style */
 .glass-card, .page-card, .support-item-card {
     backdrop-filter: blur(15px);
     background-color: var(--glass-bg-color);
@@ -55,7 +51,6 @@
     .icon { font-size: 2.5rem; transition: color 0.3s ease; color: var(--color-text-muted); }
 }
 
-/* Buttons */
 .btn-gold {
     background: var(--color-gold-gradient);
     color: #fff;
@@ -72,7 +67,6 @@
     }
 }
 
-/* Tabs */
 .nav-pills {
     .nav-link {
         color: var(--color-text-muted);
@@ -90,7 +84,6 @@
     }
 }
 
-/* Forms */
 .form-control, .form-select {
     background-color: rgba(255, 255, 255, 0.9); 
     border: 1px solid rgba(0, 0, 0, 0.1); 
@@ -106,7 +99,6 @@
     }
 }
 
-/* Modal Overlay */
 .custom-modal-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -133,7 +125,6 @@
 .modal-xl-custom { max-width: 900px; }
 .modal-md-custom { max-width: 500px; }
 
-/* Success Animation */
 .checkmark-icon {
     font-size: 4rem;
     color: #198754;

@@ -4,7 +4,6 @@
     min-height: 100vh;
 }
 
-/* Glassmorphism Tab Navigation */
 .glass-nav {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(5px);
@@ -32,7 +31,6 @@
     }
 }
 
-/* Base Utility Classes */
 .hover-elevate-up {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     &:hover {
@@ -49,7 +47,6 @@
     cursor: pointer;
 }
 
-/* Table Enhancements */
 .table-row-dashed tr {
     border-bottom: 1px dashed #e4e6ef;
     &:last-child {
@@ -64,7 +61,6 @@
     }
 }
 
-/* Dropdown styling */
 .premium-select {
     border-radius: 10px;
     border: 1px solid #E0E4E8;

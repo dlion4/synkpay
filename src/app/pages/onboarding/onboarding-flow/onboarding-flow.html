@@ -1,0 +1,74 @@
+<div class="flow-container mx-auto">
+  
+  <!-- Custom Fintech Progress Bar -->
+  <div class="mb-5">
+    <div class="d-flex justify-content-between text-muted small fw-bold mb-2 px-1">
+      <span class="text-uppercase tracking-wide">Step {{ currentStep }} of {{ totalSteps }}</span>
+      <span class="text-custom-primary">{{ progressPercentage | number:'1.0-0' }}%</span>
+    </div>
+    <div class="progress custom-progress-bg">
+      <div class="progress-bar custom-progress-bar" role="progressbar" [style.width.%]="progressPercentage"></div>
+    </div>
+  </div>
+
+ <!-- Main Card Area wrapped in your Card-Fintech style -->
+  <div class="card-fintech p-4 p-md-5 mb-5 form-wrapper position-relative overflow-hidden">
+    <form [formGroup]="onboardingForm">
+      
+      <!-- Step 1: Purpose -->
+      <app-purpose-step 
+        *ngIf="currentStep === 1" 
+        [parentForm]="onboardingForm">
+      </app-purpose-step>
+
+      <!-- Step 2: Employment & Income -->
+      <app-employment-step 
+        *ngIf="currentStep === 2" 
+        [parentForm]="onboardingForm">
+      </app-employment-step>
+
+      <!-- Step 3: Transaction Volume -->
+      <app-transaction-volume-step 
+        *ngIf="currentStep === 3" 
+        [parentForm]="onboardingForm">
+      </app-transaction-volume-step>
+
+      <!-- Step 4: Account Features -->
+      <app-account-features-step 
+        *ngIf="currentStep === 4" 
+        [parentForm]="onboardingForm">
+      </app-account-features-step>
+
+      <!-- Step 5: Security Setup -->
+      <app-security-step 
+        *ngIf="currentStep === 5" 
+        [parentForm]="onboardingForm">
+      </app-security-step>
+
+      <!-- Step 6: Legal & Activation -->
+      <app-activation-step 
+        *ngIf="currentStep === 6" 
+        [parentForm]="onboardingForm">
+      </app-activation-step>
+
+    </form>
+  </div>
+
+  <!-- Master Navigation Controls -->
+  <div class="d-flex justify-content-between align-items-center">
+    
+    <button *ngIf="currentStep > 1" (click)="back()" class="btn btn-nav-back btn-lg px-4 fw-medium">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+      </svg>
+      Back
+    </button>
+    <div *ngIf="currentStep === 1"></div> <!-- Flex spacer -->
+
+    <button (click)="next()" class="btn btn-custom-primary btn-lg px-5 fw-bold shadow-sm">
+      {{ currentStep === totalSteps ? 'Complete Setup' : 'Continue' }}
+    </button>
+    
+  </div>
+
+</div>

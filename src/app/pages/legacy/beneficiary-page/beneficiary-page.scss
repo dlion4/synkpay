@@ -3,7 +3,6 @@
     min-height: 100vh;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     
-    /* Custom Variables for Silver/Gold Glass Theme */
     --silver-bg-start: #e0e5ec; 
     --silver-bg-end: #f0f2f5;   
     --glass-bg-color: rgba(255, 255, 255, 0.75); 
@@ -22,20 +21,17 @@
     color: var(--color-text-dark);
 }
 
-/* Animations */
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .fade-in { animation: fadeIn 0.4s ease-out forwards; }
 
 @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
 .toast-animate { animation: slideInRight 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
 
-/* Utilities */
 .text-vibrant { color: var(--color-vibrant-gold) !important; font-weight: 700; }
 .text-gold-900 { color: var(--color-vibrant-gold) !important; font-weight: 800; }
 .small-muted { font-size: 0.875rem; color: var(--color-text-muted) !important; }
 .cursor-pointer { cursor: pointer; }
 
-/* Glass Card Style for Light Theme */
 .glass-card, .page-card {
     backdrop-filter: blur(15px);
     background-color: var(--glass-bg-color);
@@ -57,7 +53,6 @@
     &:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(18, 24, 31, 0.08); }
 }
 
-/* Glass Alert */
 .glass-alert {
     backdrop-filter: blur(10px);
     background-color: rgba(218, 165, 32, 0.1); 
@@ -68,7 +63,6 @@
     font-weight: 600;
 }
 
-/* Header & KPIs */
 .brand-title { font-weight: 900; font-size: 1.75rem; color: var(--color-text-dark); letter-spacing: -0.5px;}
 
 .kpi-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 2rem;}
@@ -84,7 +78,6 @@
     .value { font-weight: 900; font-size: 1.8rem; margin-top: 8px; color: var(--color-text-dark); }
 }
 
-/* Buttons */
 .btn-gold {
     background: var(--color-gold-gradient);
     color: #fff;
@@ -102,7 +95,6 @@
     &:disabled { opacity: 0.7; cursor: not-allowed; }
 }
 
-/* Tabs */
 .nav-tabs { 
     border-bottom: 2px solid rgba(0,0,0,0.05); 
     .nav-link {
@@ -122,7 +114,6 @@
     }
 }
 
-/* Forms */
 .form-control, .form-select {
     background-color: rgba(255, 255, 255, 0.9); 
     border: 1px solid rgba(0, 0, 0, 0.1); 
@@ -138,7 +129,6 @@
     }
 }
 
-/* Modal Wizard Overlay */
 .custom-modal-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -174,8 +164,6 @@
     box-shadow: 0 4px 10px rgba(218, 165, 32, 0.3);
 }
 
-/* PIN Input spacing */
 .ls-5 { letter-spacing: 0.5rem; font-family: monospace; font-size: 1.5rem;}
 
-/* Toasts */
 .toast-container { z-index: 1060; }

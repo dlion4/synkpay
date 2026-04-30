@@ -13,7 +13,6 @@
     --kt-card-shadow: 0 0 20px 0 rgba(76, 87, 125, 0.02);
 }
 
-/* Base Card */
 .card-clarity, .card-fintech {
     border-radius: 1.5rem;
     border: 1px solid #e0e0e0;
@@ -22,12 +21,10 @@
     background-color: white;
 }
 
-/* Typography & Colors */
 .text-custom-primary { color: var(--color-primary-dark) !important; }
 .bg-primary-subtle { background-color: rgba(13, 110, 253, 0.1) !important; }
 .extra-small { font-size: 0.75rem; }
 
-/* Form Controls */
 .form-control-clarity {
     border: 1px solid #bdbdbd;
     border-radius: 0.75rem;
@@ -40,13 +37,11 @@
     }
 }
 
-/* Nav Tabs */
 .nav-tabs .nav-link {
     cursor: pointer;
     font-weight: 600;
 }
 
-/* Payment Channels Selection */
 .btn-check { display: none; }
 .btn-outline-light {
     background-color: #ffffff !important;
@@ -68,7 +63,6 @@
     transition: filter 0.2s;
 }
 
-/* Custom Tag Checkboxes */
 .btn-check:checked + .btn-outline-secondary {
     background-color: var(--bs-primary) !important;
     border-color: var(--bs-primary) !important;
@@ -86,7 +80,6 @@
     }
 }
 
-/* Table Styling */
 .fintech-table {
     thead th {
         background-color: #f8f9fa;
@@ -100,7 +93,6 @@
     }
 }
 
-/* Phone Mockup Styling */
 .preview-card-bg { background-color: #f7f2ea; }
 .mobile-device {
     width: 260px;
@@ -133,7 +125,6 @@
     &:hover { transform: scale(1.05); }
 }
 
-/* Utilities */
 #brandLogo::file-selector-button {
     background: #e9ecef;
     border: none;

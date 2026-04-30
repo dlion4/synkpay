@@ -1,4 +1,3 @@
-/* --- PREMIUM GOLD & GLASSMORPHISM THEME --- */
 :root {
     --gold-primary: #D4AF37;
     --gold-hover: #C5A021;
@@ -10,15 +9,12 @@
     --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
     --shadow-gold: 0 10px 30px -5px rgba(212, 175, 55, 0.25);
 }
-
 body {
     background-color: #f8fafc;
     background-image: 
         radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 20%),
         radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 20%);
 }
-
-/* Premium Glass Cards */
 .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
@@ -33,7 +29,6 @@ body {
     box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1);
     border-color: var(--gold-subtle);
 }
-
 .dark-glass-card {
     background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
     border-radius: 1.5rem;
@@ -42,8 +37,6 @@ body {
     transition: all 0.3s ease;
     border: 1px solid rgba(255,255,255,0.1);
 }
-
-/* Buttons */
 .btn-gold {
     background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
     color: white !important;
@@ -54,71 +47,47 @@ body {
     transition: all 0.3s ease;
 }
 .btn-gold:hover { transform: translateY(-2px); filter: brightness(1.1); }
-
-/* Angular specific animations */
 .animate-fade { animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-/* Wizard Steppers */
 .step-indicator { display: flex; justify-content: space-between; position: relative; margin-bottom: 30px; }
 .step-indicator::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: #e2e8f0; z-index: 0; transform: translateY(-50%); }
 .step-dot { width: 32px; height: 32px; background: white; border: 2px solid #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1; font-weight: 700; color: #64748b; transition: all 0.4s ease; }
 .step-dot.active { border-color: var(--gold-primary); background: var(--gold-primary); color: white; box-shadow: 0 0 0 4px var(--gold-subtle); }
 .step-dot.completed { background: #10b981; border-color: #10b981; color: white; }
-
-
-/* 1. Animate the Secondary Sidebar */
 .aside-secondary {
     width: 325px;
     min-width: 325px;
-    /* overflow-x: hidden is CRITICAL so content doesn't bleed out when shrinking */
     overflow-x: hidden !important; 
     transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out, opacity 0.2s ease;
 }
-
 .aside-secondary.collapsed-sidebar {
     width: 0 !important;
     min-width: 0 !important;
     opacity: 0;
     border-right: none !important;
 }
-
-/* 2. Animate the Main Content Wrapper */
 .main-content-wrapper {
-    /* Base state: 100px (Primary) + 325px (Secondary) = 425px */
     padding-left: 425px; 
     width: 100%;
     transition: padding-left 0.3s ease-in-out;
 }
-
 .main-content-wrapper.collapsed-sidebar {
-    /* Collapsed state: Only the 100px Primary sidebar is visible */
     padding-left: 100px; 
 }
-
-/* 3. Mobile responsiveness (hides sidebar logic on small screens) */
 @media (max-width: 991.98px) {
     .main-content-wrapper,
     .main-content-wrapper.collapsed-sidebar {
         padding-left: 0;
     }
 }
-
-
-/* --- Master Layout Shift --- */
 #kt_wrapper {
-    /* Base state: 100px (Primary Sidebar) + 325px (Secondary Sidebar) = 425px */
     padding-left: 425px; 
     width: 100%;
     transition: padding-left 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
 #kt_wrapper.collapsed-sidebar {
-    /* Collapsed state: Only the 100px Primary sidebar remains */
     padding-left: 100px; 
 }
-
-/* Mobile responsiveness: Sidebars are usually hidden or overlaid on mobile */
 @media (max-width: 991.98px) {
     #kt_wrapper,
     #kt_wrapper.collapsed-sidebar {

@@ -1,6 +1,6 @@
 :host {
     display: block;
-    background-color: #f1f5f9; /* Slate 100 */
+    background-color: #f1f5f9;
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
     color: #334155;
@@ -13,7 +13,6 @@
     --danger-red: #ef4444;
 }
 
-/* Premium Card Container */
 .card-clarity {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -22,7 +21,6 @@
     transition: all 0.3s ease;
 }
 
-/* Custom Range Slider */
 .custom-range {
     -webkit-appearance: none;
     width: 100%;
@@ -53,7 +51,6 @@
     }
 }
 
-/* Custom Switch Toggle */
 .form-check-custom {
     .form-check-input {
         width: 45px;
@@ -70,7 +67,6 @@
     }
 }
 
-/* Action Buttons */
 .btn-gold {
     background: linear-gradient(135deg, var(--primary-gold) 0%, #b45309 100%);
     color: white;
@@ -89,7 +85,6 @@
     }
 }
 
-/* Setting Item Row */
 .setting-row {
     padding: 1.25rem;
     border: 1px solid #f1f5f9;
@@ -102,7 +97,6 @@
     }
 }
 
-/* Credit Card Selector Mockup */
 .card-selector {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     color: white;
@@ -120,7 +114,6 @@
     }
 }
 
-/* Toast Animation */
 .toast-container {
     z-index: 1060;
 }

@@ -10,17 +10,14 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./cards-transactions-page.scss']
 })
 export class CardsTransactionsPageComponent implements OnInit {
-  // Filter States
   searchQuery: string = '';
   selectedCard: string = 'all';
   selectedCategory: string = 'all';
   dateRange: string = 'this_month';
 
-  // Transaction Detail Modal State
   selectedTx: any = null;
   isDetailModalOpen: boolean = false;
 
-  // Mock Transactions Data with Advanced Metadata
   transactions = [
     {
       id: 'CTX-99201',

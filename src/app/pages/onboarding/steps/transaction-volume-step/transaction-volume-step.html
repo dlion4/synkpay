@@ -1,0 +1,94 @@
+<div class="step-container px-3 py-4" [formGroup]="parentForm">
+  
+  <!-- Header Section -->
+  <div class="text-center mb-5">
+    <span class="badge bg-primary-subtle text-custom-primary mb-3 px-3 py-2 rounded-pill fw-semibold tracking-wide">
+      STEP 3: ACCOUNT ACTIVITY
+    </span>
+    <h2 class="fw-bold mb-3 text-custom-primary display-6">Expected Activity Baseline</h2>
+    <p class="text-muted fs-5 mx-auto" style="max-width: 650px;">
+      This allows us to establish your normal transaction baseline for our AI fraud-detection security models.
+    </p>
+  </div>
+
+  <!-- SECTION 1: Transaction Volume -->
+  <div class="mb-5">
+    <h5 class="fw-bold text-dark mb-4 px-1 d-flex align-items-center">
+      <div class="section-indicator me-2 rounded-pill"></div>
+      Monthly Estimated Volume
+    </h5>
+    
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      <div class="col" *ngFor="let vol of volumes; let i = index">
+        
+        <div class="feature-card-wrapper h-100" [style.animation-delay]="(i * 0.1) + 's'">
+          <input 
+            type="radio" 
+            class="btn-check" 
+            [id]="'vol-' + vol.value" 
+            formControlName="volume"
+            [value]="vol.value"
+            autocomplete="off">
+          
+          <label class="btn btn-outline-custom card-fintech w-100 h-100 p-4 text-center position-relative overflow-hidden" [for]="'vol-' + vol.value">
+            
+            <div class="d-flex flex-column align-items-center mb-2">
+              <div class="icon-box rounded-circle d-flex align-items-center justify-content-center mb-3 shadow-sm">
+  <i class="bi" [ngClass]="vol.iconClass" style="font-size: 3rem;"></i>
+</div>
+
+              <h5 class="fw-bold card-title-text mb-1">{{ vol.title }}</h5>
+              <p class="text-muted small fw-medium mb-0">{{ vol.desc }}</p>
+            </div>
+
+            <!-- Absolute indicator tucked in the corner -->
+            <div class="radio-indicator position-absolute top-0 end-0 m-3 rounded-circle d-flex align-items-center justify-content-center">
+              <div class="radio-dot"></div>
+            </div>
+
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Transaction Frequency -->
+  <div class="mb-4">
+    <h5 class="fw-bold text-dark mb-4 px-1 d-flex align-items-center">
+      <div class="section-indicator me-2 rounded-pill"></div>
+      Frequency of Transactions
+    </h5>
+    
+    <div class="row row-cols-2 row-cols-lg-4 g-3">
+      <div class="col" *ngFor="let freq of frequencies; let j = index">
+        
+        <div class="feature-card-wrapper h-100" [style.animation-delay]="((j + volumes.length) * 0.1) + 's'">
+          <input 
+            type="radio" 
+            class="btn-check" 
+            [id]="'freq-' + freq.value" 
+            formControlName="frequency"
+            [value]="freq.value"
+            autocomplete="off">
+          
+          <label class="btn btn-outline-custom card-fintech w-100 h-100 p-3 text-center position-relative overflow-hidden" [for]="'freq-' + freq.value">
+            
+            <div class="d-flex flex-column align-items-center mb-1">
+              <div class="icon-box icon-box-sm rounded-circle d-flex align-items-center justify-content-center mb-2">
+                <i class="bi" [ngClass]="freq.iconClass" style="font-size: 2rem;"></i>
+              </div>
+              <span class="fw-bold card-title-text small mb-1">{{ freq.title }}</span>
+              <span class="text-muted extra-small">{{ freq.desc }}</span>
+            </div>
+
+            <div class="radio-indicator position-absolute top-0 end-0 m-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 16px; height: 16px;">
+              <div class="radio-dot" style="width: 6px; height: 6px;"></div>
+            </div>
+
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

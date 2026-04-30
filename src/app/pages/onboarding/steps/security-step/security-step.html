@@ -1,0 +1,48 @@
+<div class="step-container px-3 py-4" [formGroup]="parentForm">
+  <div class="text-center mb-5">
+    <span class="badge bg-primary-subtle text-custom-primary mb-3 px-3 py-2 rounded-pill fw-semibold tracking-wide">
+      STEP 5: ACCOUNT SECURITY
+    </span>
+    <h2 class="fw-bold mb-3 text-custom-primary display-6">Lock it down</h2>
+    <p class="text-muted fs-5 mx-auto" style="max-width: 600px;">
+      Customize how you interact with Pkenya's security layers.
+    </p>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let opt of securityOptions; let i = index">
+      <div class="feature-card-wrapper h-100" [style.animation-delay]="(i * 0.1) + 's'">
+        
+        <!-- Notice type="checkbox" for multiple selection -->
+        <input 
+          type="checkbox" 
+          class="btn-check" 
+          [id]="'sec-' + opt.id" 
+          [checked]="isChecked(opt.id)"
+          (change)="toggleSecurity(opt.id)"
+          autocomplete="off">
+        
+        <label class="btn btn-outline-custom card-fintech w-100 h-100 p-4 text-start" [for]="'sec-' + opt.id">
+          <div class="d-flex justify-content-between align-items-start mb-4">
+
+            <div class="icon-box rounded-3 d-flex align-items-center justify-content-center">
+              <i class="bi" [ngClass]="opt.iconClass" style="font-size: 3rem;"></i>
+            </div>
+
+
+            <div class="check-indicator rounded-circle d-flex align-items-center justify-content-center shadow-sm">
+              <svg class="check-mark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+          </div>
+          <div class="mt-2">
+            <h5 class="fw-bold card-title-text mb-2">{{ opt.title }}</h5>
+            <p class="text-muted small mb-0 lh-lg">{{ opt.desc }}</p>
+          </div>
+        </label>
+
+      </div>
+    </div>
+  </div>
+</div>

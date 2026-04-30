@@ -12,13 +12,11 @@ import { RouterModule } from '@angular/router';
 })
 export class DashboardPageComponent {
   
-  // --- Main Tab Management ---
   activeMainTab: 'personal' | 'business' = 'personal';
   activeBizTab: 'overview' | 'compliance' | 'developer' = 'overview';
   apiEnv: 'sandbox' | 'live' = 'sandbox';
-  isCollapsed: boolean = false; // Added to fix the HTML class binding error
+  isCollapsed: boolean = false;
 
-  // --- Wizard States (Amounts changed from null to 0 to fix strict math errors) ---
   depositState = { step: 1, max: 5, method: 'mpesa', amount: 0, phone: '' };
   withdrawState = { step: 1, max: 5, method: 'bank', amount: 0, to: '' };
   sendState = { step: 1, max: 4, amount: 0, recipient: null as any };
@@ -27,13 +25,11 @@ export class DashboardPageComponent {
 
   isProcessing: boolean = false;
 
-  // --- Mock Data ---
   recipients = [
     { name: 'John Doe', email: 'john@example.com', initials: 'JD', color: 'primary' },
     { name: 'Sarah Smith', email: 'sarah@example.com', initials: 'SS', color: 'success' }
   ];
 
-  // --- Toast Management ---
   toastMessage: string = '';
   showToast: boolean = false;
 
@@ -43,12 +39,9 @@ export class DashboardPageComponent {
     setTimeout(() => this.showToast = false, 2500);
   }
 
-  // --- Global Wizard Navigator ---
   nextStep(wizardType: 'deposit' | 'withdraw' | 'send' | 'transfer' | 'receive') {
-    // Cast 'this' to 'any' to bypass strict TS indexing rules
     const state = (this as any)[wizardType + 'State'];
     
-    // Validation Blocks
     if (wizardType === 'deposit' && state.step === 3 && (!state.amount || state.amount <= 0)) {
         alert("Please enter a valid amount"); 
         return;
@@ -58,7 +51,6 @@ export class DashboardPageComponent {
         return;
     }
 
-    // Processing Delay Hook
     const processingSteps: any = { deposit: 4, withdraw: 4, send: 3, transfer: 3, receive: 2 };
     
     if (state.step === processingSteps[wizardType]) {
@@ -91,7 +83,6 @@ export class DashboardPageComponent {
     }
   }
 
-  // --- Specific Helpers ---
   selectRecipient(rec: any) {
     this.sendState.recipient = rec;
   }

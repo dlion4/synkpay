@@ -1,0 +1,60 @@
+<div class="step-container px-3 py-4" [formGroup]="parentForm">
+  
+  <!-- Header Section -->
+  <div class="text-center mb-5">
+    <span class="badge bg-primary-subtle text-custom-primary mb-3 px-3 py-2 rounded-pill fw-semibold tracking-wide">
+      STEP 1: ACCOUNT GOAL
+    </span>
+    <h2 class="fw-bold mb-3 text-custom-primary display-6">What is your primary goal?</h2>
+    <p class="text-muted fs-5 mx-auto" style="max-width: 600px;">
+      This helps us personalize your dashboard and limits right from the start.
+    </p>
+  </div>
+
+  <!-- Bootstrap Grid for Goals -->
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    
+    <div class="col" *ngFor="let goal of goals; let i = index">
+      
+      <!-- Interactive Card Wrapper -->
+      <div class="feature-card-wrapper h-100" [style.animation-delay]="(i * 0.1) + 's'">
+        
+        <!-- Native Bootstrap hidden RADIO button -->
+        <input 
+          type="radio" 
+          class="btn-check" 
+          [id]="'goal-' + goal.value" 
+          formControlName="purpose"
+          [value]="goal.value"
+          autocomplete="off">
+        
+        <!-- The Label acts as the clickable Fintech Card -->
+        <label class="btn btn-outline-custom card-fintech w-100 h-100 p-4 text-start position-relative overflow-hidden" [for]="'goal-' + goal.value">
+          
+          <div class="d-flex justify-content-between align-items-start mb-4">
+            
+            <!-- Feature Icon Box -->
+            <div class="icon-box rounded-3 d-flex align-items-center justify-content-center">
+  <i class="bi" [ngClass]="goal.iconClass" style="font-size: 3rem;"></i>
+</div>
+
+            <!-- Custom RADIO Indicator (Circle with dot) -->
+            <div class="radio-indicator rounded-circle d-flex align-items-center justify-content-center shadow-sm">
+              <div class="radio-dot"></div>
+            </div>
+
+          </div>
+
+          <!-- Text Content -->
+          <div class="mt-2">
+            <h5 class="fw-bold card-title-text mb-2">{{ goal.title }}</h5>
+            <p class="text-muted small mb-0 lh-lg">{{ goal.desc }}</p>
+          </div>
+
+        </label>
+      </div>
+
+    </div>
+    
+  </div>
+</div>

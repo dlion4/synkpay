@@ -55,7 +55,6 @@
     }
 }
 
-/* Custom Tabs */
 .nav-pills-clarity .nav-link {
     color: #616161;
     font-weight: 600;
@@ -69,10 +68,8 @@
     }
 }
 
-/* Main Top Tabs */
 .nav-tabs .nav-link { cursor: pointer; }
 
-/* Mini-Tabs (Transaction Categories) */
 .mini-tabs {
     background-color: var(--color-light-accent);
     border-radius: 0.75rem;
@@ -103,7 +100,6 @@
     letter-spacing: -0.5px;
 }
 
-/* Table Styling */
 .transaction-table tbody tr {
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
@@ -123,7 +119,6 @@
 .status-Pending { background-color: var(--color-pending); color: white; }
 .status-Failed { background-color: var(--color-failed); color: white; }
 
-/* Animated Stat Card */
 .stat-card {
     transition: transform 0.3s, box-shadow 0.3s;
     background-color: white;
@@ -134,7 +129,6 @@
     }
 }
 
-/* Spinner */
 @keyframes custom-spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -151,7 +145,6 @@
     animation: custom-spin 1s linear infinite;
 }
 
-/* Glow */
 @keyframes subtle-glow {
     0%, 100% { box-shadow: 0 0 10px rgba(230, 184, 0, 0.0); }
     50% { box-shadow: 0 0 15px rgba(230, 184, 0, 0.4); }

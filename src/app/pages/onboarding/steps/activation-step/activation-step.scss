@@ -1,0 +1,121 @@
+:host {
+    display: block;
+    --color-primary-dark: #a0522d;
+    --color-background-soft: #fcf8f3;
+    --kt-card-shadow: 0 10px 30px rgba(160, 82, 45, 0.08);
+}
+
+.text-custom-primary { color: var(--color-primary-dark) !important; }
+.bg-primary-subtle { background-color: rgba(160, 82, 45, 0.08) !important; }
+.extra-small { font-size: 0.8rem; }
+.cursor-pointer { cursor: pointer; }
+
+.step-container { animation: fadeIn 0.4s ease-out forwards; }
+
+.card-fintech, .legal-row-wrapper {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.card-fintech {
+    border-radius: 1.5rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: var(--kt-card-shadow);
+    background-color: white;
+}
+
+.success-icon-box {
+    width: 80px; 
+    height: 80px;
+    animation: gentlePulse 2s infinite;
+}
+
+
+.legal-input-hidden {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.legal-row-label {
+    border: 1px solid transparent;
+    background-color: #f8f9fa;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: white;
+        border-color: rgba(160, 82, 45, 0.2);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+}
+
+.custom-square-check {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #cbd5e1;
+    background-color: white;
+    
+    .check-mark {
+        opacity: 0;
+        transform: scale(0.5);
+        transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+}
+
+.policy-link {
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color-primary-dark);
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+    &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+
+.legal-input-hidden:checked + .legal-row-label {
+    background-color: var(--color-background-soft);
+    border-color: rgba(160, 82, 45, 0.3);
+
+    .custom-square-check {
+        background-color: var(--color-primary-dark);
+        border-color: var(--color-primary-dark);
+        
+        .check-mark {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+.legal-input-hidden:focus-visible + .legal-row-label {
+    outline: 2px solid var(--color-primary-dark);
+    outline-offset: 2px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gentlePulse {
+    0% { box-shadow: 0 0 0 0 rgba(160, 82, 45, 0.2); }
+    70% { box-shadow: 0 0 0 15px rgba(160, 82, 45, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(160, 82, 45, 0); }
+}

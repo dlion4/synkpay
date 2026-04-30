@@ -12,26 +12,20 @@ import { FormsModule } from '@angular/forms';
 })
 export class ResetPasswordComponent {
   
-  // Form Models
   recoveryMode: 'email' | 'phone' = 'email';
   email: string = '';
   phone: string = '';
 
-  // UI States
   isSubmitting: boolean = false;
   cooldownTimer: number = 0;
   showDomainSuggestions: boolean = false;
 
-  // Domain Suggestions
   commonDomains = ['gmail.com', 'outlook.com', 'yahoo.com', 'pkenya.com'];
 
-  // Toast Notification System
   toast = { show: false, message: '', type: 'success', icon: '' };
 
-  // --- Feature 1: Smart Domain Suggester ---
   onEmailType(event: any) {
     const value = event.target.value;
-    // Show suggestions only if user typed '@' and hasn't finished the domain
     this.showDomainSuggestions = value.includes('@') && value.split('@')[1].length < 3;
   }
 
@@ -41,12 +35,10 @@ export class ResetPasswordComponent {
     this.showDomainSuggestions = false;
   }
 
-  // --- Toggle Recovery Mode ---
   switchMode(mode: 'email' | 'phone') {
     this.recoveryMode = mode;
   }
 
-  // --- Form Submission & Rate Limiting ---
   onSubmit() {
     if (this.recoveryMode === 'email' && !this.email) {
       this.showToast('Please enter your registered email.', 'error', 'fa-exclamation-circle');
@@ -59,7 +51,6 @@ export class ResetPasswordComponent {
 
     this.isSubmitting = true;
     
-    // Simulate secure API Call
     setTimeout(() => {
       this.isSubmitting = false;
       this.showToast('Secure recovery link dispatched!', 'success', 'fa-shield-check');
@@ -67,9 +58,8 @@ export class ResetPasswordComponent {
     }, 1500);
   }
 
-  // --- Feature 2: Security Cooldown Timer ---
   startCooldown() {
-    this.cooldownTimer = 60; // 60 seconds lockout
+    this.cooldownTimer = 60;
     const interval = setInterval(() => {
       this.cooldownTimer--;
       if (this.cooldownTimer <= 0) {
@@ -78,7 +68,6 @@ export class ResetPasswordComponent {
     }, 1000);
   }
 
-  // --- Dynamic Toast Helper ---
   showToast(message: string, type: 'success' | 'error' | 'warning', icon: string) {
     this.toast = { show: true, message, type, icon };
     setTimeout(() => this.toast.show = false, 4000);

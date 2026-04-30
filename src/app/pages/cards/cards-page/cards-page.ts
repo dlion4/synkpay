@@ -10,16 +10,13 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./cards-page.scss']
 })
 export class CardsPageComponent implements OnDestroy {
-  // Main Navigation State
   activeMainTab: 'cards' | 'virtual' | 'security' | 'transactions' = 'cards';
   
-  // Card Management State
   activeCardId: string = '4242';
   isCardFrozen: boolean = false;
   isSettingsDrawerOpen: boolean = false;
   isDetailsDrawerOpen: boolean = false;
 
-  // Modals State
   isAddCardModalOpen: boolean = false;
   isChangePinModalOpen: boolean = false;
   isReportLostModalOpen: boolean = false;
@@ -27,12 +24,10 @@ export class CardsPageComponent implements OnDestroy {
   isDeleteCardModalOpen: boolean = false;
   isGeoLockModalOpen: boolean = false;
 
-  // PIN Change State
   currentPin: string = '';
   newPin: string = '';
   confirmPin: string = '';
 
-  // VCC Details State
   isVccAuthenticated: boolean = false;
   vccTimer: number = 30;
   private timerInterval: any;
@@ -41,14 +36,12 @@ export class CardsPageComponent implements OnDestroy {
     this.clearVccTimer();
   }
 
-  // --- UI Triggers ---
   setMainTab(tab: 'cards' | 'virtual' | 'security' | 'transactions') {
     this.activeMainTab = tab;
   }
 
   selectCard(cardId: string) {
     this.activeCardId = cardId;
-    // Reset frozen state simulation based on selection
     this.isCardFrozen = cardId === '9011'; 
   }
 
@@ -57,14 +50,12 @@ export class CardsPageComponent implements OnDestroy {
     alert(this.isCardFrozen ? 'Card has been frozen.' : 'Card is active again.');
   }
 
-  // --- Drawer Management ---
   openSettingsDrawer() { this.isSettingsDrawerOpen = true; }
   closeSettingsDrawer() { this.isSettingsDrawerOpen = false; }
   
   openDetailsDrawer() { this.isDetailsDrawerOpen = true; }
   closeDetailsDrawer() { this.isDetailsDrawerOpen = false; }
 
-  // --- Modal Management ---
   openAddCardModal() { this.isAddCardModalOpen = true; }
   closeAddCardModal() { this.isAddCardModalOpen = false; }
 
@@ -88,7 +79,6 @@ export class CardsPageComponent implements OnDestroy {
   openGeoLockModal() { this.isGeoLockModalOpen = true; }
   closeGeoLockModal() { this.isGeoLockModalOpen = false; }
 
-  // --- Virtual Card Reveal Logic ---
   revealCardData() {
     this.isVccAuthenticated = true;
     this.vccTimer = 30;

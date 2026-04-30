@@ -10,15 +10,12 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./beneficiary-page.scss']
 })
 export class BeneficiaryPageComponent implements OnInit {
-  // --- Main Layout State ---
   activeMainTab: 'beneficiaries' | 'pledges' | 'legal' = 'beneficiaries';
   lastUpdated: string = '2025-11-27';
 
-  // --- Toast State ---
   toasts: { message: string, type: string, id: number }[] = [];
   private toastIdCounter = 0;
 
-  // --- Add Beneficiary Wizard State ---
   isWizardOpen: boolean = false;
   wizardStep: number = 1;
   isSubmittingWizard: boolean = false;
@@ -33,14 +30,12 @@ export class BeneficiaryPageComponent implements OnInit {
     otp: ''
   };
 
-  // --- Charity Pledge Modal State ---
   isCharityModalOpen: boolean = false;
   pledgeTarget: string = 'Global Education Fund';
   pledgeType: string = 'percent';
   pledgeValue: number = 10;
   pledgeChannel: string = 'SendMo Account';
 
-  // --- Legal & Inquiry State ---
   inquiryState: 'pending' | 'loading' | 'verified' = 'pending';
   inquiryForm = {
     name: '',
@@ -50,7 +45,6 @@ export class BeneficiaryPageComponent implements OnInit {
     acknowledged: false
   };
 
-  // --- Mock Data ---
   beneficiaries = [
     { name: 'Sarah Johnson', relation: 'Spouse', country: 'Nigeria', trigger: 'Death, Emergency', allocation: 50, method: 'SendMo Wallet' },
     { name: 'David Johnson', relation: 'Child (Adult)', country: 'Canada', trigger: 'Death', allocation: 20, method: 'Bank Transfer (CAD)' },
@@ -67,7 +61,6 @@ export class BeneficiaryPageComponent implements OnInit {
 
   ngOnInit() {}
 
-  // --- UI Methods ---
   setMainTab(tab: 'beneficiaries' | 'pledges' | 'legal') {
     this.activeMainTab = tab;
   }
@@ -85,7 +78,6 @@ export class BeneficiaryPageComponent implements OnInit {
     setTimeout(() => this.showToast('All documents are up to date and verified.', 'success'), 2000);
   }
 
-  // --- Beneficiary Wizard Methods ---
   openWizard() {
     this.wizardStep = 1;
     this.isWizardOpen = true;
@@ -129,7 +121,7 @@ export class BeneficiaryPageComponent implements OnInit {
         name: this.newBene.name,
         relation: this.newBene.relation,
         country: this.newBene.country,
-        trigger: this.newBene.trigger.split(' ')[0], // short version
+        trigger: this.newBene.trigger.split(' ')[0],
         allocation: this.newBene.allocation,
         method: 'Pending Setup'
       });
@@ -138,7 +130,6 @@ export class BeneficiaryPageComponent implements OnInit {
     }, 2000);
   }
 
-  // --- Pledges Methods ---
   openCharityModal(preselectFoundation: boolean = false) {
     if (preselectFoundation) {
       this.pledgeTarget = 'SendMo Foundation (Financial Literacy)';
@@ -165,7 +156,6 @@ export class BeneficiaryPageComponent implements OnInit {
     }
   }
 
-  // --- Legal Inquiry Methods ---
   refreshStatus() {
     if (!this.inquiryForm.name) {
       this.showToast("Please enter your Full Name in the Profile Information card before running a check.", "danger");

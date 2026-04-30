@@ -1,0 +1,30 @@
+:host {
+    display: block;
+    --color-primary-dark: #a0522d;
+    --color-background-soft: #fcf8f3;
+}
+
+.onboarding-wrapper {
+    background-color: var(--color-background-soft);
+    font-family: 'Inter', sans-serif;
+}
+
+.layout-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.layout-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.text-custom-primary { 
+    color: var(--color-primary-dark) !important; 
+}
+
+.security-badge {
+    background-color: rgba(160, 82, 45, 0.08);
+    color: var(--color-primary-dark);
+    border: 1px solid rgba(160, 82, 45, 0.15);
+}

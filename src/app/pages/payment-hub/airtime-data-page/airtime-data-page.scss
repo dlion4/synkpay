@@ -1,6 +1,6 @@
 :host {
     display: block;
-    background-color: #fcf8f3; /* Color Background Soft */
+    background-color: #fcf8f3;
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
 
@@ -57,7 +57,6 @@
 
 .text-custom-primary { color: var(--color-primary-dark) !important; }
 
-/* Main Tabs */
 .nav-pills-clarity .nav-link {
     color: #616161;
     font-weight: 600;
@@ -71,7 +70,6 @@
     }
 }
 
-/* Product Selection Card/Button */
 .product-card {
     border: 2px solid transparent;
     cursor: pointer;
@@ -92,7 +90,6 @@
     }
 }
 
-/* Animated Spinner (Gold/Sienna) */
 @keyframes pulse-ring {
     0% { transform: scale(0.3); opacity: 0.8; }
     100% { transform: scale(1.5); opacity: 0; }
@@ -116,7 +113,6 @@
     top: 0; left: 0;
 }
 
-/* Carrier Detection Icon */
 .carrier-icon {
     transition: all 0.5s ease-in-out;
     opacity: 0;

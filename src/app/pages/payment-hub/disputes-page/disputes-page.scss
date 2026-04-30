@@ -17,7 +17,6 @@
 
 .main-title { color: var(--color-primary-dark); letter-spacing: -0.5px; }
 
-/* Premium Cards */
 .card-clarity {
     border-radius: 1.5rem;
     border: 1px solid #e0e0e0;
@@ -75,14 +74,12 @@
     letter-spacing: -0.5px;
 }
 
-/* Table Styling */
 .dispute-table tbody tr {
     cursor: pointer;
     transition: background-color 0.2s;
     &:hover { background-color: var(--color-highlight-bg) !important; }
 }
 
-/* Modal Timeline Styling */
 .mw-650px { max-width: 650px !important; }
 
 .timeline-label { position: relative; }

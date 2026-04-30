@@ -13,7 +13,6 @@
     --glass-bg: rgba(255, 255, 255, 0.1);
 }
 
-/* Utilities */
 .font-monospace { font-family: 'JetBrains Mono', monospace !important; }
 .text-primary-gold { color: var(--primary-gold) !important; }
 .bg-primary-gold { background-color: var(--primary-gold) !important; }
@@ -25,7 +24,6 @@
 .transition { transition: all 0.3s ease; }
 .cursor-pointer { cursor: pointer; }
 
-/* Buttons */
 .btn-gold {
     background-color: var(--primary-gold);
     border-color: var(--primary-gold);
@@ -45,14 +43,12 @@
     &:active { transform: scale(0.98); }
 }
 
-/* Nav Tabs */
 .main-tab-active {
     border-bottom: 3px solid var(--primary-gold) !important;
     color: var(--primary-gold) !important;
     font-weight: 600;
 }
 
-/* Base Cards */
 .card-clarity {
     border-radius: 1.5rem;
     border: 1px solid #e0e0e0;
@@ -90,7 +86,6 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Bank Cards (Physical & Virtual) */
 .bank-card {
     width: 100%;
     max-width: 400px;
@@ -135,7 +130,6 @@
 .theme-virtual { background: linear-gradient(135deg, #047857 0%, #0d9488 100%); }
 .theme-burner { background: linear-gradient(135deg, #4f46e5 0%, #312e81 100%); }
 
-/* Drawers */
 .drawer {
     position: fixed;
     top: 0; right: -450px;
@@ -163,7 +157,6 @@
 
 .bg-light-panel { background-color: #f9f9f9; }
 
-/* Custom Inputs & Forms */
 .form-control-custom, .form-control-solid {
     background-color: #f5f8fa;
     border-color: #f5f8fa;
@@ -185,7 +178,6 @@
 .custom-range::-webkit-slider-thumb { background: var(--primary-gold); }
 .custom-range::-moz-range-thumb { background: var(--primary-gold); }
 
-/* Selection Cards (Add Card) */
 .custom-type-card {
     input[type="radio"] { display: none; }
     .btn { transition: all 0.2s; border: 1px solid #e0e0e0; }
@@ -196,6 +188,5 @@
     }
 }
 
-/* Animations */
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .fade-in { animation: fadeIn 0.5s ease-out forwards; }
